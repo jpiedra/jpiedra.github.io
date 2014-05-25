@@ -1,0 +1,13 @@
+markdown: rdiscount
+pygments: true
+permalink: /posts/:title
+rdiscount:
+  extensions: [smart]
+
+gems:
+  - jekyll-sitemap
+
+name: Zach Holman
+url: http://zachholman.com
+description: A fantastic blog that is fantastic.
+twitter: holman
