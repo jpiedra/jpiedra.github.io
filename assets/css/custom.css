@@ -331,7 +331,7 @@ height:100%;
     }
     #nav {
         height: 100%;
-        background: #aa0101;
+        background: #000000;
         position: absolute;
         z-index: 1200;
     }
