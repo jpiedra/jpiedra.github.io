@@ -69,6 +69,8 @@ max-width:800px!important;
 padding:75px 0 60px;
 }
 
+
+
 .footer {
 height:60px;
 }
@@ -113,7 +115,7 @@ padding:0 0 0 .2em;
 }
 
 .leaders i {
-color:#333;
+color:#444444;
 }
 
 .leaders li:after {
@@ -132,6 +134,10 @@ display:inline-block;
 padding:30px;
 }
 
+.a {
+color:#ffffff;
+}
+
 .page-preview-icon {
 z-index:9001;
 cursor:pointer;
@@ -140,7 +146,7 @@ cursor:pointer;
 .page-preview-text {
 right:30px;
 left:130px;
-background:#fff;
+background:#444444;
 position:absolute;
 text-align:center;
 top:-9000px;
