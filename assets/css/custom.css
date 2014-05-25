@@ -15,7 +15,7 @@ padding:10px 0 10px 10px;
 }
 
 #page-down {
-background-color:#000000;
+bottom:30px;
 }
 
 #page-preview {
@@ -273,7 +273,7 @@ font:17px;
 }
 
 html,body {
-height:100%;
+
 }
 #menu, .comments-meta {
     display: none;
