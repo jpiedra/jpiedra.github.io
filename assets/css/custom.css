@@ -266,7 +266,7 @@ margin:20px 0 0;
 
 body {
 color:#474747;
-font:17px Poly, 'Helvetica Neue', Helvetica, serif, Arial!important;
+font:17px; 
 }
 
 html,body {
