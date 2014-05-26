@@ -164,6 +164,11 @@ padding:0 0 0 15px;
 color:#ff5050;
 }
 
+.page-paragraph{
+font-size:14px;
+color:#ffffff;
+}
+
 .post {
 position:relative;
 overflow:hidden;
