@@ -263,7 +263,9 @@ padding:5px 10px;
 .sidebar,#nav {
 padding:0!important;
 float:left;
-position: relative;
+position: fixed;
+bottom: 0;
+right: 0;
 }
 
 .signoff {
