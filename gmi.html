@@ -11,6 +11,67 @@ title: GiveMeItems!
 	</br>
 	
 	<p class="page-paragraph">GiveMeItems! gives you the ability to reward yourself in-game, by overriding the properties of enemies to drop specified items upon death. And with an in-game interface, choosing those items becomes more convenient than editing an .ini file - which would involve closing then re-starting the game.</p>
+	</br>
 
+	<p class="page-paragraph">To better explain how it works, GiveMeItems! can be broken down and explained by its constituent parts:</p>	
+	</br>
 
+	<p class="page-title-2">The Mutator</p> 
+	<p class="page-paragraph">The mutator is the component added to an actual game, and is responsible for overriding default monster properties.</p>
+	<pre>
+//==============================================================
+// GiveMeItems.
+//===============================================================
+
+class GiveMeItems expands Mutator config(GiveMeItems);
+
+var() config String ItemChoice[12];
+var class<Inventory> IVar[12];
+var int i;
+var float Selection;
+
+function PostBeginPlay()
+{
+ 	log("~GiveMeItems, by JPZ - 4/2/2014~");
+	log("Initializing Items to load for Monsters...");
+
+	//see below.
+	SetTimer(30, true);
+	//
+
+	for (i = 0; i < 12; i++){
+		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));
+		IVar[i].default.ItemName = "GMIMutDeleteMe";
+				if (Ivar[i] == None){
+			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting with HealthVial");
+			IVar[i] = class'unrealshare.bandages';
+		}
+	}
+   
+}
+function Timer(){
+
+local inventory inv;
+
+foreach allactors(class'inventory', inv){
+	if (inv.ItemName == "GMIMutDeleteMe" && inv.IsInState('pickup'))
+		inv.destroy();
+	}
+}
+
+function bool CheckReplacement(Actor Other, out byte bSuperRelevant) 
+{ 
+		
+	Selection = Rand(12);
+		
+	if (Selection < 12){
+    	 if(Other.IsA('ScriptedPawn') &&  ScriptedPawn(Other).DropWhenKilled == None)
+    	 { 
+      	ScriptedPawn(Other).DropWhenKilled = IVar[Selection];
+	 } 
+ }
+
+return true; 
+            
+} 	</pre>
 	
