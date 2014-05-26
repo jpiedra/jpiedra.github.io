@@ -265,7 +265,7 @@ padding:0!important;
 float:left;
 position: fixed;
 bottom: 0;
-right: 0;
+left: 0;
 }
 
 .signoff {
