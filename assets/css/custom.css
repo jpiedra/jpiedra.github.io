@@ -262,7 +262,6 @@ padding:5px 10px;
 
 .sidebar,#nav {
 padding:0!important;
-float:left;
 }
 
 .signoff {
@@ -387,7 +386,7 @@ height:200%;
         display: block;
     }
 }
-@media (max-width: 380px) {
+@media (max-width: 768px) {
     #menu .menu-title, .page-nav {
         display: none;
     }
