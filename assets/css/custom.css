@@ -376,7 +376,7 @@ color:#111111;
     .row-offcanvas-left .sidebar-offcanvas {
         position: absolute;
         top:0;
-        left: -130%;
+        left: 70%;
     }
     .row-offcanvas-left.active {
         left: 70%;
