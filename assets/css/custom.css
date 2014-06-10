@@ -385,6 +385,7 @@ color:#111111;
         position: absolute;
         top: 0;
         width: 70% !important;
+	   padding:30px;
     }
     .postlist-meta li {
         display: inline;
