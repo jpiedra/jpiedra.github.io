@@ -384,7 +384,7 @@ color:#111111;
     .sidebar-offcanvas {
         position: absolute;
         top: 0;
-        width: 150% !important;
+        width: 70% !important;
     }
     .postlist-meta li {
         display: inline;
@@ -411,7 +411,7 @@ color:#111111;
         width: 100%;
     }
     .leaders {
-        padding-left: 15px;
+        padding-left: 75px;
     }
     .leaders .leaders-left, .leaders .leaders-right {
         width: 100%;
