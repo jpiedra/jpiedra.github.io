@@ -365,7 +365,7 @@ color:#111111;
         z-index: 1200;
     }
     .sidebar{
-        margin-left: 6.875em;
+        margin-left: 1.875em;
     }
     .row-offcanvas {
         position: relative;
@@ -376,7 +376,7 @@ color:#111111;
     .row-offcanvas-left .sidebar-offcanvas {
         position: absolute;
         top:0;
-        left: -70%;
+        left: -130%;
     }
     .row-offcanvas-left.active {
         left: 70%;
