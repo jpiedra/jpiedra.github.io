@@ -382,7 +382,6 @@ color:#111111;
         left: 70%;
     }
     .sidebar-offcanvas {
-        position: absolute;
         top: 0;
         width: 70% !important;
 	   padding:30px;
