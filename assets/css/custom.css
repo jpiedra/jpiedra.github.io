@@ -265,7 +265,7 @@ padding:5px 10px;
 }
 
 .sidebar,#nav {
-padding:0!important;
+padding:70!important;
 }
 
 .signoff {
@@ -411,7 +411,7 @@ color:#111111;
         width: 100%;
     }
     .leaders {
-        padding-left: 75px;
+        padding-left: 15px;
     }
     .leaders .leaders-left, .leaders .leaders-right {
         width: 100%;
