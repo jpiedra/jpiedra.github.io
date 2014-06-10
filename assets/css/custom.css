@@ -302,7 +302,7 @@ font:17px;
 
 html,body {
 height:200%;
-color:#111111;
+background-color:#000000;
 }
 #menu, .comments-meta {
     display: none;
