@@ -213,11 +213,11 @@ position:relative;
 overflow:hidden;
 border-bottom:1px solid #eee;
 padding:20px 0 0;
-background:#474747;
+background:#202020;
 }
 
 .post-li:hover {
-background:#ff5050;
+background:#420000;
 }
 
 .post-li:hover .postlist-meta,.post-li:hover .postlist-meta a {
