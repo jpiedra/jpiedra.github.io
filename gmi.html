@@ -43,13 +43,13 @@ function PreBeginPlay()
   SetTimer(destroyTime, true);
 	
   for (i = 0; i < 24; i++){
- 	IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i],                                	class'Class'));				
-	if (IVar[i] == None){
-	  log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-       IVar[i] = class'unrealshare.bandages';} 
-	else {
-	  IVar[i].default.event = 'GMIMutDeleteMe';}
-		}
+    IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i],                class'Class'));				
+    if (IVar[i] == None){
+     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+     IVar[i] = class'unrealshare.bandages';} 
+    else {
+	IVar[i].default.event = 'GMIMutDeleteMe';}
+	    }
 }
 
 
