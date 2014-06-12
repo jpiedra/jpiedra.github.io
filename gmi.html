@@ -45,10 +45,10 @@ function PreBeginPlay()
   for (i = 0; i < 24; i++){
  	IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i],                                	class'Class'));				
 	if (IVar[i] == None){
-		log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-		IVar[i] = class'unrealshare.bandages';} 
+	  log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+       IVar[i] = class'unrealshare.bandages';} 
 	else {
-		IVar[i].default.event = 'GMIMutDeleteMe';}
+	  IVar[i].default.event = 'GMIMutDeleteMe';}
 		}
 }
 
@@ -69,9 +69,9 @@ function bool CheckReplacement(Actor Other, out byte bSuperRelevant)
   Selection = Rand(24);
 		
   if (Selection < 24){
-  	if(Other.IsA('ScriptedPawn') &&  ScriptedPawn(Other).DropWhenKilled == None){ 
-        ScriptedPawn(Other).DropWhenKilled = IVar[Selection];
-	 				     } 
+  	if(Other.IsA('ScriptedPawn') && 
+	   ScriptedPawn(Other).DropWhenKilled == None){
+		ScriptedPawn(Other).DropWhenKilled = IVar[Selection];} 
  				}
   return true; 
             
