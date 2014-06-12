@@ -21,60 +21,61 @@ tags: unrealscript
 	<p class="page-title-2">The Mutator</p> 
 	<p class="page-paragraph">The mutator is the component added to an actual game, and is responsible for overriding default monster properties.</p>
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
-//==============================================================
+//=============================================================================
 // GiveMeItems.
-//===============================================================
-
+//=============================================================================
 class GiveMeItems expands Mutator config(GiveMeItems);
 
-var() config String ItemChoice[12];
-var class<Inventory> IVar[12];
+var() config int destroyTime;
+var() config String ItemChoice[24];
+var class<Inventory> IVar[24];
 var int i;
 var float Selection;
 
-function PostBeginPlay()
+
+
+function PreBeginPlay()
 {
- 	log("~GiveMeItems, by JPZ - 4/2/2014~");
-	log("Initializing Items to load for Monsters...");
+  log("~GiveMeItems, by JPZ - 4/2/2014~");
+  log("Initializing Items to load for Monsters...");
 
-	//see below.
-	SetTimer(30, true);
-	//
-
-	for (i = 0; i < 12; i++){
-		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));
-		IVar[i].default.ItemName = "GMIMutDeleteMe";
-				if (Ivar[i] == None){
-			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting with HealthVial");
-			IVar[i] = class'unrealshare.bandages';
+  //see below.
+  SetTimer(destroyTime, true);
+	
+  for (i = 0; i < 24; i++){
+ 	IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i],                                	class'Class'));				
+	if (IVar[i] == None){
+		log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+		IVar[i] = class'unrealshare.bandages';} 
+	else {
+		IVar[i].default.event = 'GMIMutDeleteMe';}
 		}
-	}
-   
 }
+
+
 function Timer(){
 
-local inventory inv;
+  local inventory inv;
 
-foreach allactors(class'inventory', inv){
-	if (inv.ItemName == "GMIMutDeleteMe" && inv.IsInState('pickup'))
-		inv.destroy();
+  foreach allactors(class'inventory', inv){
+  if (inv.event == 'GMIMutDeleteMe' && inv.IsInState('pickup')){
+	inv.destroy();}
 	}
 }
 
 function bool CheckReplacement(Actor Other, out byte bSuperRelevant) 
 { 
 		
-	Selection = Rand(12);
+  Selection = Rand(24);
 		
-	if (Selection < 12){
-    	 if(Other.IsA('ScriptedPawn') &&  ScriptedPawn(Other).DropWhenKilled == None)
-    	 { 
-      	ScriptedPawn(Other).DropWhenKilled = IVar[Selection];
-	 } 
- }
-
-return true; 
+  if (Selection < 24){
+  	if(Other.IsA('ScriptedPawn') &&  ScriptedPawn(Other).DropWhenKilled == None){ 
+        ScriptedPawn(Other).DropWhenKilled = IVar[Selection];
+	 				     } 
+ 				}
+  return true; 
             
+}             
 } </span></pre>
 		</div>
 	
