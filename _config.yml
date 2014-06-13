@@ -14,7 +14,7 @@ ga_username: #
         
 timezone: #
 
-gallery:
+gallerytag:
     dir: assets/images/gmis
     url: /assets/images/gmis
     thumb_width: 150
