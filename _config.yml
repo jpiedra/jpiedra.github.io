@@ -13,10 +13,3 @@ ga_id: #
 ga_username: #
         
 timezone: #
-
-gallerytag:
-    dir: assets/images/gmis
-    url: /assets/images/gmis
-    thumb_width: 150
-    thumb_height: 150
-    columns: 3       
