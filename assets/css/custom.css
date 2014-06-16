@@ -96,7 +96,8 @@ border:1px solid #0000ff;
 .div-desc {
 color: #ffffff;
 font-weight: normal;
-width: 120px;
+text-align: center;
+width: auto;
 margin: 5px;
 }
 
