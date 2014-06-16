@@ -44,9 +44,13 @@ tags: unrealscript
 	</br>
 	</br>
 	</br>
-	<p class="page-paragraph">GiveMeItems! gives you the ability to reward yourself in-game, by overriding the properties of enemies to drop specified items upon death. And with an in-game interface, choosing those items becomes more convenient than editing an .ini file - which would involve closing then re-starting the game.</p>
+	<p class="page-title-2">Overview</p> 
+	<p class="page-paragraph">GiveMeItems! is an addon for Unreal Tournament which allows in-game addition of weapons, for game types which use ScriptedPawns (AI-driven monsters and enemies). The addon checks a default property of all ScriptedPawns, the DropWhenKilled property, to see whether or not that property has been specified. If not, then an item is randomly selected for that property from an array of objects (of type Inventory), which are set through user-input during the game.</p>
 	</br>
-	<p class="page-paragraph">To better explain how it works, GiveMeItems! can be broken down and explained by its constituent parts:</p>	
+	<p class="page-title-2">The Mutator</p> 
+	<p class="page-paragraph">Checks and control over the DropWhenKilled property of in-game enemies is achieved through two main components. The mutator is the code responsible for obtaining and assigning Inventory objects for ScriptedPawns to drop, as well as handling how frequently dropped items which have not been picked up by players are removed from the game.</p>
+	<p class="page-title-2">The Window</p> 
+	<p class="page-paragraph">The window component is a Graphics-User Interface which allows the user to specify Inventory objects to assign ScriptedPawns. Inventory objects obtained and assigned by the mutator are actually specified here by the user in-game. In adddition, the window component performs checks on user submitted data, evaluating whether or not a valid Inventory name has been provided, and returning an informative message in either scenario.</p>	
 	</br>
 
 	<p class="page-title-2">The Mutator</p> 
