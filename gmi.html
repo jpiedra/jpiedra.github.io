@@ -51,65 +51,6 @@ tags: unrealscript
 	<p class="page-title-2">The Window</p> 
 	<p class="page-paragraph">The window component is a Graphics-User Interface which allows the user to specify Inventory objects to assign ScriptedPawns. Inventory objects obtained and assigned by the mutator are actually specified here by the user in-game. In adddition, the window component performs checks on user submitted data, evaluating whether or not a valid Inventory name has been provided, and returning an informative message in either scenario.</p>	
 	</br>
-
-	<p class="page-title-2">The Mutator</p> 
-	<p class="page-paragraph">The mutator is the component added to an actual game, and is responsible for overriding default monster properties.</p>
-	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
-//=============================================================================
-// GiveMeItems.
-//=============================================================================
-class GiveMeItems expands Mutator config(GiveMeItems);
-
-var() config int destroyTime;
-var() config String ItemChoice[24];
-var class<Inventory> IVar[24];
-var int i;
-var float Selection;
-
-function PreBeginPlay()
-{
-  log("~GiveMeItems - 6/11/2014~");
-  log("Initializing Items to load for Monsters...");
-
-  //see below.
-  SetTimer(destroyTime, true);
-	
-  for (i = 0; i < 24; i++){
-    IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-    if (IVar[i] == None){
-     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-     IVar[i] = class'unrealshare.bandages';} 
-    else {
-	IVar[i].default.event = 'GMIMutDeleteMe';}
-	    }
-}
-
-
-function Timer(){
-
-  local inventory inv;
-
-  foreach allactors(class'inventory', inv){
-  if (inv.event == 'GMIMutDeleteMe' && inv.IsInState('pickup')){
-	inv.destroy();}
-	}
-}
-
-function bool CheckReplacement(Actor Other, out byte bSuperRelevant) 
-{ 
-		
-  Selection = Rand(24);
-		
-  if (Selection < 24){
-  	if(Other.IsA('ScriptedPawn') && 
-	   ScriptedPawn(Other).DropWhenKilled == None){
-		ScriptedPawn(Other).DropWhenKilled = IVar[Selection];} 
- 				}
-  return true; 
-            
-  }             
-} </span></pre>
-		</div>
 	
 
 
