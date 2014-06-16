@@ -72,10 +72,11 @@ padding:75px 0 60px;
 .div-images  {
 margin: 5px;
 padding: 5px;
-border: 2px solid #ff5050;
+border: 1px solid #ff5050;
 height: auto;
 width: auto;
 float: left;
+text-align: center;
 }
 
 .div-images-img {
@@ -84,6 +85,8 @@ height: 171px;
 }
 
 .div-images img {
+width: 171px; 
+height: 171px;
 display: inline;
 margin: 5px;
 border: 1px solid #ffffff;
