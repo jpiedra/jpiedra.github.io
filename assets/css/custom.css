@@ -69,6 +69,33 @@ max-width:800px!important;
 padding:75px 0 60px;
 }
 
+.div-images  {
+margin: 5px;
+padding: 5px;
+border: 2px solid #ff5050;
+height: 25%;
+width: 25%;
+float: left;
+text-align: center;
+}
+
+.div-images img {
+display: inline;
+margin: 5px;
+border: 1px solid #ffffff;
+}
+
+.div-images a:hover img {
+border:1px solid #0000ff;
+}
+
+.div-desc {
+text-align: center;
+font-weight: normal;
+wdth: 120px;
+margin: 5px;
+}
+
 .pre-pad {
 background-color:#000033;
 padding:0 0 0 15px;
@@ -287,11 +314,6 @@ margin:25px 0;
 
 .tags-contaier {
 margin:20px 0 0;
-}
-
-.img {
-resize: both;
-overflow: auto;
 }
 
 ul {
