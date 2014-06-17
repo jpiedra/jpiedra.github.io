@@ -66,6 +66,27 @@ native final function SetTimer(
     float inRate, 
     bool inbLoop,
 );
+</span></pre>
+		</div>
+
+<p class="page-paragraph">For programmers of Java, the keyword 'final' may seem familiar. This indicates that SetTimer() cannot be overridden or overwritten (it's parameters, inRate and inbLoop, cannot be removed or replaced, nor can other parameters be added to this function; nor can a programmer write their own version of the function to make it do something different). The paramter 'inRate' represents a time interval in seconds; the boolean variable 'inbLoop' indicates whether or not the function Timer() will execute the code once, or whether it will execute every 'inRate' seconds. So, if we were to write 'SetTimer(20, true), the method Timer(), which refers to SetTimer(), would run its own code every 20 seconds repeatedly.</p>
+<p class="page-paragraph">We will return to SetTimer() soon, when we examine another part of this mutator's code. For now, we proceed to a 'for' loop, which </p>
+
+
+
+
+	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
+
+for (i = 0; i &#60 24; i++){
+    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
+    if (IVar[i] == None){
+     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+     IVar[i] = class'unrealshare.bandages';} 
+    else {
+	IVar[i].default.event = 'GMIMutDeleteMe';}
+	    }
+
+
 
 </span></pre>
 		</div>
