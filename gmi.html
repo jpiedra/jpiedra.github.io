@@ -9,9 +9,15 @@ tags: unrealscript
     	{{ page.title }}</div>
 	</div>
 	<p class="page-title-2">A mutator and GUI addon for Unreal Tournament. A Work in Progress.</p> 
-
+	<p class="page-title-2">Overview</p> 
+	<p class="page-paragraph">GiveMeItems! is an addon for Unreal Tournament which allows in-game addition of Inventory items (health, armor, etc.) for game types which use ScriptedPawns (AI-driven monsters and enemies). The addon checks a default property of all ScriptedPawns, the DropWhenKilled property, to see whether or not that property has been set to an Inventory item. If it has been left unfilled, then an item is randomly selected for that property from an array of objects (of type Inventory), which are set through user-input during the game.</p>
+	<p class="page-title-2">The Mutator</p> 
+	<p class="page-paragraph">Checks and control over the DropWhenKilled property of in-game enemies is achieved through two main components. The mutator is the code responsible for obtaining and assigning Inventory objects for ScriptedPawns to drop, as well as handling how frequently dropped items which have not been picked up by players are removed from the game.</p>
+	<p class="page-title-2">The Window</p> 
+	<p class="page-paragraph">The window component is a Graphics-User Interface which allows the user to specify Inventory objects to assign ScriptedPawns. Inventory objects obtained and assigned by the mutator are actually specified here by the user in-game. In adddition, the window component performs checks on user submitted data, evaluating whether or not a valid Inventory name has been provided, and returning an informative message in either scenario.</p>	
+	
+<p class="page-title-2">Images</p> 
 <div class="col-sm-12">
-
 <div class="div-images">
 <a target="_blank" href="https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/gmi_a.PNG">
 <img src="https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/gmi_a.PNG" alt="GMI_A"> </a>
@@ -44,13 +50,5 @@ tags: unrealscript
 	</br>
 	</br>
 	</br>
-	<p class="page-title-2">Overview</p> 
-	<p class="page-paragraph">GiveMeItems! is an addon for Unreal Tournament which allows in-game addition of Inventory items (health, armor, etc.) for game types which use ScriptedPawns (AI-driven monsters and enemies). The addon checks a default property of all ScriptedPawns, the DropWhenKilled property, to see whether or not that property has been set to an Inventory item. If it has been left unfilled, then an item is randomly selected for that property from an array of objects (of type Inventory), which are set through user-input during the game.</p>
-	<p class="page-title-2">The Mutator</p> 
-	<p class="page-paragraph">Checks and control over the DropWhenKilled property of in-game enemies is achieved through two main components. The mutator is the code responsible for obtaining and assigning Inventory objects for ScriptedPawns to drop, as well as handling how frequently dropped items which have not been picked up by players are removed from the game.</p>
-	<p class="page-title-2">The Window</p> 
-	<p class="page-paragraph">The window component is a Graphics-User Interface which allows the user to specify Inventory objects to assign ScriptedPawns. Inventory objects obtained and assigned by the mutator are actually specified here by the user in-game. In adddition, the window component performs checks on user submitted data, evaluating whether or not a valid Inventory name has been provided, and returning an informative message in either scenario.</p>	
-	</br>
-	
 
 
