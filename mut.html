@@ -34,8 +34,32 @@ var float Selection;
 <p class="page-paragraph">The remaining two variables are of primitive types 'int' and 'float'. 'int i' is a counter variable, used below to process through all elements of an array; 'float Selection' holds a randomly generated number, used to select a random Inventory object in the array IVar.</p>
 
 </br>
-<p class="page-title-2">Initializing with PreBeginPlay()</p> 
+<p class="page-title-2">Initializing with PreBeginPlay()</p>
+<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 
+function PreBeginPlay()
+{
+  log("~GiveMeItems - 6/11/2014~");
+  log("Initializing Items to load for Monsters...");
+
+  //see below.
+  SetTimer(destroyTime, true);
+	
+  for (i = 0; i &#60 24; i++){
+    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
+    if (IVar[i] == None){
+     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+     IVar[i] = class'unrealshare.bandages';} 
+    else {
+	IVar[i].default.event = 'GMIMutDeleteMe';}
+	    }
+}
+
+</span></pre>
+		</div>
+ 
+
+<p class="page-paragraph">.</p>
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 //=============================================================================
