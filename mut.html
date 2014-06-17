@@ -12,6 +12,24 @@ tags: unrealscript mutator givemeitems
 	</br>
 	<p class="page-title-2">The Mutator</p> 
 	<p class="page-paragraph">The mutator is the component added to an actual game, and is responsible for overriding default monster properties.</p>
+
+	<p class="page-title-2">The mutator code begins with a definition of what the code itself is. It derives from the super or parent class, Mutator, which itself contains all the required methods, functions, and other information to make a mutator. Hence, GiveMeItems is its own class which derives from Mutator. GiveMeItems is bound to a configuration file, which is called "GiveMeItems" and stores information used in the mutator during runtime.</p>
+<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
+
+class GiveMeItems expands Mutator config(GiveMeItems);
+
+var() config int destroyTime;
+var() config String ItemChoice[24];
+var class<Inventory> IVar[24];
+var int i;
+var float Selection;
+
+</span></pre>
+		</div>
+<p class="page-title-2">The connect the mutator to its relevant config file, the keyword 'config" is used and the name of the file is written after it in parentheses, similar to the way one would pass an object to a function. We can also see the config keyword below, next to an int variable called destroyTime, and an array of strings called ItemChoice. Here, the purpose of the keyword config is to indicate that these variable can be found i the configuration file that has been loaded. As later explained in the window component section, an in-game GUI allows the modification of contents in the configuration file to be done with greater ease and validation.</p>
+
+
+
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 //=============================================================================
 // GiveMeItems.
