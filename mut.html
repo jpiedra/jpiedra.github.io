@@ -57,7 +57,7 @@ function PreBeginPlay()
 		</div>
  
 
-<p class="page-paragraph">PreBeginPlay() is where the important things happen. This method is called whenever the programmer wants something to happen prior to any gameplay happening. This means, during the loading of a map, the players in the game, and any other modifications used in that round - as well as this one - are all calculated and accounted for.</p>
+<p class="page-paragraph">PreBeginPlay() is where the important things happen. This method is called whenever the programmer wants something to happen prior to any gameplay happening. This means, during the loading of a map, the players in the game, and any other modifications used in that round - as well as GiveMeItems - are all calculated and accounted for.</p>
 <p class="page-paragraph">Thus, it is important that the creation of the Inventory items we want monsters to drop happens prior to any gameplay, rather than during gameplay. After some log messages are broadcast to Unreal's logging system, the first task that is calculated is indicating how often weapons are removed, through 'SetTimer(destroyTime, true)'.</p>
 
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#FF0099">
