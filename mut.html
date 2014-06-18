@@ -47,8 +47,8 @@ function PreBeginPlay()
 	for (i = 0; i < 24; i++){
 		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
 		if (IVar[i] == None){
-				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-				IVar[i] = class'unrealshare.bandages';} 
+			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+			IVar[i] = class'unrealshare.bandages';} 
 		IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
@@ -76,15 +76,15 @@ native final function SetTimer(
 
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
-for (i = 0; i &#60 24; i++){
-    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
-    if (IVar[i] == None){
-     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-     IVar[i] = class'unrealshare.bandages';} 
-    else {
-	IVar[i].default.event = 'GMIMutDeleteMe';}
-	    }
-
+	for (i = 0; i < 24; i++){
+		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+		if (IVar[i] == None){
+			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+			IVar[i] = class'unrealshare.bandages';} 
+		IVar[i].default.event = 'GMIMutDeleteMe';
+		
+	}
+   
 </span></pre>
 		</div>
 <p class="page-paragraph">The 'for' loop runs 24 times (starting at 0 and ending at 23, because i must be less than 24). A while ago, we saw the declaration of two arrays: 'ItemChoice' and 'IVar'. These arrays can be thought of as "parallel" arrays, due to the fact that they contain the same amount of elements, and also because the information in one of the arrays is related to that of the other. More specifically, we are generating the contents of 'IVar' by using the information stored in 'ItemChoice'.</p>
@@ -135,15 +135,16 @@ native static final function object DynamicLoadObject(
 		</div>
 <p class="page-paragraph">DynamicLoadObject() accepts, first, a String variable, 'ObjectName', which represents the text representation of an object's name. Note the keyword 'object' which comes before 'DynamicLoadObject()'. This indicates the return type of this function; so, this function will return an 'object,' whose name is 'ObjectName', which is of a certain class type. The second parameter, 'ObjectClass', indicates what class that object derives from (in other words, what type of object 'ObjectName' is. The third parameter, 'MayFail', is an optional boolean variable; if it is set to true, the possibility of a failed call to DynamicLoadObject() will cause a log message to be printed.<p>
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
-for (i = 0; i &#60 24; i++){
-    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
-    if (IVar[i] == None){
-     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-     IVar[i] = class'unrealshare.bandages';} 
-    else {
-	IVar[i].default.event = 'GMIMutDeleteMe';}
-	    }
 
+	for (i = 0; i < 24; i++){
+		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+		if (IVar[i] == None){
+				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+				IVar[i] = class'unrealshare.bandages';} 
+		IVar[i].default.event = 'GMIMutDeleteMe';
+		
+	}
+   
 </span></pre>
 		</div>
 
@@ -178,8 +179,8 @@ function PreBeginPlay()
 	for (i = 0; i < 24; i++){
 		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
 		if (IVar[i] == None){
-				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-				IVar[i] = class'unrealshare.bandages';} 
+			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+			IVar[i] = class'unrealshare.bandages';} 
 		IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
