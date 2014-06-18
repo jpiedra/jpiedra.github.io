@@ -132,8 +132,23 @@ native static final function object DynamicLoadObject(
 
 </span></pre>
 		</div>
+<p class="page-paragraph">DynamicLoadObject() accepts, first, a String variable, 'ObjectName', which represents the text representation of an object's name. Note the keyword 'object' which comes before 'DynamicLoadObject()'. This indicates the return type of this function; so, this function will return an 'object,' whose name is 'ObjectName', which is of a certain class type. The second parameter, 'ObjectClass', indicates what class that object derives from (in other words, what type of object 'ObjectName' is. The third parameter, 'MayFail', is an optional boolean variable; if it is set to true, the possibility of a failed call to DynamicLoadObject() will cause a log message to be printed.<p>
+<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
+for (i = 0; i &#60 24; i++){
+    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
+    if (IVar[i] == None){
+     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+     IVar[i] = class'unrealshare.bandages';} 
+    else {
+	IVar[i].default.event = 'GMIMutDeleteMe';}
+	    }
 
+</span></pre>
+		</div>
 
+<p class="page-paragraph">This loop does several things. First, it initializes an element of 'IVar' with an object of class&#60Inventory&#62. The text name for an object, stored in the corresponding element of the parallel array 'ItemChoice' is entered as the first parameter to DynamicLoadObject(). Second, the method will then attempt to load an object by that name, of class type 'Class', which is the type under which all different classes fall and are derived from. However, we only want 'Inventory' class objects. So, lastly, the class&#60Inventory&#62 statement is placed next to the call to DynamicLoadObject, because we want to store whatever object the function returns as an 'Inventory' class object. That 'Inventory' class object is what gets stored as an element of 'IVar', for use later.<p>
+
+<p class="page-paragraph">An object returned by DynamicLoadObject() is stored as an object of type 'class&#60Inventory&#'. However, this storage may not always be successful. In that situation, a non-Inventory type object (for example, 'Unreali.mercenary', which is of type 'ScriptedPawn', not 'Inventory') will not be stored into an 'IVar' element because it cannot be stored as an 'Inventory' typeobject. Instead, the element remains uninitialized, or 'IVar[i] = None'. This situaton is also handled in the loop; the statement "if (IVar[i] == None)" checks to see if 'IVar' contains an inventory item or not; if it contains 'None', or no item, then a generic item is substituted - 'unreali.bandages'. <p>
 
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
