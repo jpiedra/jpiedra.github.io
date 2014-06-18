@@ -45,14 +45,14 @@ function PreBeginPlay()
 	
 
 	for (i = 0; i < 24; i++){
-		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-		if (IVar[i] == None){
-			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-			IVar[i] = class'unrealshare.bandages';} 
-		IVar[i].default.event = 'GMIMutDeleteMe';
+	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+	  if (IVar[i] == None){
+	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+	    IVar[i] = class'unrealshare.bandages';} 
+	IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
-   
+
 }
 </span></pre>
 		</div>
@@ -77,11 +77,11 @@ native final function SetTimer(
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 	for (i = 0; i < 24; i++){
-		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-		if (IVar[i] == None){
-			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-			IVar[i] = class'unrealshare.bandages';} 
-		IVar[i].default.event = 'GMIMutDeleteMe';
+	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+	  if (IVar[i] == None){
+	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+	    IVar[i] = class'unrealshare.bandages';} 
+	IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
    
@@ -137,11 +137,11 @@ native static final function object DynamicLoadObject(
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 
 	for (i = 0; i < 24; i++){
-		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-		if (IVar[i] == None){
-				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-				IVar[i] = class'unrealshare.bandages';} 
-		IVar[i].default.event = 'GMIMutDeleteMe';
+	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+	  if (IVar[i] == None){
+	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+	    IVar[i] = class'unrealshare.bandages';} 
+	IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
    
@@ -177,11 +177,11 @@ function PreBeginPlay()
 	
 
 	for (i = 0; i < 24; i++){
-		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-		if (IVar[i] == None){
-			log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-			IVar[i] = class'unrealshare.bandages';} 
-		IVar[i].default.event = 'GMIMutDeleteMe';
+	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+	  if (IVar[i] == None){
+	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+	    IVar[i] = class'unrealshare.bandages';} 
+	IVar[i].default.event = 'GMIMutDeleteMe';
 		
 	}
    
