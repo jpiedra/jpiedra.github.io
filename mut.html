@@ -37,20 +37,20 @@ var float Selection;
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 function PreBeginPlay()
 {
- 	log("~GiveMeItems - 6/11/2014~");
-	log("Initializing Items to load for Monsters...");
+ log("~GiveMeItems - 6/11/2014~");
+ log("Initializing Items to load for Monsters...");
 
-	//see below.
-	SetTimer(destroyTime, true);
+ //see below.
+ SetTimer(destroyTime, true);
 	
 
-	for (i = 0; i < 24; i++){
-	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-	  if (IVar[i] == None){
-	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-	    IVar[i] = class'unrealshare.bandages';} 
-	IVar[i].default.event = 'GMIMutDeleteMe';
-		
+ for (i = 0; i < 24; i++){
+  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+  if (IVar[i] == None){
+    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+    IVar[i] = class'unrealshare.bandages';} 
+  IVar[i].default.event = 'GMIMutDeleteMe';
+
 	}
 
 }
