@@ -76,14 +76,16 @@ native final function SetTimer(
 
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
-	for (i = 0; i < 24; i++){
-	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-	  if (IVar[i] == None){
-	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-	    IVar[i] = class'unrealshare.bandages';} 
-	IVar[i].default.event = 'GMIMutDeleteMe';
-		
+	
+ for (i = 0; i < 24; i++){
+  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+  if (IVar[i] == None){
+    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+    IVar[i] = class'unrealshare.bandages';} 
+  IVar[i].default.event = 'GMIMutDeleteMe';
+
 	}
+
    
 </span></pre>
 		</div>
@@ -136,14 +138,16 @@ native static final function object DynamicLoadObject(
 <p class="page-paragraph">DynamicLoadObject() accepts, first, a String variable, 'ObjectName', which represents the text representation of an object's name. Note the keyword 'object' which comes before 'DynamicLoadObject()'. This indicates the return type of this function; so, this function will return an 'object,' whose name is 'ObjectName', which is of a certain class type. The second parameter, 'ObjectClass', indicates what class that object derives from (in other words, what type of object 'ObjectName' is. The third parameter, 'MayFail', is an optional boolean variable; if it is set to true, the possibility of a failed call to DynamicLoadObject() will cause a log message to be printed.<p>
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 
-	for (i = 0; i < 24; i++){
-	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-	  if (IVar[i] == None){
-	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-	    IVar[i] = class'unrealshare.bandages';} 
-	IVar[i].default.event = 'GMIMutDeleteMe';
-		
+	
+ for (i = 0; i < 24; i++){
+  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+  if (IVar[i] == None){
+    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+    IVar[i] = class'unrealshare.bandages';} 
+  IVar[i].default.event = 'GMIMutDeleteMe';
+
 	}
+
    
 </span></pre>
 		</div>
@@ -169,23 +173,24 @@ var float Selection;
 
 function PreBeginPlay()
 {
- 	log("~GiveMeItems - 6/11/2014~");
-	log("Initializing Items to load for Monsters...");
+ log("~GiveMeItems - 6/11/2014~");
+ log("Initializing Items to load for Monsters...");
 
-	//see below.
-	SetTimer(destroyTime, true);
+ //see below.
+ SetTimer(destroyTime, true);
 	
 
-	for (i = 0; i < 24; i++){
-	  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
-	  if (IVar[i] == None){
-	    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-	    IVar[i] = class'unrealshare.bandages';} 
-	IVar[i].default.event = 'GMIMutDeleteMe';
-		
+ for (i = 0; i < 24; i++){
+  IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+  if (IVar[i] == None){
+    log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+    IVar[i] = class'unrealshare.bandages';} 
+  IVar[i].default.event = 'GMIMutDeleteMe';
+
 	}
-   
+
 }
+
 function Timer(){
 
   local inventory inv;
