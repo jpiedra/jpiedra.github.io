@@ -71,9 +71,7 @@ native final function SetTimer(
 		</div>
 
 <p class="page-paragraph">For programmers of Java, the keyword 'final' may seem familiar. This indicates that SetTimer() cannot be overridden or overwritten (it's parameters, inRate and inbLoop, cannot be removed or replaced, nor can other parameters be added to this function; nor can a programmer write their own version of the function to make it do something different). The paramter 'inRate' represents a time interval in seconds; the boolean variable 'inbLoop' indicates whether or not the function Timer() will execute the code once, or whether it will execute every 'inRate' seconds. So, if we were to write 'SetTimer(20, true), the method Timer(), which refers to SetTimer(), would run its own code every 20 seconds repeatedly.</p>
-<p class="page-paragraph">We will return to SetTimer() soon, when we examine another part of this mutator's code. For now, we proceed to a 'for' loop, which </p>
-
-
+<p class="page-paragraph">We will return to SetTimer() soon, when we examine another part of this mutator's code. For now, we proceed to a 'for' loop, which contains another important method which is part of Unrealscript - DynamicLoadObject().</p>
 
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
@@ -88,6 +86,41 @@ for (i = 0; i &#60 24; i++){
 
 </span></pre>
 		</div>
+<p class="page-paragraph">The 'for' loop runs 24 times (starting at 0 and ending at 23, because i must be less than 24). A while ago, we saw the declaration of two arrays: 'ItemChoice' and 'IVar'. These arrays can be thought of as "parallel" arrays, due to the fact that they contain the same amount of elements, and also because the information in one of the arrays is related to that of the other. More specifically, we are generating the contents of 'IVar' by using the information stored in 'ItemChoice'.</p>
+<p class="page-paragraph">Remember the keyword 'config' that appeared before 'destroyTime' as well as 'ItemChoice[24]'? That keyword indicated that the variable and array have their contents stored in a configuration file, named 'GiveMeItems.ini'. Here is an example of what that .ini file might look like:</p>
+
+<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#ffffff">
+
+[GiveMeItems.GiveMeItems]
+destroyTime=40
+ItemChoice[0]=botpack.eclip
+ItemChoice[1]=botpack.eclip
+ItemChoice[2]=botpack.eclip
+ItemChoice[3]=botpack.ut_shieldbelt
+ItemChoice[4]=botpack.ut_shieldbelt
+ItemChoice[5]=botpack.ut_shieldbelt
+ItemChoice[6]=unreali.nalifruit
+ItemChoice[7]=unreali.nalifruit
+ItemChoice[8]=unreali.nalifruit
+ItemChoice[9]=unreali.flashlight
+ItemChoice[10]=unreali.flashlight
+ItemChoice[11]=unreali.flashlight
+ItemChoice[12]=botpack.thighpads
+ItemChoice[13]=botpack.thighpads
+ItemChoice[14]=botpack.thighpads
+ItemChoice[15]=botpack.healthvial
+ItemChoice[16]=botpack.healthvial
+ItemChoice[17]=botpack.healthvial
+ItemChoice[18]=unreali.jumpboots
+ItemChoice[19]=unreali.jumpboots
+ItemChoice[20]=unreali.jumpboots
+ItemChoice[21]=unreali.scubagear
+ItemChoice[22]=unreali.scubagear
+ItemChoice[23]=unreali.scubagear
+
+</span></pre>
+		</div>
+
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 //=============================================================================
