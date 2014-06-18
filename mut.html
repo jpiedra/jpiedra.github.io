@@ -120,6 +120,19 @@ ItemChoice[23]=unreali.scubagear
 </span></pre>
 		</div>
 <p class="page-paragraph">The header of this file, '[GiveMeItems.GiveMeItems]' indicates that this file is used in the class 'GiveMeItems', which belongs to the package by the same name called 'GiveMeItems'. As with the previous example, 'Botpack.healthvial', the phrase before the period indicates the name of the package, and the phrase after the period indicates the name of the object that is in that package - in this instance, they both happen to be the same (or, the mutator 'GiveMeItems' is an object of the package called 'GiveMeItems' - just like the inventory object 'healthvial' is an object of the package called 'BotPack').</p>
+<p class="page-paragraph">Following that header we see that the contents of 'destroyTime' as well as the elements in 'ItemChoice' have all been provided. When the mutator runs, it will actually derive the value for 'destroyTime' from this file, and that value will get passed to 'SetTimer()'.</p>
+<p class="page-paragraph">Similarly, the Strings contained in the elements of 'ItemChoice' are used by DynamicLoadObject().</p>
+
+<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#FF0099">
+native static final function object DynamicLoadObject( 
+ string ObjectName, 
+ class ObjectClass, 
+ optional bool MayFail );
+
+</span></pre>
+		</div>
+
+
 
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
