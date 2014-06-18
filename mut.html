@@ -70,7 +70,7 @@ native final function SetTimer(
 </span></pre>
 		</div>
 
-<p class="page-paragraph">For programmers of Java, the keyword 'final' may seem familiar. This indicates that SetTimer() cannot be overridden or overwritten (it's parameters, inRate and inbLoop, cannot be removed or replaced, nor can other parameters be added to this function; nor can a programmer write their own version of the function to make it do something different). The paramter 'inRate' represents a time interval in seconds; the boolean variable 'inbLoop' indicates whether or not the function Timer() will execute the code once, or whether it will execute every 'inRate' seconds. So, if we were to write 'SetTimer(20, true), the method Timer(), which refers to SetTimer(), would run its own code every 20 seconds repeatedly.</p>
+<p class="page-paragraph">For programmers of Java, the keyword 'final' may seem familiar. This indicates that SetTimer() cannot be overridden or overwritten (its parameters, inRate and inbLoop, cannot be removed or replaced, nor can other parameters be added to this function; nor can a programmer write their own version of the function to make it do something different). The paramter 'inRate' represents a time interval in seconds; the boolean variable 'inbLoop' indicates whether or not the function Timer() will execute the code once, or whether it will execute every 'inRate' seconds. So, if we were to write 'SetTimer(20, true), the method Timer(), which refers to SetTimer(), would run its own code every 20 seconds repeatedly, because 'inRate' would be set to 20, and 'inbLoop' would be set to true.</p>
 <p class="page-paragraph">We will return to SetTimer() soon, when we examine another part of this mutator's code. For now, we proceed to a 'for' loop, which contains another important method which is part of Unrealscript - DynamicLoadObject().</p>
 
 
@@ -90,7 +90,6 @@ for (i = 0; i &#60 24; i++){
 <p class="page-paragraph">Remember the keyword 'config' that appeared before 'destroyTime' as well as 'ItemChoice[24]'? That keyword indicated that the variable and array have their contents stored in a configuration file, named 'GiveMeItems.ini'. Here is an example of what that .ini file might look like:</p>
 
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#ffffff">
-
 [GiveMeItems.GiveMeItems]
 destroyTime=40
 ItemChoice[0]=botpack.eclip
