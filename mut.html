@@ -37,22 +37,23 @@ var float Selection;
 <div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 function PreBeginPlay()
 {
-  log("~GiveMeItems - 6/11/2014~");
-  log("Initializing Items to load for Monsters...");
+ 	log("~GiveMeItems - 6/11/2014~");
+	log("Initializing Items to load for Monsters...");
 
-  //see below.
-  SetTimer(destroyTime, true);
+	//see below.
+	SetTimer(destroyTime, true);
 	
-  for (i = 0; i &#60 24; i++){
-    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
-    if (IVar[i] == None){
-     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-     IVar[i] = class'unrealshare.bandages';} 
-    else {
-	IVar[i].default.event = 'GMIMutDeleteMe';}
-	    }
-}
 
+	for (i = 0; i < 24; i++){
+		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+		if (IVar[i] == None){
+				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+				IVar[i] = class'unrealshare.bandages';} 
+		IVar[i].default.event = 'GMIMutDeleteMe';
+		
+	}
+   
+}
 </span></pre>
 		</div>
  
@@ -148,8 +149,10 @@ for (i = 0; i &#60 24; i++){
 
 <p class="page-paragraph">This loop does several things. First, it initializes an element of 'IVar' with an object of class&#60Inventory&#62. The text name for an object, stored in the corresponding element of the parallel array 'ItemChoice' is entered as the first parameter to DynamicLoadObject(). Second, the method will then attempt to load an object by that name, of class type 'Class', which is the type under which all different classes fall and are derived from. However, we only want 'Inventory' class objects. So, lastly, the class&#60Inventory&#62 statement is placed next to the call to DynamicLoadObject, because we want to store whatever object the function returns as an 'Inventory' class object. That 'Inventory' class object is what gets stored as an element of 'IVar', for use later.<p>
 
-<p class="page-paragraph">An object returned by DynamicLoadObject() is stored as an object of type 'class&#60Inventory&#62'. However, this storage may not always be successful. In that situation, a non-Inventory type object (for example, 'Unreali.mercenary', which is of type 'ScriptedPawn', not 'Inventory') will not be stored into an 'IVar' element because it cannot be stored as an 'Inventory' typeobject. Instead, the element remains uninitialized, or 'IVar[i] = None'. This situaton is also handled in the loop; the statement "if (IVar[i] == None)" checks to see if 'IVar' contains an inventory item or not; if it contains 'None', or no item, then a generic item is substituted - 'unreali.bandages'. <p>
+<p class="page-paragraph">An object returned by DynamicLoadObject() is stored as an object of type 'class&#60Inventory&#62'. However, this storage may not always be successful. In that situation, a non-Inventory type object (for example, 'Unreali.mercenary', which is of type 'ScriptedPawn', not 'Inventory') will not be stored into an 'IVar' element because it cannot be stored as an 'Inventory' typeobject. Instead, the element remains uninitialized, or 'IVar[i] = None'. This situaton is also handled in the loop; the statement "if (IVar[i] == None)" checks to see if 'IVar' contains an inventory item or not; if it contains 'None', or no item, then a generic item is substituted - 'unreali.bandages'. (A minor fact: this item is generated in Unreal, but automatically converted to 'botpack.healthvial' in Unreal Tournament. A good choice for a default item, which can allow for usage iof GiveMeItems in both games, since they use the same language - Unrealscript).<p>
 
+
+<p class="page-paragraph">An object returned by DynamicLoadObject() is stored as an object of type 'class&#60Inventory&#62'. However, this storage may not always be successful. In that situation, a non-Inventory type object (for example, 'Unreali.mercenary', which is of type 'ScriptedPawn', not 'Inventory') will not be stored into an 'IVar' element because it cannot be stored as an 'Inventory' typeobject. Instead, the element remains uninitialized, or 'IVar[i] = None'. This situaton is also handled in the loop; the statement "if (IVar[i] == None)" checks to see if 'IVar' contains an inventory item or not; if it contains 'None', or no item, then a generic item is substituted - 'unreali.bandages'. (A minor fact: this item is generated in Unreal, but automatically converted to 'botpack.healthvial' in Unreal Tournament. A good choice for a default item, which can allow for usage iof GiveMeItems in both games, since they use the same language - Unrealscript).<p>
 
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 //=============================================================================
@@ -165,23 +168,23 @@ var float Selection;
 
 function PreBeginPlay()
 {
-  log("~GiveMeItems - 6/11/2014~");
-  log("Initializing Items to load for Monsters...");
+ 	log("~GiveMeItems - 6/11/2014~");
+	log("Initializing Items to load for Monsters...");
 
-  //see below.
-  SetTimer(destroyTime, true);
+	//see below.
+	SetTimer(destroyTime, true);
 	
-  for (i = 0; i &#60 24; i++){
-    IVar[i] = class&#60Inventory&#62(DynamicLoadObject(ItemChoice[i], class'Class'));				
-    if (IVar[i] == None){
-     log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
-     IVar[i] = class'unrealshare.bandages';} 
-    else {
-	IVar[i].default.event = 'GMIMutDeleteMe';}
-	    }
+
+	for (i = 0; i < 24; i++){
+		IVar[i] = class<Inventory>(DynamicLoadObject(ItemChoice[i], class'Class'));				
+		if (IVar[i] == None){
+				log("GiveMeItems: Invalid Class for ItemChoice["$i$"], substituting...");
+				IVar[i] = class'unrealshare.bandages';} 
+		IVar[i].default.event = 'GMIMutDeleteMe';
+		
+	}
+   
 }
-
-
 function Timer(){
 
   local inventory inv;
