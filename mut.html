@@ -159,6 +159,9 @@ native static final function object DynamicLoadObject(
 
 <p class="page-paragraph">An object returned by DynamicLoadObject() is stored as an object of type 'class&#60Inventory&#62'. However, this storage may not always be successful. In that situation, a non-Inventory type object (for example, 'Unreali.mercenary', which is of type 'ScriptedPawn', not 'Inventory') will not be stored into an 'IVar' element because it cannot be stored as an 'Inventory' typeobject. Instead, the element remains uninitialized, or 'IVar[i] = None'. This situaton is also handled in the loop; the statement "if (IVar[i] == None)" checks to see if 'IVar' contains an inventory item or not; if it contains 'None', or no item, then a generic item is substituted - 'unreali.bandages'. (A minor fact: this item is generated in Unreal, but automatically converted to 'botpack.healthvial' in Unreal Tournament. A good choice for a default item, which can allow for usage iof GiveMeItems in both games, since they use the same language - Unrealscript).<p>
 
+
+<p class="page-paragraph">The last task performed in this 'for' loop is the modification of the 'IVar' Inventory's property 'event', set to the String 'GMIMutDeleteMe'.<p>
+
 	<div class="col-sm-12"><pre class="pre-pad" ><span class="inner-pre" style="color:#00FF99">
 //=============================================================================
 // GiveMeItems.
