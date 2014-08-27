@@ -20,7 +20,9 @@ tags: unrealscript overview givemeitems
 	<div class="page-title">
     	{{ page.title }}</div>
 	</div>
-	<p class="page-title-2">A mutator and GUI addon for Unreal Tournament. A Work in Progress.</p> 
+	<p class="page-title-2">A mutator and GUI addon for Unreal Tournament.</p> 
+<a target="_blank" href="https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/gmi1_a.png">
+		<img src="https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/gmi1_a.png" alt="GMI1_A"> </a>
 	</br>
 	<p class="page-title-2">Overview</p> 
 	<p class="page-paragraph">GiveMeItems! is an addon for Unreal Tournament which allows in-game addition of Inventory items (health, armor, etc.) for game types which use ScriptedPawns (AI-driven monsters and enemies). The addon checks a default property of all ScriptedPawns, the DropWhenKilled property, to see whether or not that property has been set to an Inventory item. If it has been left unfilled, then an item is randomly selected for that property from an array of objects (of type Inventory), which are set through user-input during the game.</p>
@@ -28,28 +30,6 @@ tags: unrealscript overview givemeitems
 	<p class="page-paragraph">Checks and control over the DropWhenKilled property of in-game enemies is achieved through two main components. The <a href="{{site.url}}/mut.html">mutator</a> is the code responsible for obtaining and assigning Inventory objects for ScriptedPawns to drop, as well as handling how frequently dropped items which have not been picked up by players are removed from the game.</p>
 	<p class="page-title-2"><a href="{{site.url}}/win.html">The Window</a></p> 
 	<p class="page-paragraph">The <a href="{{site.url}}/win.html">window component</a> is a Graphics-User Interface which allows the user to specify Inventory objects to assign ScriptedPawns. Inventory objects obtained and assigned by the mutator are actually specified here by the user in-game. In adddition, the window component performs checks on user submitted data, evaluating whether or not a valid Inventory name has been provided, and returning an informative message in either scenario.</p>	
-	
-<p class="page-title-2">Images</p> 
-<div class="col-sm-12">
-<div class="div-images">
-
-
-
-
-<a href="http://www.nasa.gov/images/content/167040main_image_feature_738_ys_4.jpg" rel="enlargeimage" rev="targetdiv:loadarea" title="The Universe is just waiting to be explored">Saturn #1</a><br />
-<a href="http://www.nasa.gov/images/content/168177main_image_feature_749_ys_4.jpg" rel="enlargeimage" rev="targetdiv:loadarea,link:http://dynamicdrive.com">The Moon #1</a><br />
-
-
-<div id="loadarea" style="width: 600px"></div>
-
-<br /><br />
-
-<a href="http://www.nasa.gov/images/content/166615main_image_feature_733_ys_4.jpg" rel="enlargeimage" rev="targetdiv:loadarea2,trigger:click,preload:none,fx:reveal">Saturn #2 (click)</a><br />
-<a href="http://www.nasa.gov/images/content/168291main_image_feature_750_ys_4.jpg" rel="enlargeimage" rev="targetdiv:loadarea2,trigger:click,preload:none,fx:none">The Moon #2 (click)</a><br />
-
-<div id="loadarea2"></div>
-
-
 
 </div>
 	</br>
