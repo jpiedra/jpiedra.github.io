@@ -46,9 +46,15 @@ nav a.sec-head:link, visited{
 	color: grey;
 	font-family: Verdana, Geneva, sans-serif;
     	font-weight: bold;
-    	font-size: 12px;
+    	font-size: 14px;
 	text-decoration: none;
 }
+
+nav a.sec-head:hover {
+	color: #50ffff;
+	text-decoration: none;
+}
+
 
 nav a:link, :visited {
     display: block;
