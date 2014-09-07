@@ -22,7 +22,11 @@
 @media screen and (max-width:699px) {
 
 	nav {
-		width: 50%;
+		width: 30%;
+	}
+
+	nav a {
+		width: 25%;
 	}
 
 }
@@ -33,7 +37,7 @@ nav ul {
    padding: 0px;
 }
 
-nav  p {
+nav p {
     display: block;
     font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
