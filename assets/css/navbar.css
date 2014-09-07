@@ -30,7 +30,7 @@
 nav > ul {
    list-style-type: none;
    margin: 0px;
-   padding: 0;
+   padding: 0px;
 }
 
 nav > p {
@@ -41,7 +41,7 @@ nav > p {
     color: white;
     }
 
-nav > a:link, :visited {
+nav > ul > a:link, :visited {
     display: block;
     background-color: #414141;
     font-family: Verdana, Geneva, sans-serif;
