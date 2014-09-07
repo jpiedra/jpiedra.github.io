@@ -42,6 +42,14 @@ nav p {
     color: white;
     }
 
+nav a.sec-head:link, visited{
+	color: grey;
+	font-family: Verdana, Geneva, sans-serif;
+    	font-weight: bold;
+    	font-size: 12px;
+	text-decoration: none;
+}
+
 nav a:link, :visited {
     display: block;
     background-color: #414141;
