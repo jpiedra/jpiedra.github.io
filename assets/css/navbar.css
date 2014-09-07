@@ -63,7 +63,12 @@ nav a.sec-head:link, visited {
 	text-decoration: none;
 }
 
-nav a.sec-head:hover, :active {
+nav a.sec-head:hover {
+	color: #50ffff;
+	text-decoration: none;
+}
+
+nav a.sec-head:active {
 	color: #50ffff;
 	text-decoration: none;
 }
