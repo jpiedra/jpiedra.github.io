@@ -55,7 +55,7 @@ nav p {
     color: white;
     }
 
-nav a:link, :visited {
+nav a.sec-button:link, :visited {
     display: block;
     background-color: #414141;
     font-family: Verdana, Geneva, sans-serif;
@@ -72,13 +72,13 @@ nav a:link, :visited {
     text-decoration: none;
 }
 
-nav a:hover {
+nav a.sec-button:hover {
     color: #50ffff;
     text-decoration: none;
 
 }
 
-nav a:active {
+nav a.sec-button:active {
    border-style: inset;
    background-color: #373737;
 }
