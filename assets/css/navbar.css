@@ -1,6 +1,7 @@
 @media screen and (min-width:700px) {
 
 	nav {
+		display: block;
    		float:left;
    		width: 175px;
    		border: 4px solid #0c0c0c;
