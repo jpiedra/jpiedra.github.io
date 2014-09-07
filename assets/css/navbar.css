@@ -55,24 +55,6 @@ nav p {
     color: white;
     }
 
-nav a.sec-head:link, visited {
-	color: grey;
-	font-family: Verdana, Geneva, sans-serif;
-    	font-weight: bold;
-    	font-size: 14px;
-	text-decoration: none;
-}
-
-nav a.sec-head:hover {
-	color: #50ffff;
-	text-decoration: none;
-}
-
-nav a.sec-head:active {
-	color: #50ffff;
-	text-decoration: none;
-}
-
 nav a:link, :visited {
     display: block;
     background-color: #414141;
@@ -99,6 +81,20 @@ nav a:hover {
 nav a:active {
    border-style: inset;
    background-color: #373737;
+}
+
+
+nav a.sec-head:link, visited, active {
+	color: grey;
+	font-family: Verdana, Geneva, sans-serif;
+    	font-weight: bold;
+    	font-size: 14px;
+	text-decoration: none;
+}
+
+nav a.sec-head:hover {
+	color: #50ffff;
+	text-decoration: none;
 }
 
 
