@@ -25,7 +25,7 @@
 		width: 35%;
 	}
 
-	nav a.sec-head:link, visited {
+	a.sec-head:link, visited {
 		color: grey;
 		font-family: Verdana, Geneva, sans-serif;
     		font-weight: bold;
@@ -33,7 +33,7 @@
 		text-decoration: none;
 	}
 
-	nav a.sec-head:hover, active {
+	a.sec-head:hover, active {
 		color: #50ffff;
 		text-decoration: none;
 	}
@@ -84,7 +84,7 @@ nav a:active {
 }
 
 
-nav a.sec-head:link, visited, active {
+a.sec-head:link, visited, active {
 	color: grey;
 	font-family: Verdana, Geneva, sans-serif;
     	font-weight: bold;
@@ -92,7 +92,7 @@ nav a.sec-head:link, visited, active {
 	text-decoration: none;
 }
 
-nav a.sec-head:hover {
+a.sec-head:hover {
 	color: #50ffff;
 	text-decoration: none;
 }
