@@ -33,7 +33,7 @@
 		text-decoration: none;
 	}
 
-	nav a.sec-head:hover, :active {
+	nav a.sec-head:hover, active {
 		color: #50ffff;
 		text-decoration: none;
 	}
