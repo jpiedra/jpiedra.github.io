@@ -56,7 +56,6 @@ section > p {
 
 	section {
   		margin-left: 220px;
-		padding-left: 10px;
   	}
 
 }
@@ -65,8 +64,7 @@ section > p {
 @media screen and (max-width:699px) {
 	
 	section {
-  		padding-left: 10px;
-  	}
+    	}
 
 }
 
