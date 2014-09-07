@@ -27,13 +27,13 @@
 
 }
 
-nav > ul {
+nav ul {
    list-style-type: none;
    margin: 0px;
    padding: 0px;
 }
 
-nav > p {
+nav  p {
     display: block;
     font-family: Verdana, Geneva, sans-serif;
     font-weight: bold;
@@ -41,7 +41,7 @@ nav > p {
     color: white;
     }
 
-nav > ul > a:link, :visited {
+nav a:link, :visited {
     display: block;
     background-color: #414141;
     font-family: Verdana, Geneva, sans-serif;
@@ -58,13 +58,13 @@ nav > ul > a:link, :visited {
     text-decoration: none;
 }
 
-nav > a:hover {
+nav a:hover {
     color: #50ffff;
     text-decoration: none;
 
 }
 
-nav > a:active {
+nav a:active {
    border-style: inset;
    background-color: #373737;
 }
