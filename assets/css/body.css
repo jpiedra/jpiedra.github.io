@@ -1,17 +1,17 @@
 body	 { 
-  background: url("assets/images/bg_a.jpg") no-repeat fixed;
+  background: url("https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/bg_a.jpg") no-repeat fixed;
   background-color: black;
   background-size: cover;
 }
 
 #page-wrap { 
-  background: url("assets/images/bg_a_blur.jpg") no-repeat fixed;
+  background: url("https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/bg_a_blur.jpg") no-repeat fixed;
   background-size: cover;
 }
 
 
 #page-wrap-t { 
-  background: url("assets/images/bg_a_blur-t.jpg") no-repeat fixed;
+  background: url("https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/bg_a_blur-t.jpg") no-repeat fixed;
   background-size: cover;
 }
 
