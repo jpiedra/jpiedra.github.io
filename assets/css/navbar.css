@@ -25,6 +25,19 @@
 		width: 35%;
 	}
 
+	nav a.sec-head:link, visited {
+		color: grey;
+		font-family: Verdana, Geneva, sans-serif;
+    		font-weight: bold;
+    		font-size: 14px;
+		text-decoration: none;
+	}
+
+	nav a.sec-head:hover, :active {
+		color: #50ffff;
+		text-decoration: none;
+	}
+
 	
 }
 
@@ -42,7 +55,7 @@ nav p {
     color: white;
     }
 
-nav a.sec-head:link, visited{
+nav a.sec-head:link, visited {
 	color: grey;
 	font-family: Verdana, Geneva, sans-serif;
     	font-weight: bold;
@@ -50,11 +63,10 @@ nav a.sec-head:link, visited{
 	text-decoration: none;
 }
 
-nav a.sec-head:hover {
+nav a.sec-head:hover, :active {
 	color: #50ffff;
 	text-decoration: none;
 }
-
 
 nav a:link, :visited {
     display: block;
