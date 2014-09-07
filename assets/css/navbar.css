@@ -25,19 +25,7 @@
 		width: 35%;
 	}
 
-	.sec-head:link, visited {
-		color: grey;
-		font-family: Verdana, Geneva, sans-serif;
-    		font-weight: bold;
-    		font-size: 14px;
-		text-decoration: none;
-	}
-
-	.sec-head:hover, active {
-		color: #50ffff;
-		text-decoration: none;
-	}
-
+	
 	
 }
 
@@ -55,7 +43,7 @@ nav p {
     color: white;
     }
 
-a:link, :visited {
+a.button:link, :visited {
     display: block;
     background-color: #414141;
     font-family: Verdana, Geneva, sans-serif;
@@ -72,19 +60,19 @@ a:link, :visited {
     text-decoration: none;
 }
 
-a:hover {
+a.button:hover {
     color: #50ffff;
     text-decoration: none;
 
 }
 
-a:active {
+a.button:active {
    border-style: inset;
    background-color: #373737;
 }
 
 
-.sec-head:link, visited, active {
+a.sec-head:link, visited, active {
 	color: grey;
 	font-family: Verdana, Geneva, sans-serif;
     	font-weight: bold;
@@ -92,7 +80,7 @@ a:active {
 	text-decoration: none;
 }
 
-.sec-head:hover {
+a.sec-head:hover {
 	color: #50ffff;
 	text-decoration: none;
 }
