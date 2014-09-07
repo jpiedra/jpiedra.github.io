@@ -1,7 +1,7 @@
 @media screen and (min-width:700px) {
 
 	nav {
-		display: block;
+   		display: block;		
    		float:left;
    		width: 175px;
    		border: 4px solid #0c0c0c;
@@ -22,17 +22,25 @@
 @media screen and (max-width:699px) {
 
 	nav {
-		width: 35%;
+		width: 50%;
+		background: black;
+		padding-left: 10px;
+  		padding-right: 10px;
+  		padding-bottom: 10px;
+  		background: black;
+  		border-radius: 0px;
 	}
 
-	
-	
+	nav li{
+   		display: inline;
+	}
+
 }
 
 nav ul {
    list-style-type: none;
    margin: 0px;
-   padding: 0px;
+   padding: 0;
 }
 
 nav p {
@@ -43,7 +51,7 @@ nav p {
     color: white;
     }
 
-a.button:link, :visited {
+nav a:link, :visited {
     display: block;
     background-color: #414141;
     font-family: Verdana, Geneva, sans-serif;
@@ -53,36 +61,22 @@ a.button:link, :visited {
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 10px;
-    color: #ff5050;
+    color: #fff;
     
     border: 2px solid grey;
     border-style: outset;
     text-decoration: none;
 }
 
-a.button:hover {
+nav a:hover {
     color: #50ffff;
     text-decoration: none;
-
 }
 
-a.button:active {
+nav a:active {
    border-style: inset;
    background-color: #373737;
 }
 
-
-a.sec-head:link, visited, active {
-	color: grey;
-	font-family: Verdana, Geneva, sans-serif;
-    	font-weight: bold;
-    	font-size: 14px;
-	text-decoration: none;
-}
-
-a.sec-head:hover {
-	color: #50ffff;
-	text-decoration: none;
-}
 
 
