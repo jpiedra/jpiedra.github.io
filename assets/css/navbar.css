@@ -22,13 +22,10 @@
 @media screen and (max-width:699px) {
 
 	nav {
-		width: 30%;
+		width: 35%;
 	}
 
-	nav a {
-		width: 25%;
-	}
-
+	
 }
 
 nav ul {
