@@ -90,12 +90,12 @@ nav li:hover li {
 
 nav: li:hover a {
 	color: grey;
-	background-color : #ff3030;
+	/* background-color : #ff3030; */
 
 }
 
 nav li li a:hover {
-	background-color : #ff3030;
+	/* background-color : #ff3030; */
 }
 
 
