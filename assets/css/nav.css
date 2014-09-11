@@ -1,21 +1,19 @@
 .nav-block {
 	display: block;
 	margin: 0 auto;
-	margin-bottom: 0;
 	background: #AA8439;
 	background: -webkit-linear-gradient(#D7B46E, #AA8439);/* For Safari 5.1 to 6.0 */
   	background: -o-linear-gradient(#D7B46E, #AA8439);/* For Opera 11.1 to 12.0 */
   	background: -moz-linear-gradient(#D7B46E, #AA8439);/* For Firefox 3.6 to 15 */
   	background: linear-gradient(#D7B46E, #AA8439);
 	height: auto;
-	/* border-top: 2px outset #ECC580;
-	border-bottom: 2px outset #ECC580; */
+	border-top: 2px outset #ECC580;
+	border-bottom: 2px outset #ECC580;
 }
 
 .centering {
 	display: table;   /* Allow the centering to work */
 	margin: 0 auto;
-	margin-bottom: 0;
 }
 
 nav ul {
@@ -85,11 +83,8 @@ nav li:hover ul {
 
 nav li:hover li {
 	float: none;
-	/* border-top: 2px outset #ECC580;
-	border-bottom: 2px outset #ECC580; */
-
 	/* background-color: #ff3030; */
-	/* margin-top: 1px; */
+	/* margin-top: 2px; */
 	/* border: 2px outset #777; */
 }
 
@@ -102,6 +97,7 @@ nav: li:hover a {
 nav li li a:hover {
 	/* background-color : #ff3030; */
 }
+
 
 @media screen and (max-width:360px) {
 	
