@@ -83,8 +83,8 @@ nav li:hover ul {
 
 nav li:hover li {
 	float: none;
-	background-color: #ff3030;
-	margin-top: 2px;
+	/* background-color: #ff3030; */
+	/* margin-top: 2px; */
 	/* border: 2px outset #777; */
 }
 
