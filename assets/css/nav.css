@@ -97,3 +97,19 @@ nav: li:hover a {
 nav li li a:hover {
 	background-color : #ff3030;
 }
+
+
+@media screen and (max-width:360px) {
+	
+	
+	nav ul {
+		font-size: 12px;
+ 	}
+	
+	
+	nav li {
+		width: auto;
+	}
+
+	
+}

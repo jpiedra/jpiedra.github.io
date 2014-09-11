@@ -76,16 +76,14 @@ section > p {
 
 @media screen and (min-width:700px) {
 
-	section {
-  	  	}
-
+	
 }
 
 
-@media screen and (max-width:699px) {
+@media screen and (max-width:360px) {
 	
-	section {
-    	}
-
+	.splash {
+		font-size: 32px;
+	}
 }
 
