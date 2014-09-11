@@ -38,14 +38,6 @@ nav li {
 	border-right: 2px outset #777; */
 }
 
-li > a:after { 
-	content: ' »'; 
-} 
-
-li > a:only-child:after {
-	content: ' ';
-}
-
 nav li a {
 	display: block;
 	padding: 3px 8px;
