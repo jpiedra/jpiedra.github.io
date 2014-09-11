@@ -99,7 +99,23 @@ nav li li a:hover {
 }
 
 
-@media screen and (max-width:360px) {
+
+@media screen and (max-width:970px) {
+	
+	
+	nav ul {
+		font-size: 16px;
+ 	}
+	
+	
+	nav li {
+		width: auto;
+	}
+
+	
+}
+
+@media screen and (max-width:368px) {
 	
 	
 	nav ul {
@@ -113,3 +129,4 @@ nav li li a:hover {
 
 	
 }
+
