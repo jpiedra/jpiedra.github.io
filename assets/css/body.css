@@ -36,7 +36,29 @@ body	 {
 }
 
 .content {
+	
 	background: rgb(13, 28, 28);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 180px;
+	padding: 50px;
+	padding-left: 15%;
+	padding-right: 15%;
+
+  	/* margin-top: 5%;
+	margin-left: 15%;
+	margin-right: 15%; */
+
+	font-family: Verdana, Geneva, sans-serif;
+    	/* font-weight: bold; */
+	font-size: 16px;
+	color: white;
+	text-align: left;
+
+
+
+
+	/* background: rgb(13, 28, 28);
 	background: rgba(13, 28, 28, 0.85);
 
 	padding: 20px;
@@ -52,7 +74,7 @@ body	 {
     	/* font-weight: bold; */
 	font-size: 16px;
 	color: white;
-	text-align: left;
+	text-align: left; */
 }
 
 .splash {
