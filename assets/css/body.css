@@ -155,9 +155,10 @@ section > p {
 		font-size: 32px;
 	}
 	
-	header h1 {
+	.banner-title {
 		padding: 0px;
 		font-size: 46px;
+		left: 0%;
 	}
 
 }
@@ -170,10 +171,11 @@ section > p {
 		font-size: 32px;
 	}
 
-	header h1 {
+	.banner-title {
 		padding: 0px;
 		font-size: 46px;
-		top: 45%;
+		left: 0%;
+
 	}
 }
 
