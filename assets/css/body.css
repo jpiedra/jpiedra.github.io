@@ -62,7 +62,7 @@ body	 {
 }
 
 .container {
-  position: relative;
+	position: relative;
 }
 
 .content {
@@ -112,6 +112,35 @@ section > p {
 	color: white;
 }
 
+
+.page-title {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-size:31px;
+	font-weight:700;
+	padding:0 0 0 15px;
+	color: white;
+}
+
+.page-title-2 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:21px;
+	font-weight:700;
+	padding:0 0 0 15px;
+	color: white;
+}
+
+.page-paragraph{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:14px;
+	font-weight:0;
+	padding:0 0 0 15px;
+color: white;
+}
+
+.page-paragraph a {
+	font-family: Verdana, Geneva, sans-serif;
+color:#5050ee;
+}
 
 
 @media screen and (max-width:500px) {
