@@ -1,0 +1,39 @@
+{% include header.html %}
+{% include page-nav.html %}
+
+<link rel="stylesheet" href="assets/css/body.css">
+<link rel="stylesheet" href="assets/css/nav_2.css">
+
+<!-- Wrap all page content here -->
+<container>
+	<div class="banner">
+		<h1 class="banner-title">J. L. Piedra</h1>
+	</div>
+
+<div class="nav-block">
+	<div class="centering">
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				
+				<li><a href="#">UnrealScript 1</a>
+					<ul>
+						<li><a href="{{site.url}}/gmi.html">GiveMeItems</a></li>
+					</ul>
+				</li>
+
+				<li><a href="https://github.com/jpiedra">GitHub</a></li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<div class="content" >
+      {{ content }}
+</div>
+
+
+</container>
+
+
+{% include footer.html %}
