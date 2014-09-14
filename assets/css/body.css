@@ -10,8 +10,50 @@ body	 {
   text-align: center;
 }
 
+/* new */
+
+.banner {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	/* border: 2px solid black; */
+	height: 287px;
+	background: url("https://raw.githubusercontent.com/jpiedra/jpiedra.github.io/master/assets/images/topbanner.jpg") center no-repeat;
+	background-color: black;
+
+}
+
+.banner-title {
+	position: absolute;
+	left: 45%;	
+	bottom: -10%;
+	
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	text-shadow: 1px 3px 8px white;
+	font-weight: bold; 
+    	font-size: 72px;
+	color: transparent; 
+
+}
+
+/* old */
+
+.img-title {
+	position: absolute;
+	/* left: 45%;	
+	top: 20%; */
+	
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	text-shadow: 1px 3px 8px white;
+	font-weight: bold; 
+    	font-size: 72px;
+	color: transparent; 
+
+}
+
 .img-splash {
-	display: block;
+	position: relative;
+	/* display: block; */
 	margin-left: auto;
 	margin-right: auto;
 
