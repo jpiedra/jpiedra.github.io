@@ -195,31 +195,6 @@ font-size:22px;
 font-weight:700;
 }
 
-.page-title {
-font-size:31px;
-font-weight:700;
-padding:0 0 0 15px;
-color:#ff5050;
-}
-
-.page-title-2 {
-font-size:21px;
-font-weight:700;
-padding:0 0 0 15px;
-color:#dddddd;
-}
-
-.page-paragraph{
-font-size:14px;
-font-weight:0;
-padding:0 0 0 15px;
-color:#ffffff;
-}
-
-.page-paragraph a {
-color:#5050ee;
-}
-
 .post {
 position:relative;
 overflow:hidden;
