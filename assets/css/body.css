@@ -155,6 +155,10 @@ color:#5050ee;
 		left: 0%;
 	}
 
+	.content {
+		padding: 15px;
+	}
+
 }
 
 
@@ -171,6 +175,12 @@ color:#5050ee;
 		left: 0%;
 
 	}
+
+	.content {
+		padding: 15px;
+	}
+
+
 }
 
 
