@@ -1,0 +1,312 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML Primer and Quiz</title>
+	<link rel="stylesheet" href="themes/MyAppTheme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="scripts/plugins/jquery.fitvids.js"></script>
+	<script src="scripts/jquery.bxslider.js"></script>
+	<link rel="stylesheet" href="themes/mobile-panel-size.less" />
+</head>
+
+<script>
+
+//please excuse the embedded JSON
+var tags = '[{"tagDesc": "Defines a comment", "tagName": "!--...--"}, {"tagDesc": "Defines the document type", "tagName": "!DOCTYPE"}, {"tagDesc": "Defines a hyperlink", "tagName": "a"}, {"tagDesc": "Defines an abbreviation", "tagName": "abbr"}, {"tagDesc": "Defines an acronym", "tagName": "acronym"}, {"tagDesc": "Defines contact information for the author/owner of a document", "tagName": "address"}, {"tagDesc": "Defines an embedded applet", "tagName": "applet"}, {"tagDesc": "Defines an area inside an image-map", "tagName": "area"}, {"tagDesc": "Defines an article", "tagName": "article"}, {"tagDesc": "Defines content aside from the page content", "tagName": "aside"}, {"tagDesc": "Defines sound content", "tagName": "audio"}, {"tagDesc": "Defines bold text", "tagName": "b"}, {"tagDesc": "Specifies the base URL/target for all relative URLs in a document", "tagName": "base"}, {"tagDesc": "Specifies a default color, size, and font for all text in a document", "tagName": "basefont"}, {"tagDesc": "Isolates a part of text that might be formatted in a different direction from other text outside it", "tagName": "bdi"}, {"tagDesc": "Overrides the current text direction", "tagName": "bdo"}, {"tagDesc": "Defines big text", "tagName": "big"}, {"tagDesc": "Defines a section that is quoted from another source", "tagName": "blockquote"}, {"tagDesc": "Defines the document body", "tagName": "body"}, {"tagDesc": "Defines a single line break", "tagName": "br"}, {"tagDesc": "Defines a clickable button", "tagName": "button"}, {"tagDesc": "Used to draw graphics, on the fly, via scripting (usually JavaScript)", "tagName": "canvas"}, {"tagDesc": "Defines a table caption", "tagName": "caption"}, {"tagDesc": "Defines centered text", "tagName": "center"}, {"tagDesc": "Defines the title of a work", "tagName": "cite"}, {"tagDesc": "Defines a piece of computer code", "tagName": "code"}, {"tagDesc": "Specifies column properties for each column within a colgroup element ", "tagName": "col"}, {"tagDesc": "Specifies a group of one or more columns in a table for formatting", "tagName": "colgroup"}, {"tagDesc": "Specifies a list of pre-defined options for input controls", "tagName": "datalist"}, {"tagDesc": "Defines a description/value of a term in a description list", "tagName": "dd"}, {"tagDesc": "Defines text that has been deleted from a document", "tagName": "del"}, {"tagDesc": "Defines additional details that the user can view or hide", "tagName": "details"}, {"tagDesc": "Defines a definition term", "tagName": "dfn"}, {"tagDesc": "Defines a dialog box or window", "tagName": "dialog"}, {"tagDesc": "Defines a directory list", "tagName": "dir"}, {"tagDesc": "Defines a section in a document", "tagName": "div"}, {"tagDesc": "Defines a description list", "tagName": "dl"}, {"tagDesc": "Defines a term/name in a description list", "tagName": "dt"}, {"tagDesc": "Defines emphasized text ", "tagName": "em"}, {"tagDesc": "Defines a container for an external (non-HTML) application", "tagName": "embed"}, {"tagDesc": "Groups related elements in a form", "tagName": "fieldset"}, {"tagDesc": "Defines a caption for a figure element", "tagName": "figcaption"}, {"tagDesc": "Specifies self-contained content", "tagName": "figure"}, {"tagDesc": "Defines font, color, and size for text", "tagName": "font"}, {"tagDesc": "Defines a footer for a document or section", "tagName": "footer"}, {"tagDesc": "Defines an HTML form for user input", "tagName": "form"}, {"tagDesc": "Defines a window (a frame) in a frameset", "tagName": "frame"}, {"tagDesc": "Defines a set of frames", "tagName": "frameset"}, {"tagDesc": "Defines HTML headings", "tagName": "h1 to h6"}, {"tagDesc": "Defines information about the document", "tagName": "head"}, {"tagDesc": "Defines a header for a document or section", "tagName": "header"}, {"tagDesc": "Defines a group of headings", "tagName": "hgroup"}, {"tagDesc": "Defines a thematic change in the content", "tagName": "hr"}, {"tagDesc": "Defines the root of an HTML document", "tagName": "html"}, {"tagDesc": "Defines a part of text in an alternate voice or mood", "tagName": "i"}, {"tagDesc": "Defines an inline frame", "tagName": "iframe"}, {"tagDesc": "Defines an image", "tagName": "img"}, {"tagDesc": "Defines an input control", "tagName": "input"}, {"tagDesc": "Defines a text that has been inserted into a document", "tagName": "ins"}, {"tagDesc": "Defines keyboard input", "tagName": "kbd"}, {"tagDesc": "Defines a key-pair generator field (for forms)", "tagName": "keygen"}, {"tagDesc": "Defines a label for an input element", "tagName": "label"}, {"tagDesc": "Defines a caption for a fieldset element", "tagName": "legend"}, {"tagDesc": "Defines a list item", "tagName": "li"}, {"tagDesc": "Defines the relationship between a document and an external resource (most used to link to style sheets)", "tagName": "link"}, {"tagDesc": "Specifies the main content of a document", "tagName": "main"}, {"tagDesc": "Defines a client-side image-map", "tagName": "map"}, {"tagDesc": "Defines marked/highlighted text", "tagName": "mark"}, {"tagDesc": "Defines a list/menu of commands", "tagName": "menu"}, {"tagDesc": "Defines a command/menu item that the user can invoke from a popup menu", "tagName": "menuitem"}, {"tagDesc": "Defines metadata about an HTML document", "tagName": "meta"}, {"tagDesc": "Defines a scalar measurement within a known range (a gauge)", "tagName": "meter"}, {"tagDesc": "Defines navigation links", "tagName": "nav"}, {"tagDesc": "Defines an alternate content for users that do not support frames", "tagName": "noframes"}, {"tagDesc": "Defines an alternate content for users that do not support client-side scripts", "tagName": "noscript"}, {"tagDesc": "Defines an embedded object", "tagName": "object"}, {"tagDesc": "Defines an ordered list", "tagName": "ol"}, {"tagDesc": "Defines a group of related options in a drop-down list", "tagName": "optgroup"}, {"tagDesc": "Defines an option in a drop-down list", "tagName": "option"}, {"tagDesc": "Defines the result of a calculation", "tagName": "output"}, {"tagDesc": "Defines a paragraph", "tagName": "p"}, {"tagDesc": "Defines a parameter for an object", "tagName": "param"}, {"tagDesc": "Defines preformatted text", "tagName": "pre"}, {"tagDesc": "Represents the progress of a task", "tagName": "progress"}, {"tagDesc": "Defines a short quotation", "tagName": "q"}, {"tagDesc": "Defines what to show in browsers that do not support ruby annotations", "tagName": "rp"}, {"tagDesc": "Defines an explanation/pronunciation of characters (for East Asian typography)", "tagName": "rt"}, {"tagDesc": "Defines a ruby annotation (for East Asian typography)", "tagName": "ruby"}, {"tagDesc": "Defines text that is no longer correct", "tagName": "s"}, {"tagDesc": "Defines sample output from a computer program", "tagName": "samp"}, {"tagDesc": "Defines a client-side script", "tagName": "script"}, {"tagDesc": "Defines a section in a document", "tagName": "section"}, {"tagDesc": "Defines a drop-down list", "tagName": "select"}, {"tagDesc": "Defines smaller text", "tagName": "small"}, {"tagDesc": "Defines multiple media resources for media elements (video and audio)", "tagName": "source"}, {"tagDesc": "Defines a section in a document", "tagName": "span"}, {"tagDesc": "Defines strikethrough text", "tagName": "strike"}, {"tagDesc": "Defines important text", "tagName": "strong"}, {"tagDesc": "Defines style information for a document", "tagName": "style"}, {"tagDesc": "Defines subscripted text", "tagName": "sub"}, {"tagDesc": "Defines a visible heading for a details element", "tagName": "summary"}, {"tagDesc": "Defines superscripted text", "tagName": "sup"}, {"tagDesc": "Defines a table", "tagName": "table"}, {"tagDesc": "Groups the body content in a table", "tagName": "tbody"}, {"tagDesc": "Defines a cell in a table", "tagName": "td"}, {"tagDesc": "Defines a multiline input control (text area)", "tagName": "textarea"}, {"tagDesc": "Groups the footer content in a table", "tagName": "tfoot"}, {"tagDesc": "Defines a header cell in a table", "tagName": "th"}, {"tagDesc": "Groups the header content in a table", "tagName": "thead"}, {"tagDesc": "Defines a date/time", "tagName": "time"}, {"tagDesc": "Defines a title for the document", "tagName": "title"}, {"tagDesc": "Defines a row in a table", "tagName": "tr"}, {"tagDesc": "Defines text tracks for media elements (video and audio)", "tagName": "track"}, {"tagDesc": "Defines teletype text", "tagName": "tt"}, {"tagDesc": "Defines text that should be stylistically different from normal text", "tagName": "u"}, {"tagDesc": "Defines an unordered list", "tagName": "ul"}, {"tagDesc": "Defines a variable", "tagName": "var"}, {"tagDesc": "Defines a video or movie", "tagName": "video"}, {"tagDesc": "Defines a possible line-break", "tagName": "wbr"}]';
+//okay, it's over... for now...
+
+var arr = JSON.parse(tags);
+
+//alert(arr[99].tagName + ": " + arr[99].tagDesc + ". Array size is: " + arr.length);
+//begin populating the questions page...
+
+$(document).ready(function(){
+
+//var index = Math.floor((Math.random() * 120) + 0);
+//var k_r = index; //store the key for the right answer...
+//var k_w1 = 0;
+//var k_w2 = 0;
+//
+// do {
+// 	k_w1 = Math.floor((Math.random() * 120) + 0);
+// } while (k_w1 == k_r);
+//
+// do {
+// 	k_w2 = Math.floor((Math.random() * 120) + 0);
+// } while (k_w2 == k_r || k_w2 == k_w1);
+//
+//alert(k_w1);
+//alert(k_w2); 
+
+//new code to use for generating question and answer keys...
+
+var qi = [0, 0, 0];
+
+qi[0] = Math.floor((Math.random() * 120) + 0);
+
+do {
+	qi[1] = Math.floor((Math.random() * 120) + 0);
+} while (qi[1] == qi[0]);
+
+do {
+	qi[2] = Math.floor((Math.random() * 120) + 0);
+} while (qi[2] == qi[0] || qi[2] == qi[1]);
+
+
+var qr = qi[Math.floor((Math.random() * 3) + 0)];
+
+//alert (qi[0] + ", " + qi[1] + ", " + qi[2] + ": " + qr);
+
+ //a 3-item array to represent the question fields...
+
+// old append code, dont modify this at all!!!
+// $('#add-here').append('<p>Which element: </p><h1 id=' + index + '>' + arr[index].tagDesc + '?</h1>');
+// $('<div data-role="collapsible"><h3 id = ' + k_r + '>' + arr[k_r].tagName + '</h3><p>Contentsfdf</p></div>').appendTo("#add-here");
+// $('<div data-role="collapsible"><h3 id = ' + k_w1 + '>' + arr[k_w1].tagName + '</h3><p>Contentsfdf</p></div>').appendTo("#add-here");
+// $('<div data-role="collapsible"><h3 id = ' + k_w2 + '>' + arr[k_w2].tagName + '</h3><p>Contentsfdf</p></div>').appendTo("#add-here");
+
+//begin new append codes...
+$('#qp_question').append('<p>Which element: </p><h1 id=' + qr + '>' + arr[qr].tagDesc + '?</h1>');
+
+for (var j = 0; j < 3; j++){
+	if (qi[j] == qr){
+		$('<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="check"><h3 id =' + qi[j] + '>&lt' + arr[qi[j]].tagName + '&gt</h3><p>Correct!</p></div>').appendTo("#qp_answers");	
+	}
+	else {
+		$('<div data-role="collapsible" data-collapsed-icon="arrow-d" data-expanded-icon="delete ui-alt-icon"><h3 id =' + qi[j] + '>&lt' + arr[qi[j]].tagName + '&gt</h3><p>Incorrect.</p></div>').appendTo("#qp_answers");	
+	}
+}
+
+$("#qp_generate").click(function(){
+ location.reload();
+    });
+
+}); 
+
+
+<!-- figure out a way to bind this to a button to generate new questions... $("#quest").click(function(){
+<!--  var index = Math.floor((Math.random() * 121) + 0);
+<!--  $('#add-here').append('<p>Which element/tag: </p><h1>' + arr[index].tagDesc + '?</h1>');
+<!-- });
+
+</script>
+<style>
+
+.ui-panel-inner{
+	width:637px;
+}
+
+</style>
+<body>
+
+<!-- '<input type="radio" name="q1" id="' + index + '" value="' + index +'" /><label for="' + index + '">' + arr[index].tagName + '</label>' -->
+
+<!-- //// MENU SCREEN //// --!>
+<div data-role="page" id="sc_menu" style="height: 50%">
+   
+   <div data-role="main" class="ui-content">
+    	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="text-align: center">
+				<h1>HTML Primer</h1>
+				<h2>Menu</h2>
+				
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_videos" class="ui-btn ui-btn-inline ui-icon-check">Intro Videos</a>
+				</div>
+			</div>
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_start" class="ui-btn ui-btn-inline ui-icon-check">Tag Quiz</a>
+				</div>
+			</div>
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_links" class="ui-btn ui-btn-inline ui-icon-check">Online Guides</a>
+				</div>
+			</div>			
+				
+			</div>
+		</div>
+        
+		<div class="ui-grid-b">
+			<div class="ui-block-a">
+				<a href="#sc_about" data-transition="fade" class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-left">About</a>
+			</div>
+			<div class="ui-block-b">
+				<p></p>
+			</div>
+			<div class="ui-block-c" style="text-align: right">
+				<a href="#sc_start" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-left">Start</a>
+			</div>
+	  	</div>
+	
+    </div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// MENU SCREEN ENDS //// --!>
+
+<!-- //// ABOUT SCREEN //// --!>
+<div data-role="page" id="sc_about" style="height: 50%">
+    
+   <div data-role="main" class="ui-content">
+     	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="text-align: center">
+				<h1>About</h1>
+				<p>HTML Primer is an app designed and written by Jonathan Piedra, a student at Brooklyn College.</p> 
+				<p>Jonathan is a Classics major, and a Computer Science minor; his concentration is on multimedia design.</p>
+				<p>To learn more about the author, <a href="http://jpiedra.github.io" rel="external">visit his homepage.</a></p>
+   			</div>	
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<p></p>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// ABOUT SCREEN ENDS //// --!>
+
+<!-- //// VIDEO SCREEN //// --!>
+<div data-role="page" id="sc_videos" style="height: 50%">
+    
+	
+
+    <div data-role="panel" id="vid_HTML">
+		<iframe src="http://player.vimeo.com/video/17914974" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+		<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-b ui-icon-delete ui-btn-icon-left">Close</a>
+	</div> 
+ 
+	<div data-role="panel" id="vid_CSS"> 
+		<p>video goes here</p>
+			<a href="#pageone" data-rel="close" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-b ui-icon-delete ui-btn-icon-left">Close</a>
+	</div> 
+ 
+	<div data-role="header">
+		<h1>Page Header</h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		<h2>Introduction Videos - select the item below to learn about a topic</h2>
+			<ul data-role="listview" data-autodividers="false" data-inset="true">
+				<li><a href="#vid_HTML">HTML</a></li>
+				<li><a href="#vid_CSS">CSS</a></li>
+			</ul>
+	</div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// VIDEO SCREEN ENDS //// --!>
+
+<!-- //// QUESTION SCREEN BEGINS //// --!>
+<div data-role="page" id="sc_start" data-theme="b" style="height: 50%" id="page">
+
+	<div class="ui-grid-b">
+		<div class="ui-block-a" style="text-align: left">
+			<a href="#sc_menu" data-transition="fade" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left">Menu</a>
+		</div>
+		<div class="ui-block-b" style="text-align: center">
+			<p></p>
+		</div>
+		<div class="ui-block-c" style="text-align: right">
+			<p></P>
+		</div>
+	</div>
+  
+
+  	<div data-role="content">
+    	<div data-role="content" id="qp_question"> 
+          
+    	</div>
+    	<div data-role="collapsibleset" id="qp_answers"> 
+    
+    	</div>
+  	</div>
+	
+	<div class="ui-grid-b">
+		<div class="ui-block-a" style="text-align: left">
+			<p></p>
+		</div>
+		<div class="ui-block-b" style="text-align: center">
+			<input type="button" value="Retry" id="qp_generate">
+		</div>
+		<div class="ui-block-c" style="text-align: right">
+			<p></p>
+		</div>
+    </div>
+	
+    <div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+    </div>
+
+</div>
+
+<!-- //// QUESTION SCREEN ENDS //// --!>	
+
+
+<!-- //// LINKS SCREEN //// --!>
+<div data-role="page" id="sc_links" style="height: 50%">
+    
+	<div class="ui-grid-solo">
+	
+			<div class="ui-block-a" style="text-align: center">
+				<h1>Click the links below for further information on HTML/CSS</h1>
+				<h4>World Wide Web Consortium (W3C)</h4>
+				<p><a href="http://www.w3.org/TR/html5/" rel="external">W3C HTML5 Complete Reference</a></p>
+				<p><a href="http://www.w3.org/Style/Examples/011/firstcss" rel="external">W3C CSS Tutorial</a></p>
+			</div>
+			
+			
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<p></p>
+				</div>
+			</div>
+			
+			
+	</div>
+	
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// LINKS SCREEN ENDS //// --!>
+
+
+
+
+
+</body>
+</html>
