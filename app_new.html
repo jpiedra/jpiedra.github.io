@@ -60,6 +60,16 @@ $("#qp_generate").click(function(){
 		  $("#dragtag_body-open" ).draggable( );
 		  $("#dragtag_body-close" ).draggable( );
 		  $("#dragtag_doctype" ).draggable( );
+		  
+		  $("#droptag_doctype" ).droppable( {
+			drop: function (event, ui) {
+				$( this )
+					.addClass("ui-state-highlight" )
+					.find ("p")
+						.html("Dropped!");
+					}
+				});
+		  
 		  event.preventDefault(); 
         });
 		
@@ -67,6 +77,14 @@ $("#qp_generate").click(function(){
        
 </script>
 <style>
+
+#droptag_doctype {
+	background-color: white;
+	width: 200px;
+	height: 32px;
+	padding: 0.5em;
+	float: left;
+}
 
 .containment-wrapper {
 	display: block;
@@ -181,6 +199,8 @@ $("#qp_generate").click(function(){
     
    <div data-role="main" class="ui-content">
    
+   
+   
      	<div class="ui-grid-solo">
 			<div class="ui-block-a" style="text-align: center">
 				<h1>On the Author:</h1>
@@ -232,18 +252,20 @@ $("#qp_generate").click(function(){
    <div data-role="main" class="ui-content" style="height: 350px;">
    
      	<div class="ui-grid-solo">
-			<div class="ui-block-a" style="height: 325px; width: 50%;">
+			<div class="ui-block-a" style="height: 325px;">
 				
+					<div id="droptag_doctype"><p>Hello</p></div>
+				
+					<div id="dragtag_body-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-body" style="left: 70%; bottom: 50%;">&lt/body&gt</p></div>
+					<div id="dragtag_html-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 60%; bottom: 30%;">&lthtml&gt</p></div>
 					
-					<div id="dragtag_body-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-body" style="left: 60%; bottom: 50%;">&lt/body&gt</p></div>
-					<div id="dragtag_html-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 40%; bottom: 30%;">&lthtml&gt</p></div>
-					
-					<div id="dragtag_head-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-head" style="left: 50%; top: 100%;">&lt/head&gt</p></div>
+					<div id="dragtag_head-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-head" style="left: 70%; top: 100%;">&lt/head&gt</p></div>
 					<div id="dragtag_body-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-body" style="left: 60%; bottom: 50%;">&ltbody&gt</p></div>
-					<div id="dragtag_html-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 60%; bottom: 50%;">&lt/html&gt</p></div>
+					<div id="dragtag_html-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 70%; bottom: 50%;">&lt/html&gt</p></div>
 					<div id="dragtag_head-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-head" style="left: 60%; bottom: 50%;">&lthead&gt</p></div>
-					<div id="dragtag_doctype" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-doctype" >&lt!DOCTYPE html&gt</p></div>
+					<div id="dragtag_doctype" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-doctype" style="left: 50%; bottom: 50%;">&lt!DOCTYPE html&gt</p></div>
 				
+								
 			</div>
 		</div>
     </div>
