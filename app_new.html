@@ -10,7 +10,6 @@
 	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
 	<script src="scripts/jquery.ui.touch-punch.min.js"></script>
-	<script src="scripts/jquery.pep.js"></script>
 </head>
 <script>
 
@@ -54,7 +53,7 @@ $("#qp_generate").click(function(){
 </script>
 <script>
         $(function() {
-          
+          $("#dragtag_html-open" ).draggable( );
 		  $("#dragtag_html-close" ).draggable( );
 		  $("#dragtag_head-open" ).draggable( );
 		  $("#dragtag_head-close" ).draggable( );
@@ -64,11 +63,7 @@ $("#qp_generate").click(function(){
 		  event.preventDefault(); 
         });
 		
-		 jQuery(function($) {
-			// pep is super simple...but there are wayyy
-			// more options doc'd on github.
-			$('#dragtag_html-open').pep(); 
-		});
+		
        
 </script>
 <style>
