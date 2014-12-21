@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="scripts/jquery.ui.touch-punch.min.js"></script>
 </head>
 <script>
 
@@ -48,8 +50,71 @@ $("#qp_generate").click(function(){
     });
 
 }); 
-
 </script>
+<script>
+        $(function() {
+          $("#dragtag_html-open" ).draggable( );
+		  $("#dragtag_html-close" ).draggable( );
+		  $("#dragtag_head-open" ).draggable( );
+		  $("#dragtag_head-close" ).draggable( );
+		  $("#dragtag_body-open" ).draggable( );
+		  $("#dragtag_body-close" ).draggable(  );
+		  $("#dragtag_doctype" ).draggable( );
+        });
+       
+</script>
+<style>
+
+.containment-wrapper {
+	display: block;
+	background-color: white; 
+	width: 100%;
+	height: 100%;
+	border: 2px solid #ccc;
+	
+}
+
+.dragtag-doctype {
+	position: relative;
+	background-color: #fff; 
+	width: 150px;
+	border-style: solid;
+    border-width: medium;
+	border-color: red;
+	
+}
+
+.dragtag-html {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: blue;
+	
+}
+
+
+.dragtag-head {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: green;
+	
+}
+
+.dragtag-body {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: yellow;
+}
+
+</style>
 <body>
 
 <!-- //// MENU SCREEN //// --!>
@@ -63,6 +128,13 @@ $("#qp_generate").click(function(){
     	<div class="ui-grid-solo">
 			<div class="ui-block-a" style="text-align: center">
 				<h1>HTML Primer</h1>
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_interact" class="ui-btn ui-btn-inline ui-icon-action ui-btn-icon-left">Page Tutorial</a>
+				</div>
+			</div>
+			
 			
 			<div class="ui-grid-solo">
 				<div class="ui-block-a">
@@ -147,18 +219,27 @@ $("#qp_generate").click(function(){
 
 
 <!-- //// INTERACTIVE SCREEN //// --!>
-<div data-role="page" id="sc_interact" style="height: 50%">
+<div data-role="page" id="sc_interact">
 	
 	<div data-role="header">
 		<h1>Practice Basic HTML</h1>
 	</div>
    
     
-   <div data-role="main" class="ui-content">
+   <div data-role="main" class="ui-content" style="height: 350px;">
    
      	<div class="ui-grid-solo">
-			<div class="ui-block-a" style="text-align: center">
-						
+			<div class="ui-block-a" style="height: 325px; width: 50%;">
+				<div class="containment-wrapper">
+					<div id="dragtag_doctype" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-doctype" style="left: 40%; bottom: 10%;">&lt!DOCTYPE html&gt</p></div>
+					<div id="dragtag_body-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-body" style="left: 60%; bottom: 50%;">&lt/body&gt</p></div>
+					<div id="dragtag_html-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 40%; bottom: 30%;">&lthtml&gt</p></div>
+					
+					<div id="dragtag_head-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-head" style="left: 50%; top: 100%;">&lt/head&gt</p></div>
+					<div id="dragtag_body-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-body" style="left: 60%; bottom: 50%;">&ltbody&gt</p></div>
+					<div id="dragtag_html-close" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-html" style="left: 60%; bottom: 50%;">&lt/html&gt</p></div>
+					<div id="dragtag_head-open" class="ui-widget-content ui-draggable" style="text-align: center; position: relative;"><p class="dragtag-head" style="left: 60%; bottom: 50%;">&lthead&gt</p></div>
+				</div>
 			</div>
 		</div>
     </div>
