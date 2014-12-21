@@ -1,0 +1,135 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Interactive Tutorial</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="scripts/jquery.ui.touch-punch.min.js"></script>
+</head>
+<script>
+        $(function() {
+          $(".dragtag" ).draggable( );
+		  
+		  $("#droptag_htmlopen" ).droppable({ 
+			accept: "#htmlopen",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});			
+			
+		  $("#droptag_htmlclose" ).droppable({ 
+			accept: "#htmlclose",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+					
+		  $("#droptag_headopen" ).droppable({ 
+			accept: "#headopen",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+			 
+		  $("#droptag_headclose" ).droppable({ 
+			accept: "#headclose",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+			  
+		  $("#dragtag_bodyopen" ).droppable({ 
+			accept: "#bodyopen",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+	
+		  $("#dragtag_bodyclose" ).droppable({ 
+			accept: "#bodyclose",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+					
+		  $("#dragtag_doctype" ).droppable({ 
+			accept: "#doctype",
+			drop: function (event, ui) {
+					$(this).css("background-color", "lightgreen")
+				}
+			});		
+				
+		  event.preventDefault(); 
+        });
+		
+		
+       
+</script>
+<style>
+
+.droptag_doctypes, .droptag_htmlopens, droptag_htmlcloses, .droptag_headopens, .droptag_headcloses, .droptag_bodyopens, .droptag_bodycloses {
+	position: absolute;
+	background-color: white;
+	width: 200px;
+	height: 32px;
+	padding: 0.5em;
+	float: right;
+	font-size: 12px;
+
+}
+
+.dragtag-doctype {
+	position: relative;
+	background-color: #fff; 
+	width: 150px;
+	border-style: solid;
+    border-width: medium;
+	border-color: red;
+	
+}
+
+.dragtag-htmlopen, .dragtag-htmlclose {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: blue;
+	
+}
+
+
+.dragtag-headopen, .dragtag-headclose {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: green;
+	
+}
+
+
+.dragtag-bodyopen, .dragtag-bodyclose {
+	position: relative;
+	background-color: #fff; 
+	width: 100px;
+	border-style: solid;
+    border-width: medium;
+	border-color: yellow;
+}
+
+</style>
+<body>
+	<div id="droptag_doctype" class="droptag_doctypes" style="top: 50px;"><p>Place the Document Type Tag here</p></div>
+	<div id="droptag_htmlopen" class="droptag_htmlopens" style="top: 100px;"><p>Place HTML open tag here</p></div>
+	<div id="droptag_headopen" class="droptag_headopens" style="top: 150px;"><p>Place Head open tag here</p></div>
+	<div id="droptag_headclose" class="droptag_headcloses" style="top: 200px;"><p>Place Head close tag here</p></div>
+	<div id="droptag_bodyopen" class="droptag_bodyopens" style="top: 250px;"><p>Place Body open tag here</p></div>
+	<div id="droptag_bodyclose" class="droptag_bodycloses" style="top: 300px;"><p>Place Body close tag here</p></div>
+					
+	<div id="htmlopen" class="dragtag">html</div>   
+</body>
+</html>
