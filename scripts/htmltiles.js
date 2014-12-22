@@ -3,9 +3,7 @@
 	
     $(function() {
 	
-	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = true;
-	var showalert = true;
-	var FPS = 30;
+	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = false;
 	
         $(".tag-block").draggable();
 		 $("#headopen_slot").droppable({
@@ -152,13 +150,4 @@
             }
         });
 		
-		setInterval( function () {
-			if (heado && headc && htmlo && htmlc && bodyo && bodyc && doct && titleo && titlec && parao && parac && showalert) {
-				showalert = false;
-				alert("Great job!");
-				
-			}
-		});
-				
-		
-    });
+	});
