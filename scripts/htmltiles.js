@@ -3,7 +3,7 @@
 	
     $(function() {
 	
-	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = false;
+	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = true;
 	var showalert = true;
 	var FPS = 30;
 	
@@ -154,8 +154,9 @@
 		
 		setInterval( function () {
 			if (heado && headc && htmlo && htmlc && bodyo && bodyc && doct && titleo && titlec && parao && parac && showalert) {
-				alert("Great job!");
 				showalert = false;
+				alert("Great job!");
+				
 			}
 		});
 				
