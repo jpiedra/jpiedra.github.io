@@ -54,6 +54,94 @@ $("#qp_generate").click(function(){
 <script>
     $(function() {
         $(".tag-block").draggable();
+		 $("#headopen_slot").droppable({
+            accept: "#headopen",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+        $("#headclose_slot").droppable({
+            accept: "#headclose",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+		$("#titleopen_slot").droppable({
+            accept: "#titleopen",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+        $("#titleclose_slot").droppable({
+            accept: "#titleclose",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+		$("#paraopen_slot").droppable({
+            accept: "#paraopen",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+        $("#paraclose_slot").droppable({
+            accept: "#paraclose",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+		$("#bodyopen_slot").droppable({
+            accept: "#bodyopen",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
+        $("#bodyclose_slot").droppable({
+            accept: "#bodyclose",
+            drop: function(event, ui) {
+                $(this).css("background-color", "white")
+				$(this).css("color", "white")
+            },
+            out: function(event, ui) {
+                $(this).css("background-color", "")
+				$(this).css("color", "black")
+            }
+        });
         $("#htmlopen_slot").droppable({
             accept: "#htmlopen",
             drop: function(event, ui) {
@@ -263,16 +351,62 @@ $("#qp_generate").click(function(){
 						</td>
 					</tr>
 					<tr>
-						<td>3</td>
+						<td>
+							<div style="float:left;">
+								<div id="headopen_slot" class="tag-slot">Place the Head Opening Tag here</div>
+								<div id="infoheadopen"></div>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>4</td>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="titleopen_slot" class="tag-slot">Place the Title Opening Tag here</div>
+								<div id="infotitleopen"></div>
+							</div>
+							
+							<div style="float:left;margin-left:150px;">
+								<div id="titleclose_slot" class="tag-slot">Place the Title Closing Tag here</div>
+								<div id="infotitleclose"></div>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>5</td>
+						<td>
+							<div style="float:left;">
+								<div id="headclose_slot" class="tag-slot">Place the Head Closing Tag here</div>
+								<div id="infoheadclose"></div>
+							</div>
+						</td>
 					</tr>
 					<tr>
-						<td>6</td>
+						<td>
+							<div style="float:left;">
+								<div id="bodyopen_slot" class="tag-slot">Place the Body Opening Tag here</div>
+								<div id="infobodyopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="paraopen_slot" class="tag-slot">Place a Paragraph Opening Tag here</div>
+								<div id="infoparaopen"></div>
+							</div>
+							
+							<div style="float:left;margin-left:150px;">
+								<div id="paraclose_slot" class="tag-slot">Place a Paragraph Closing Tag here</div>
+								<div id="infoparaclose"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="bodyclose_slot" class="tag-slot">Place the Body Closing Tag here</div>
+								<div id="infobodyclose"></div>
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -284,18 +418,50 @@ $("#qp_generate").click(function(){
 					</tr>
 				</tbody>
 			</table>
-			<br>
-			<br>
-			<br>
-			
-			<div style="float: left">
-				<div id="htmlopen" class="tag-block">&lthtml&gt</div>
-			</div>
+		
 			<div style="float: left">
 				<div id="htmlclose" class="tag-block">&lt/html&gt</div>
 			</div>
+			
+			<div style="float: left">
+				<div id="bodyclose" class="tag-block">&lt/body&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="titleopen" class="tag-block">&lttitle&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="paraclose" class="tag-block">&lt/p&gt</div>
+			</div>
+			
+			
+			<div style="float: left">
+				<div id="headopen" class="tag-block">&lthead&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="bodyopen" class="tag-block">&ltbody&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="paraopen" class="tag-block">&ltp&gt</div>
+			</div>
+			
 			<div style="float: left">
 				<div id="doctype" class="tag-block">&lt!DOCTYPE html&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="headclose" class="tag-block">&lt/head&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="titleclose" class="tag-block">&lt/title&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="htmlopen" class="tag-block">&lthtml&gt</div>
 			</div>
 	
 			
