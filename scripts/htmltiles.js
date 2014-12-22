@@ -1,6 +1,7 @@
 
 	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = false;
-
+	var FPS = 30;
+	
     $(function() {
         $(".tag-block").draggable();
 		 $("#headopen_slot").droppable({
@@ -146,4 +147,11 @@
 				doct = false;
             }
         });
+		
+		setInterval(function() {
+				if (heado && headc && htmlo && htmlc && bodyo && bodyc && doct && titleo && titlec && parao && parac) {
+						alert("Great job!);
+					}
+				}, 1000/FPS);
+		
     });
