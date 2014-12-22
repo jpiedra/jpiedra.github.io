@@ -1,9 +1,7 @@
 
-	
-	
-    $(function() {
-	
 	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = false;
+	
+	$(function() {
 	
         $(".tag-block").draggable();
 		 $("#headopen_slot").droppable({
