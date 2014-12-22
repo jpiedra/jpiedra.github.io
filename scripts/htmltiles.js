@@ -1,5 +1,6 @@
 
 	var heado, headc, htmlo, htmlc, bodyo, bodyc, doct, titleo, titlec, parao, parac = false;
+	var showalert = true;
 	var FPS = 30;
 	
     $(function() {
@@ -151,6 +152,7 @@
 		setInterval(function() {
 				if (heado && headc && htmlo && htmlc && bodyo && bodyc && doct && titleo && titlec && parao && parac) {
 						alert("Great job!");
+						if (showalert) showalert = false;
 					}
 				}, 1000/FPS);
 		
