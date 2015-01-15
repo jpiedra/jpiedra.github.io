@@ -7,10 +7,8 @@ encoding: UTF-8
 permalink: /:year/:month/:title/
 owner:
     name: #
-    twitter: #
     github: #
-    disqus_shortname: #
-    
+        
 ga_id: #
 ga_username: #
         
