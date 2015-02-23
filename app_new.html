@@ -1,0 +1,488 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>HTML Primer and Quiz</title>
+	<link rel="stylesheet" href="themes/MyAppTheme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile.structure-1.4.3.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	<script src="scripts/jquery.ui.touch-punch.min.js"></script>
+	<script src="scripts/htmlquiz.js"></script>
+	<script src="scripts/htmltiles.js"></script>
+</head>
+<style type="text/css">
+    .tag-block {
+        width: 150px;
+        height: auto;
+        border: 1px solid black;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        text-align: center;
+        line-height: 25px;
+        float: left;
+        background-color: lightblue;
+        cursor: pointer;
+    }
+    
+    .tag-slot {
+        width: auto;
+        height: auto;
+        border: 1px dotted gray;
+        text-align: center;
+        line-height: 25px;
+        float: left;
+        background-color: lightgray;
+		font-size: 10px;
+    }
+
+	tr {
+		background-color: #fff;
+	}
+
+</style>
+<body>
+
+<!-- //// MENU SCREEN //// --!>
+<div data-role="page" id="sc_menu" style="height: 50%">
+   
+    <div data-role="header">
+		<h1>Main Menu</h1>
+	</div>
+   
+   <div data-role="main" class="ui-content">
+    	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="text-align: center">
+				<h1>HTML Primer</h1>
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_interact" class="ui-btn ui-btn-inline ui-icon-action ui-btn-icon-left">Page Tutorial</a>
+				</div>
+			</div>
+			
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_start" class="ui-btn ui-btn-inline ui-icon-check ui-btn-icon-left">Tag Quiz</a>
+				</div>
+			</div>
+			
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_links" class="ui-btn ui-btn-inline ui-icon-bullets ui-btn-icon-left">Online Guides</a>
+				</div>
+			</div>
+
+			<div class="ui-grid-solo">
+				<div class="ui-block-a">
+					<a href="#sc_about" data-transition="fade" class="ui-btn ui-btn-inline ui-icon-user ui-btn-icon-left">About</a>
+				</div>
+			</div>			
+			
+			</div>
+		</div>
+        
+		
+	
+    </div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// MENU SCREEN ENDS //// --!>
+
+<!-- //// ABOUT SCREEN //// --!>
+<div data-role="page" id="sc_about" style="height: 50%">
+	
+	<div data-role="header">
+		<h1>About</h1>
+	</div>
+   
+    
+   <div data-role="main" class="ui-content">
+    
+     	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="text-align: center">
+				<h1>On the Author:</h1>
+				<p>HTML Primer is an app designed and written by Jonathan Piedra, a student at Brooklyn College.</p> 
+				<p>Jonathan is a Classics major, and a Computer Science minor; his concentration is on multimedia design.</p>
+				<p>To learn more about the author, <a href="http://jpiedra.github.io" rel="external">visit his homepage.</a></p>
+   			</div>	
+			
+			<div class="ui-block-a" style="text-align: center">
+				<h1>On the App, References and Acknowledgements:</h1>
+				<p>This is a mobile-first app designed to develop familiarity with HTML elements and their uses.</p> 
+				<p><b>Material from several online resources was used, modified and consulted in its creation:</b></p>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" rel="external">HTML Element reference</a> by <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element$history" rel="external">Mozilla Contributors</a> is licensed under <a href="http://creativecommons.org/licenses/by-sa/2.5/" rel="external">CC-BY-SA 2.5</a></p>
+				<p><b>The follow two pages were created by, and are the property of World Wide Web Consortium (W3C), and are linked to elsewhere in this app as resources for the user to consult:</b></p>
+				<p><a href="http://www.w3.org/TR/html5/" rel="external">HTML5</a> and
+				<a href="http://www.w3.org/Style/Examples/011/firstcss" rel="external">Starting with HTML+CSS</a></p>
+				<p><b>The Page Tutorial drag-and-drop section makes use of a library called <a href="http://touchpunch.furf.com/" rel="external">jQuery UI Touch Punch.</a></p></b></p>
+   			</div>	
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<p></p>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// ABOUT SCREEN ENDS //// --!>
+
+<!-- //// INTERACTIVE FIRST SCREEN //// --!>
+<div data-role="page" id="sc_interact" style="height: 50%">
+	
+	<div data-role="header">
+		<h1>Basic HTML Page</h1>
+	</div>
+   
+    
+   <div data-role="main" class="ui-content">
+    
+     	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="text-align: center">
+				<h1>What's in a basic HTML5 page?</h1>
+				<p>The building block of all webpages made with HTML are <b>tags.</b></p> 
+				<p>Tags serve different purposes - they can be used to add text to a page, such as the text you're reading now.</p> 
+				<p>You'll have the chance to learn about many different tags when taking the Tag Quiz at the main menu.</p> 
+				<p>For now, though, the focus will be on some basic tags that allow you to specify your page's text, as well as the page title, and the general structure of the HTML5 page.</p> 
+   			</div>	
+			
+			<div class="ui-block-a" style="text-align: center">
+				<h1>How Tags Work</h1>
+				<p>Most tags you will use or encounter follow these same rules: they will come in a pair of two, the <b>opening tag</b>, and the <b>closing tag</b>.</p> 
+				<p>All tags, though, will consist of the <b>name</b> of that tag, and two <b>angle brackets</b> surrounding that name. Here's an example:<p>
+				<h3 style="color: blue;">&lttitle&gt My Page Title &lt/title&gt</h3>
+				<p>The name of the tag, which is 'title', indicates the Title tag, used to give a title to your page which will appear on your browser's tab and elsewhere. Some tags make use of text; in this case, 'My Page Title' would become the title of the page when viewed.<p>
+				<p>You can tell which of the two tags is the closing tag, as the closing tag in a pair will always start with a <b>forward slash symbol ( / )</b>.<p>
+				<h1>HTML5 Page Structure</h1>
+				<p>Now that you know how tags work, click 'Begin' on the bottom right of this screen to observe the general structure of a basic HTML5 page. You'll be able to drag and drop the tag blocks into their respective places to see how certain tags fit together.</p> 
+			</div>	
+
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<a href="#sc_interact_b" class="ui-btn ui-btn-inline ui-icon-arrow-r ui-btn-icon-left">Begin</a>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// INTERACTIVE FIRST SCREEN ENDS //// --!>
+
+
+<!-- //// INTERACTIVE SECOND SCREEN //// --!>
+<div data-role="page" id="sc_interact_b">
+	
+	<div data-role="header">
+		<h1>Practice Basic HTML</h1>
+	</div>
+   
+    
+   <div data-role="main" class="ui-content" style="height: 450px;">
+   
+     	<div class="ui-grid-solo">
+			<div class="ui-block-a" style="height: 425px;">
+				
+			<table data-role="table"  class="ui-responsive ui-shadow" id="myTable">
+				<thead>
+					<tr>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="doctype_slot" class="tag-slot">Place the Document Type tag here</div>
+								<div id="infodoctype"></div>
+							</div>
+						</td>
+         			</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="htmlopen_slot" class="tag-slot">Place the HTML Opening Tag here</div>
+								<div id="infohtmlopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="headopen_slot" class="tag-slot">Place the Head Opening Tag here</div>
+								<div id="infoheadopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="titleopen_slot" class="tag-slot">Place the Title Opening Tag here</div>
+								<div id="infotitleopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p style="float:left;margin-left:100px; font-size: 12px;">My First HTML5 Page</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="titleclose_slot" class="tag-slot">Place the Title Closing Tag here</div>
+								<div id="infotitleclose"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="headclose_slot" class="tag-slot">Place the Head Closing Tag here</div>
+								<div id="infoheadclose"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="bodyopen_slot" class="tag-slot">Place the Body Opening Tag here</div>
+								<div id="infobodyopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="paraopen_slot" class="tag-slot">Place a Paragraph Opening Tag here</div>
+								<div id="infoparaopen"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p style="float:left;margin-left:100px; font-size: 12px;">This is a very simple HTML5 page</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;margin-left:50px;">
+								<div id="paraclose_slot" class="tag-slot">Place a Paragraph Closing Tag here</div>
+								<div id="infoparaclose"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="bodyclose_slot" class="tag-slot">Place the Body Closing Tag here</div>
+								<div id="infobodyclose"></div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="float:left;">
+								<div id="htmlclose_slot" class="tag-slot">Place the HTML Closing Tag here</div>
+								<div id="infohtmlclose"></div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		
+			<div style="float: left">
+				<div id="htmlclose" class="tag-block">&lt/html&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="bodyclose" class="tag-block">&lt/body&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="titleopen" class="tag-block">&lttitle&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="paraclose" class="tag-block">&lt/p&gt</div>
+			</div>
+			
+			
+			<div style="float: left">
+				<div id="headopen" class="tag-block">&lthead&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="bodyopen" class="tag-block">&ltbody&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="paraopen" class="tag-block">&ltp&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="doctype" class="tag-block">&lt!DOCTYPE html&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="headclose" class="tag-block">&lt/head&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="titleclose" class="tag-block">&lt/title&gt</div>
+			</div>
+			
+			<div style="float: left">
+				<div id="htmlopen" class="tag-block">&lthtml&gt</div>
+			</div>
+	
+			
+			</div>
+		</div>
+    </div>
+	
+	<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<p></p>
+				</div>
+			</div>
+	
+
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// INTERACTIVE SECOND SCREEN ENDS //// --!>
+
+<!-- //// QUESTION SCREEN BEGINS //// --!>
+<div data-role="page" id="sc_start" data-theme="b" style="height: 50%" id="page">
+
+	<div data-role="header">
+		<h1>Element Quiz</h1>
+	</div>	
+ 
+
+	<div class="ui-grid-b">
+		<div class="ui-block-a" style="text-align: left">
+			<p></p>
+		</div>
+		<div class="ui-block-b" style="text-align: center">
+			<p></p>
+		</div>
+		<div class="ui-block-c" style="text-align: right">
+			<p></P>
+		</div>
+	</div>
+  
+
+  	<div data-role="content">
+    	<div data-role="content" id="qp_question"> 
+          
+    	</div>
+    	<div data-role="collapsibleset" id="qp_answers"> 
+    
+    	</div>
+  	</div>
+	
+	<div class="ui-grid-b">
+		<div class="ui-block-a" style="text-align: left">
+			<a href="#sc_menu" data-transition="fade" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left">Menu</a>
+		</div>
+		<div class="ui-block-b" style="text-align: center">
+			<input type="button" value="Next" id="qp_generate">
+		</div>
+		<div class="ui-block-c" style="text-align: right">
+			<p></p>
+		</div>
+    </div>
+	
+    <div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+    </div>
+
+</div>
+
+<!-- //// LINKS SCREEN //// --!>
+<div data-role="page" id="sc_links" style="height: 50%">
+    
+	<div data-role="header">
+		<h1>Instructional Links</h1>
+	</div>	
+	
+	<div class="ui-grid-solo">
+	
+			<div class="ui-block-a" style="text-align: center">
+				<h1>Click the links below for further information on HTML/CSS</h1>
+				<h4>World Wide Web Consortium (W3C)</h4>
+				<p><a href="http://www.w3.org/TR/html5/" rel="external">W3C HTML5 Complete Reference</a></p>
+				<p><a href="http://www.w3.org/Style/Examples/011/firstcss" rel="external">W3C CSS Tutorial</a></p>
+			</div>
+			<br>
+			<div class="ui-block-a" style="text-align: center">
+				<h4>Mozilla Developer Network</h4>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" rel="external">HTML Homepage</a></p>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Introduction" rel="external">Introduction to HTML, an explanatory site covering its history and related concepts</a></p>
+			</div>
+			
+			
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="#" class="ui-btn ui-btn-inline ui-icon-arrow-l ui-btn-icon-left" data-rel="back">Back</a>
+				</div>
+				<div class="ui-block-b">
+					<p></p>
+				</div>
+				<div class="ui-block-c" style="text-align: right">
+					<p></p>
+				</div>
+			</div>
+			
+			
+	</div>
+	
+	<div data-role="footer">
+		<h1>Made with jQuery mobile by Jonathan Piedra</h1>
+	</div>
+    
+</div>
+<!-- //// LINKS SCREEN ENDS //// --!>
+
+<!-- //// QUESTION SCREEN ENDS //// --!>	
+
+</body>
+</html>
