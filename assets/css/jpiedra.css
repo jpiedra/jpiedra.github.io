@@ -82,6 +82,16 @@ p {
      width:100%;
 }
 
+.jumbotron {
+	style:"font-family: Montserrat; 
+	color: white; 
+	text-align: center; 
+	height: 330px; 
+	background-image: url('assets/images/banner_b.jpg'); 
+	background-size: 100% 100%; 
+	background-repeat: no-repeat"
+}
+
 @media screen and (max-width: 300px) {
     .banner_h1 {
         font-size: 12px;
