@@ -83,10 +83,10 @@ p {
 }
 
 @media screen and (max-width: 300px) {
-    #banner_h1 {
+    .banner_h1 {
         font-size: 12px;
     }
-	#banner_h3 {
+	.banner_h3 {
         font-size: 10px;
     }
 }
