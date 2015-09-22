@@ -2,16 +2,22 @@
 layout: jpiedra
 title: Home
 ---
-<div class="jumbotron" style="font-family: Montserrat; color: white; text-align: center; height: 430px; background-size: cover; background-position: center; background-image: url('assets/images/banner_c.jpg'); background-repeat: no-repeat">
-	<div class="container">
-		<br>
-    			<h1>Jonathan Piedra</h1>
-    		<br>
-    		<h2>frequent coding, infrequent blogging</h2>
-  	</div>
+<div class="jumbotron" style="font-family: Montserrat; color: white; text-align: center; height: 430px; background-size: cover; background-position: center; background-image: url('assets/images/banner_c.jpg'); background-repeat: no-repeat; margin-bottom: 0px">
+	<br>
+	<h1>Jonathan Piedra</h1>
+	<br>
+	<h2>frequent coding, infrequent blogging</h2>
 </div>
 
+<div class="btn-group btn-group-justified">		
+	{% for tag in site.static_tags %}
+		<a href="{{ site.url }}/tags/{{ tag }}/index.html" class="btn btn-danger" role="button" style="border-radius: 0px;">{{ tag | capitalize }}</a>
+	{% endfor %}
+</div>	
+
+
 <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
+	</br>
 	<div class="row" style="font-weight: bold; font-size: 20px">
 		{% for post in site.posts %}
 		    	{% if post.archive == false %}		
@@ -21,8 +27,18 @@ title: Home
 						{{ post.date |  date_to_string }}
   					</div>
   					<div class="panel-body">
-    						<p>{{post.excerpt}}<a href="{{ post.url | prepend: site.url }}">[more...]</a></p>
-  					</div>
+    						<h3>{{post.excerpt | remove: '<p>' | remove: '</p>' }}<a href="{{ post.url | prepend: site.url }}">[more...]</a></h3>
+
+					</br>
+						<b>Tags: </b>
+						{% for tag in post.tags %}
+							{% if forloop.last %}
+							<a href="{{ site.url }}/tags/{{ tag }}/index.html">{{ tag }}</a>
+							{% else %}
+							<a href="{{ site.url }}/tags/{{ tag }}/index.html">{{ tag }}, </a>
+							{% endif %}
+						{% endfor %}
+  					</div>					
 				</div>
 		    	{% endif %}
 		{% endfor %}
