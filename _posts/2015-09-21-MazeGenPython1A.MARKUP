@@ -53,7 +53,7 @@ tup = ('Jon', 'Piedra')
 >>> tup = ('Jon','Piedra')
 >>> tup[0] = 'Johny'
 Traceback (most recent call last):
-  File "stdin", line 1, in <module>
+  File "&ltstdin&gt", line 1, in <module>
 TypeError: 'tuple' object does not support item assignment
 </pre>
 <p>Alas, some things will never be. Anyway, if you need a mutable object, use a list or dictionary. As we'll see in later posts/examples, though, tuples do have their uses. We don't always need mutable objects, and we may come across cases where the values we need to choose from in some sort of algorithm are fixed and unchanging throughout runtime - in such cases, tuples are just the thing.</p>
@@ -68,5 +68,4 @@ TypeError: 'tuple' object does not support item assignment
 
 <p>Fortunately, there's a variety of maze generation algorithms out there (and likely the projects of others who have implemented these) to address such a need. But, as is often the case with programming, sometimes it's more fun to roll your own; implementing a maze algorithm in the language of your choice is a great learning exercise. <a href="http://www.jamisbuck.org/presentations/rubyconf2011">But don't just take my word for it.</a></p>
 
-
-<script src="https://gist.github.com/jpiedra/f4b5d648b071b17bc303.js"></script>
+<!--<script src="https://gist.github.com/jpiedra/f4b5d648b071b17bc303.js"></script>-->
