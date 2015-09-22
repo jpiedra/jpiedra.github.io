@@ -1,13 +1,19 @@
 name: Jonathan Piedra - 
 markdown: redcarpet
 encoding: UTF-8
-
-
+static_tags:
+    - python
+    - maze
+    - unrealscript
+    - c
+    - pygame
+    - sockets
+    - assembler
 
 permalink: /:year/:month/:title/
 owner:
-    name: #
-    github: #
+    name: Jonathan Piedra
+    github: jpiedra
         
 ga_id: #
 ga_username: #

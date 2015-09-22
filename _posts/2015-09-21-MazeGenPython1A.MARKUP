@@ -1,0 +1,71 @@
+---
+layout: post
+title: Maze generation with Python -- Prelude
+date: 2015-09-21
+comments: true
+archive: false
+author: Jonathan Piedra
+tags: python maze
+---
+<p>In the spirit of learning a new language through developing projects, I recently revisted an old game I made to see what I could improve. It turns out, in contrast to the language used previously, that Python is well-suited for writing compact, efficient code in the context of a simple maze generation module. This post aims to serve as an introduction to Python's basic features; it will also discuss built-in data structures that will prove very helpful towards creating maze generation algorithms.</p>
+
+<p><a href="https://www.python.org">Python</a> is an interactive programming language designed by Guido van Rossum, and has been on the scene since 1991. It boasts a variety of useful, built-in data structures, as well as a comprehensive approach to introspection - anything you create in Python is an object with many useful methods for retreving documentation, modifying contents, and more.</p>
+
+<h1>Installation</h1>
+<p>For Windows users, various installers are available depending on the version you require. For Linux users, depending on your Linux distribution, you should be able to install Python manually through the command line using Advanced Packaging Tool: <code>sudo apt-get install python</code></p>
+<p>And if you want a specific Python version or library, you'll also be able to search through related files by running: <code>sudo apt-cache search python</code> and then installing whatever you require.</p>
+
+
+<h1>Example 1: Some Primitive Types</h1>
+<p>Here's a small code snippet to demonstrate some of Python's syntax and features:</p>
+<pre>
+#This is a comment; below is a Dictionary
+dict = {'first':1, 'second':2, 'third':3}
+
+#Create and initialize a List using Python's range() method
+li = [v for v in range(0, 10)]
+
+#A Tuple cannot be changed once it is created
+tup = ('Jon', 'Piedra')
+</pre>
+<p>Using your terminal, running <code>python</code> will open Python's interactive command line, where you have access to Python's runtime environment until you close out of this session (Ctrl+D). This is very useful for getting a quick feel for Python's features, and - as we'll see later - running tests on more fleshed-out programs. (Another useful keyboard shortcut is Ctrl+L, which will clear the current terminal by erasing the input/output of previous commands. These shortcuts are for your terminal in general, not just Python!)</p>
+
+<p>Now, after entering the Python terminal, enter all the non-comment statements (anything that doesn't begin with the # symbol). You won't get any output; that's fine. We are simply creating some primitive types and initializing their contents. Next, we'll see what the results of these statements are.</p>
+
+<ul>
+<li>
+<p><code>dict = {'first':1, 'second':2, 'third':3}</code> creates a dictionary. Dictionaries are associative arrays, so where we might normally expect to obtain an array's value by its numeric index (myArray[0]), we instead have several ways of accessing dictionary contents. One of the more immediate ways of doing this is through using the <b>key</b> of a desire element as the index; in a dictionary, every element is a pair consisting of one key (left-hand item) and a value (right-hand item) seperated by a colon ':' character.</p>
+<p>Run <code>print dict['first']</code> to print out the <b>value</b> that the key 'first' references.</p>
+<p>Dictionaries in Python are mutable, which is just a way of saying we can change the value a key refers to even after we initialize it to something. Enter <code>dict['second']=222</code>, then follow that by entering <code>print dict['second']</code> to see that, indeed, the contents of dict['second'] were changed from their former value of 2 to a new value, 222.</p>
+</li>
+
+<li>
+<p><code>li = [v for v in range(0, 10)]</code> creates a list. Lists in Python are closer to arrays in languages like C++, C, Java, etc. However, there are some useful things we can do with lists in Python that make standard operations like initializing lists a bit easier. For example: in this statement, we're actually using a Python method - <code>range(start, stop[, step])</code> - to populate our list in a single expression embedded within the array subscript operators ([ ]), rather than relying on a for-loop to do the same thing.</p>
+<p>The statement <code>v for v in range(0, 10)</code> causes a list to be returned, containing all the integers in the range from (and including) 0 up to (excluding) 10. This resulting list is what is assigned the variable name <b>li</b>. You may have noticed a third argument in the definition of the function above, the <b>[, step]</b> argument. This argument will modify the output we get based on the first two argument, returning every Nth element rather than every consecutive one. Try typing: <code>liB = [x for x in range(0, 10, 2)]</code>, then <code>print liB</code> to see what the step argument does first-hand.</p>
+<p>Run <code>print dict['first']</code> to print out the <b>value</b> that the key 'first' references.</p>
+<p>Lists are also mutable, and changing the contents of a list element is easy enough. Just use the index of the desired element you want to change, and assign that element a new value. By the way: the value doesn't have to be an intger. Lists can store variables of different data types, so <code>li[0] = 'String'</code> will cause the first element to hold a String.</p>
+</li>
+
+
+<li>
+<p><code>tup = ('Jon', 'Piedra')</code> creates a tuple. A tuple is an immutable collection; once you initialize a tuple, you cannot change that tuple's contents afterwards. Doing so will cause Python to become rather upset with you, even if I all want to do is be a bit more informal with you:</p>
+<pre>
+>>> tup = ('Jon','Piedra')
+>>> tup[0] = 'Johny'
+Traceback (most recent call last):
+  File "&ltstdin&gt", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+</pre>
+<p>Alas, some things will never be. Anyway, if you need a mutable object, use a list or dictionary. As we'll see in later posts/examples, though, tuples do have their uses. We don't always need mutable objects, and we may come across cases where the values we need to choose from in some sort of algorithm are fixed and unchanging throughout runtime - in such cases, tuples are just the thing.</p>
+<p>Tuples are collections of values, not key/value pairs. For this reason, the list-like indexing operator is used to access a value inside a tuple. As in C-like language, tuples/lists are zero-indexed, so <code>print tup[0]</code> will cause 'Jon' to print out to the terminal.</p>
+</li>
+</ul>
+
+<p>These are some of the basic data structures Python offers. Of course, Python includes other primitive data types like integers, floating point numbers, and others that experienced programmers would expect. Python also uses a versatile object-oriented system, which will be discussed in the next post, where we get around to creating a simple object for maze generation.</p>
+
+<h1>Something Old, Something New</h1>
+<p>Speaking of mazes, let's talk about the old project I mentioned earlier. I create an extremely basic, MEAN stack website that hosted a game written in JavaScript. The game was a small maze crawler that would load levels stored in a MongoDB database instance, and use these level layouts to generate a random level on the fly. Some things worked well; others didn't. Among these, the idea of having a database store level blueprints was interesting at the time (and, more importantly, gave me an excuse to learn and mess around with MongoDB), but it became clear that having an alternate option - perhaps if the instance went offline - for level creation would be advantageous.</p>
+
+<p>Fortunately, there's a variety of maze generation algorithms out there (and likely the projects of others who have implemented these) to address such a need. But, as is often the case with programming, sometimes it's more fun to roll your own; implementing a maze algorithm in the language of your choice is a great learning exercise. <a href="http://www.jamisbuck.org/presentations/rubyconf2011">But don't just take my word for it.</a></p>
+
+<!--<script src="https://gist.github.com/jpiedra/f4b5d648b071b17bc303.js"></script>-->
