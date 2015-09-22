@@ -1,18 +1,17 @@
 ---
-layout: default
+layout: jpiedra
 ---
-<div class="col-sm-12">
-    <div class="page">
+<div class="container-fluid" style="padding-left: 20%; padding-right: 20%">
     	<div>
-    		{{ page.title }}
-    		<div class="meta">    			
-                {% if site.owner.name %}
-                By {{site.owner.name}},
-                {% endif %}
-    		</div>
+    		<div class="page-header">
+			<h1>{{ page.title }}</h1>
+		</div>
+		<div style="text-align:right">
+			<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}</h4>
+		</div>
     	</div>
-        <div class="page-content">
-            {{ content }}
-        </div>
-    </div>
+	</br>
+	<div>
+	    {{ content }}
+	</div>
 </div>

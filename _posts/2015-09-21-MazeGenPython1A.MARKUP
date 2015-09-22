@@ -1,0 +1,11 @@
+---
+layout: post
+title: Maze generation with Python, part 1
+date: 2015-09-21
+comments: true
+archive: false
+author: Jonathan Piedra
+---
+<p>In the spirit of learning a new language through developing projects, I recently revisted an old game I made to see what I could improve. It turns out, in contrast to the language used previously, that Python is well-suited for writing compact, efficient code in the context of a simple maze generation module. This post aims to serve as an introduction to writing basic maze-generating algorithms, as well as Python's features used towards this end.</p>
+
+<p>And this is where the rest of it goes.</p>

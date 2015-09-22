@@ -2,31 +2,29 @@
 layout: jpiedra
 title: Home
 ---
-<div class="jumbotron" style="font-family: Montserrat; color: white; text-align: center; height: 330px; background-image: url('assets/images/banner_b.jpg'); background-size: 100% 100%; background-repeat: no-repeat">
-	<br>
-	<h1>Hello, I'm Jonathan Piedra.</h1>
-	<h3>Brooklyn College graduate. Front and Back-end Web Developer. Pleased to meet you.</h3>
+<div class="jumbotron" style="font-family: Montserrat; color: white; text-align: center; height: 430px; background-size: cover; background-position: center; background-image: url('assets/images/banner_c.jpg'); background-repeat: no-repeat">
+	<div class="container">
+		<br>
+    			<h1>Jonathan Piedra</h1>
+    		<br>
+    		<h2>frequent coding, infrequent blogging</h2>
+  	</div>
 </div>
 
 <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
-
 	<div class="row" style="font-weight: bold; font-size: 20px">
 		{% for post in site.posts %}
-		    {% if post.archive == false %}
-		
-		        <div class="col-sm-8">
-		            <ul>
-		                <!--<li><time class="timeago meta" datetime="{{ post.date |  date: "%A %-d %B %Y" }}">{{ post.date }}</time>
-		                //<a class="meta pull-right comments-meta" href="{{ post.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a></li>-->
-		                <li><a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a></li>
-		            </ul>
-		        </div>
-		        <div class="col-sm-12">
-		            {{post.excerpt}}
-		        </div>
-		   
-		    {% endif %}
+		    	{% if post.archive == false %}		
+				<div class="panel panel-default">
+  					<div class="panel-heading">
+    						<a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a>:					
+						{{ post.date |  date_to_string }}
+  					</div>
+  					<div class="panel-body">
+    						<p>{{post.excerpt}}<a href="{{ post.url | prepend: site.url }}">[more...]</a></p>
+  					</div>
+				</div>
+		    	{% endif %}
 		{% endfor %}
 	</div>
-
 </div>

@@ -2,8 +2,6 @@ name: Jonathan Piedra -
 markdown: redcarpet
 encoding: UTF-8
 
-
-
 permalink: /:year/:month/:title/
 owner:
     name: #
