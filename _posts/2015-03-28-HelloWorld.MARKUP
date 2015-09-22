@@ -1,6 +1,10 @@
 ---
-title: This is my title
-layout: jpiedra
+layout: post
+title: Hello world
+date: 2014-03-27
+comments: true
+archive: false
 ---
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
 
-Here is my page.
+Totam quasi maxime quas repudiandae nam id temporibus, at et non officiis consectetur voluptate deserunt officia minima placeat tempore illum asperiores quo assumenda praesentium? Facilis libero error ratione doloribus debitis delectus asperior

@@ -10,34 +10,23 @@ title: Home
 
 <div class="container-fluid" style="padding-left: 10%; padding-right: 10%">
 
-	<div class="page-header" style="text-align: center">
-		<h1>About Me</h1>
-	</div>
-	<p>I graduated from Brooklyn College in 2014. My Bachelor's Degree consists of a minor in Computer Science, with a focus on Multimedia Design. In addition to a solid background in programming concepts and ideas, I continue every day to consume and apply new technologies and frameworks in web development. I enjoy the challenge - and reward - of mastering something new.</p>
-	
-	<div class="page-header" style="text-align: center">
-		<h1>Skills at a Glance</h1>
-	</div>
-	<p>I have worked with, or continue to use, the following in my work:<p>
 	<div class="row" style="font-weight: bold; font-size: 20px">
-		<div class="col-md-4" style="text-align: center">JavaScript</div>
-		<div class="col-md-4" style="text-align: center">C++</div>
-		<div class="col-md-4" style="text-align: center">Python</div>
+		{% for post in site.posts %}
+		    {% if post.archive == false %}
+		
+		        <div class="col-sm-8">
+		            <ul>
+		                <!--<li><time class="timeago meta" datetime="{{ post.date |  date: "%A %-d %B %Y" }}">{{ post.date }}</time>
+		                //<a class="meta pull-right comments-meta" href="{{ post.url | prepend: site.url }}#disqus_thread">0 <i class="fa fa-comments-o fa-lg"></i></a></li>-->
+		                <li><a href="{{ post.url | prepend: site.url }}">{{ post.title }}</a></li>
+		            </ul>
+		        </div>
+		        <div class="col-sm-12">
+		            {{post.excerpt}}
+		        </div>
+		   
+		    {% endif %}
+		{% endfor %}
 	</div>
-	<div class="row" style="font-weight: bold; font-size: 20px">
-		<div class="col-md-4" style="text-align: center">Node.js</div>
-		<div class="col-md-4" style="text-align: center">Express</div>
-		<div class="col-md-4" style="text-align: center">MongoDB</div>
-	</div>
-	<div class="row" style="font-weight: bold; font-size: 20px">
-		<div class="col-md-4" style="text-align: center">HTML5/CSS</div>
-		<div class="col-md-4" style="text-align: center">Git</div>
-		<div class="col-md-4" style="text-align: center">Heroku</div>
-	</div>
-	
-	<div class="page-header" style="text-align: center">
-		<h1>See More</h1>
-	</div>
-	<p>To learn more about the projects I've worked on, and those I am currently working on, <a href="{{site.url}}/projects.html">visit my projects page.</a> To view my Github page and other information, <a href="{{site.url}}/contact.html">consult my contact page.</a></p>
-	
+
 </div>
