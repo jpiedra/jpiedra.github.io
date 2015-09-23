@@ -68,4 +68,6 @@ TypeError: 'tuple' object does not support item assignment
 
 <p>Fortunately, there's a variety of maze generation algorithms out there (and likely the projects of others who have implemented these) to address such a need. But, as is often the case with programming, sometimes it's more fun to roll your own; implementing a maze algorithm in the language of your choice is a great learning exercise. <a href="http://www.jamisbuck.org/presentations/rubyconf2011">But don't just take my word for it.</a></p>
 
+
+
 <!--<script src="https://gist.github.com/jpiedra/f4b5d648b071b17bc303.js"></script>-->
