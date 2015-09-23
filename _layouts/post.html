@@ -2,13 +2,9 @@
 layout: jpiedra
 ---
 <div class="container-fluid" style="padding-left: 20%; padding-right: 20%">
-    	<div>
-    		
-			<h1>{{ page.title }}</h1>
-		
-
-			<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}</h4>
-		
+    	<div class="page-header">
+  		<h1>{{ page.title }}</h1>
+		<h4 style="text-align:right">posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}</h4>
     	</div>
 	</br>
 	<div>
