@@ -10,4 +10,7 @@ layout: jpiedra
 		<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}<h4>
 	</div>	
 	</br>
+	<div>
+		{{ page.content | remove: '<p>' | remove: '</p>' }}
+	</div>
 </div>
