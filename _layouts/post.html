@@ -6,11 +6,27 @@ layout: jpiedra
 	<div class="page-header">	
 		<h1>{{ page.title }}</h1>
 	</div>
-	<div style="text-align: right">	
-		<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}<h4>
+	<div class="row">
+		<div class="col-md-4">
+			<h4>filed under:
+			{% for tag in page.tags %} 
+				{% if forloop.last %} 
+				<a href="{{ site.url }}/tags/{{ tag }}/index.html">{{ tag }}</a>
+				{% else %} 
+				<a href="{{ site.url }}/tags/{{ tag }}/index.html">{{ tag }},</a>
+				{% endif %} 
+			{% endfor %}
+			</h4> 
+		</div>
+		<div class="col-md-8" style="text-align: right">
+			<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}<h4>
+		</div>	
 	</div>	
 	</br>
-	<div>
-		{{ page.content | remove: '<p>' | remove: '</p>' }}
+	<div class="row">
+		<div class="col-md-10">
+			{{ page.content }}
+		</div>
+	<!-- add: | remove: '<p>' | remove: '</p>' ... to above statement for mobile quickfix, breaks paragraph spacing-->
 	</div>
 </div>

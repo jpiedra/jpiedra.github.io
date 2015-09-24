@@ -1,0 +1,117 @@
+---
+layout: post
+title: Maze generation with Python -- Part 1, A Grid-Creating Function
+date: 2015-09-23
+comments: true
+archive: false
+author: Jonathan Piedra
+tags: python maze
+---
+<p>Defining functions in Python is easy, if not a bit different from the process in C-like languages. The designer of a program has a few new things to learn as well as utilize towards this end. As we'll soon see, though, Python's approach can make for concise, readable and versatile functions.</p>
+
+<h1>Functions in Python</h1>
+<p>In Python, functions are defined using the <b>def</b> keyword, like so:</p>
+<pre>
+def myFunction(arg_a, arg_b=20):
+    print "Sum is: %s" % (arg_a + arg_b)
+    return
+</pre>
+<p>You can define such a function in your interactive Python terminal, by typing in the contents of each line and then pressing enter. Note, however, that you must indent (spaces or tabs, but only one of the two - and use the same number of spaces every line) <i>every</i> statement you wish to occur inside <b>myFunction</b>. Here's what your terminal might look like after you do this (I also call the function with a single parameter; I'll explain this later):
+<pre>
+>>> def myFunction(arg_a, arg_b=20):
+...     print "Sum is: %s" % (arg_a + arg_b)
+...     return
+... 
+>>> myFunction(30)
+Sum is: 50
+</pre>
+<p>On that blank line shown above, preceeded by '...', we don't enter anything characters or spaces, we just press the 'Enter' key. This tells the interactive terminal that we're done writing our function, and we return to the standard prompt - on my system, that's indicated by the presence of '>>>' characters.</p>
+<p>We now have a simple function that accepts one required argument, <b>arg_a</b>, and another optional argument, <b>arg_b</b>. Optional arguments, as their name suggests, don't always need to be supplied; if we just call <code>myFunction(30)</code>, the terminal won't flip out because the function we defined will simply provide the value 20 for arg_b if we don't pass one. However, we still need to provide something for the required argument, so we provide 30 when calling myFunction() as shown above.</p>
+<p>In most programming languages, function arguments are passed in the order that the function's prototype - the first line that begins with the <b>def</b> keyword - specifies. In Python, this is also the case, but we're not limited to that method. Thus, we could have also entered <code>myFunction(20,50)</code> in the terminal to assign the optional argument a value of 50. We also have the option of explicitly stating which arguments we want to supply; when we use this method, order doesn't matter because the function will refer to the names we wrote in the function call, and map the values after those names to the corresponding arguments in the function. Try entering <code>myFunction(arg_b=90, arg_a=10)</code> into your terminal:</p>
+<pre>
+>>> myFunction(arg_b=90, arg_a=10)
+Sum is: 100
+</pre>
+<p>The 'return' present at the end of this function is not strictly required. You can leave it out, and Python - by default - will just return from the function, returning 'None.'</p>
+<p>Python functions, unless otherwise specified, return 'None' by default. We could just as easily have specified an explicit return value: Intead of writing 'return' we could write 'return arg_a + arg_b' and then call our function like so:</p>
+<pre>
+>>> temp = myFunction(20)
+Sum is: 40
+>>> print temp
+40
+</pre>
+<p>Which assigns the return value from <code>myFunction(20)</code> to the variable <b>temp</b>.</p>
+<h1>Modules</h1>
+<p>Alright, so now we know how to define a basic function in Python, and can call the function. Our function has required arguments, as well as optional arguments set to default values. We know how to selectively supply arguments out of order, by using their names during a function call, and we can modify our function to return a value that we can then assign to a variable of our choosing.</p>
+<p>Wouldn't it be nice if we could just have our function in a separate file for later use, or for purposes of easier modification? After all, if we wanted to make changes to a function we define through the interactive shell, we would have to define it yet again, then indent for every statement we want to enter; this becomes tedious pretty fast.</p>
+<p>In Python, reusable code is typically made available through a <b>.py</b> extension file. Create a new text document in a directory of your choosing, with this extension - let's go with <b>SimpleModule.py</b>. Once you've created this file, open it up, and type this out in the file:</p>
+<pre>
+def myFunction(arg_a, arg_b=20):
+    print "Sum is: %s" % (arg_a + arg_b)
+    return arg_a + arg_b
+</pre>
+<p>Remember to use consistent indentation - if it's tabs, then a tab for every code block (code blocks are anything that follow a statement that ends with a colon ':' character). If you use spaces, know that most people agree on using four spaces for every code block.</p>
+<p>Okay, now that you're done typing that in just save the file. Afterwards, open your terminal and navigate to the directory you saved this file in. Run Python to get your interactive terminal, then enter <code>import SimpleModule</code> to cause Python to import your source code file as a module, for use in this shell session.</p>
+<p>Now, enter <code>var = SimpleModule.myFunction(11)</code> followed by <code>print var</code> and you should see this:</p>
+<pre>
+>>> import SimpleModule
+>>> var = SimpleModule.myFunction(11)
+Sum is: 31
+>>> print var
+31
+</pre>
+<p>As you can see, this is a more convenient means of writing and using functions, or really any objects/classes we define: stick it all in a file, then load the file as a module and call/construct/use what you need as a member of the module. That explains why we call <code>SimpleModule.myFunction(11)</code> as shown: because it's a function included in the SimpleModule Python source file. There's an even faster way of using code we define in a Python source file for tests, which I'll describe in a future post.</p>
+<h1>The Grid-Generating Python Function</h1>
+<p>Let's briefly revisit the JavaScript grid of coordinates discussed in the <a href="https://jpiedra.github.io/2015/09/MazeGenPython1A/">previous post.</a> As shown below, <code>mazeGraph.nodes[]</code> is a 2-dimensional array.</p>
+<pre>
+var mazeGraph = function() {
+	this.nodes = 			
+	[				//Outer List
+		[1,0,1,0,1,0,1,0,1,0,1,0], 	//Inner Lists
+		[0,0,0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,0,1,0,1,0,1,0,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,0,1,0,1,0,1,0,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,0,1,0,1,0,1,0,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,0,1,0,1,0,1,0,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0],
+		[1,0,1,0,1,0,1,0,1,0,1,0],
+		[0,0,0,0,0,0,0,0,0,0,0,0] 	//End of Inner Lists	
+	];				//End of Outer List
+};
+</pre>
+<p>This worked well enough for the JS game, as I was merely concerned with getting a basic example of a game up and running. A more robust, stand-alone game would probably aim for generating mazes of arbitrary dimensions on the fly. For that, a function can prove very useful.</p>
+<p>Before even writing a single line of code, it's important to take a moment and consider the general process used in creating this object. We won't be able to reuse this code in Python, so we need to describe such a process in order to figure out what we need to do to get a 2d-list in Python, especially if we want a function to do it for use.</p>
+<ol>
+<li>First, an empty list is created.</li>
+<li>We then fill that list with several other lists that are equal in length (store the same number of items).</li>
+<li>Every list created in step 2 is then initialized with the values we need them to store.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
