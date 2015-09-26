@@ -43,4 +43,19 @@ layout: jpiedra
 		</div>
 	<!-- add: | remove: '<p>' | remove: '</p>' ... to above statement for mobile quickfix, breaks paragraph spacing-->
 	</div>
+	<div class="posted-links">
+	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		var $postLinks = $( ".jp-post-body" ).find( "a" );
+		if ($postLinks.length != 0) {
+			$(".posted-links").append("<h1>Related Reading</h1>");
+			$(".posted-links").append("<ul class='pl-list'></ul>");
+			for(i = 0; i < $postLinks.length; i++) {
+				$(".pl-list").append( "<li id=" + "link" + i + "></li>");
+				$("#link" + i).append( "<a href='" + $($postLinks[i]).prop("href") + "'>" + $( $postLinks[i] ).prop( "title" ) + "</a>");
+			};		
+		};	
+	});
+</script>

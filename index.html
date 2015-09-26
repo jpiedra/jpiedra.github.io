@@ -40,8 +40,8 @@ title: Home
 	{% endfor %}
 </div>
 <script>
-	var phrases = [ "frequent coding, infrequent blogging", "now with non-boring &ltpre&gt tags", "#ff5050", "ctrl+r works faster", "a blog about programming", "python, javascript, c/c++", "much ado about None" ];
+	var phrases = [ "frequent coding, infrequent blogging", "frequent coding, infrequent blogging", "now with non-boring &ltpre&gt elements", "#ff5050", "a blog about programming", "python, javascript, c/c++", "much ado about None", "some assembly required" ];
 	$(document).ready(function(){
-		$(".container").append("<h2>" + phrases[Math.floor((Math.random() * (phrases.length-1)) + 0)] + "</h2>");
+		$("#banner_phrase").append("<h2>" + phrases[Math.floor((Math.random() * (phrases.length)) + 0)] + "</h2>");
 	});
 </script>

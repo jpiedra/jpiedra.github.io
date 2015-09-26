@@ -62,7 +62,7 @@ Sum is: 31
 </pre>
 <p>As you can see, this is a more convenient approach to writing and using functions, or really any objects/classes we define: stick it all in a file, then load the file as a module and call/construct/use what you need as a member of the module. That explains why we call <code>SimpleModule.myFunction(11)</code> as shown: because it's a function included in the SimpleModule Python source file. There's an even faster way of using code we define in a Python source file for tests, which I'll describe in a future post.</p>
 <h1>The Grid-Generating Python Function</h1>
-<p>Let's briefly revisit the JavaScript grid of coordinates discussed in the <a href="https://jpiedra.github.io/2015/09/MazeGenPython1A/">previous post.</a> As shown below, <code>mazeGraph.nodes[]</code> is a 2-dimensional array.</p>
+<p>Let's briefly revisit the JavaScript grid of coordinates discussed in the <a href="https://jpiedra.github.io/2015/09/MazeGenPython1A/" title="Maze Generation with Python -- Prelude">previous post.</a> As shown below, <code>mazeGraph.nodes[]</code> is a 2-dimensional array.</p>
 <pre>
 var mazeGraph = function() {
 	this.nodes = 			
@@ -108,7 +108,6 @@ def CreateGrid(rows=7, cols=7):
     grid = [ <b style="color: red;">[] for row in range(0, rows)</b> ]
     return grid
 </pre> 
-<p>TO-DO: Include a link going into details about the for loop.</p>
 <p>Our list assignment statement is modified to fill it with empty lists using a for-loop and the range method. Compare this statement with a previous example, <code>li = [v for v in range(0, 10)]</code>, and you'll notice that not much else is different - aside from the presence of an empty list before the for-loop begins. In the previous example, <b>v</b> is used as an index to iterate through every value in the range of numbers 0 up to 10, and the numeric value of the index is what we want to be added to the list upon every iteration. Our <b>grid</b> assignment statement uses an empty list instead, stating that for every iteration in the range 0 up to the value of rows, we want an empty list to get added to grid. For example, if we just use the default argument value, then five empty lists, [ ], will be added to the <b>grid</b>.</p>
 <h1>Step Three: Fill the Embedded Lists</h1>
 <p>Now we need to initialize the embedded lists, making them <i>equal in length</i>. We're going to do this using nested for-loops.</p>
