@@ -44,7 +44,7 @@ Sum is: 40
 <h1>Modules</h1>
 <p>Alright, so now we know how to define a basic function in Python, and can call the function. Our function has required arguments, as well as optional arguments set to default values. We know how to selectively supply arguments out of order, by using their names during a function call, and we can modify our function to return a value that we can then assign to a variable of our choosing.</p>
 <p>Wouldn't it be nice if we could just have our function in a separate file for later use, or for purposes of easier modification? After all, if we wanted to make changes to a function we define through the interactive shell, we would have to define it yet again, then indent for every statement we want to enter; this becomes tedious pretty fast.</p>
-<p>In Python, reusable code is typically made available through a <b>.py</b> extension file. Create a new text document in a directory of your choosing, with this extension - let's go with <b>SimpleModule.py</b>. Once you've created this file, open it up, and type this out in the file:</p>
+<p>In Python, reusable code is typically made available through a <b>.py</b> extension file <a href="https://docs.python.org/2/tutorial/modules.html" title="Python Documentation: Modules">called a module</a>. Create a new text document in a directory of your choosing, with this extension - let's go with <b>SimpleModule.py</b>. Once you've created this file, open it up, and type this out in the file:</p>
 <pre>
 def myFunction(arg_a, arg_b=20):
     print "Sum is: %s" % (arg_a + arg_b)
@@ -108,7 +108,7 @@ def CreateGrid(rows=7, cols=7):
     grid = [ <b style="color: red;">[] for row in range(0, rows)</b> ]
     return grid
 </pre> 
-<p>Our list assignment statement is modified to fill it with empty lists using a for-loop and the range method. Compare this statement with a previous example, <code>li = [v for v in range(0, 10)]</code>, and you'll notice that not much else is different - aside from the presence of an empty list before the for-loop begins. In the previous example, <b>v</b> is used as an index to iterate through every value in the range of numbers 0 up to 10, and the numeric value of the index is what we want to be added to the list upon every iteration. Our <b>grid</b> assignment statement uses an empty list instead, stating that for every iteration in the range 0 up to the value of rows, we want an empty list to get added to grid. For example, if we just use the default argument value, then five empty lists, [ ], will be added to the <b>grid</b>.</p>
+<p>Our list assignment statement is modified to fill it with empty lists using a for-loop and the range method. Compare this statement with a previous example, <code>li = [v for v in range(0, 10)]</code>, and you'll notice that not much else is different - aside from the presence of an empty list before the for-loop begins. In the previous example, <b>v</b> is used as an index to iterate through every value in the range of numbers 0 up to 10, and the numeric value of the index is what we want to be added to the list upon every iteration. Our <b>grid</b> assignment statement uses an empty list instead, stating that for every iteration in the range 0 up to the value of rows, we want an empty list to get added to grid. For example, if we just use the default argument value, then seven empty lists, [ ], will be added to the <b>grid</b>.</p>
 <h1>Step Three: Fill the Embedded Lists</h1>
 <p>Now we need to initialize the embedded lists, making them <i>equal in length</i>. We're going to do this using nested for-loops.</p>
 <pre>
@@ -120,7 +120,7 @@ def CreateGrid(rows=7, cols=7):
     return grid 
 </pre>
 <p>The first of these loops, <code>for row in range(0, rows):</code> doesn't assign anything, it just iterates through every embedded list in <b>grid</b> using an index - <b>row</b> is the index we'll use to iterate, and <b>rows</b> is the upper limit for iteration, the value of the argument that gets passed to this function. If you've written code in either Java or C/C++, this is analagous to a for-loop in those languages, <code>for (i = 0; i < rows; i++)</code>, only we just name our index once (<b>row</b>, intead of <b>i</b>), and the range method handles iteration for us, using the values we pass it as the starting point (<b>0</b> instead of <b>i = 0</b>), the upper limit (<b>rows</b> instead of <b>i < rows</b>), and iterating one value at a time because we don't specify that third, optional <code>[, step]</code> argument that the range method can accept. Keep that third argument in mind, because in our final step we're going to use it to modify the value of list elements by a certain offset.</p>
-<p>The second of these loops, <code>[ 0 for col in range(0, cols) ]</code> is similar to the list initialization in the previous post, <code>li = [v for v in range(0, 10)]</code>, only this time for every iteration through the range method we enter the value zero in the list. By now, it should be clear that this way of using range in a for-loop can be used to create a list full of: each value in a range of numbers, empty lists, a specific number, or plenty of other things. After we finish creating a list full of zero's (<b>cols</b>-many zeros), we assign that cols-wide list to the embedded list <b>grid[row]</b>, and repeat this process for every embedded list: <code>grid[row] = [ 0 for col in range(0, cols) ]</code>; the for-loop using the <b>row</b> index will handle iterating through every embedded list.</p>
+<p>The second of these loops, <code>[ 0 for col in range(0, cols) ]</code> is similar to the list initialization in the previous post, <code>li = [v for v in range(0, 10)]</code>, only this time for every iteration through the range method we enter the value zero in the list. By now, it should be clear that this way of using range in a for-loop can be used to create a list full of: each value in a range of numbers, empty lists, a specific number, or plenty of other things. After we finish creating a list full of zero's (<b>cols</b>-many zeros), we assign that cols-wide list to the embedded list <b>grid[row]</b>, and repeat this process for every embedded list: <code>grid[row] = [ 0 for col in range(0, cols) ]</code>; the for-loop using the <b>row</b> index, that was explained in the previous step, will handle iterating through every embedded list.</p>
 <h1>Step Four: Modify the Embedded Lists</h1>
 <p>When I initially designed this grid for use in the JavaScript game, I made a minor design flaw. Padding should be added in all directions for every node (everywhere you see a <b>1</b>), for display purposes (we get a nice, solid wall around our maze) mainly. I did this for all nodes except the ones on the top and the left-most side of this grid. We're going to create our nodes keeping this in mind (and the purpose of these nodes will be explained in the next post, where a maze generation algorithm is presented).</p>
 <pre>
@@ -133,20 +133,96 @@ def CreateGrid(rows=7, cols=7):
             grid[row][col] = 1</b>
     return grid 
 </pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p><a href="https://docs.python.org/2/library/functions.html#range" title="Python Documentation: Range Method">The Python Docs page on the Range method</a> offers a comprehensive explanation of how the method works/is used. We're going to focus on the third argument to this method, <code>[, step]</code>, and how it is used in the code highlighted above to selectively initialize values in our two-dimensional list. This can be explained through an illustration of how our <b>grid</b> looks after creation with default arguments (7 and 7): </p>
+<pre>
+[
+  [ <b>0</b>, 0, 0, 0, 0, 0, 0 ] # grid[0][<b>0</b>]
+  [ 0, <b>0</b>, 0, 0, 0, 0, 0 ] # grid[1][<b>1</b>]
+  [ 0, 0, <b>0</b>, 0, 0, 0, 0 ] # grid[2][<b>2</b>]
+  [ 0, 0, 0, <b>0</b>, 0, 0, 0 ] # grid[3][<b>3</b>]
+  [ 0, 0, 0, 0, <b>0</b>, 0, 0 ] # grid[4][<b>4</b>]
+  [ 0, 0, 0, 0, 0, <b>0</b>, 0 ] # grid[5][<b>5</b>]
+  [ 0, 0, 0, 0, 0, 0, <b>0</b> ] # grid[6][<b>6</b>]
+]	
+</pre>
+<p>You'll see that each list inside of <b>grid</b> is shown along with a comment (comments in Python can be written using a single <b>#</b> preceeding them) indicating which element it is; the first pair of square brackets corresponds to its location in the <b>grid</b> list. Then, in bold, the location of each element inside of these embedded lists is expressed, with the second pair of square brackets indicating where they lie. </p>
+<p>An easy way to achieve the padding effect described above is to modify the arguments in the range method to start at a specific list inside <b>grid</b>, and then iterate to every <i>N-th</i> list rather than the one right after. Let's start with the first dimension - the <b>rows</b> (which would correspond to the y-axis when treating this like a grid). If we just had the code <code>for row in range(1, rows, 2): grid[row][1] = 1</code>, we would end up modifying our grid as follows: we have <code>range(1, rows, 2)</code> begin at 1 rather than 0, and - because <code>row</code> serves as our iteration variable - when it gets supplied to <code>grid[row][1] = 1</code>, this will cause the assignment statement in our for-loop to begin at the <b>second</b> list in grid, since in Python lists are 0-indexed. Similarly, because we're using the value <b>1</b> in the second pair of square braces, it's always the second element in the embedded list, index <code>[row]</code>, that gets assigned <b>1</b>.</p>
+<p><code>row</code> doesn't step through every list, though. The third argument in range is set to <b>2</b>, so <code>for row in range(1, rows, 2):</code> proceeds to increment row by <b>2</b> every iteration. So, it's really always the second element of every <b>two</b> lists in <b>grid</b> that gets assigned <b>1</b>. Let's modify our diagram to show what would happen with this statement alone. (See <i>Figure 4A</i>)</p>
+<p>So far so good. We just need to repeat this process, only for every second element in every second list, rather than just the second. This will involve adding a <i>nested</i> for-loop inside the previous one, and using the iteration variable in that loop as the index supplied in the second pair of square braces (where currently, we just have it set to 1). (See <i>Figure 4B</i>)</p>
+<div class="row">
+<div class="col-md-6">
+<pre>
+<i># Figure 4A: Iterate through every two lists</i>
+...
+for <b style="color: red">row</b> in range(1, rows, 2): 
+	grid[<b style="color: red">row</b>][<b>1</b>] = 1
+...
+[
+  [ 0, 0, 0, 0, 0, 0, 0 ] # grid[0][1]
+  [ 0, <b style="color: red">1</b>, 0, 0, 0, 0, 0 ] # grid[<b style="color: red">1</b>][<b>1</b>]
+  [ 0, 0, 0, 0, 0, 0, 0 ] # grid[2][1]
+  [ 0, <b style="color: red">1</b>, 0, 0, 0, 0, 0 ] # grid[<b style="color: red">3</b>][<b>1</b>]
+  [ 0, 0, 0, 0, 0, 0, 0 ] # grid[4][1]
+  [ 0, <b style="color: red">1</b>, 0, 0, 0, 0, 0 ] # grid[<b style="color: red">5</b>][<b>1</b>]
+  [ 0, 0, 0, 0, 0, 0, 0 ] # grid[6][1]
+]
+	
+</pre>
+</div>
+<div class="col-md-6">
+<pre>
+<i># Figure 4B: Iterate through every two elements of every two lists</i>
+...
+for <b style="color: red">row</b> in range(1, rows, 2): 
+	for <b style="color: blue">col</b> in range(1, cols, 2):	
+		grid[<b style="color: red">row</b>][<b style="color: blue">col</b>] = 1
+...
+[
+  [ 0, 0, 0, 0, 0, 0, 0 ]
+  [ 0, <b>1</b>, 0, <b>1</b>, 0, <b>1</b>, 0 ] # grid[<b style="color: red">1</b>][<b style="color: blue">1</b>], grid[<b style="color: red">1</b>][<b style="color: blue">3</b>], grid[<b style="color: red">1</b>][<b style="color: blue">5</b>]
+  [ 0, 0, 0, 0, 0, 0, 0 ]
+  [ 0, <b>1</b>, 0, <b>1</b>, 0, <b>1</b>, 0 ] # grid[<b style="color: red">3</b>][<b style="color: blue">1</b>], grid[<b style="color: red">3</b>][<b style="color: blue">3</b>], grid[<b style="color: red">3</b>][<b style="color: blue">5</b>]
+  [ 0, 0, 0, 0, 0, 0, 0 ]
+  [ 0, <b>1</b>, 0, <b>1</b>, 0, <b>1</b>, 0 ] # grid[<b style="color: red">5</b>][<b style="color: blue">1</b>], grid[<b style="color: red">5</b>][<b style="color: blue">3</b>], grid[<b style="color: red">5</b>][<b style="color: blue">5</b>]  
+  [ 0, 0, 0, 0, 0, 0, 0 ]
+]	
+</pre> 
+</div>
+</div>
+<p>This use of nested for-loops leaves us with our grid of 1-nodes initialized as needed, with padding in each direction. These are locations in our grid that maze generation algorithms will use to branch to other 1-nodes, creating the paths in our maze as a result.</p>
+<h1>Finishing Touches</h1>
+<p>We're finished with writing a basic grid-creating Python function that can be used later for maze generation. To close this post, I'll briefly touch upon some minor changes to make to this code. (See <i>Figure 5A</i>)</p>
+<pre>
+# Figure 5A: Finishing Touches
+def CreateGrid(rows=7, cols=7):	
+	if rows <= 0:
+		rows = 7
+	if cols <= 0:
+		cols = 7
+	rows = (rows * 2) + 1
+	cols = (cols * 2) + 1
+	grid = [ [] for row in xrange(0, rows) ]
+	for row in xrange(0, rows):
+		grid[row] = [ 0 for col in xrange(0, cols) ]
+	for row in xrange(1, rows, 2):
+		for col in xrange(1, cols, 2):
+			grid[row][col] = 1
+	for row in xrange(0, rows):
+		print grid[row]
+	return grid
+</pre>
+<ul>
+<li>
+We check if the function is passed 0 or a lower value, and - if this is the case - set that argument to 7. This is one sort of error that can occur with our function. Can you think of any others? (We're being very trusting to our user, and assuming that they'll only pass integers to our function...) If-statements are used here, a form of <a href="https://docs.python.org/2/tutorial/controlflow.html" title="Python Documentation: Flow Control">flow control</a> that, combined with equality operators, can perform basic checks on variables.
+</li>
+<li>
+You've probably noticed that we don't get an amount of 1-nodes that corresponds to the arguments passed in. It turns out that, as our code is written, we're specifying the width and length of the coordinate grid rather than the number of nodes that will become traversable spaces in the maze - because the exterior padding also counts as grid space. To make our arguments specify the length and width of traversable spaces, we can make a minor modification to our function: multiply the arguments passed in by two, and then add one - <code>rows = (rows * 2) + 1</code> and <code>cols = (cols * 2) + 1</code>.
+</li>
+<li>
+We've replaced all occurrences of the range method with something called <b>xrange</b>. The Python Docs page on the range built-in method explains the difference between range and xrange.
+</li>
+<li>
+Before the return statement, the line <code>for row in xrange(0, rows): print grid[row]</code> has been added. This prints a representation of the grid we're returning, to make the layout a bit clearer to the module user. This is done easily enough, by iterating through every embedded list that <b>grid</b> contains, and printing that list.
+</li>
+</ul>
+<p>I hope this article has been helpful in describing one simple way of setting up a 2-dimensional list for use as a grid of coordinates. In our next post, a maze generation algorithm will be presented - the recursive backtracker - based on a solution in Ruby that's implemented in Python. After you've written the function shown above, save it in the file <b>SimpleModule.py</b> and open your Python terminal to use the module as previously described, by opening <code>python</code> and then typing <code>import SimpleModule</code>. Enter <code>myGrid = SimpleModule.CreateGrid(10,10)</code> to use your function.</p>

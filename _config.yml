@@ -4,6 +4,10 @@ encoding: UTF-8
 static_tags:
     - python
     - maze
+    - javascript
+    - webdev
+
+static_tags-foruselater:
     - unrealscript
     - c
     - pygame

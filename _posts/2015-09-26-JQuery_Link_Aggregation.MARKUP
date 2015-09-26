@@ -1,0 +1,31 @@
+---
+layout: post
+title: As Seen On My Blog -- jQuery Link Aggregation
+date: 2015-09-26
+comments: true
+archive: false
+author: Jonathan Piedra
+tags: javascript webdev
+---
+<p>In a series of occasional posts, I'll describe in detail some of the minor features of my blog and how I used different libraries and frameworks to get them working. To start this series, let's look at a very small but useful snippet of JavaScript/jQuery that appends a list of links used in a post.</p>
+
+<p>I like to include links in my posts to external resources, mainly for the purpose of assisting anyone reading along but also to demonstrate the awesome thing about the internet - it's really possible to learn anything if you know where to look. It's been the case for myself, trying to get a NodeJS page deployed that posts to and reads from a database, or learning x86 assembly language just to do it, among other things.</p> 
+<p>Even in the process of setting up and improving my Jekyll blog, this has proven to be the case, demonstrating that there's an opportunity for learning just about anywhere. I had, and still mull over, some ideas about how I want the blog to look - everything from the front page, to each post, and plenty of other aspects. For example, I knew I wanted each post to conclude with a list of all the materials linked to in it. I knew from prior experience that JavaScript and jQuery would be involved, along with some basic HTML to handle formatting the list of links. This is the fun in web design (or coding anything, really): using a combination of prior knowledge, research and imagination to come up with a solution.</p>
+<h1>jQuery Link Aggregation</h1>
+<p>Below is the code I used to aggregate a list of links and append that list to the bottom of a post.</p>
+<pre>
+$(document).ready(function(){
+  var $postLinks = $( ".jp-post-body" ).find( "a" );
+  if ($postLinks.length !== 0) {
+    $(".posted-links").append("&lth1&gtRelated Reading&lt/h1&gt");
+    $(".posted-links").append("&ltul class='pl-list'&gt&lt/ul&gt");
+    for(i = 0; i &lt $postLinks.length; i++) {
+      $(".pl-list").append( "&ltli id=" + "link" + i + "&gt&lt/li&gt");
+      $("#link" + i).append( "&lta href='" + $($postLinks[i]).prop("href") + "'&gt" + $( $postLinks[i] ).prop( "title" ) + "&lt/a&gt");
+    };		
+  };	
+});
+</pre>
+<p><a href="http://jquery.com/" title="jQuery Official Homepage">jQuery</a> is a popular and powerful JavaScript library used to add functionality and interactivity to webpages - from CSS formatting, AJAX requests, element traversal, and much more. Several jQuery methods, along with standard JavaScript, are combined to find all the links in my page, then locate other elements that already exist in the post page and append an unordered list. Then, the links we collected are appended to that list as individual items.</p>
+<p>I'll provide a very general explanation of how jQuery code is included in a page. We begin by wrapping our own code in an anonymous function that we pass to <code>$(document).ready( ... );</code> where the ellipsis gets replaced with the anonymous function. An anonymous function is a function we define in-line, without a name we would normally use to call it later. This has its uses; we may need to execute some block of code only once. That's what we're doing here, when we pass an anonymous function to the jQuery method <code>.ready( ... )</code>, passing a function that performs the necesarry modifications to the document (the post page) when the page is loaded.</p>
+

@@ -38,7 +38,7 @@ layout: jpiedra
 	{% endif %}
 	</br>
 	<div class="row jp-post-body">
-		<div class="col-md-10">
+		<div class="col-md-9" style="text-align: justify; text-justify: inter-word">
 			{{ page.content }}
 		</div>
 	<!-- add: | remove: '<p>' | remove: '</p>' ... to above statement for mobile quickfix, breaks paragraph spacing-->
@@ -50,7 +50,7 @@ layout: jpiedra
 <script>
 	$(document).ready(function(){
 		var $postLinks = $( ".jp-post-body" ).find( "a" );
-		if ($postLinks.length != 0) {
+		if ($postLinks.length !== 0) {
 			$(".posted-links").append("<h1>Related Reading</h1>");
 			$(".posted-links").append("<ul class='pl-list'></ul>");
 			for(i = 0; i < $postLinks.length; i++) {
