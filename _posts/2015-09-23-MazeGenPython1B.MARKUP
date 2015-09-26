@@ -60,7 +60,7 @@ Sum is: 31
 >>> print var
 31
 </pre>
-<p>As you can see, this is a more convenient means of writing and using functions, or really any objects/classes we define: stick it all in a file, then load the file as a module and call/construct/use what you need as a member of the module. That explains why we call <code>SimpleModule.myFunction(11)</code> as shown: because it's a function included in the SimpleModule Python source file. There's an even faster way of using code we define in a Python source file for tests, which I'll describe in a future post.</p>
+<p>As you can see, this is a more convenient approach to writing and using functions, or really any objects/classes we define: stick it all in a file, then load the file as a module and call/construct/use what you need as a member of the module. That explains why we call <code>SimpleModule.myFunction(11)</code> as shown: because it's a function included in the SimpleModule Python source file. There's an even faster way of using code we define in a Python source file for tests, which I'll describe in a future post.</p>
 <h1>The Grid-Generating Python Function</h1>
 <p>Let's briefly revisit the JavaScript grid of coordinates discussed in the <a href="https://jpiedra.github.io/2015/09/MazeGenPython1A/">previous post.</a> As shown below, <code>mazeGraph.nodes[]</code> is a 2-dimensional array.</p>
 <pre>
@@ -83,21 +83,57 @@ var mazeGraph = function() {
 };
 </pre>
 <p>This worked well enough for the JS game, as I was merely concerned with getting a basic example of a game up and running. A more robust, stand-alone game would probably aim for generating mazes of arbitrary dimensions on the fly. For that, a function can prove very useful.</p>
-<p>Before even writing a single line of code, it's important to take a moment and consider the general process used in creating this object. We won't be able to reuse this code in Python, so we need to describe such a process in order to figure out what we need to do to get a 2d-list in Python, especially if we want a function to do it for use.</p>
+<p>Before even writing a single line of code, it's important to take a moment and consider the general process used in creating this object. We won't be able to reuse this code in Python, so we need to describe such a process in order to figure out what we need to do to get a 2d-list in Python, especially if we want a function to do it for us.</p>
 <ol>
 <li>First, an empty list is created.</li>
-<li>We then fill that list with several other lists that are equal in length (store the same number of items).</li>
-<li>Every list created in step 2 is then initialized with the values we need them to store.</li>
+<li>We then fill that list with several other lists.</li>
+<li>The embedded lists must be made equal in length (store the same number of items).</li>
+<li>Every list filled in Step 3 is then initialized with the values we need them to store.</li>
 </ol>
-
-
-
-
-
-
-
-
-
+<h1>Step One: Create an Empty List</h1>
+<p>Now, we already know how to create and fill out a list in Python - we learned how to do this in the last post. If we wanted to write a simple function that returns a list, doing so would be similar but with an additional step - after creating the list, we also must set it as the value to be returned. The example used in the previous post, <code>empty_li = []</code>, does two things in a single assignment: it creates a list (that's the pair of square brackets), and then assigns that resulting list to the variable <b>empty_li</b>.</p>
+<p>To make our function return a list, we can do the same thing, with an additional step at the end: return the list variable. Opting for a more descriptive variable name, this leaves us with:</p>
+<pre>
+# Step 1: An empty list is created.
+def CreateGrid():
+    grid = []
+    return grid
+</pre>
+<p>We still need to address the other three steps in our list, otherwise we have a pretty useless function (after all, writing <code>mylist = []</code> is much easier than writing and using this function). Here's where the arguments help: we can pass our function integer arguments that correspond to both the number of rows (embedded lists) we want in our returned list, and to the number of columns (elements inside the embedded lists) we want each row to store. Our function header can look like <code>def CreateGrid(rows, cols):</code> as a result - and if we remember that default arguments are supported in Python, we can change it further still to <code>def CreateGrid(rows=7, cols=7):</code>. Now all that's left is to use those arguments in the function to perform the grunt work of initializing a blank grid.</p>
+<h1>Step Two: Fill the Empty List... with Lists</h1>
+<p>Let's begin with the portion that requires us to <i>fill that list with several other lists</i>. In the previous post, we described two methods of creating lists - the empty list, which we used above in our function definition, and the list initialized using the <code>range(start, stop [,step])</code> method. We're going to modify our function to use an altered version of the range initializion code from the first post, leaving us with this:</p> 
+<pre>
+# Step 2: We fill the empty list with several other lists.
+def CreateGrid(rows=7, cols=7):
+    grid = [ <b style="color: red;">[] for row in range(0, rows)</b> ]
+    return grid
+</pre> 
+<p>TO-DO: Include a link going into details about the for loop.</p>
+<p>Our list assignment statement is modified to fill it with empty lists using a for-loop and the range method. Compare this statement with a previous example, <code>li = [v for v in range(0, 10)]</code>, and you'll notice that not much else is different - aside from the presence of an empty list before the for-loop begins. In the previous example, <b>v</b> is used as an index to iterate through every value in the range of numbers 0 up to 10, and the numeric value of the index is what we want to be added to the list upon every iteration. Our <b>grid</b> assignment statement uses an empty list instead, stating that for every iteration in the range 0 up to the value of rows, we want an empty list to get added to grid. For example, if we just use the default argument value, then five empty lists, [ ], will be added to the <b>grid</b>.</p>
+<h1>Step Three: Fill the Embedded Lists</h1>
+<p>Now we need to initialize the embedded lists, making them <i>equal in length</i>. We're going to do this using nested for-loops.</p>
+<pre>
+# Step 3: We fill the embedded lists with the same amount of elements.
+def CreateGrid(rows=7, cols=7):
+    grid = [ <b style="color: red">[] for row in range(0, rows)</b> ]
+    <b style="color: blue">for row in range(0, rows):
+        grid[row] = [ 0 for col in range(0, cols) ]</b>
+    return grid 
+</pre>
+<p>The first of these loops, <code>for row in range(0, rows):</code> doesn't assign anything, it just iterates through every embedded list in <b>grid</b> using an index - <b>row</b> is the index we'll use to iterate, and <b>rows</b> is the upper limit for iteration, the value of the argument that gets passed to this function. If you've written code in either Java or C/C++, this is analagous to a for-loop in those languages, <code>for (i = 0; i < rows; i++)</code>, only we just name our index once (<b>row</b>, intead of <b>i</b>), and the range method handles iteration for us, using the values we pass it as the starting point (<b>0</b> instead of <b>i = 0</b>), the upper limit (<b>rows</b> instead of <b>i < rows</b>), and iterating one value at a time because we don't specify that third, optional <code>[, step]</code> argument that the range method can accept. Keep that third argument in mind, because in our final step we're going to use it to modify the value of list elements by a certain offset.</p>
+<p>The second of these loops, <code>[ 0 for col in range(0, cols) ]</code> is similar to the list initialization in the previous post, <code>li = [v for v in range(0, 10)]</code>, only this time for every iteration through the range method we enter the value zero in the list. By now, it should be clear that this way of using range in a for-loop can be used to create a list full of: each value in a range of numbers, empty lists, a specific number, or plenty of other things. After we finish creating a list full of zero's (<b>cols</b>-many zeros), we assign that cols-wide list to the embedded list <b>grid[row]</b>, and repeat this process for every embedded list: <code>grid[row] = [ 0 for col in range(0, cols) ]</code>; the for-loop using the <b>row</b> index will handle iterating through every embedded list.</p>
+<h1>Step Four: Modify the Embedded Lists</h1>
+<p>When I initially designed this grid for use in the JavaScript game, I made a minor design flaw. Padding should be added in all directions for every node (everywhere you see a <b>1</b>), for display purposes (we get a nice, solid wall around our maze) mainly. I did this for all nodes except the ones on the top and the left-most side of this grid. We're going to create our nodes keeping this in mind (and the purpose of these nodes will be explained in the next post, where a maze generation algorithm is presented).</p>
+<pre>
+def CreateGrid(rows=7, cols=7):
+    grid = [ <b style="color: red">[] for row in range(0, rows)</b> ]
+    <b style="color: blue">for row in range(0, rows):
+        grid[row] = [ 0 for col in range(0, cols) ]</b>
+    <b style="color: green">for row in range(1, rows, 2):
+        for col in range(1, cols, 2):
+            grid[row][col] = 1</b>
+    return grid 
+</pre>
 
 
 

@@ -4,11 +4,10 @@ title: Home
 ---
 
 <div class="jumbotron" style="font-family: Montserrat; color: white; text-align: center; height: 430px; background-size: cover; background-position: center; background-image: url('assets/images/banner_c.jpg'); background-repeat: no-repeat; margin-bottom: 0px">
-	<div class="container">
+	<div class="container" id="banner_phrase">
 	<br>
 	<h1>Jonathan Piedra</h1>
 	<br>
-	<h2>frequent coding, infrequent blogging</h2>
 	</div>
 </div>
 <nav class="navbar navbar-default" style="text-align: center;">
@@ -40,3 +39,9 @@ title: Home
 	    	{% endif %}
 	{% endfor %}
 </div>
+<script>
+	var phrases = [ "frequent coding, infrequent blogging", "now with non-boring &ltpre&gt tags", "#ff5050", "ctrl+r works faster", "a blog about programming", "python, javascript, c/c++", "much ado about None" ];
+	$(document).ready(function(){
+		$(".container").append("<h2>" + phrases[Math.floor((Math.random() * (phrases.length-1)) + 0)] + "</h2>");
+	});
+</script>

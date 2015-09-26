@@ -22,8 +22,22 @@ layout: jpiedra
 			<h4>posted {{ page.date |  date_to_string }}{% if page.author %} by {{page.author}}{% endif %}<h4>
 		</div>	
 	</div>	
-	</br>
+	{% if page.prev_post || page.next_post %}
 	<div class="row">
+		{% if page.prev_post %}
+		<div class="col-md-6">
+			<a href="{{ site.url }}/_posts/{{ page.prev_post }}">Previous Post</a>
+		</div>
+		{% endif %}
+		{% if page.next_post %}
+		<div class="col-md-6" style="text-align: right">
+			<a href="{{ site.url }}/_posts/{{ page.next_post }}">Next Post</a>
+		</div>
+		{% endif %}
+	</div>
+	{% endif %}
+	</br>
+	<div class="row jp-post-body">
 		<div class="col-md-10">
 			{{ page.content }}
 		</div>
