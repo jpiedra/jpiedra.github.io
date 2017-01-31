@@ -2,3 +2,5 @@ _site
 .DS_Store
 nbproject
 .idea/
+blog-content.sublime-workspace
+blog-content.sublime-project
