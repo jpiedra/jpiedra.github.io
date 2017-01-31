@@ -101,7 +101,9 @@ $ sudo chmod -R 755 @squarespace&lt;/pre&gt;
 &lt;/ol&gt;&lt;/p&gt;
 
 &lt;p&gt;You should now be able to use the local development server, from inside your site&amp;rsquo;s &amp;lsquo;template&amp;rsquo; directory:
-&lt;pre&gt;$ squarespace-server https://[sitename].squarespace.com &amp;ndash;auth&lt;/pre&gt;&lt;/p&gt;</description>
+&lt;pre&gt;$ squarespace-server https://[sitename].squarespace.com &amp;ndash;auth&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;Hopefully this solution works for you. Share in the comments if this helped you get squarespace-server running!&lt;/p&gt;</description>
     </item>
     
   </channel>
