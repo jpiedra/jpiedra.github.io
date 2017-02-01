@@ -6,8 +6,79 @@
     <description>Recent content on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Jan 2017 18:11:31 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 01 Feb 2017 10:51:38 -0500</lastBuildDate>
     <atom:link href="http://jpiedra.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A simple build script, with minor improvements</title>
+      <link>http://jpiedra.github.io/article/simple-build-script/</link>
+      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/simple-build-script/</guid>
+      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo static site&lt;/a&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;
+
+&lt;p&gt;
+&lt;h2&gt;Version 1&lt;/h2&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll begin by showing the code, then explain my process:&lt;/p&gt;
+
+&lt;pre&gt;
+#!/bin/bash
+
+build_dir=/var/www/html/blog-dev/public
+deploy_dir=/var/www/html/blog-live/jpiedra.github.io
+
+if [ -d $build_dir ]
+then
+  echo &#34;BUILD FOUND, DETAILS:&#34;
+  echo $(stat $build_dir)
+  cd $deploy_dir &amp;&amp; rm -rf *
+  cp -rp $build_dir/* $deploy_dir
+  cd $deploy_dir &amp;&amp; git status; git add -A; git commit -m &#34;[Scripted Deploy $(date)]&#34;; git push
+else
+  echo &#34;NO BUILD FOUND&#34;
+  echo &#34;  Run &#39;hugo&#39; to &#34;
+  echo &#34;  create latest build&#34;
+fi
+&lt;/pre&gt;
+
+&lt;p&gt;We begin by setting two variables, &lt;b&gt;build_dir&lt;/b&gt; and &lt;b&gt;deploy_dir.&lt;/b&gt; These store string values indicating the locations of where our built Hugo site&amp;rsquo;s files reside, and the directory where those files should be copied to, respectively. In this case, &lt;b&gt;deploy_dir&lt;/b&gt; is a GitHub Pages repository, the files used therein are the same ones responsible for powering this website!&lt;/p&gt;
+
+&lt;h2&gt;Testing for Build Directory&lt;/h2&gt;
+
+&lt;p&gt;The bulk of this script begins where the &lt;i&gt;if.. ..fi&lt;/i&gt; structure is shown. This conditional structure begins with a &lt;a href=&#34;http://linuxcommand.org/lc3_man_pages/testh.html&#34;&gt;test.&lt;/a&gt; Now, because we&amp;rsquo;re writing a Bash script, rather than using the command line, we have a built-in operator available to us, the square brackets [ ]. These are used to perform any test in a Bash script, thus instead of writing &lt;i&gt;test -d /some/directory&lt;/i&gt; we can instead write &lt;i&gt;[ -d /some/directory ]&lt;/i&gt;.&lt;/p&gt;
+
+&lt;p&gt;The -d switch allows us to test whether the provided argument is a directory. The test returns 0 or 1, true and false respectively, depending on whether the provided argument is detected as a valid directory. In this script, we test the value stored in &lt;b&gt;$build_dir&lt;/b&gt; (thus, the dollar sign) to check whether a build folder exists in our Hugo site directory - which, by default, would be called &lt;i&gt;public&lt;/i&gt; and reside in the Hugo site base directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;i&gt;Tip: you can run the command &lt;b&gt;compgen -b&lt;/b&gt; with the provided -b switch to get a list of all Bash built-ins available to you. Running the command in your terminal, displays the [ ] built-in near the top of the list.&lt;/i&gt;&lt;/p&gt;
+
+&lt;h2&gt;Conditional Execution&lt;/h2&gt;
+
+&lt;p&gt;In the event our test for a directory fails (directory doesn&amp;rsquo;t exist), we simply echo out a diagnostic message (which would best be output to standard error, more on that later). After &lt;i&gt;else&lt;/i&gt; our script prints the messages to stdout, so whatever is echo&amp;rsquo;ed is visible in the terminal.&lt;/p&gt;
+
+&lt;p&gt;If the build directory does exist, we can begin performing the required steps to push our files to the GitHub pages directory, indicated by &lt;b&gt;$deploy_dir.&lt;/b&gt; We&amp;rsquo;ll be making repeated use of a central Bash feature here.&lt;/p&gt;
+
+&lt;h2&gt;Command Substitution&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://tldp.org/LDP/abs/html/commandsub.html&#34;&gt;Command substitution&lt;/a&gt; &amp;ldquo;literally plugs&amp;hellip; command output into another context,&amp;rdquo; as the aforementioned page phrases it. Indeed, by using certain operators built into the Bash language, we can get the output of a command and do with it whatever we want - this usually means assinging said output to a variable, parsing it using some other commands, or even saving it to another file.&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;ll use command substitution twice here, as indicated by &lt;i&gt;$(&amp;hellip;)&lt;/i&gt; where the elipses would be replaced by Bash built-ins or Linux commands. Another form that&amp;rsquo;s available to us uses backticks, but we&amp;rsquo;ll stick with the former operator instead.&lt;/p&gt;
+
+&lt;h2&gt;Deployment Process&lt;/h2&gt;
+
+&lt;p&gt;After echo&amp;rsquo;ing that we&amp;rsquo;ve found the build folder, we run a few commands when the build directory is detected.&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Command substitution is used to capture the output of running &lt;i&gt;stat $build_dir&lt;/i&gt;, thus printing the result of that command to stdout using echo&lt;/li&gt;
+    &lt;li&gt;We change into the deployment directory, and remove the files present there, making way for the files from our latest Hugo site build &lt;i&gt;(cd $deploy_dir &amp;&amp; rm -rf *)&lt;/i&gt;&lt;/li&gt;
+    &lt;li&gt;The contents of the Hugo site build directory are copied into the deployment directory &lt;i&gt;(cp -rp $build_dir/* $deploy_dir)&lt;/i&gt;&lt;/li&gt;
+    &lt;li&gt;Finally, we change into the deployment directory and execute a few standard Git commands, that add/commit/push the new files to the current branch&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A few notes on step 4. The &lt;i&gt;&amp;amp;&amp;amp;&lt;/i&gt; operator ensures that the second command, &lt;i&gt;git status&lt;/i&gt; is only executed if &lt;i&gt;cd&lt;/i&gt; is successful. This is seen elsewhere, in step 2, ensuring we remove the files only if we successfully changed to the desired folder. Also in step 4, we see the final example of command substitution used when we indicate a message for &lt;i&gt;git commit&lt;/i&gt; to use. We capture the output of running the Bash built-in &lt;i&gt;time&lt;/i&gt; and use that as part of the content for our commit message.&lt;/p&gt;
+
+&lt;p&gt;When you run this script, the last part of this deployment process would involve running &lt;i&gt;git push,&lt;/i&gt; so you would be expected to provide your credentials in the terminal to push the latest Hugo site files. In summation, having a script such as this can save precious time, by performing various checks for us along the way as well as eliminating the tedium of typing and executing several commands.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Installing squarespace-server on Ubuntu 14.04 LTS</title>

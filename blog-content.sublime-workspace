@@ -16,10 +16,10 @@
 	"buffers":
 	[
 		{
-			"file": "article/squarespace-server-ubuntu.md",
+			"file": "article/simple-build-script.md",
 			"settings":
 			{
-				"buffer_size": 6505,
+				"buffer_size": 5634,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -73,6 +73,8 @@
 	],
 	"file_history":
 	[
+		"/var/www/html/blog-dev/content/article/squarespace-server-ubuntu.md",
+		"/var/www/html/blog-dev/content/article/simple-build-script",
 		"/var/www/html/hugo-intro/content/article/react-front-part2.md",
 		"/var/www/html/hugo-intro/themes/sparse/layouts/_default/summary.html",
 		"/var/www/html/hugo-intro/themes/sparse/theme.toml",
@@ -169,19 +171,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "article/squarespace-server-ubuntu.md",
+					"file": "article/simple-build-script.md",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6505,
+						"buffer_size": 5634,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6504,
-								6504
+								5449,
+								5449
 							]
 						],
 						"settings":
@@ -189,7 +191,7 @@
 							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2160.0,
+						"translation.y": 1728.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
