@@ -19,7 +19,8 @@
 			"file": "article/squarespace-server-ubuntu.md",
 			"settings":
 			{
-				"buffer_size": 6392,
+				"buffer_size": 6505,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -169,18 +170,18 @@
 				{
 					"buffer": 0,
 					"file": "article/squarespace-server-ubuntu.md",
-					"semi_transient": true,
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6392,
+						"buffer_size": 6505,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6504,
+								6504
 							]
 						],
 						"settings":
@@ -188,7 +189,7 @@
 							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
