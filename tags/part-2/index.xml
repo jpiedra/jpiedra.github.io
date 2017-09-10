@@ -40,11 +40,11 @@ person.greeting();          // &#34;Hi, I&#39;m Jonathan Piedra&#34;
 
 &lt;p&gt;For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&amp;rsquo;re also provided with access modifiers through keywords like &lt;i&gt;public&lt;/i&gt; and &lt;i&gt;private&lt;/i&gt; that specify whether or not we want such member data to be accessed from whatever the &amp;ldquo;global&amp;rdquo; context is (for example, in &amp;ldquo;main&amp;rdquo; if we&amp;rsquo;re writing C++).&lt;/p&gt;
 
-&lt;p&gt;We don&amp;rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use.&lt;/p&gt;
+&lt;p&gt;We don&amp;rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use. Before we explain that feature, we should understand an important property of functions in JavaScript.&lt;/p&gt;
 
 &lt;h2&gt;Functions And Scope&lt;/h2&gt;
 
-&lt;p&gt;While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&amp;rsquo;s body from being accessible anywhere else, as long as we declare this data using the &lt;i&gt;var&lt;/i&gt; keyword:&lt;/p&gt;
+&lt;p&gt;While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&amp;rsquo;s body from being accessible anywhere else, as long as variables are declared using the &lt;i&gt;var&lt;/i&gt; keyword. Functions within another function&amp;rsquo;s scope are also private:&lt;/p&gt;
 
 &lt;pre&gt;
 function writeMessage() {
