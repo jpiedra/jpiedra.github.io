@@ -1,8 +1,4 @@
 @media only screen and (max-width : 768px) {
-	.col-main {
-		margin-left: 0;
-		margin-right: 0;
-	}
 	.col-side {
 		display: none;
 	}

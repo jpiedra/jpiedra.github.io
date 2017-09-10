@@ -4,26 +4,25 @@
 		"selected_items":
 		[
 			[
-				"react",
-				"react-container-b"
+				"ans",
+				"answersArray"
 			],
 			[
 				"get",
-				"getElementById"
+				"getApp"
+			],
+			[
+				"questions",
+				"questionsArray"
+			],
+			[
+				"react",
+				"react-container-b"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "article/simple-build-script.md",
-			"settings":
-			{
-				"buffer_size": 5634,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -73,6 +72,10 @@
 	],
 	"file_history":
 	[
+		"/var/www/html/lynd_nodejs/3_3.js",
+		"/var/www/html/blog-dev/content/article/js-constructor.md",
+		"/var/www/html/blog-dev/content/article/simple-build-script.md",
+		"/var/www/html/blog-dev/content/article/php-sql-api-1.md",
 		"/var/www/html/blog-dev/content/article/squarespace-server-ubuntu.md",
 		"/var/www/html/blog-dev/content/article/simple-build-script",
 		"/var/www/html/hugo-intro/content/article/react-front-part2.md",
@@ -166,37 +169,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "article/simple-build-script.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5449,
-								5449
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1728.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
