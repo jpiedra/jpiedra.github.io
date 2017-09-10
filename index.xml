@@ -116,39 +116,7 @@ obj.publicMethod();
 
 &lt;p&gt;Let&amp;rsquo;s wrap this article up by providing an example somewhat closer to reality. We&amp;rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method &lt;i&gt;setup&lt;/i&gt; will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &amp;ldquo;private,&amp;rdquo; otherwise inaccessible beyond the IIFE&amp;rsquo;s scope:&lt;/p&gt;
 
-&lt;pre&gt;
-// a trivial UI module
-var myUI = (function(apiEndpoint, elem){
-  var endpoint = apiEndpoint || null;
-  var button = elem || null;
-  
-  // only assigned to the element if one was passed in
-  // this function is private to the IIFE scope, can&#39;t be used elsewhere.
-  function fireAjaxRequest() {
-    console.log(&#34;AJAX Request: Status 200&#34;);
-  };
-  
-  // if user passed in valid values, &#39;elem&#39; gets an event listener assigned
-  // this function is private to the IIFE scope, can&#39;t be used elsewhere.
-  function bindAjaxRequest() {
-    button.addEventListener(&#34;click&#34;, fireAjaxRequest);
-  };
-  
-  // exposed through &#39;setup&#39; in the returned object
-  function privateSetup() {
-    if (typeof endpoint === &#39;string&#39; &amp;&amp; button) {
-        console.log(&#34;performing UI setup&#34;);
-      bindAjaxRequest();
-    };
-  };
-  
-  return {
-    setup: privateSetup
-  };
-})(&#34;api.acme.org/employee&#34;, document.getElementById(&#34;fireRequest&#34;));
-
-myUI.setup();
-&lt;/pre&gt;
+&lt;script async src=&#34;//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;In a future post, I&amp;rsquo;ll demonstrate a more complete version of a UI module that I developed. It&amp;rsquo;s very similar to what&amp;rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.&lt;/p&gt;
 

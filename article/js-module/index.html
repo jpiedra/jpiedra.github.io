@@ -131,39 +131,7 @@ obj.publicMethod();
 
 <p>Let&rsquo;s wrap this article up by providing an example somewhat closer to reality. We&rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method <i>setup</i> will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &ldquo;private,&rdquo; otherwise inaccessible beyond the IIFE&rsquo;s scope:</p>
 
-<pre>
-// a trivial UI module
-var myUI = (function(apiEndpoint, elem){
-  var endpoint = apiEndpoint || null;
-  var button = elem || null;
-  
-  // only assigned to the element if one was passed in
-  // this function is private to the IIFE scope, can't be used elsewhere.
-  function fireAjaxRequest() {
-    console.log("AJAX Request: Status 200");
-  };
-  
-  // if user passed in valid values, 'elem' gets an event listener assigned
-  // this function is private to the IIFE scope, can't be used elsewhere.
-  function bindAjaxRequest() {
-    button.addEventListener("click", fireAjaxRequest);
-  };
-  
-  // exposed through 'setup' in the returned object
-  function privateSetup() {
-    if (typeof endpoint === 'string' && button) {
-        console.log("performing UI setup");
-      bindAjaxRequest();
-    };
-  };
-  
-  return {
-    setup: privateSetup
-  };
-})("api.acme.org/employee", document.getElementById("fireRequest"));
-
-myUI.setup();
-</pre>
+<script async src="//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/"></script>
 
 <p>In a future post, I&rsquo;ll demonstrate a more complete version of a UI module that I developed. It&rsquo;s very similar to what&rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.</p>
 
