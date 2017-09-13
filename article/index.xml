@@ -15,7 +15,7 @@
       <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/article/vagrant-mysql/</guid>
-      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an appication on your host operating system to be able to connect to it.&lt;/p&gt;
+      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;
 
 &lt;p&gt;
 This brief writeup serves mostly to document some small settings here and there that I had to set in order to get this working. I have a VirtualBox VM running Ubuntu 14.04, and all of my Node.js web development projects are on there. I&amp;rsquo;m the process of moving these over to my host, now that I&amp;rsquo;ve found an IDE (Visual Studio Code) that I prefer to use&amp;hellip; as well as come to the realization that Chrome won&amp;rsquo;t quite work on my VM, leaving me with no choice if I want to use Node&amp;rsquo;s debugging features!&lt;/p&gt;
