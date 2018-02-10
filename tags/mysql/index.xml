@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jonathan Piedra</title>
-    <link>http://jpiedra.github.io/tags/mysql/index.xml</link>
-    <description>Recent content on Jonathan Piedra</description>
+    <title>Mysql on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/mysql/</link>
+    <description>Recent content in Mysql on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://jpiedra.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Sep 2017 21:55:02 -0400</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Connecting to MySQL on a VirtualBox Linux VM</title>
@@ -14,51 +17,7 @@
       <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/article/vagrant-mysql/</guid>
-      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;
-
-&lt;p&gt;
-This brief writeup serves mostly to document some small settings here and there that I had to set in order to get this working. I have a VirtualBox VM running Ubuntu 14.04, and all of my Node.js web development projects are on there. I&amp;rsquo;m the process of moving these over to my host, now that I&amp;rsquo;ve found an IDE (Visual Studio Code) that I prefer to use&amp;hellip; as well as come to the realization that Chrome won&amp;rsquo;t quite work on my VM, leaving me with no choice if I want to use Node&amp;rsquo;s debugging features!&lt;/p&gt;
-
-&lt;h2&gt;The &#39;bind-address&#39; Option&lt;/h2&gt;
-The first thing you&#39;ll want to do, even before forwarding ports on your VM, is to make sure your MySQL process isn&#39;t bound to localhost (127.0.0.1), which it likely might be by default. The file you&#39;ll want to edit will be &lt;i&gt;/etc/mysql/my.cnf&lt;/i&gt;, and you&#39;ll change this setting:
-
-&lt;pre&gt;
-bind-address        = 0.0.0.0
-&lt;/pre&gt;
-
-Setting &lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bind-address&#34;&gt;bind-address&lt;/a&gt; to 0.0.0.0 allows the MySQL process&#39; socket to accept TCP/IP traffic on all IP4 network interfaces, rather than just connections over the loopback interface. This is important if you have anything on your host that needs to be able to make database queries on a database running in the VM. 
-
-&lt;h2&gt;User with Remote Access&lt;/h2&gt;
-This next step is really only appropriate in a development environment, which is what this article assumes you want to configure. As you&#39;ll soon see, we set up a new user with the same name as one we would already have, only we set indicate that this user will have access from &lt;i&gt;any&lt;/i&gt; host. Not a good idea for production systems; you should be stricter with this access, specifying specific IP addresses - or, better yet, use a built-in admin account that can only connect from &lt;i&gt;localhost&lt;/i&gt;.
-
-You may have a user set up to access your server on localhost, named &#39;apiuser.&#39; It may have been created with using the command:
-
-&lt;pre&gt;
-mysql&gt; CREATE USER &#39;apiuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;apiuser&#39;@&#39;localhost&#39;
-    -&gt;     WITH GRANT OPTION;
-&lt;/pre&gt;
-
-To set up an identical user that can access the database from any location:
-
-&lt;pre&gt;
-mysql&gt; CREATE USER &#39;apiuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;apiuser&#39;@&#39;%&#39;
-    -&gt;     WITH GRANT OPTION;
-mysql&gt; FLUSH PRIVILEGES;
-&lt;/pre&gt;
-
-Now when you attempt to connect to this server from your host OS, this account will be used instead of the &#39;localhost&#39; account, and your connection will complete successfully. That is, once you make sure to...
-
-&lt;h2&gt;Forward Port 3306&lt;/h2&gt;
-
-&lt;p&gt;All the needs to happen now is VirtualBox (or whatever provider you&amp;rsquo;re using for virtualization) needs to let traffic through from that port on the VM to your host OS. &lt;a href=&#34;https://www.virtualbox.org/manual/ch06.html#natforward&#34;&gt;VBoxManage&lt;/a&gt;, a command-line utility for VirtualBox, makes this pretty easy. If your VM is named &amp;ldquo;WebDevTest,&amp;rdquo; then the command to forward port 3306 traffic would look like this:&lt;/p&gt;
-
-&lt;pre&gt;
-VBoxManage modifyvm &#34;WebDevTest&#34; --natpf1 &#34;guestmysql,tcp,,3306,,3306&#34;
-&lt;/pre&gt;
-
-&lt;p&gt;Alternatively, you can also do this through the GUI, by &lt;b&gt;right-clicking your VM -&amp;gt; Settings&amp;hellip; -&amp;gt; Network -&amp;gt; Adapter (NAT) -&amp;gt; Port Forwarding&lt;/b&gt; and adding a rule to forward traffic from your host port to your guest port. You can keep this the same, or change the host port somewhat (3316); it&amp;rsquo;s a matter of preference, so long as that other port you choose isn&amp;rsquo;t being used for something else.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -67,47 +26,7 @@ VBoxManage modifyvm &#34;WebDevTest&#34; --natpf1 &#34;guestmysql,tcp,,3306,,330
       <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/php-sql-api-1/</guid>
-      <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;h2&gt;API, defined&lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;An &lt;i&gt;application programming interface&lt;/i&gt;, or API, can be generally defined as a set of routines/sub-routines made available to us. We use these routines in our own applications as defined by the API&amp;rsquo;s documentation, with little concern about &lt;i&gt;how&lt;/i&gt; the routines do what they do for us. The motivation, then, behind using an API can be any of the following:&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;We need a well-defined and well-tested handle to some functionality (creating/closing a file stream, for example)&lt;/li&gt;
-    &lt;li&gt;We need to write a script/program that performs some simple task, without completely reinventing the wheel (use somebody else&#39;s library)&lt;/li&gt;
-    &lt;li&gt;We need access to data, and have &lt;i&gt;no other way&lt;/i&gt; to access said data than through the set of routines made available to us&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Web API&lt;/h2&gt;
-
-&lt;p&gt;That last bullet point will be the most relevant motivation behind API construction/use in our case. We&amp;rsquo;ll be developing a &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_API&#34;&gt;&lt;i&gt;web API&lt;/i&gt;&lt;/a&gt;. In many cases where we develop a front-end application on the web, the first step in planning this application will involve developing, or deciding on an existing web API to use.&lt;/p&gt;
-
-&lt;p&gt;As the name suggests, a web API lives on the web. Thus, the context for such an API would be web servers, and the exposed routines will be accessible as universal resource indicators (URI&amp;rsquo;s) that can - sometimes - be accessed directly via a web browser. In a hypothetical API that gives us access to a company&amp;rsquo;s employee data, the URI for getting the ten latest employees might be &lt;b&gt;api.acme.org/employees/10&lt;/b&gt;. (such URI&amp;rsquo;s are often referred to as &lt;i&gt;endpoints&lt;/i&gt;)&lt;/p&gt;
-
-&lt;p&gt;Compare the previous explanation with a tradtional, software API, such as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Berkeley_sockets&#34;&gt;Berkeley sockets API&lt;/a&gt; used in *nix operating systems. Simply put, a socket is a data structure that is used to manage and establish TCP/UDP connections and communication between networked devices. An example of a routine exposed through the sockets API is &lt;b&gt;gethostbyname()&lt;/b&gt;, which &amp;ldquo;resolves host names and addresses&amp;rdquo; based on the information provided to this routine. Just as we get the latest ten employees from the above URI example, using gethostbyname() would return something we expect based on documenation - a NULL pointer in case of an error, or a valid structure corresponding to the detected host.&lt;/p&gt;
-
-&lt;p&gt;Even though the contexts for each are markedly different (web server hosting some application vs. low-level operating system handles), the general principles can be observed: we use a handle associated with some routine or process, and get something back if all goes well.&lt;/p&gt;
-
-&lt;h2&gt;An Example To Follow&lt;/h2&gt;
-An example of a web API that I&#39;ve used before is the &lt;a href=&#34;http://docs.brightcove.com/en/video-cloud/media/guides/search_videos-guide.html&#34;&gt;Brightcove Media API&lt;/a&gt;. Though currently deprecated, it provides a clear example of a well-defined API we will use to guide the creation of a new one.
-
-&lt;ul&gt;
-    &lt;li&gt;An endpoint we can access via JavaScript AJAX calls&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Query_string&#34;&gt;Query strings&lt;/a&gt; are appended to the endpoint, and allow us to make granular requests for data&lt;/li&gt;
-    &lt;li&gt;The requested data is returned to us in JavaScript Object Notation (JSON), a widely-supported format easily adapted to web applications&lt;/li&gt;
-&lt;/ul&gt;
-
-Putting this all together, we would make a request such as 
-&lt;pre&gt;api.brightcove.com/services/library?command=search_videos&amp;page_size=3&amp;video_fields=id,name&lt;/pre&gt; 
-and get back a JSON object, with a bunch of nested objects for each single video that matches the request. The start of our query string is the ? mark, and what follows is a query string where each field/value pair is separated by the &amp; symbol. A field/value pair consists of the left-hand value (an option that impacts the request we&#39;re making), an = sign, and the right-hand value that defines the option preceding it in some way.
-
-Which video fields do we want for each video object we&#39;re returned? Well, note the last field/value set, where &lt;b&gt;video_fields&lt;/b&gt; is followed by a comma-separated list of fields - &lt;b&gt;id,name&lt;/b&gt;. This type of form for writing requests, gives us a compact way of expressing granular requests in a single statement. We can imagine the series of comma-separated fields as corresponding to the columns of a database table. The JSON video objects we get back, then, would correspond to rows that reside in that table.
-
-&lt;h2&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;With this explanation of &lt;i&gt;what&lt;/i&gt; a web API does and looks like, we&amp;rsquo;ll move on to our next article in the series by describing an example API we&amp;rsquo;ll create using PHP and MySQL for the programming language that powers the API, and the database system that stores our information, respectively. We&amp;rsquo;ll also go over some general features or details of PHP/MySQL that we&amp;rsquo;ll need to know in order to write the API.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;</description>
     </item>
     
   </channel>

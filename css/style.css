@@ -18,7 +18,7 @@ h1 {
 }
 p {
 	font-family: 'Roboto', sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 }
 pre {
 	white-space: pre-wrap;    
@@ -31,7 +31,7 @@ pre {
 	display: block;
 	padding: 9.5px;
 	margin: 0 0 10px;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 1.42857143;
 	color: #333333;
 	background-color: #fff;
@@ -122,7 +122,7 @@ pre {
 }
 .blogpanel_body {
 	font-family: 'Roboto', sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 	padding-top: 12px;
 	padding-bottom: 48px;
 	padding-left: 12px;

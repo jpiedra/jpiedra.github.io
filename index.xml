@@ -2,12 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jonathan Piedra</title>
-    <link>http://jpiedra.github.io/index.xml</link>
+    <link>http://jpiedra.github.io/</link>
     <description>Recent content on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 11 Sep 2017 21:55:02 -0400</lastBuildDate>
-    <atom:link href="http://jpiedra.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jan 2018 16:29:20 -0500</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1</title>
+      <link>http://jpiedra.github.io/article/s3-site-deploy-1/</link>
+      <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/s3-site-deploy-1/</guid>
+      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo&lt;/a&gt; or &lt;a href=&#34;https://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Connecting to MySQL on a VirtualBox Linux VM</title>
@@ -15,51 +26,7 @@
       <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/article/vagrant-mysql/</guid>
-      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;
-
-&lt;p&gt;
-This brief writeup serves mostly to document some small settings here and there that I had to set in order to get this working. I have a VirtualBox VM running Ubuntu 14.04, and all of my Node.js web development projects are on there. I&amp;rsquo;m the process of moving these over to my host, now that I&amp;rsquo;ve found an IDE (Visual Studio Code) that I prefer to use&amp;hellip; as well as come to the realization that Chrome won&amp;rsquo;t quite work on my VM, leaving me with no choice if I want to use Node&amp;rsquo;s debugging features!&lt;/p&gt;
-
-&lt;h2&gt;The &#39;bind-address&#39; Option&lt;/h2&gt;
-The first thing you&#39;ll want to do, even before forwarding ports on your VM, is to make sure your MySQL process isn&#39;t bound to localhost (127.0.0.1), which it likely might be by default. The file you&#39;ll want to edit will be &lt;i&gt;/etc/mysql/my.cnf&lt;/i&gt;, and you&#39;ll change this setting:
-
-&lt;pre&gt;
-bind-address        = 0.0.0.0
-&lt;/pre&gt;
-
-Setting &lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/server-options.html#option_mysqld_bind-address&#34;&gt;bind-address&lt;/a&gt; to 0.0.0.0 allows the MySQL process&#39; socket to accept TCP/IP traffic on all IP4 network interfaces, rather than just connections over the loopback interface. This is important if you have anything on your host that needs to be able to make database queries on a database running in the VM. 
-
-&lt;h2&gt;User with Remote Access&lt;/h2&gt;
-This next step is really only appropriate in a development environment, which is what this article assumes you want to configure. As you&#39;ll soon see, we set up a new user with the same name as one we would already have, only we set indicate that this user will have access from &lt;i&gt;any&lt;/i&gt; host. Not a good idea for production systems; you should be stricter with this access, specifying specific IP addresses - or, better yet, use a built-in admin account that can only connect from &lt;i&gt;localhost&lt;/i&gt;.
-
-You may have a user set up to access your server on localhost, named &#39;apiuser.&#39; It may have been created with using the command:
-
-&lt;pre&gt;
-mysql&gt; CREATE USER &#39;apiuser&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;apiuser&#39;@&#39;localhost&#39;
-    -&gt;     WITH GRANT OPTION;
-&lt;/pre&gt;
-
-To set up an identical user that can access the database from any location:
-
-&lt;pre&gt;
-mysql&gt; CREATE USER &#39;apiuser&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
-mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &#39;apiuser&#39;@&#39;%&#39;
-    -&gt;     WITH GRANT OPTION;
-mysql&gt; FLUSH PRIVILEGES;
-&lt;/pre&gt;
-
-Now when you attempt to connect to this server from your host OS, this account will be used instead of the &#39;localhost&#39; account, and your connection will complete successfully. That is, once you make sure to...
-
-&lt;h2&gt;Forward Port 3306&lt;/h2&gt;
-
-&lt;p&gt;All the needs to happen now is VirtualBox (or whatever provider you&amp;rsquo;re using for virtualization) needs to let traffic through from that port on the VM to your host OS. &lt;a href=&#34;https://www.virtualbox.org/manual/ch06.html#natforward&#34;&gt;VBoxManage&lt;/a&gt;, a command-line utility for VirtualBox, makes this pretty easy. If your VM is named &amp;ldquo;WebDevTest,&amp;rdquo; then the command to forward port 3306 traffic would look like this:&lt;/p&gt;
-
-&lt;pre&gt;
-VBoxManage modifyvm &#34;WebDevTest&#34; --natpf1 &#34;guestmysql,tcp,,3306,,3306&#34;
-&lt;/pre&gt;
-
-&lt;p&gt;Alternatively, you can also do this through the GUI, by &lt;b&gt;right-clicking your VM -&amp;gt; Settings&amp;hellip; -&amp;gt; Network -&amp;gt; Adapter (NAT) -&amp;gt; Port Forwarding&lt;/b&gt; and adding a rule to forward traffic from your host port to your guest port. You can keep this the same, or change the host port somewhat (3316); it&amp;rsquo;s a matter of preference, so long as that other port you choose isn&amp;rsquo;t being used for something else.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -70,112 +37,7 @@ VBoxManage modifyvm &#34;WebDevTest&#34; --natpf1 &#34;guestmysql,tcp,,3306,,330
       <guid>http://jpiedra.github.io/article/js-module/</guid>
       <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2&gt;The Object Literal, Revisited&lt;/h2&gt;
-
-&lt;p&gt;In the previous article for this series, we introduced the object literal. This is a simple container that we use in JavaScript to create an object, with member variables and methods, which is then assigned to a variable and available like so:&lt;/p&gt;
-
-&lt;pre&gt;
-var person = {
-    name: &#34;Jonathan Piedra&#34;,
-    greeting: function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-
-console.log(person.name);   // &#34;Jonathan Piedra&#34;
-person.greeting();          // &#34;Hi, I&#39;m Jonathan Piedra&#34;
-&lt;/pre&gt;
-
-&lt;p&gt;The object literal helps us organize our code. Member variables and functions are stored and accessed in the variable named &lt;i&gt;person&lt;/i&gt;. We can think of &lt;i&gt;person&lt;/i&gt; as a rudimentary type of module, as it keeps all pertinent member data available through a name we assign it (through the variable). This is preferable to having the same variables and functions scattered throughout our source code.&lt;/p&gt;
-
-&lt;h2&gt;I Want My Space: Privacy in JavaScript&lt;/h2&gt;
-
-&lt;p&gt;For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&amp;rsquo;re also provided with access modifiers through keywords like &lt;i&gt;public&lt;/i&gt; and &lt;i&gt;private&lt;/i&gt; that specify whether or not we want such member data to be accessed from whatever the &amp;ldquo;global&amp;rdquo; context is (for example, in &amp;ldquo;main&amp;rdquo; if we&amp;rsquo;re writing C++).&lt;/p&gt;
-
-&lt;p&gt;We don&amp;rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use. Before we explain that feature, we should understand an important property of functions in JavaScript.&lt;/p&gt;
-
-&lt;h2&gt;Functions And Scope&lt;/h2&gt;
-
-&lt;p&gt;While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&amp;rsquo;s body from being accessible anywhere else, as long as variables are declared using the &lt;i&gt;var&lt;/i&gt; keyword. Functions within another function&amp;rsquo;s scope are also private:&lt;/p&gt;
-
-&lt;pre&gt;
-function writeMessage() {
-    var secret = &#34;I&#39;m not available.&#34;;
-    console.log(secret);
-};
-
-writeMessage();         // &#34;I&#39;m not available&#34;
-console.log(secret);    // undefined
-&lt;/pre&gt;
-
-&lt;p&gt;We don&amp;rsquo;t have a way of accessing the variable &lt;i&gt;secret&lt;/i&gt; that was created in the function&amp;rsquo;s body, because it&amp;rsquo;s only accessible from within the scope that was created when we declared this function. However, anything &lt;i&gt;else that was created or included in the function declaration&lt;/i&gt; will have access to the variables within.&lt;/p&gt;
-
-&lt;p&gt;We can get a little closer to privacy in an object. Writing a function that returns an object seems possible. The object, because it was declared inside of a function, will continue to have access to whatever other variables were set inside the function.&lt;/p&gt;
-
-&lt;pre&gt;
-function buildModule() {
-    var privateName = &#34;James Bond&#34;;
-
-    function privateMethod() {
-        console.log(privateName);
-    };
-
-    return {
-        publicMethod: privateMethod
-    };
-};
-
-var obj = buildModule();    // buildModule returns an object stored in obj.
-obj.publicMethod();         // its only member is a reference to private, function-scoped &#39;privateMethod&#39;.
-
-console.log(privateName);   // still can&#39;t access this (it only exists in the function&#39;s scope)
-
-&lt;/pre&gt;
-
-&lt;p&gt;This gives us part of the solution. While we now know of a way to achieve data privacy, we need a way of combining this with object creation in order to make it really useful. Enter the IIFE.&lt;/p&gt;
-
-&lt;h2&gt;Immediately Invoked Function Expression (IIFE)&lt;/h2&gt;
-
-&lt;p&gt;Let&amp;rsquo;s return for a second to the concept of a module. We need a way of declaring an object that provides access to member variables and data as desired, once we define the module. We would prefer to create, then store this object in a variable, like we did with &lt;i&gt;person&lt;/i&gt;, for later use in our source code.&lt;/p&gt;
-
-&lt;p&gt;The most common way to immediately create and store such an object, store it into a variable, is through &lt;a href=&#34;http://benalman.com/news/2010/11/immediately-invoked-function-expression/&#34;&gt;the IIFE.&lt;/a&gt; An IIFE is a type of function that is written using a specific form to both declare, then immediately call it, after declaration. This is in contrast with the typical way of creating a function, which we saw above with &lt;i&gt;writeMessage&lt;/i&gt;.&lt;/p&gt;
-
-&lt;pre&gt;
-// declared, then immediately called
-var obj = (function(){
-    var privateName = &#34;James Bond&#34;;
-
-    function privateMethod() {
-        console.log(privateName);
-    };
-
-    return {
-        publicMethod: privateMethod
-    };
-})();
-
-obj.publicMethod();
-&lt;/pre&gt;
-
-&lt;p&gt;Instead of declaring our function, and then calling it - returning an object and storing it in &lt;i&gt;obj&lt;/i&gt; - we write an IIFE. Everything wrapped inside the first pair of parentheses is called immediately. This results in everything declared inside the anonymous function happening right away, with the resulting object returned and stored in &lt;i&gt;obj&lt;/i&gt;. Afterwards, we use the the object as our module, calling its methods as in the previous example.&lt;/p&gt;
-
-&lt;p&gt;Other than the fact that we use an IIFE to immediately call the logic contained in the function, nothing else has changed with respect to the module object. It still has a single method, a reference to &lt;i&gt;privateMethod&lt;/i&gt; which is otherwise not accessible from the global context, and that single method lets us print out the contents of &lt;i&gt;privateName&lt;/i&gt;, another variable that is only available inside the function&amp;rsquo;s (IIFE&amp;rsquo;s) scope.&lt;/p&gt;
-
-&lt;h2&gt;Tying It Together: A Trivial UI&lt;/h2&gt;
-
-&lt;p&gt;So we now know an IIFE can be used in JavaScript to setup data privacy inside of a module. What generally happens, is that we set up an IIFE that returns an object, storing that object in a variable in the global context. The object returned is our module, and it can have tightly controlled access to &amp;ldquo;private&amp;rdquo; vars declared inside of the IIFE&amp;rsquo;s function body, as well as functions. These vars and functions end up being the private members of the module: we make them public by adding a reference to them in the returned object. We did just that in the previous example, by creating a key called &lt;i&gt;publicMethod&lt;/i&gt; which is a reference to the IIFE-scoped function &lt;i&gt;privateMethod&lt;/i&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s wrap this article up by providing an example somewhat closer to reality. We&amp;rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method &lt;i&gt;setup&lt;/i&gt; will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &amp;ldquo;private,&amp;rdquo; otherwise inaccessible beyond the IIFE&amp;rsquo;s scope:&lt;/p&gt;
-
-&lt;script async src=&#34;//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;In a future post, I&amp;rsquo;ll demonstrate a more complete version of a UI module that I developed. It&amp;rsquo;s very similar to what&amp;rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.&lt;/p&gt;
-
-&lt;p&gt;Combining object literals with the privacy introduced by functions, and IIFE&amp;rsquo;s, is a valuable way to create modules with public and private member variables and methods. These same techniques will be useful in a later post, where the singleton pattern is explained as a way of ensuring only one instance of an object exists for use at a given time.&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&amp;rsquo;s in-depth book, &lt;a href=&#34;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34;&gt;&lt;b&gt;Learning JavaScript Design Patterns&lt;/b&gt;&lt;/a&gt;. Check out the book for great explanations on this and other design patterns.&lt;/i&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -186,157 +48,7 @@ obj.publicMethod();
       <guid>http://jpiedra.github.io/article/js-constructor/</guid>
       <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2&gt;Object Literals&lt;/h2&gt;
-
-&lt;p&gt;Those of us who write JavaScript are familiar with the fastest way of creating an object, assinging an &lt;i&gt;object literal&lt;/i&gt; to a variable:&lt;/p&gt;
-
-&lt;pre&gt;
-var person = {
-    name: &#34;Jonathan Piedra&#34;,
-    greeting: function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-&lt;/pre&gt;
-
-&lt;p&gt;While simple to grasp and convenient enough for a small application or script, this won&amp;rsquo;t do as soon as we have a need for a programmatic method of creating similar objects with different information.&lt;/p&gt;
-
-&lt;h2&gt;The Constructor&lt;/h2&gt;
-
-&lt;p&gt;Fortunately, in JavaScript, we do have a method of object construction that hews closer to what one would encounter in C++ or Python. It involves defining a special type of function that follows these conventions:&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;Name of the function corresponds with the capitalized name of the object (examples: Animal, Person, Car) of which we want to create unique instances&lt;/li&gt;
-    &lt;li&gt;We specify parameters to this function, generally used to set the properties that an instance created using the function should have&lt;/li&gt;
-    &lt;li&gt;The &lt;i&gt;this&lt;/i&gt; keyword, similar to how we use it in an object literal, is used to refer to properties that will be unique to each instance&lt;/li&gt;
-    &lt;li&gt;Finally, methods are defined on the &lt;i&gt;prototype&lt;/i&gt; level! (more on this later)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let&amp;rsquo;s put this all together with an example that will create Person objects:&lt;/p&gt;
-
-&lt;pre&gt;
-// a
-function Person(name) {
-    this.name = name;   
-};
-
-// b
-Person.prototype.greeting = function() {
-    console.log(&#34;Hi, I&#39;m &#34; + this.name);    
-};
-
-// c
-var jon = new Person(&#34;Jonathan Piedra&#34;);
-jon.greeting();
-// Hi, I&#39;m Jonathan Piedra
-&lt;/pre&gt;
-
-&lt;p&gt;Segment A consists of the function that manages object creation. We name it Person, as each instance created using this function should be a Person object. A single parameter, &lt;i&gt;name&lt;/i&gt;, is specified; thus, when we create instances using this function (Segment C) we have to pass in one argument, that&amp;rsquo;s used to assign the instance&amp;rsquo;s name property, marked using the &lt;i&gt;this&lt;/i&gt; keyword.&lt;/p&gt;
-
-&lt;p&gt;Segment B defines a method for &lt;i&gt;all Person objects&lt;/i&gt;. The importance of defining object methods in this way is explained in detail below; for now, all we need to know is that using this approach is considered a best practice. We ensure a single definition for the method &lt;i&gt;greeting()&lt;/i&gt; exists.&lt;/p&gt;
-
-&lt;p&gt;Finally, in Segment C, we use the constructor method defined in Segment A. Again, similar to the process used in C++ or other C-like languages, the &lt;i&gt;new&lt;/i&gt; keyword is used, and the function is called with a single string literal passed in. This argument, as we see in the first/only line of the &lt;i&gt;Person&lt;/i&gt; method, is used to set the &lt;i&gt;name&lt;/i&gt; property that belongs to our new instance, &lt;i&gt;jon&lt;/i&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Why Not Inline Methods?&lt;/h2&gt;
-
-&lt;p&gt;Let&amp;rsquo;s return our attention to Segment B. Though we decided to define &lt;i&gt;greeting()&lt;/i&gt; outside of the function body for the Person constructor, there&amp;rsquo;s nothing stopping us from refactoring the constructor like so:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-&lt;/pre&gt;
-
-&lt;p&gt;However, it&amp;rsquo;s important to understand why this is discouraged. When creating a constructor, anything defined &lt;i&gt;inline&lt;/i&gt;, or inside the function body, using the &lt;i&gt;this&lt;/i&gt; keyword will become a property or method that each instance has a unique copy of. In effect, this results in every instance of Person having their &amp;ldquo;own&amp;rdquo; version of &lt;i&gt;greeting&lt;/i&gt;.&lt;/p&gt;
-
-&lt;p&gt;For properties that describe unique attributes, like a name or ID, this is what we want! However, for a method that provides functionality that all instances of an object have in common, this presents problems. The &lt;i&gt;greeting()&lt;/i&gt; method should do the same thing regardless of &lt;i&gt;which Person object&lt;/i&gt; it is being called from; additionally, if we ever want to change what that method does, then doing that when every object instance has it&amp;rsquo;s own copy of the method will prove unnecessarily difficult.&lt;/p&gt;
-
-&lt;h2&gt;Prototypal Inheritance&lt;/h2&gt;
-
-&lt;p&gt;The best practice for defining methods used by constructed objects, involves defining those methods on the Prototype level. In JavaScript, objects are defined along a prototypal chain. What this means, is that all objects - objects we define as literals, through constructors, as well as primitive types like Object and even Array - reside somewhere on a prototype &amp;ldquo;chain.&amp;rdquo; At the top of this chain would be Object, the primitive JavaScript type; at the bottom, custom objects like Person which a programmer defines.&lt;/p&gt;
-
-&lt;p&gt;Inheritance in JavaScript involves an object we create inheriting the methods and properties we define somewhere along the chain (through a previous custom object), as well as whatever methods and properties are defined by objects that reside earlier along that chain (such as primitive types). This means that even a Person instance, like any custom type, will inherit the methods defined in Object&amp;rsquo;s prototype, because it is defined before any other object (it is, after all, the base from which any JavaScript object derives).&lt;/p&gt;
-
-&lt;p&gt;This &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object&#34;&gt;Mozilla Developer Network page&lt;/a&gt; describes the Object primitive in greater detail. We see that, for example, the property &lt;i&gt;constructor&lt;/i&gt; is defined through the Object prototype - thus, referred to as &lt;i&gt;Object.prototype.constructor&lt;/i&gt;. If Person resides on the prototype chain, and comes well after the Object prototype, it follows that Person objects will also have inherited &lt;i&gt;constructor&lt;/i&gt; from Object&amp;rsquo;s prototype (which specifies the constructor used to create the object):&lt;/p&gt;
-
-&lt;pre&gt;
-...
-jon.constructor
-// function Person()
-&lt;/pre&gt;
-
-&lt;p&gt;JavaScript wouldn&amp;rsquo;t be as useful if we weren&amp;rsquo;t able to define our own, Prototype-level methods and properties that are automatically available to objects we create. Of course, we are able to do this for custom object types, and the form for doing so is:&lt;/p&gt;
-
-&lt;pre&gt;
-MyObject.prototype.MyFunction = function() { ... };
-&lt;/pre&gt;
-
-&lt;p&gt;Where &lt;i&gt;MyObject&lt;/i&gt; and &lt;i&gt;MyFunction&lt;/i&gt; can be identifiers of our choosing. Defining methods for objects this way ensures that any object we create of type MyObject (or that &lt;i&gt;extends&lt;/i&gt; from MyObject) will have access to MyFunction. However, this also results in &lt;i&gt;one definition for the function, MyFunction()&lt;/i&gt; being created; this definition is available to all objects we create of type MyObject. Instead of having their own copies, they just point to the Prototype definition of the method they inherited.&lt;/p&gt;
-
-&lt;h2&gt;Person Constructor, Revisited&lt;/h2&gt;
-
-&lt;p&gt;Turning back to our custom Person constructor, the decision to define &lt;i&gt;greeting()&lt;/i&gt; on the prototype level should make more sense now. To further cement this knowledge, let&amp;rsquo;s see what happens when we don&amp;rsquo;t follow the aforementioned practice:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-
-var jon = new Person(&#34;Jonathan&#34;);
-var rob = new Person(&#34;Rob&#34;);
-
-jon.greeting(); // Hi, I&#39;m Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-&lt;/pre&gt;
-
-&lt;p&gt;It&amp;rsquo;s worth mentioning that, given how we&amp;rsquo;ve defined our constructor, the properties and methods for Person objects are mutable; we can change their values. Being able to change the name property might not be so bad, because at most it will only impact that particular Person&amp;rsquo;s name. For methods, though, the implication is that now our instances of a particular type (Person) will no longer provide reliable functionality; if it&amp;rsquo;s possible to change what &lt;i&gt;greeting()&lt;/i&gt; does for each instance, we can&amp;rsquo;t reliably expect calling that method will do what we need it to:&lt;/p&gt;
-
-&lt;pre&gt;
-jon.greeting = function() {
-    console.log(&#34;I am NOT &#34; + this.name);
-};
-
-jon.greeting(); // I am NOT Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-&lt;/pre&gt;
-
-&lt;p&gt;In contrast, Prototypal method definition ensures against such a scenario. Any changes to the Prototype&amp;rsquo;s methods will be reflected in all of the object&amp;rsquo;s instances:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;   
-};
-
-Person.prototype.greeting = function() {
-    console.log(&#34;Hi, I&#39;m &#34; + this.name);    
-};
-
-var jon = new Person(&#34;Jonathan&#34;);
-var rob = new Person(&#34;Rob&#34;);
-
-jon.greeting(); // Hi, I&#39;m Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-
-// Oh, we need to change greeting...
-Person.prototype.greeting = function() {
-    console.log(&#34;My name is &#34; + this.name);
-};
-
-jon.greeting(); // My name is Jonathan
-rob.greeting(); // My name is Rob
-&lt;/pre&gt;
-
-&lt;p&gt;Using the Prototypal approach to method definition, we ensure that changes made to common functionality will be reflected across all objects of a type, reducing the likelihood of errors as well as headaches.&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&amp;rsquo;s in-depth book, &lt;a href=&#34;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34;&gt;&lt;b&gt;Learning JavaScript Design Patterns&lt;/b&gt;&lt;/a&gt;. Check out the book for great explanations on this and other design patterns.&lt;/i&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -345,69 +57,7 @@ rob.greeting(); // My name is Rob
       <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/simple-build-script/</guid>
-      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo static site&lt;/a&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;h2&gt;Version 1&lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll begin by showing the code, then explain my process:&lt;/p&gt;
-
-&lt;pre&gt;
-#!/bin/bash
-
-build_dir=/var/www/html/blog-dev/public
-deploy_dir=/var/www/html/blog-live/jpiedra.github.io
-
-if [ -d $build_dir ]
-then
-  echo &#34;BUILD FOUND, DETAILS:&#34;
-  echo $(stat $build_dir)
-  cd $deploy_dir &amp;&amp; rm -rf *
-  cp -rp $build_dir/* $deploy_dir
-  cd $deploy_dir &amp;&amp; git status; git add -A; git commit -m &#34;[Scripted Deploy $(date)]&#34;; git push
-else
-  echo &#34;NO BUILD FOUND&#34;
-  echo &#34;  Run &#39;hugo&#39; to &#34;
-  echo &#34;  create latest build&#34;
-fi
-&lt;/pre&gt;
-
-&lt;p&gt;We begin by setting two variables, &lt;b&gt;build_dir&lt;/b&gt; and &lt;b&gt;deploy_dir.&lt;/b&gt; These store string values indicating the locations of where our built Hugo site&amp;rsquo;s files reside, and the directory where those files should be copied to, respectively. In this case, &lt;b&gt;deploy_dir&lt;/b&gt; is a GitHub Pages repository, the files used therein are the same ones responsible for powering this website!&lt;/p&gt;
-
-&lt;h2&gt;Testing for Build Directory&lt;/h2&gt;
-
-&lt;p&gt;The bulk of this script begins where the &lt;i&gt;if.. ..fi&lt;/i&gt; structure is shown. This conditional structure begins with a &lt;a href=&#34;http://linuxcommand.org/lc3_man_pages/testh.html&#34;&gt;test.&lt;/a&gt; Now, because we&amp;rsquo;re writing a Bash script, rather than using the command line, we have a built-in operator available to us, the square brackets [ ]. These are used to perform any test in a Bash script, thus instead of writing &lt;i&gt;test -d /some/directory&lt;/i&gt; we can instead write &lt;i&gt;[ -d /some/directory ]&lt;/i&gt;.&lt;/p&gt;
-
-&lt;p&gt;The -d switch allows us to test whether the provided argument is a directory. The test returns 0 or 1, true and false respectively, depending on whether the provided argument is detected as a valid directory. In this script, we test the value stored in &lt;b&gt;$build_dir&lt;/b&gt; (thus, the dollar sign) to check whether a build folder exists in our Hugo site directory - which, by default, would be called &lt;i&gt;public&lt;/i&gt; and reside in the Hugo site base directory.&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;Tip: you can run the command &lt;b&gt;compgen -b&lt;/b&gt; with the provided -b switch to get a list of all Bash built-ins available to you. Running the command in your terminal, displays the [ ] built-in near the top of the list.&lt;/i&gt;&lt;/p&gt;
-
-&lt;h2&gt;Conditional Execution&lt;/h2&gt;
-
-&lt;p&gt;In the event our test for a directory fails (directory doesn&amp;rsquo;t exist), we simply echo out a diagnostic message (which would best be output to standard error, more on that later). After &lt;i&gt;else&lt;/i&gt; our script prints the messages to stdout, so whatever is echo&amp;rsquo;ed is visible in the terminal.&lt;/p&gt;
-
-&lt;p&gt;If the build directory does exist, we can begin performing the required steps to push our files to the GitHub pages directory, indicated by &lt;b&gt;$deploy_dir.&lt;/b&gt; We&amp;rsquo;ll be making repeated use of a central Bash feature here.&lt;/p&gt;
-
-&lt;h2&gt;Command Substitution&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://tldp.org/LDP/abs/html/commandsub.html&#34;&gt;Command substitution&lt;/a&gt; &amp;ldquo;literally plugs&amp;hellip; command output into another context,&amp;rdquo; as the aforementioned page phrases it. Indeed, by using certain operators built into the Bash language, we can get the output of a command and do with it whatever we want - this usually means assinging said output to a variable, parsing it using some other commands, or even saving it to another file.&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;ll use command substitution twice here, as indicated by &lt;i&gt;$(&amp;hellip;)&lt;/i&gt; where the elipses would be replaced by Bash built-ins or Linux commands. Another form that&amp;rsquo;s available to us uses backticks, but we&amp;rsquo;ll stick with the former operator instead.&lt;/p&gt;
-
-&lt;h2&gt;Deployment Process&lt;/h2&gt;
-
-&lt;p&gt;After echo&amp;rsquo;ing that we&amp;rsquo;ve found the build folder, we run a few commands when the build directory is detected.&lt;/p&gt;
-
-&lt;ol&gt;
-    &lt;li&gt;Command substitution is used to capture the output of running &lt;i&gt;stat $build_dir&lt;/i&gt;, thus printing the result of that command to stdout using echo&lt;/li&gt;
-    &lt;li&gt;We change into the deployment directory, and remove the files present there, making way for the files from our latest Hugo site build &lt;i&gt;(cd $deploy_dir &amp;&amp; rm -rf *)&lt;/i&gt;&lt;/li&gt;
-    &lt;li&gt;The contents of the Hugo site build directory are copied into the deployment directory &lt;i&gt;(cp -rp $build_dir/* $deploy_dir)&lt;/i&gt;&lt;/li&gt;
-    &lt;li&gt;Finally, we change into the deployment directory and execute a few standard Git commands, that add/commit/push the new files to the current branch&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;A few notes on step 4. The &lt;i&gt;&amp;amp;&amp;amp;&lt;/i&gt; operator ensures that the second command, &lt;i&gt;git status&lt;/i&gt; is only executed if &lt;i&gt;cd&lt;/i&gt; is successful. This is seen elsewhere, in step 2, ensuring we remove the files only if we successfully changed to the desired folder. Also in step 4, we see the final example of command substitution used when we indicate a message for &lt;i&gt;git commit&lt;/i&gt; to use. We capture the output of running the Bash built-in &lt;i&gt;time&lt;/i&gt; and use that as part of the content for our commit message.&lt;/p&gt;
-
-&lt;p&gt;When you run this script, the last part of this deployment process would involve running &lt;i&gt;git push,&lt;/i&gt; so you would be expected to provide your credentials in the terminal to push the latest Hugo site files. In summation, having a script such as this can save precious time, by performing various checks for us along the way as well as eliminating the tedium of typing and executing several commands.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo static site&lt;/a&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -420,91 +70,7 @@ fi
 
 &lt;p&gt;I recently took on a small project, some work on customizing Squarespace templates. In the course of doing this, I required the Squarespace local development server in order to quickly modify and test changes to the template. I use a VirtualBox VM I built some time ago using Vagrant, based on Ubuntu 14.04 LTS.&lt;/p&gt;
 
-&lt;p&gt;If you&amp;rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!&lt;/p&gt;
-
-&lt;p&gt;
-&lt;h2&gt;Potential Errors&lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;After following the instructions on Squarespace&amp;rsquo;s official website (link above) you might have come across the following error:&lt;/p&gt;
-
-&lt;pre&gt;
-$ npm install -g @squarespace/server
-@squarespace/server@1.0.7 copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
-node scripts/copyfile.js build/distributions/local-developer/bin/run.bat darwin:build/distributions/local-developer/bin/osx-local-developer win32:build/distributions/local-developer/bin/win-local-developer.bat linux:build/distributions/local-developer/bin/linux-local-developer build/distributions/local-developer/bin/local-developer
-
-copying build/distributions/local-developer/bin/linux-local-developer to build/distributions/local-developer/bin/run.bat
-npm ERR! Linux 4.2.0-27-generic
-npm ERR! argv &#34;/usr/bin/nodejs&#34; &#34;/usr/bin/npm&#34; &#34;install&#34; &#34;-g&#34; &#34;@squarespace/server&#34;
-npm ERR! node v6.9.4
-npm ERR! npm  v3.10.10
-npm ERR! path ../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
-npm ERR! code EACCES
-npm ERR! errno -13
-npm ERR! syscall symlink
-
-npm ERR! Error: EACCES: permission denied, symlink &#39;../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat&#39; -&gt; &#39;/usr/bin/squarespace-server&#39;
-npm ERR!     at Error (native)
-npm ERR!  { Error: EACCES: permission denied, symlink &#39;../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat&#39; -&gt; &#39;/usr/bin/squarespace-server&#39;
-npm ERR!     at Error (native)
-npm ERR!   errno: -13,
-npm ERR!   code: &#39;EACCES&#39;,
-npm ERR!   syscall: &#39;symlink&#39;,
-npm ERR!   path: &#39;../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat&#39;,
-npm ERR!   dest: &#39;/usr/bin/squarespace-server&#39; }
-npm ERR! 
-&lt;/pre&gt;
-
-&lt;p&gt;This may occur if you attempt to install the program as a &lt;i&gt;user with insufficient permissions.&lt;/i&gt; Installing as root may resolve the problem, as well as &lt;a href=&#34;https://docs.npmjs.com/getting-started/fixing-npm-permissions&#34;&gt;providing the user NPM is running under with the required permissions.&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;However, even following that step might not end matters for you; the next error might come up:&lt;/p&gt;
-
-&lt;pre&gt;
-$ sudo npm install -g @squarespace/server
-npm WARN lifecycle @squarespace/server@1.0.7~preinstall: cannot run in wd %s %s (wd=%s) @squarespace/server@1.0.7 npm run accept &amp;&amp; node scripts/execif.js --exists=build npm run copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
-npm ERR! Linux 4.2.0-27-generic
-npm ERR! argv &#34;/usr/bin/nodejs&#34; &#34;/usr/bin/npm&#34; &#34;install&#34; &#34;-g&#34; &#34;@squarespace/server&#34;
-npm ERR! node v6.9.4
-npm ERR! npm  v3.10.10
-npm ERR! path /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
-npm ERR! code ENOENT
-npm ERR! errno -2
-npm ERR! syscall chmod
-
-npm ERR! enoent ENOENT: no such file or directory, chmod &#39;/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat&#39;
-npm ERR! enoent ENOENT: no such file or directory, chmod &#39;/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat&#39;
-npm ERR! enoent This is most likely not a problem with npm itself
-npm ERR! enoent and is related to npm not being able to find a file.
-npm ERR! enoent 
-&lt;/pre&gt;
-
-&lt;p&gt;The error messages may seem a bit opaque, but it appears that a required folder either wasn&amp;rsquo;t created or found during the installation process.&lt;/p&gt;
-
-&lt;p&gt;&lt;h2&gt;A workaround: install &amp;ldquo;locally,&amp;rdquo; then globally&lt;/h2&gt;
-I ended up having to rely on a workaround. When I say &amp;ldquo;locally&amp;rdquo; I really mean, first installing the squarespace-server dependency for a specific node project, then &lt;i&gt;moving that installation&lt;/i&gt; over to the location it must reside at in order to be used globally.&lt;/p&gt;
-
-&lt;p&gt;Installing squarespace-server for a specific project is easy enough, just omit the global flag (-g) when you install it to your site template&amp;rsquo;s project directory. The part that might be tricky for some is &amp;ldquo;moving&amp;rdquo; the files over, as it involves not only moving the files over to a new directory, but applying permissions and creating a symbolic link as well. The presence of the symbolic link is what will allow us to launch squarespace-server globally. The steps are as follows:
-&lt;ol&gt;
-    &lt;li&gt;Clone the files for your Squarespace site, as instructed here: &lt;a href=&#34;http://developers.squarespace.com/local-development&#34;&gt;http://developers.squarespace.com/local-development&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;Change into the &amp;lsquo;template&amp;rsquo; directory created after cloning&lt;/li&gt;
-    &lt;li&gt;Install the squarespace-server package normally (not globally)
-    &lt;pre&gt;$ npm install @squarespace/server&lt;/pre&gt;
-    &lt;/li&gt;
-    &lt;li&gt;You should now have a directory:&lt;b&gt;template/node_modules/@squarespace&lt;/b&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Copy the files for this module into your system-wide &amp;lsquo;node_modules&amp;rsquo; directory:
-    &lt;pre&gt;$ sudo cp -rp node_modules/@squarespace /usr/lib/node_modules/&lt;/pre&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Change the permissions for this copied folder as needed. This location will vary depending on your operating system (for our purposes, we&amp;rsquo;re using a Vagrant Box based on Ubuntu 14.04, thus the user shown below:
-    &lt;pre&gt;$ sudo chown -R vagrant:root @squarespace
-$ sudo chmod -R 755 @squarespace&lt;/pre&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Finally, create a symbolic link, allowing us to run &amp;lsquo;squarespace-server&amp;rsquo; from anywhere:&lt;pre&gt;$ sudo ln -s /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat /usr/bin/squarespace-server&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;&lt;/p&gt;
-
-&lt;p&gt;You should now be able to use the local development server, from inside your site&amp;rsquo;s &amp;lsquo;template&amp;rsquo; directory:
-&lt;pre&gt;$ squarespace-server https://[sitename].squarespace.com &amp;ndash;auth&lt;/pre&gt;&lt;/p&gt;
-
-&lt;p&gt;Hopefully this solution works for you. Share in the comments if this helped you get squarespace-server running!&lt;/p&gt;</description>
+&lt;p&gt;If you&amp;rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -513,47 +79,7 @@ $ sudo chmod -R 755 @squarespace&lt;/pre&gt;
       <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/php-sql-api-1/</guid>
-      <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;h2&gt;API, defined&lt;/h2&gt;&lt;/p&gt;
-
-&lt;p&gt;An &lt;i&gt;application programming interface&lt;/i&gt;, or API, can be generally defined as a set of routines/sub-routines made available to us. We use these routines in our own applications as defined by the API&amp;rsquo;s documentation, with little concern about &lt;i&gt;how&lt;/i&gt; the routines do what they do for us. The motivation, then, behind using an API can be any of the following:&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;We need a well-defined and well-tested handle to some functionality (creating/closing a file stream, for example)&lt;/li&gt;
-    &lt;li&gt;We need to write a script/program that performs some simple task, without completely reinventing the wheel (use somebody else&#39;s library)&lt;/li&gt;
-    &lt;li&gt;We need access to data, and have &lt;i&gt;no other way&lt;/i&gt; to access said data than through the set of routines made available to us&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Web API&lt;/h2&gt;
-
-&lt;p&gt;That last bullet point will be the most relevant motivation behind API construction/use in our case. We&amp;rsquo;ll be developing a &lt;a href=&#34;https://en.wikipedia.org/wiki/Web_API&#34;&gt;&lt;i&gt;web API&lt;/i&gt;&lt;/a&gt;. In many cases where we develop a front-end application on the web, the first step in planning this application will involve developing, or deciding on an existing web API to use.&lt;/p&gt;
-
-&lt;p&gt;As the name suggests, a web API lives on the web. Thus, the context for such an API would be web servers, and the exposed routines will be accessible as universal resource indicators (URI&amp;rsquo;s) that can - sometimes - be accessed directly via a web browser. In a hypothetical API that gives us access to a company&amp;rsquo;s employee data, the URI for getting the ten latest employees might be &lt;b&gt;api.acme.org/employees/10&lt;/b&gt;. (such URI&amp;rsquo;s are often referred to as &lt;i&gt;endpoints&lt;/i&gt;)&lt;/p&gt;
-
-&lt;p&gt;Compare the previous explanation with a tradtional, software API, such as the &lt;a href=&#34;https://en.wikipedia.org/wiki/Berkeley_sockets&#34;&gt;Berkeley sockets API&lt;/a&gt; used in *nix operating systems. Simply put, a socket is a data structure that is used to manage and establish TCP/UDP connections and communication between networked devices. An example of a routine exposed through the sockets API is &lt;b&gt;gethostbyname()&lt;/b&gt;, which &amp;ldquo;resolves host names and addresses&amp;rdquo; based on the information provided to this routine. Just as we get the latest ten employees from the above URI example, using gethostbyname() would return something we expect based on documenation - a NULL pointer in case of an error, or a valid structure corresponding to the detected host.&lt;/p&gt;
-
-&lt;p&gt;Even though the contexts for each are markedly different (web server hosting some application vs. low-level operating system handles), the general principles can be observed: we use a handle associated with some routine or process, and get something back if all goes well.&lt;/p&gt;
-
-&lt;h2&gt;An Example To Follow&lt;/h2&gt;
-An example of a web API that I&#39;ve used before is the &lt;a href=&#34;http://docs.brightcove.com/en/video-cloud/media/guides/search_videos-guide.html&#34;&gt;Brightcove Media API&lt;/a&gt;. Though currently deprecated, it provides a clear example of a well-defined API we will use to guide the creation of a new one.
-
-&lt;ul&gt;
-    &lt;li&gt;An endpoint we can access via JavaScript AJAX calls&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Query_string&#34;&gt;Query strings&lt;/a&gt; are appended to the endpoint, and allow us to make granular requests for data&lt;/li&gt;
-    &lt;li&gt;The requested data is returned to us in JavaScript Object Notation (JSON), a widely-supported format easily adapted to web applications&lt;/li&gt;
-&lt;/ul&gt;
-
-Putting this all together, we would make a request such as 
-&lt;pre&gt;api.brightcove.com/services/library?command=search_videos&amp;page_size=3&amp;video_fields=id,name&lt;/pre&gt; 
-and get back a JSON object, with a bunch of nested objects for each single video that matches the request. The start of our query string is the ? mark, and what follows is a query string where each field/value pair is separated by the &amp; symbol. A field/value pair consists of the left-hand value (an option that impacts the request we&#39;re making), an = sign, and the right-hand value that defines the option preceding it in some way.
-
-Which video fields do we want for each video object we&#39;re returned? Well, note the last field/value set, where &lt;b&gt;video_fields&lt;/b&gt; is followed by a comma-separated list of fields - &lt;b&gt;id,name&lt;/b&gt;. This type of form for writing requests, gives us a compact way of expressing granular requests in a single statement. We can imagine the series of comma-separated fields as corresponding to the columns of a database table. The JSON video objects we get back, then, would correspond to rows that reside in that table.
-
-&lt;h2&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;With this explanation of &lt;i&gt;what&lt;/i&gt; a web API does and looks like, we&amp;rsquo;ll move on to our next article in the series by describing an example API we&amp;rsquo;ll create using PHP and MySQL for the programming language that powers the API, and the database system that stores our information, respectively. We&amp;rsquo;ll also go over some general features or details of PHP/MySQL that we&amp;rsquo;ll need to know in order to write the API.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;</description>
     </item>
     
   </channel>

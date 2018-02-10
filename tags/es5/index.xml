@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Jonathan Piedra</title>
-    <link>http://jpiedra.github.io/tags/es5/index.xml</link>
-    <description>Recent content on Jonathan Piedra</description>
+    <title>Es5 on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/es5/</link>
+    <description>Recent content in Es5 on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://jpiedra.github.io/tags/es5/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Sep 2017 17:48:30 -0400</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/es5/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>JavaScript Design Patterns: Module</title>
@@ -16,112 +19,7 @@
       <guid>http://jpiedra.github.io/article/js-module/</guid>
       <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2&gt;The Object Literal, Revisited&lt;/h2&gt;
-
-&lt;p&gt;In the previous article for this series, we introduced the object literal. This is a simple container that we use in JavaScript to create an object, with member variables and methods, which is then assigned to a variable and available like so:&lt;/p&gt;
-
-&lt;pre&gt;
-var person = {
-    name: &#34;Jonathan Piedra&#34;,
-    greeting: function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-
-console.log(person.name);   // &#34;Jonathan Piedra&#34;
-person.greeting();          // &#34;Hi, I&#39;m Jonathan Piedra&#34;
-&lt;/pre&gt;
-
-&lt;p&gt;The object literal helps us organize our code. Member variables and functions are stored and accessed in the variable named &lt;i&gt;person&lt;/i&gt;. We can think of &lt;i&gt;person&lt;/i&gt; as a rudimentary type of module, as it keeps all pertinent member data available through a name we assign it (through the variable). This is preferable to having the same variables and functions scattered throughout our source code.&lt;/p&gt;
-
-&lt;h2&gt;I Want My Space: Privacy in JavaScript&lt;/h2&gt;
-
-&lt;p&gt;For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&amp;rsquo;re also provided with access modifiers through keywords like &lt;i&gt;public&lt;/i&gt; and &lt;i&gt;private&lt;/i&gt; that specify whether or not we want such member data to be accessed from whatever the &amp;ldquo;global&amp;rdquo; context is (for example, in &amp;ldquo;main&amp;rdquo; if we&amp;rsquo;re writing C++).&lt;/p&gt;
-
-&lt;p&gt;We don&amp;rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use. Before we explain that feature, we should understand an important property of functions in JavaScript.&lt;/p&gt;
-
-&lt;h2&gt;Functions And Scope&lt;/h2&gt;
-
-&lt;p&gt;While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&amp;rsquo;s body from being accessible anywhere else, as long as variables are declared using the &lt;i&gt;var&lt;/i&gt; keyword. Functions within another function&amp;rsquo;s scope are also private:&lt;/p&gt;
-
-&lt;pre&gt;
-function writeMessage() {
-    var secret = &#34;I&#39;m not available.&#34;;
-    console.log(secret);
-};
-
-writeMessage();         // &#34;I&#39;m not available&#34;
-console.log(secret);    // undefined
-&lt;/pre&gt;
-
-&lt;p&gt;We don&amp;rsquo;t have a way of accessing the variable &lt;i&gt;secret&lt;/i&gt; that was created in the function&amp;rsquo;s body, because it&amp;rsquo;s only accessible from within the scope that was created when we declared this function. However, anything &lt;i&gt;else that was created or included in the function declaration&lt;/i&gt; will have access to the variables within.&lt;/p&gt;
-
-&lt;p&gt;We can get a little closer to privacy in an object. Writing a function that returns an object seems possible. The object, because it was declared inside of a function, will continue to have access to whatever other variables were set inside the function.&lt;/p&gt;
-
-&lt;pre&gt;
-function buildModule() {
-    var privateName = &#34;James Bond&#34;;
-
-    function privateMethod() {
-        console.log(privateName);
-    };
-
-    return {
-        publicMethod: privateMethod
-    };
-};
-
-var obj = buildModule();    // buildModule returns an object stored in obj.
-obj.publicMethod();         // its only member is a reference to private, function-scoped &#39;privateMethod&#39;.
-
-console.log(privateName);   // still can&#39;t access this (it only exists in the function&#39;s scope)
-
-&lt;/pre&gt;
-
-&lt;p&gt;This gives us part of the solution. While we now know of a way to achieve data privacy, we need a way of combining this with object creation in order to make it really useful. Enter the IIFE.&lt;/p&gt;
-
-&lt;h2&gt;Immediately Invoked Function Expression (IIFE)&lt;/h2&gt;
-
-&lt;p&gt;Let&amp;rsquo;s return for a second to the concept of a module. We need a way of declaring an object that provides access to member variables and data as desired, once we define the module. We would prefer to create, then store this object in a variable, like we did with &lt;i&gt;person&lt;/i&gt;, for later use in our source code.&lt;/p&gt;
-
-&lt;p&gt;The most common way to immediately create and store such an object, store it into a variable, is through &lt;a href=&#34;http://benalman.com/news/2010/11/immediately-invoked-function-expression/&#34;&gt;the IIFE.&lt;/a&gt; An IIFE is a type of function that is written using a specific form to both declare, then immediately call it, after declaration. This is in contrast with the typical way of creating a function, which we saw above with &lt;i&gt;writeMessage&lt;/i&gt;.&lt;/p&gt;
-
-&lt;pre&gt;
-// declared, then immediately called
-var obj = (function(){
-    var privateName = &#34;James Bond&#34;;
-
-    function privateMethod() {
-        console.log(privateName);
-    };
-
-    return {
-        publicMethod: privateMethod
-    };
-})();
-
-obj.publicMethod();
-&lt;/pre&gt;
-
-&lt;p&gt;Instead of declaring our function, and then calling it - returning an object and storing it in &lt;i&gt;obj&lt;/i&gt; - we write an IIFE. Everything wrapped inside the first pair of parentheses is called immediately. This results in everything declared inside the anonymous function happening right away, with the resulting object returned and stored in &lt;i&gt;obj&lt;/i&gt;. Afterwards, we use the the object as our module, calling its methods as in the previous example.&lt;/p&gt;
-
-&lt;p&gt;Other than the fact that we use an IIFE to immediately call the logic contained in the function, nothing else has changed with respect to the module object. It still has a single method, a reference to &lt;i&gt;privateMethod&lt;/i&gt; which is otherwise not accessible from the global context, and that single method lets us print out the contents of &lt;i&gt;privateName&lt;/i&gt;, another variable that is only available inside the function&amp;rsquo;s (IIFE&amp;rsquo;s) scope.&lt;/p&gt;
-
-&lt;h2&gt;Tying It Together: A Trivial UI&lt;/h2&gt;
-
-&lt;p&gt;So we now know an IIFE can be used in JavaScript to setup data privacy inside of a module. What generally happens, is that we set up an IIFE that returns an object, storing that object in a variable in the global context. The object returned is our module, and it can have tightly controlled access to &amp;ldquo;private&amp;rdquo; vars declared inside of the IIFE&amp;rsquo;s function body, as well as functions. These vars and functions end up being the private members of the module: we make them public by adding a reference to them in the returned object. We did just that in the previous example, by creating a key called &lt;i&gt;publicMethod&lt;/i&gt; which is a reference to the IIFE-scoped function &lt;i&gt;privateMethod&lt;/i&gt;.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s wrap this article up by providing an example somewhat closer to reality. We&amp;rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method &lt;i&gt;setup&lt;/i&gt; will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &amp;ldquo;private,&amp;rdquo; otherwise inaccessible beyond the IIFE&amp;rsquo;s scope:&lt;/p&gt;
-
-&lt;script async src=&#34;//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/&#34;&gt;&lt;/script&gt;
-
-&lt;p&gt;In a future post, I&amp;rsquo;ll demonstrate a more complete version of a UI module that I developed. It&amp;rsquo;s very similar to what&amp;rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.&lt;/p&gt;
-
-&lt;p&gt;Combining object literals with the privacy introduced by functions, and IIFE&amp;rsquo;s, is a valuable way to create modules with public and private member variables and methods. These same techniques will be useful in a later post, where the singleton pattern is explained as a way of ensuring only one instance of an object exists for use at a given time.&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&amp;rsquo;s in-depth book, &lt;a href=&#34;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34;&gt;&lt;b&gt;Learning JavaScript Design Patterns&lt;/b&gt;&lt;/a&gt;. Check out the book for great explanations on this and other design patterns.&lt;/i&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -132,157 +30,7 @@ obj.publicMethod();
       <guid>http://jpiedra.github.io/article/js-constructor/</guid>
       <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h2&gt;Object Literals&lt;/h2&gt;
-
-&lt;p&gt;Those of us who write JavaScript are familiar with the fastest way of creating an object, assinging an &lt;i&gt;object literal&lt;/i&gt; to a variable:&lt;/p&gt;
-
-&lt;pre&gt;
-var person = {
-    name: &#34;Jonathan Piedra&#34;,
-    greeting: function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-&lt;/pre&gt;
-
-&lt;p&gt;While simple to grasp and convenient enough for a small application or script, this won&amp;rsquo;t do as soon as we have a need for a programmatic method of creating similar objects with different information.&lt;/p&gt;
-
-&lt;h2&gt;The Constructor&lt;/h2&gt;
-
-&lt;p&gt;Fortunately, in JavaScript, we do have a method of object construction that hews closer to what one would encounter in C++ or Python. It involves defining a special type of function that follows these conventions:&lt;/p&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;Name of the function corresponds with the capitalized name of the object (examples: Animal, Person, Car) of which we want to create unique instances&lt;/li&gt;
-    &lt;li&gt;We specify parameters to this function, generally used to set the properties that an instance created using the function should have&lt;/li&gt;
-    &lt;li&gt;The &lt;i&gt;this&lt;/i&gt; keyword, similar to how we use it in an object literal, is used to refer to properties that will be unique to each instance&lt;/li&gt;
-    &lt;li&gt;Finally, methods are defined on the &lt;i&gt;prototype&lt;/i&gt; level! (more on this later)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let&amp;rsquo;s put this all together with an example that will create Person objects:&lt;/p&gt;
-
-&lt;pre&gt;
-// a
-function Person(name) {
-    this.name = name;   
-};
-
-// b
-Person.prototype.greeting = function() {
-    console.log(&#34;Hi, I&#39;m &#34; + this.name);    
-};
-
-// c
-var jon = new Person(&#34;Jonathan Piedra&#34;);
-jon.greeting();
-// Hi, I&#39;m Jonathan Piedra
-&lt;/pre&gt;
-
-&lt;p&gt;Segment A consists of the function that manages object creation. We name it Person, as each instance created using this function should be a Person object. A single parameter, &lt;i&gt;name&lt;/i&gt;, is specified; thus, when we create instances using this function (Segment C) we have to pass in one argument, that&amp;rsquo;s used to assign the instance&amp;rsquo;s name property, marked using the &lt;i&gt;this&lt;/i&gt; keyword.&lt;/p&gt;
-
-&lt;p&gt;Segment B defines a method for &lt;i&gt;all Person objects&lt;/i&gt;. The importance of defining object methods in this way is explained in detail below; for now, all we need to know is that using this approach is considered a best practice. We ensure a single definition for the method &lt;i&gt;greeting()&lt;/i&gt; exists.&lt;/p&gt;
-
-&lt;p&gt;Finally, in Segment C, we use the constructor method defined in Segment A. Again, similar to the process used in C++ or other C-like languages, the &lt;i&gt;new&lt;/i&gt; keyword is used, and the function is called with a single string literal passed in. This argument, as we see in the first/only line of the &lt;i&gt;Person&lt;/i&gt; method, is used to set the &lt;i&gt;name&lt;/i&gt; property that belongs to our new instance, &lt;i&gt;jon&lt;/i&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Why Not Inline Methods?&lt;/h2&gt;
-
-&lt;p&gt;Let&amp;rsquo;s return our attention to Segment B. Though we decided to define &lt;i&gt;greeting()&lt;/i&gt; outside of the function body for the Person constructor, there&amp;rsquo;s nothing stopping us from refactoring the constructor like so:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-&lt;/pre&gt;
-
-&lt;p&gt;However, it&amp;rsquo;s important to understand why this is discouraged. When creating a constructor, anything defined &lt;i&gt;inline&lt;/i&gt;, or inside the function body, using the &lt;i&gt;this&lt;/i&gt; keyword will become a property or method that each instance has a unique copy of. In effect, this results in every instance of Person having their &amp;ldquo;own&amp;rdquo; version of &lt;i&gt;greeting&lt;/i&gt;.&lt;/p&gt;
-
-&lt;p&gt;For properties that describe unique attributes, like a name or ID, this is what we want! However, for a method that provides functionality that all instances of an object have in common, this presents problems. The &lt;i&gt;greeting()&lt;/i&gt; method should do the same thing regardless of &lt;i&gt;which Person object&lt;/i&gt; it is being called from; additionally, if we ever want to change what that method does, then doing that when every object instance has it&amp;rsquo;s own copy of the method will prove unnecessarily difficult.&lt;/p&gt;
-
-&lt;h2&gt;Prototypal Inheritance&lt;/h2&gt;
-
-&lt;p&gt;The best practice for defining methods used by constructed objects, involves defining those methods on the Prototype level. In JavaScript, objects are defined along a prototypal chain. What this means, is that all objects - objects we define as literals, through constructors, as well as primitive types like Object and even Array - reside somewhere on a prototype &amp;ldquo;chain.&amp;rdquo; At the top of this chain would be Object, the primitive JavaScript type; at the bottom, custom objects like Person which a programmer defines.&lt;/p&gt;
-
-&lt;p&gt;Inheritance in JavaScript involves an object we create inheriting the methods and properties we define somewhere along the chain (through a previous custom object), as well as whatever methods and properties are defined by objects that reside earlier along that chain (such as primitive types). This means that even a Person instance, like any custom type, will inherit the methods defined in Object&amp;rsquo;s prototype, because it is defined before any other object (it is, after all, the base from which any JavaScript object derives).&lt;/p&gt;
-
-&lt;p&gt;This &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object&#34;&gt;Mozilla Developer Network page&lt;/a&gt; describes the Object primitive in greater detail. We see that, for example, the property &lt;i&gt;constructor&lt;/i&gt; is defined through the Object prototype - thus, referred to as &lt;i&gt;Object.prototype.constructor&lt;/i&gt;. If Person resides on the prototype chain, and comes well after the Object prototype, it follows that Person objects will also have inherited &lt;i&gt;constructor&lt;/i&gt; from Object&amp;rsquo;s prototype (which specifies the constructor used to create the object):&lt;/p&gt;
-
-&lt;pre&gt;
-...
-jon.constructor
-// function Person()
-&lt;/pre&gt;
-
-&lt;p&gt;JavaScript wouldn&amp;rsquo;t be as useful if we weren&amp;rsquo;t able to define our own, Prototype-level methods and properties that are automatically available to objects we create. Of course, we are able to do this for custom object types, and the form for doing so is:&lt;/p&gt;
-
-&lt;pre&gt;
-MyObject.prototype.MyFunction = function() { ... };
-&lt;/pre&gt;
-
-&lt;p&gt;Where &lt;i&gt;MyObject&lt;/i&gt; and &lt;i&gt;MyFunction&lt;/i&gt; can be identifiers of our choosing. Defining methods for objects this way ensures that any object we create of type MyObject (or that &lt;i&gt;extends&lt;/i&gt; from MyObject) will have access to MyFunction. However, this also results in &lt;i&gt;one definition for the function, MyFunction()&lt;/i&gt; being created; this definition is available to all objects we create of type MyObject. Instead of having their own copies, they just point to the Prototype definition of the method they inherited.&lt;/p&gt;
-
-&lt;h2&gt;Person Constructor, Revisited&lt;/h2&gt;
-
-&lt;p&gt;Turning back to our custom Person constructor, the decision to define &lt;i&gt;greeting()&lt;/i&gt; on the prototype level should make more sense now. To further cement this knowledge, let&amp;rsquo;s see what happens when we don&amp;rsquo;t follow the aforementioned practice:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log(&#34;Hi, I&#39;m &#34; + this.name);
-    };
-};
-
-var jon = new Person(&#34;Jonathan&#34;);
-var rob = new Person(&#34;Rob&#34;);
-
-jon.greeting(); // Hi, I&#39;m Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-&lt;/pre&gt;
-
-&lt;p&gt;It&amp;rsquo;s worth mentioning that, given how we&amp;rsquo;ve defined our constructor, the properties and methods for Person objects are mutable; we can change their values. Being able to change the name property might not be so bad, because at most it will only impact that particular Person&amp;rsquo;s name. For methods, though, the implication is that now our instances of a particular type (Person) will no longer provide reliable functionality; if it&amp;rsquo;s possible to change what &lt;i&gt;greeting()&lt;/i&gt; does for each instance, we can&amp;rsquo;t reliably expect calling that method will do what we need it to:&lt;/p&gt;
-
-&lt;pre&gt;
-jon.greeting = function() {
-    console.log(&#34;I am NOT &#34; + this.name);
-};
-
-jon.greeting(); // I am NOT Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-&lt;/pre&gt;
-
-&lt;p&gt;In contrast, Prototypal method definition ensures against such a scenario. Any changes to the Prototype&amp;rsquo;s methods will be reflected in all of the object&amp;rsquo;s instances:&lt;/p&gt;
-
-&lt;pre&gt;
-function Person(name) {
-    this.name = name;   
-};
-
-Person.prototype.greeting = function() {
-    console.log(&#34;Hi, I&#39;m &#34; + this.name);    
-};
-
-var jon = new Person(&#34;Jonathan&#34;);
-var rob = new Person(&#34;Rob&#34;);
-
-jon.greeting(); // Hi, I&#39;m Jonathan
-rob.greeting(); // Hi, I&#39;m Rob
-
-// Oh, we need to change greeting...
-Person.prototype.greeting = function() {
-    console.log(&#34;My name is &#34; + this.name);
-};
-
-jon.greeting(); // My name is Jonathan
-rob.greeting(); // My name is Rob
-&lt;/pre&gt;
-
-&lt;p&gt;Using the Prototypal approach to method definition, we ensure that changes made to common functionality will be reflected across all objects of a type, reducing the likelihood of errors as well as headaches.&lt;/p&gt;
-
-&lt;p&gt;&lt;i&gt;The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&amp;rsquo;s in-depth book, &lt;a href=&#34;https://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34;&gt;&lt;b&gt;Learning JavaScript Design Patterns&lt;/b&gt;&lt;/a&gt;. Check out the book for great explanations on this and other design patterns.&lt;/i&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
