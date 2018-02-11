@@ -6,10 +6,19 @@
     <description>Recent content in Scripting on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Jan 2018 16:29:20 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 11 Feb 2018 13:23:20 -0500</lastBuildDate>
     
 	<atom:link href="http://jpiedra.github.io/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2</title>
+      <link>http://jpiedra.github.io/article/s3-site-deploy-2/</link>
+      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/s3-site-deploy-2/</guid>
+      <description>&lt;p&gt;In this final post for a two-part series, we&amp;rsquo;ll go over an additional script that can be used to upload all local static site contents to a previously configured Amazon Web Services S3 bucket.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1</title>
