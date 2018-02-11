@@ -34,7 +34,7 @@
 
 <p>
 <h2>Not Stubbing the Commandlet</h2>
-As previously mentioned, the complete version of the scripts shown here can be found at <a href="https://github.com/jpiedra/S3SiteDeploy">this Github repository.</a> For this example, we&rsquo;ll be building a Powershell script that accepts the <i>name</i> of a bucket to push files too. We&rsquo;ve already provisioned the bucket using <i>New-S3Site.ps1</i> so if you were using this script, you would set this to the same value you used when running that script.</p>
+As previously mentioned, the complete version of the scripts shown here can be found at <a href="https://github.com/jpiedra/S3SiteDeploy">this Github repository.</a> For this example, we&rsquo;ll be building a Powershell script that accepts the <i>name</i> of a bucket to push files to. We&rsquo;ve already provisioned the bucket using <i>New-S3Site.ps1</i> so if you were using this script, you would set this to the same value you used when running that script.</p>
 
 <p>It turns out that writing this script is much easier; we&rsquo;re going to use the same AWS S3 CLI command to upload all of our site&rsquo;s contents. This will leave us with multiple, very similar lines where the only difference is the <i>file extension</i> and <i>content type</i> for each type of file we&rsquo;ll upload (HTML, CSS, JS, so on). We&rsquo;ll explain how the bulk of this script works by explaining the command used. The complete script is shown below:</p>
 
@@ -88,7 +88,7 @@ As previously mentioned, the complete version of the scripts shown here can be f
 <p><h2>Exclude and Include Parameters</h2>
 Now it&rsquo;s worth noting that this command will copy over everything in the current directory to the specified bucket. We need to change that behavior, so that this command only copies over a specific format of file. This requires two parameters, <a href="https://docs.aws.amazon.com/cli/latest/reference/s3/index.html#use-of-exclude-and-include-filters"><i>&ndash;exclude</i> and <i>&ndash;include</i></a>.</p>
 
-<p>The first of these is <i>&ndash;exclude</i> which can except a wildcard value. This causes the copy command to exclude everything - all the files inside of the current directory. Once we&rsquo;ve added this parameter, the second parameter <i>&ndash;include</i> is used with a wildcard pattern, where anything with the specified pattern in its filename gets picked and copied to the bucket. This has the effect of copying over all the HTML files inside the current directory:</p>
+<p>The first of these is <i>&ndash;exclude</i> which can accept a wildcard value. This causes the copy command to exclude everything - all the files inside of the current directory. Once we&rsquo;ve added this parameter, the second parameter <i>&ndash;include</i> is used with a wildcard pattern, where anything with the specified pattern in its filename gets picked and copied to the bucket. This has the effect of copying over all the HTML files inside the current directory:</p>
 
 <pre>
     aws s3 cp . s3://$($Name) <b>--exclude "*" --include "*.html"</b> --recursive
