@@ -7,10 +7,15 @@ html {
 	font-family: 'Helvetica', sans-serif;
 }
 body {
+	width: auto;
 	display: -webkit-flex;
 	display: flex;
 	flex-flow: row wrap;
 	margin: 0px;
+}
+img {
+	width: 100%;
+	height: auto;
 }
 h1 {
 	font-family: 'Nunito', sans-serif;
