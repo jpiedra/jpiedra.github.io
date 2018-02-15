@@ -14,7 +14,8 @@ body {
 	margin: 0px;
 }
 img {
-	width: 100%;
+	width: auto;
+	max-width: 75%;
 	height: auto;
 }
 h1 {

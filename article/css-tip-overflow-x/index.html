@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>
     	
-  	S3 &ndash; Jonathan Piedra
+  	CSS Tip: &#39;overflow-x&#39; for Narrow Contexts &ndash; Jonathan Piedra
 
     </title>
    	
@@ -21,115 +21,90 @@
 </ul>
     <div class="col-main">
     	
-  	
-  		<div class="blogpanel">
-	<div class="blogpanel_head">
-		<div class="blogpanel_head-date">
-			<h1>February 11 2018</h1>
+	<div class="blogpanel">
+		<div class="blogpanel_head">
+			<div class="blogpanel_head-date">
+				<h1>February 14 2018</h1>
+			</div>
+			<div class="blogpanel_head-title">
+				<h1>CSS Tip: &#39;overflow-x&#39; for Narrow Contexts</h1>
+			</div>
 		</div>
-		<div class="blogpanel_head-title">
-			<h1><a href="http://jpiedra.github.io/article/s3-site-deploy-2/">Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2</a></h1>
+		<div class="blogpanel_body">
+			<p><p>A quick tip that can help handle design cases that include child elements larger than their immediate parent.</p>
+
+<p></p>
+
+<p>I recently came across a problem that may be familiar to anyone who has tried to display a table full of data in a responsive view. You may think a library like Bootstrap will always scale elements gracefully to make sure your tables don&rsquo;t break, but this isn&rsquo;t always the case:</p>
+
+<p><a href="https://imgur.com/TZD8SNG"><img src="https://i.imgur.com/TZD8SNG.png" title="source: imgur.com" style="max-width: 60%;"/></a></p>
+
+<p>The problem seen here lies in the face that the table nested inside of a parent <i>div</i> element is wider than said parent. In the case of the above layout, the <i>table</i> has rows that will only get as small as 447 pixels wide, while the <i>div</i> can shrink well below that boundary.</p>
+
+<p>Depending on the needs of your user interface, it may suffice to simply have a user scroll over to see the rest of the table if the screen they view your site or app on grows so small, it can no longer contain its wider, inner element(s). With the application of the CSS property <b>overflow-x</b> this can be accomplished easily.</p>
+
+<p><b>An Interactive Example</b></p>
+
+<p>The below jsfiddle demonstrates what this property does. We apply the property to a container element, setting the value to &lsquo;scroll&rsquo;. This causes a scrollbar to appear, indicating that the inner element (along with its table) can have the rest of its overflowing content shown by scrolling to the right.</p>
+
+<script async src="//jsfiddle.net/jlpiedra90/0Lhcw26k/26/embed/html,css,result/"></script></p>
+			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
-	</div>
-	<div class="blogpanel_body">
-		<p><p>In this final post for a two-part series, we&rsquo;ll go over an additional script that can be used to upload all local static site contents to a previously configured Amazon Web Services S3 bucket.</p></p>
+		
+		<div class="blogpanel_foot">
+			<div class="blogpanel_foot">
+				<div class="blogpanel_foot-tag-name">
+					<p>Tags:</p>
+				</div>
+				<div class="blogpanel_foot-tag-list">
+					<ul>
 						
-			<a class="blogpanel_body-more"  href="http://jpiedra.github.io/article/s3-site-deploy-2/">Read more →</a>
+							<li>
+								<a href="/tags/development">development</a>
+							</li>
+						
+							<li>
+								<a href="/tags/webdev">webdev</a>
+							</li>
+						
+							<li>
+								<a href="/tags/css">css</a>
+							</li>
+						
+							<li>
+								<a href="/tags/tips">tips</a>
+							</li>
+						
+					</ul>
+				</div>
+			</div>	
+		</div>
 		
 	</div>
-	
-	<div class="blogpanel_foot">
-		<div class="blogpanel_foot">
-			<div class="blogpanel_foot-tag-name">
-				<p>Tags:</p>
-			</div>
-			<div class="blogpanel_foot-tag-list">
-				<ul>
-					
-						<li>
-							<a href="/tags/aws">aws</a>
-						</li>
-					
-						<li>
-							<a href="/tags/powershell">powershell</a>
-						</li>
-					
-						<li>
-							<a href="/tags/scripting">scripting</a>
-						</li>
-					
-						<li>
-							<a href="/tags/s3">s3</a>
-						</li>
-					
-						<li>
-							<a href="/tags/part-2">part 2</a>
-						</li>
-					
-				</ul>
-			</div>
-		</div>	
-	</div>
-	
-</div>		
-	
-  		<div class="blogpanel">
-	<div class="blogpanel_head">
-		<div class="blogpanel_head-date">
-			<h1>January 20 2018</h1>
-		</div>
-		<div class="blogpanel_head-title">
-			<h1><a href="http://jpiedra.github.io/article/s3-site-deploy-1/">Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1</a></h1>
-		</div>
-	</div>
-	<div class="blogpanel_body">
-		<p><p>Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using <a href="https://gohugo.io/overview/quickstart/">Hugo</a> or <a href="https://jekyllrb.com/">Jekyll</a>), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.</p></p>
-						
-			<a class="blogpanel_body-more"  href="http://jpiedra.github.io/article/s3-site-deploy-1/">Read more →</a>
-		
-	</div>
-	
-	<div class="blogpanel_foot">
-		<div class="blogpanel_foot">
-			<div class="blogpanel_foot-tag-name">
-				<p>Tags:</p>
-			</div>
-			<div class="blogpanel_foot-tag-list">
-				<ul>
-					
-						<li>
-							<a href="/tags/aws">aws</a>
-						</li>
-					
-						<li>
-							<a href="/tags/powershell">powershell</a>
-						</li>
-					
-						<li>
-							<a href="/tags/scripting">scripting</a>
-						</li>
-					
-						<li>
-							<a href="/tags/s3">s3</a>
-						</li>
-					
-						<li>
-							<a href="/tags/part-1">part 1</a>
-						</li>
-					
-				</ul>
-			</div>
-		</div>	
-	</div>
-	
-</div>		
-	
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jpiedra" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 	    <div class="col-main_pages" >
 		    
-	
-
-
+		    
     	</div>
     </div>
     <div class="col-side">
