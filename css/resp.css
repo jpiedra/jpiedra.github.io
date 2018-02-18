@@ -2,4 +2,8 @@
 	.col-side {
 		display: none;
 	}
+	.col-main {
+		margin-left: 0;
+		margin-right: 0;
+	}
 }
