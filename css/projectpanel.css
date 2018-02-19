@@ -115,6 +115,7 @@
 	padding: 15px;
 	color: #eee;
 	justify-content: center;
+	text-align: justify;
 }
 .projectpanel_body_content p {
 	font-size: 20px;
