@@ -6,4 +6,37 @@
 		margin-left: 0;
 		margin-right: 0;
 	}
+
+	.hero_unit > h1 {
+		font-size: 32px;
+		font-weight: normal;
+	}
+	.hero_unit > h2 {
+		font-size: 20px;
+		font-weight: normal;
+	}
+
+	.projectpanel_head-title a {
+		font-size: 20px;
+	}
+
+	.projectpanel_section-title {
+		font-size: 18px;
+	}
+
+	.projectpanel_section-thumbnail > img {
+		width: 50%;
+	}
+
+	.projectpanel_body_content p {
+		font-size: 18px;
+	}
+
+	.navbar * {
+		font-size: 14px;
+	}
+
+	.blogpanel_head {
+		flex-direction: column;
+	}
 }

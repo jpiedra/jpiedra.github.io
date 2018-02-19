@@ -9,14 +9,14 @@
     </title>
 		
 <link type="text/css" rel="stylesheet" href="/css/style.css">
-<link type="text/css" rel="stylesheet" href="/css/resp.css">
 <link type="text/css" rel="stylesheet" href="/css/blogpanel.css">
 <link type="text/css" rel="stylesheet" href="/css/projectpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/resp.css">
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Montserrat">
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="/js/scroll.js"></script>
+		
 		<script type="text/javascript" src="/js/toggle.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -35,12 +35,14 @@
 			<a href="http://jpiedra.github.io/project">Projects</a>
 		</li>
 		<li>
-			<a href="http://jpiedra.github.io/article">Contact</a>
+			<a href="mailto:jpiedra1990@gmail.com">Contact</a>
 		</li>
 	</div>
 </ul>
-		<div class="hero_unit-overlay"></div>
-		<div class="hero_unit"></div>
+		<div class="hero_unit">
+			<h1>Recent Projects</h1>
+			<h2>Click <i class="fas fa-chevron-down fa-sm"></i> on each panel to toggle more or less information</h2>
+		</div>
 		<div class="col-main">
 			
   	
@@ -59,13 +61,15 @@
         </div>
     </div>
     <div class="projectpanel_body">
-        <div class="projectpanel_body-left">
-            <div class="projectpanel_body-thumbnail">
-                <a href="http://mbv.diabolis.net">
-                    <img src="https://i.imgur.com/ig07khp.png" alt="Responsive Video Portal">
-                </a>
+        
+            <div class="projectpanel_body-left">
+                <div class="projectpanel_body-thumbnail">
+                    <a href="http://mbv.diabolis.net">
+                        <img src="/img/lbm.png" alt="Responsive Video Portal">
+                    </a>
+                </div>
             </div>
-        </div>
+        
         <div class="projectpanel_body-right">
             <div class="projectpanel_body-right_section1">
                 
@@ -73,11 +77,11 @@
                     <div class="projectpanel_body-right_section1 projectpanel_section">
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://getbootstrap.com/assets/img/bootstrap-stack.png" alt="0">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_bs.png" alt="0">
                             </div>
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://codekitapp.com/images/help/free-susy-icon@2x.png" alt="1">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_sg.png" alt="1">
                             </div>
                         
                     </div>
@@ -89,11 +93,11 @@
                     <div class="projectpanel_body-right_section2 projectpanel_section">
                         
                             <div class="projectpanel_section-thumbnail">    
-                                <img src="https://symfony.com/logos/symfony_black_03.png" alt="0">
+                                <img src="/img/tn_sf.png" alt="0">
                             </div>
                         
                             <div class="projectpanel_section-thumbnail">    
-                                <img src="https://50wheel.com/wp-content/uploads/2014/10/bcov_logo-500x500.png" alt="1">
+                                <img src="/img/tn_bc.png" alt="1">
                             </div>
                         
                     </div>
@@ -104,7 +108,7 @@
     <div id="project__responsive-video-portal_summary" class="projectpanel_body_content-hidden">
         <p><p>I used <a class='projectpanel_body_content_link' href="https://getbootstrap.com/">Bootstrap</a> and <a class='projectpanel_body_content_link' href="http://oddbird.net/susy/">Susy grids</a> to implement a redesign of a video portal page for Louise Blouin Media. Using Bootstrap was a great way to get useful features and components out of the box, such as the navigation bar and grid system. Susy grids were also very useful, as the requirements for this responsive design called for a grid system that could display content on anywhere from three to two columns, or a single column on small devices. Aside from the advantages of Susy, using Sass helped organize the project by allowing me to separate the front-end styles into smaller stylesheets used to over-ride default formatting of Bootstrap components.</p>
 
-<p>For the backend part of this portal, the PHP framework <a class='projectpanel_body_content_link' href="https://symfony.com/">Symfony</a> was used to write logic that would make requests to <a class='projectpanel_body_content_link' href="https://github.com/BrightcoveOS/PHP-MAPI-Wrapper">Brightcove&rsquo;s Media API using a PHP wrapper.</a> Registering the Media API service for use was easy, as Symfony provides a well-documented and predictable means of registering such services. A utility class containing categories and filtering functions was used to issue requests to Brightcove. Symfony&rsquo;s default templating system, Twig, was used to create the used for rendering a single video, a grid of videos to watch, and small components like &lsquo;Share&rsquo; buttons and links to related articles.</p>
+<p>For the backend part of this portal, the PHP framework <a class='projectpanel_body_content_link' href="https://symfony.com/">Symfony</a> was used to write logic that would make requests to <a class='projectpanel_body_content_link' href="https://github.com/BrightcoveOS/PHP-MAPI-Wrapper">Brightcove&rsquo;s Media API using a PHP wrapper.</a> Registering the Media API service for use was easy, as Symfony provides a well-documented and predictable means of registering such services. A utility class containing categories and filtering functions was used to issue requests to Brightcove. Symfony&rsquo;s default templating system, Twig, was used to create the templates used for rendering a single video, a grid of videos to watch, and small components like &lsquo;Share&rsquo; buttons and links to related articles.</p>
 </p>
     </div>
 </div>		
@@ -124,13 +128,15 @@
         </div>
     </div>
     <div class="projectpanel_body">
-        <div class="projectpanel_body-left">
-            <div class="projectpanel_body-thumbnail">
-                <a href="http://stat.diabolis.net">
-                    <img src="https://i.imgur.com/tUyCBCg.png" alt="Searchable Leaderboard">
-                </a>
+        
+            <div class="projectpanel_body-left">
+                <div class="projectpanel_body-thumbnail">
+                    <a href="http://stat.diabolis.net">
+                        <img src="/img/dblb.png" alt="Searchable Leaderboard">
+                    </a>
+                </div>
             </div>
-        </div>
+        
         <div class="projectpanel_body-right">
             <div class="projectpanel_body-right_section1">
                 
@@ -138,11 +144,11 @@
                     <div class="projectpanel_body-right_section1 projectpanel_section">
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://getbootstrap.com/assets/img/bootstrap-stack.png" alt="0">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_bs.png" alt="0">
                             </div>
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vue.png/220px-Vue.png" alt="1">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_vj.png" alt="1">
                             </div>
                         
                     </div>
@@ -154,11 +160,11 @@
                     <div class="projectpanel_body-right_section2 projectpanel_section">
                         
                             <div class="projectpanel_section-thumbnail">    
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1200px-Node.js_logo.svg.png" alt="0">
+                                <img src="/img/tn_nj.png" alt="0">
                             </div>
                         
                             <div class="projectpanel_section-thumbnail">    
-                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/62/MySQL.svg/1200px-MySQL.svg.png" alt="1">
+                                <img src="/img/tn_ms.png" alt="1">
                             </div>
                         
                     </div>
@@ -191,13 +197,7 @@
         </div>
     </div>
     <div class="projectpanel_body">
-        <div class="projectpanel_body-left">
-            <div class="projectpanel_body-thumbnail">
-                <a href="https://github.com/jpiedra/S3SiteDeploy">
-                    <img src="http://www.cirriusimpact.com/cirriusmdata/scripting_icon.png" alt="Website Deployment Scripts">
-                </a>
-            </div>
-        </div>
+        
         <div class="projectpanel_body-right">
             <div class="projectpanel_body-right_section1">
                 
@@ -205,11 +205,11 @@
                     <div class="projectpanel_body-right_section1 projectpanel_section">
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/PowerShell_5.0_icon.png" alt="0">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_ps.png" alt="0">
                             </div>
                         
                             <div class="projectpanel_section-thumbnail">
-                                <img class="projectpanel_section-thumbnail" src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAwmAAAAJDg2YzViZTYzLWQzODQtNDAxZi1hZjY2LTdkM2M2MWVkMmI3NA.png" alt="1">
+                                <img class="projectpanel_section-thumbnail" src="/img/tn_as.png" alt="1">
                             </div>
                         
                     </div>

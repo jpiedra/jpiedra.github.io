@@ -41,8 +41,8 @@
 	/*background-color: #D9D9D9;*/
 	display: flex;
 	height: auto;
-
-	padding-left: 12px;
+	padding-left: 12vw;
+	padding-right: 12vw;
 	/*flex*/
 	-webkit-flex: 4;
 	flex: 4;
@@ -70,7 +70,7 @@
 	text-align: center;
 }
 .projectpanel_body {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 24px;
 	display: flex;
 	padding: 15px;
