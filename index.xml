@@ -31,15 +31,6 @@ The front-end is a Vue.js Single Page Application (SPA) that uses a custom Boots
     </item>
     
     <item>
-      <title>Responsive Video Portal</title>
-      <link>http://jpiedra.github.io/project/responsive-video-portal/</link>
-      <pubDate>Sun, 18 Feb 2018 10:23:45 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/project/responsive-video-portal/</guid>
-      <description>I used Bootstrap and Susy grids to implement a redesign of a video portal page for Louise Blouin Media. Using Bootstrap was a great way to get useful features and components out of the box, such as the navigation bar and grid system. Susy grids were also very useful, as the requirements for this responsive design called for a grid system that could display content on anywhere from three to two columns, or a single column on small devices.</description>
-    </item>
-    
-    <item>
       <title>CSS Tip: &#39;overflow-x&#39; for Narrow Contexts</title>
       <link>http://jpiedra.github.io/article/css-tip-overflow-x/</link>
       <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
