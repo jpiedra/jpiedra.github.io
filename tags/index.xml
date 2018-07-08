@@ -23,7 +23,7 @@
     <item>
       <title>Aws</title>
       <link>http://jpiedra.github.io/tags/aws/</link>
-      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/tags/aws/</guid>
       <description></description>
@@ -71,6 +71,15 @@
       <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ec2</title>
+      <link>http://jpiedra.github.io/tags/ec2/</link>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/ec2/</guid>
       <description></description>
     </item>
     
@@ -165,6 +174,15 @@
     </item>
     
     <item>
+      <title>Python</title>
+      <link>http://jpiedra.github.io/tags/python/</link>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>S3</title>
       <link>http://jpiedra.github.io/tags/s3/</link>
       <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
@@ -176,7 +194,7 @@
     <item>
       <title>Scripting</title>
       <link>http://jpiedra.github.io/tags/scripting/</link>
-      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/tags/scripting/</guid>
       <description></description>
