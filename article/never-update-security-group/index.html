@@ -102,8 +102,6 @@ else:
 
 <p>The former outlines the start of a script that accepts a single parameter, the <i>group id</i> for the security group you&rsquo;d like to update regularly. For our purposes, we would work with whatever security group was configured already, using the home IP address at the time it was configured, and pass the group ID of that security group into our script. Let&rsquo;s work with a security group with ID <b>sg-6d3c3c26</b> that configures SSH access from <b>1.2.3.4</b>.</p>
 
-<p><a href="https://imgur.com/jIDBroa"><img src="https://i.imgur.com/jIDBroa.png" title="source: imgur.com" /></a></p>
-
 <p><h2>Using Filtering</h2>
 One useful feature baked into Boto is the ability to <a href="https://boto3.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_security_groups">filter out the objects you want returned from your programmatic calls to AWS.</a> We can use this to make sure we&rsquo;re <i>only</i> ever getting back security groups that actually have an SSH ingress traffic rule configured. After all, the point of our script will be to update an existing SSH security group regularly, making sure the IP is current. We wouldn&rsquo;t want to add ingress SSH traffic to a security group that didn&rsquo;t have it already.</p>
 
