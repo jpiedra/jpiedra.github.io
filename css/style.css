@@ -208,3 +208,10 @@ pre {
 	padding-left: 6vw;
 	padding-right: 6vw;
 }
+/*
+	#disqus_thread:
+		little hack to force it on its own "row"
+*/
+#disqus_thread {
+	flex-basis: 90%;
+}
