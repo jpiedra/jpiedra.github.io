@@ -20,6 +20,18 @@
 .blogpanel_single {
 	flex-basis: 90%;
 }
+.col-main > .blogpanel:hover
+{
+        -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        transform: scale(1.03);
+}
+.col-main > .blogpanel_single:hover
+{
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+}
 /*
 	blogpanel_head:
 		goes on the top of every 'blogpanel' element
