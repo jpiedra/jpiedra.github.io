@@ -4,8 +4,9 @@
 	box-shadow: 3px 3px 4px #888;
 	margin: auto;
 	margin-bottom: 35px;
-	position: relative;
 	border-radius: 6px;
+	flex-basis: 90%;
+	position: relative;
 }
 .projectpanel button {
 	background-color: Transparent;

@@ -9,9 +9,16 @@
 .blogpanel {
 	background-color: #F3F3F3;
 	box-shadow: 3px 3px 4px #888;
-	margin: auto;
-	margin-bottom: 35px;
-	position: relative;
+	margin-bottom: 12px;
+	flex-basis: 45%;
+}
+/*
+	blogpanel_single: 
+		variant that takes up whole width
+		used for single-page view
+*/
+.blogpanel_single {
+	flex-basis: 90%;
 }
 /*
 	blogpanel_head:
@@ -104,6 +111,7 @@
 	display: flex;
 	width: 100%;
 	min-height: 48px;
+	margin-bottom: 12px;
 }
 .blogpanel_foot-tag-name {
 	display: -webkit-flex;
@@ -152,8 +160,7 @@
 	display: inline-block;
 	font-size: 16px;
 	margin: 3px;
-	padding-left: 6px;
-	padding-right: 6px;
+	padding: 10px 8px 8px 10px;
 	text-decoration: none;
 }
 .blogpanel_foot-tag-list ul > li > a:hover {

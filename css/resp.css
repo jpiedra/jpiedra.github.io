@@ -1,4 +1,4 @@
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width : 1024px) {
 	.col-side {
 		display: none;
 	}
@@ -14,6 +14,15 @@
 	.hero_unit > h2 {
 		font-size: 20px;
 		font-weight: normal;
+	}
+
+	.blogpanel {
+		flex-basis: 90%;
+		margin-bottom: 24px;
+	}
+
+	.projectpanel {
+		flex-basis: 90%;
 	}
 
 	.projectpanel_head-title a {

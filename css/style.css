@@ -49,17 +49,22 @@ pre {
 	columns
 */
 .col-main {
-	margin-left: 12vw;
-	margin-right: 12vw;
+	/* margin-left: 12vw;
+	margin-right: 12vw; */
 	padding-left: 35px;
 	padding-right: 35px;
 	padding-top: 35px;
 	/*flex*/
 	-webkit-flex: 4;
 	flex: 4;
+	display: -webkit-flex;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: flex-start;
 }
 .col-main_pages {
-	max-width: 600px;
+	flex-basis: 100%;
 	margin: auto;
 	text-align: center;
 }
@@ -94,8 +99,7 @@ pre {
 	font-size: 12;
 	margin-left: 3px;
 	margin-right: 3px;
-	padding-left: 6px;
-	padding-right: 6px;
+	padding: 10px;
 	text-decoration: none;
 }
 .pagination > li > a:hover {
@@ -121,6 +125,7 @@ pre {
 */
 .navbar {
 	background-color: #ff5050;
+	display: -webkit-flex;
 	display: flex;
 	list-style: none;
 	margin: 0;
@@ -132,6 +137,7 @@ pre {
     align-items: center;
 }
 .navbar > li {
+	display: -webkit-flex;
 	display: flex;
 	-webkit-flex: 1;
 	flex: 1;
@@ -144,6 +150,7 @@ pre {
 .navbar-right {
 	flex: 2;
 	text-align: right;
+	display: -webkit-flex;
 	display: flex;
 }
 .navbar-right > li {
@@ -162,6 +169,7 @@ pre {
 	background-image: url('/img/hero_bg.jpg');
 	background-position: center;
 	background-size: cover;
+	display: -webkit-flex;
 	display: flex;
 	flex-direction: column;
 	-webkit-align-items: center;
