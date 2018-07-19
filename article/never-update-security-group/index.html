@@ -147,8 +147,9 @@ else:
 <p>This ensures that, even if a security group ID for a group that does not define traffic over port 22 is passed in, no action will be taken, as the call to AWS will fail to find a security group matching the criteria defined in the <i>Filters</i> argument.</p>
 
 <p><h2>Updating Our Security Group</h2>
-At this point in our script, we can retrieve an existing security group, by ID, that already has ingress traffic over port 22 defined.
-<a href="https://imgur.com/W1cdQ5Q"><img src="https://i.imgur.com/W1cdQ5Q.gif" title="source: imgur.com" /></a></p>
+At this point in our script, we can retrieve an existing security group, by ID, that already has ingress traffic over port 22 defined.</p>
+
+<p><a href="https://imgur.com/W1cdQ5Q"><img src="https://i.imgur.com/W1cdQ5Q.gif" title="source: imgur.com" /></a></p>
 
 <p>At this point, we have two tasks left. Rather than update the existing ingress traffic rule in place, it&rsquo;s easier to just revoke that ingress traffic and then add a new rule later, with the same from- and to-port, protocol, and our updated IP address. We&rsquo;re thinking ahead here, and storing the object representing the current ingress rule from our response in a variable <i>old_access</i>. We&rsquo;ll use that object in a call soon to remove access over port 22 from our old IP address.</p>
 
@@ -183,8 +184,9 @@ else:
     <b>print(&lsquo;Ingress Successfully Set %s&rsquo; % data)</b>
 </pre></p>
 
-<p>All told, our script can find the security group we defined, and update it with our current external IP address. Note the first octet of the <i>Source IP</i> address updating:
-<a href="https://imgur.com/rRWYH7q"><img src="https://i.imgur.com/rRWYH7q.gif" title="source: imgur.com" /></a></p>
+<p>All told, our script can find the security group we defined, and update it with our current external IP address. Note the first octet of the <i>Source IP</i> address updating:</p>
+
+<p><a href="https://imgur.com/rRWYH7q"><img src="https://i.imgur.com/rRWYH7q.gif" title="source: imgur.com" /></a></p>
 
 <p>The final version of this script can be found here:
 <script src="https://gist.github.com/jpiedra/7cd4de8617bb968029b85e0b0617f4b6.js"></script></p></p>
