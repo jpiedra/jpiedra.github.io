@@ -105,6 +105,16 @@
 	padding-bottom: 12px;
 	padding-left: 12px;
 	padding-right: 12px;
+	/*flex*/
+	-webkit-flex: 2;
+	flex: 2;
+}
+/*
+	.blogpanel_body > .gist
+		a hack that I hate
+*/
+.blogpanel_body > .gist {
+	width: 75vw;
 }
 .blogpanel_body-more {
 	color: red;

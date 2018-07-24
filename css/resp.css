@@ -44,8 +44,4 @@
 	.navbar * {
 		font-size: 14px;
 	}
-
-	.blogpanel_head {
-		flex-direction: column;
-	}
 }
