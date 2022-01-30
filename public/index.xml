@@ -127,59 +127,5 @@ The front-end is a Vue.js Single Page Application (SPA)that uses a custom Bootst
       <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;</description>
     </item>
     
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732607/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732607/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�B�o�s�s� �R�C�-�1�0�R� �R�h�y�t�h�m� �L�o�o�p� �S�t�a�t�i�o�n� �2�0�1�9� �-� �P�r�e�s�e�n�t� �R�e�d�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�l�o�o�p�-�p�e�d�a�l�s�-�a�n�d�-�s�a�m�p�l�e�r�s�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�l�o�o�p�-�p�e�d�a�l�s�-�a�n�d�-�s�a�m�p�l�e�r�s�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�B�o�s�s� �R�C�-�1�0�R� �R�h�y�t�h�m� �L�o�o�p� �S�t�a�t�i�o�n� �2�0�1�9� �-� �P�r�e�s�e�n�t� �R�e�d�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �B�o�s�s�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �R�C�-�1�0�R� �R�h�y�t�h�m� �L�o�o�p� �S�t�a�t�i�o�n�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �2�0�1�9� �-� �P�r�e�s�e�n�t�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �R�e�d�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.�r�e�v�e�r�b�.�c�o�m�/�i�m�a�g�e�/�u�p�l�o�a�d�/�s�-�-�M�Y�I�O�-�0�O�G�-�-�/�v�1�6�4�3�5�6�5�6�4�9�/�g�z�v�o�v�4�m�7�b�2�n�g�d�k�k�h�c�o�r�0�.�j�p�g�&amp;quot;� �c�l�a�s�s�=�&amp;quot;�i�m�g�-�f�l�u�i�d�&amp;quot;� �a�l�t�=�&amp;quot;�R�e�s�p�o�n�s�i�v�e� �i�m�a�g�e�&amp;quot;�&amp;gt;�� �+�+�+�� �</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732623/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732623/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�W�a�l�r�u�s� �A�u�d�i�o� �S�l��� �M�u�l�t�i�-�T�e�x�t�u�r�e� �R�e�v�e�r�b� �2�0�2�0� �R�e�d�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�r�e�v�e�r�b�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�r�e�v�e�r�b�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�W�a�l�r�u�s� �A�u�d�i�o� �S�l��� �M�u�l�t�i�-�T�e�x�t�u�r�e� �R�e�v�e�r�b� �2�0�2�0� �R�e�d�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �W�a�l�r�u�s� �A�u�d�i�o�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �S�l��� �M�u�l�t�i�-�T�e�x�t�u�r�e� �R�e�v�e�r�b�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �2�0�2�0�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �R�e�d�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.�r�e�v�e�r�b�.�c�o�m�/�i�m�a�g�e�/�u�p�l�o�a�d�/�s�-�-�G�o�7�F�3�T�S�d�-�-�/�v�1�6�4�3�5�6�5�5�9�3�/�t�9�4�b�4�s�m�n�z�1�q�5�z�7�1�7�t�t�f�b�.�j�p�g�&amp;quot;� �c�l�a�s�s�=�&amp;quot;�i�m�g�-�f�l�u�i�d�&amp;quot;� �a�l�t�=�&amp;quot;�R�e�s�p�o�n�s�i�v�e� �i�m�a�g�e�&amp;quot;�&amp;gt;�� �+�+�+�� �</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732624/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732624/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�B�o�s�s� �P�H�-�3� �P�h�a�s�e� �S�h�i�f�t�e�r� �(�D�a�r�k� �G�r�a�y� �L�a�b�e�l�)� �2�0�0�0� �-� �P�r�e�s�e�n�t� �G�r�e�e�n�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�p�h�a�s�e�-�s�h�i�f�t�e�r�s�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�p�h�a�s�e�-�s�h�i�f�t�e�r�s�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�B�o�s�s� �P�H�-�3� �P�h�a�s�e� �S�h�i�f�t�e�r� �(�D�a�r�k� �G�r�a�y� �L�a�b�e�l�)� �2�0�0�0� �-� �P�r�e�s�e�n�t� �G�r�e�e�n�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �B�o�s�s�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �P�H�-�3� �P�h�a�s�e� �S�h�i�f�t�e�r� �(�D�a�r�k� �G�r�a�y� �L�a�b�e�l�)�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �2�0�0�0� �-� �P�r�e�s�e�n�t�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �G�r�e�e�n�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732627/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732627/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�M�X�R� �M�1�6�9� �C�a�r�b�o�n� �C�o�p�y� �A�n�a�l�o�g� �D�e�l�a�y� �2�0�0�8� �-� �P�r�e�s�e�n�t� �G�r�e�e�n�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�d�e�l�a�y�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�d�e�l�a�y�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�M�X�R� �M�1�6�9� �C�a�r�b�o�n� �C�o�p�y� �A�n�a�l�o�g� �D�e�l�a�y� �2�0�0�8� �-� �P�r�e�s�e�n�t� �G�r�e�e�n�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �M�X�R�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �M�1�6�9� �C�a�r�b�o�n� �C�o�p�y� �A�n�a�l�o�g� �D�e�l�a�y�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �2�0�0�8� �-� �P�r�e�s�e�n�t�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �G�r�e�e�n�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732634/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732634/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�P�r�o�C�o� �R�A�T� �2� �(�F�l�a�t� �B�o�x�)� �1�9�9�0�-�2�0�0�2� �B�l�a�c�k�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�d�i�s�t�o�r�t�i�o�n�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�d�i�s�t�o�r�t�i�o�n�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�P�r�o�C�o� �R�A�T� �2� �(�F�l�a�t� �B�o�x�)� �1�9�9�0�-�2�0�0�2� �B�l�a�c�k�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �P�r�o�C�o�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �R�A�T� �2� �(�F�l�a�t� �B�o�x�)�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �1�9�9�0�-�2�0�0�2�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �B�l�a�c�k�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.�r�e�v�e�r�b�.�c�o�m�/�i�m�a�g�e�/�u�p�l�o�a�d�/�s�-�-�q�y�B�2�w�w�B�3�-�-�/�v�1�6�4�3�5�6�5�8�8�4�/�g�8�n�w�n�b�i�8�i�y�f�b�r�a�k�7�i�3�f�k�.�j�p�g�&amp;quot;� �c�l�a�s�s�=�&amp;quot;�i�m�g�-�f�l�u�i�d�&amp;quot;� �a�l�t�=�&amp;quot;�R�e�s�p�o�n�s�i�v�e� �i�m�a�g�e�&amp;quot;�&amp;gt;�� �+�+�+�� �</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>http://jpiedra.github.io/pedal/732635/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://jpiedra.github.io/pedal/732635/</guid>
-      <description>��� �+�+�+�� �d�a�t�e� �=� �&amp;quot;�2�0�1�7�-�0�2�-�0�2�T�1�1�:�3�9�:�5�7�-�0�5�:�0�0�&amp;quot;�� �t�i�t�l�e� �=� �&amp;quot;�J�H�S� �3� �S�e�r�i�e�s� �C�o�m�p�r�e�s�s�o�r� �2�0�2�0� �W�h�i�t�e�&amp;quot;�� �k�e�y�w�o�r�d�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�c�o�m�p�r�e�s�s�i�o�n�-�a�n�d�-�s�u�s�t�a�i�n�&amp;quot;� �]�� �t�a�g�s� �=� �[� �&amp;quot;�e�f�f�e�c�t�s�-�a�n�d�-�p�e�d�a�l�s�&amp;quot;�,� �&amp;quot;�c�o�m�p�r�e�s�s�i�o�n�-�a�n�d�-�s�u�s�t�a�i�n�&amp;quot;� �]�� �+�+�+�� �� �&amp;lt;�h�1�&amp;gt;�J�H�S� �3� �S�e�r�i�e�s� �C�o�m�p�r�e�s�s�o�r� �2�0�2�0� �W�h�i�t�e�&amp;lt;�h�1�&amp;gt;�� �� �&amp;lt;�h�2�&amp;gt;�B�y�:� �J�H�S�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�M�o�d�e�l�:� �3� �S�e�r�i�e�s� �C�o�m�p�r�e�s�s�o�r�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�Y�e�a�r�:� �2�0�2�0�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�h�2�&amp;gt;�F�i�n�i�s�h�:� �W�h�i�t�e�&amp;lt;�/�h�2�&amp;gt;�� �&amp;lt;�i�m�g� �s�r�c�=�&amp;quot;�h�t�t�p�s�:�/�/�i�m�a�g�e�s�.�r�e�v�e�r�b�.�c�o�m�/�i�m�a�g�e�/�u�p�l�o�a�d�/�s�-�-�k�P�l�l�o�b�R�x�-�-�/�v�1�6�4�3�5�6�5�9�5�5�/�c�c�5�j�a�z�m�7�7�2�h�b�m�i�q�u�h�1�r�q�.�j�p�g�&amp;quot;� �c�l�a�s�s�=�&amp;quot;�i�m�g�-�f�l�u�i�d�&amp;quot;� �a�l�t�=�&amp;quot;�R�e�s�p�o�n�s�i�v�e� �i�m�a�g�e�&amp;quot;�&amp;gt;�� �+�+�+�� �</description>
-    </item>
-    
   </channel>
 </rss>
