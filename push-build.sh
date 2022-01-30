@@ -1,7 +1,8 @@
 #!/bin/bash
 
-build_dir=/mnt/c/Users/JLP/Projects/jpiedra.github.io/public
-deploy_dir=/mnt/c/Users/JLP/Projects/jpiedra-blog-live
+build_dir=/c/Users/JLP/Projects/jpiedra.github.io/public
+# /mnt/c/Users/JLP/Projects/jpiedra.github.io/public
+deploy_dir=/c/Users/JLP/Projects/jpiedra-site-live
 
 if [ -d $build_dir ]
 then

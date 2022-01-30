@@ -46,159 +46,49 @@
 			</div>
 		</div>
 		<div class="blogpanel_body">
-			<p><p>This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the <i>constructor pattern.</i></p>
-
-<p></p>
-
-<h2>Object Literals</h2>
-
-<p>Those of us who write JavaScript are familiar with the fastest way of creating an object, assinging an <i>object literal</i> to a variable:</p>
-
-<pre>
-var person = {
-    name: "Jonathan Piedra",
-    greeting: function() {
-        console.log("Hi, I'm " + this.name);
-    };
-};
-</pre>
-
+			<p><p>This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the <!-- raw HTML omitted -->constructor pattern.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p>Those of us who write JavaScript are familiar with the fastest way of creating an object, assinging an <!-- raw HTML omitted -->object literal<!-- raw HTML omitted --> to a variable:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>While simple to grasp and convenient enough for a small application or script, this won&rsquo;t do as soon as we have a need for a programmatic method of creating similar objects with different information.</p>
-
-<h2>The Constructor</h2>
-
+<!-- raw HTML omitted -->
 <p>Fortunately, in JavaScript, we do have a method of object construction that hews closer to what one would encounter in C++ or Python. It involves defining a special type of function that follows these conventions:</p>
-
-<ul>
-    <li>Name of the function corresponds with the capitalized name of the object (examples: Animal, Person, Car) of which we want to create unique instances</li>
-    <li>We specify parameters to this function, generally used to set the properties that an instance created using the function should have</li>
-    <li>The <i>this</i> keyword, similar to how we use it in an object literal, is used to refer to properties that will be unique to each instance</li>
-    <li>Finally, methods are defined on the <i>prototype</i> level! (more on this later)</li>
-</ul>
-
+<!-- raw HTML omitted -->
 <p>Let&rsquo;s put this all together with an example that will create Person objects:</p>
-
-<pre>
-// a
-function Person(name) {
-    this.name = name;   
-};
-
-// b
-Person.prototype.greeting = function() {
-    console.log("Hi, I'm " + this.name);    
-};
-
-// c
-var jon = new Person("Jonathan Piedra");
-jon.greeting();
-// Hi, I'm Jonathan Piedra
-</pre>
-
-<p>Segment A consists of the function that manages object creation. We name it Person, as each instance created using this function should be a Person object. A single parameter, <i>name</i>, is specified; thus, when we create instances using this function (Segment C) we have to pass in one argument, that&rsquo;s used to assign the instance&rsquo;s name property, marked using the <i>this</i> keyword.</p>
-
-<p>Segment B defines a method for <i>all Person objects</i>. The importance of defining object methods in this way is explained in detail below; for now, all we need to know is that using this approach is considered a best practice. We ensure a single definition for the method <i>greeting()</i> exists.</p>
-
-<p>Finally, in Segment C, we use the constructor method defined in Segment A. Again, similar to the process used in C++ or other C-like languages, the <i>new</i> keyword is used, and the function is called with a single string literal passed in. This argument, as we see in the first/only line of the <i>Person</i> method, is used to set the <i>name</i> property that belongs to our new instance, <i>jon</i>.</p>
-
-<h2>Why Not Inline Methods?</h2>
-
-<p>Let&rsquo;s return our attention to Segment B. Though we decided to define <i>greeting()</i> outside of the function body for the Person constructor, there&rsquo;s nothing stopping us from refactoring the constructor like so:</p>
-
-<pre>
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log("Hi, I'm " + this.name);
-    };
-};
-</pre>
-
-<p>However, it&rsquo;s important to understand why this is discouraged. When creating a constructor, anything defined <i>inline</i>, or inside the function body, using the <i>this</i> keyword will become a property or method that each instance has a unique copy of. In effect, this results in every instance of Person having their &ldquo;own&rdquo; version of <i>greeting</i>.</p>
-
-<p>For properties that describe unique attributes, like a name or ID, this is what we want! However, for a method that provides functionality that all instances of an object have in common, this presents problems. The <i>greeting()</i> method should do the same thing regardless of <i>which Person object</i> it is being called from; additionally, if we ever want to change what that method does, then doing that when every object instance has it&rsquo;s own copy of the method will prove unnecessarily difficult.</p>
-
-<h2>Prototypal Inheritance</h2>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Segment A consists of the function that manages object creation. We name it Person, as each instance created using this function should be a Person object. A single parameter, <!-- raw HTML omitted -->name<!-- raw HTML omitted -->, is specified; thus, when we create instances using this function (Segment C) we have to pass in one argument, that&rsquo;s used to assign the instance&rsquo;s name property, marked using the <!-- raw HTML omitted -->this<!-- raw HTML omitted --> keyword.</p>
+<p>Segment B defines a method for <!-- raw HTML omitted -->all Person objects<!-- raw HTML omitted -->. The importance of defining object methods in this way is explained in detail below; for now, all we need to know is that using this approach is considered a best practice. We ensure a single definition for the method <!-- raw HTML omitted -->greeting()<!-- raw HTML omitted --> exists.</p>
+<p>Finally, in Segment C, we use the constructor method defined in Segment A. Again, similar to the process used in C++ or other C-like languages, the <!-- raw HTML omitted -->new<!-- raw HTML omitted --> keyword is used, and the function is called with a single string literal passed in. This argument, as we see in the first/only line of the <!-- raw HTML omitted -->Person<!-- raw HTML omitted --> method, is used to set the <!-- raw HTML omitted -->name<!-- raw HTML omitted --> property that belongs to our new instance, <!-- raw HTML omitted -->jon<!-- raw HTML omitted -->.</p>
+<!-- raw HTML omitted -->
+<p>Let&rsquo;s return our attention to Segment B. Though we decided to define <!-- raw HTML omitted -->greeting()<!-- raw HTML omitted --> outside of the function body for the Person constructor, there&rsquo;s nothing stopping us from refactoring the constructor like so:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>However, it&rsquo;s important to understand why this is discouraged. When creating a constructor, anything defined <!-- raw HTML omitted -->inline<!-- raw HTML omitted -->, or inside the function body, using the <!-- raw HTML omitted -->this<!-- raw HTML omitted --> keyword will become a property or method that each instance has a unique copy of. In effect, this results in every instance of Person having their &ldquo;own&rdquo; version of <!-- raw HTML omitted -->greeting<!-- raw HTML omitted -->.</p>
+<p>For properties that describe unique attributes, like a name or ID, this is what we want! However, for a method that provides functionality that all instances of an object have in common, this presents problems. The <!-- raw HTML omitted -->greeting()<!-- raw HTML omitted --> method should do the same thing regardless of <!-- raw HTML omitted -->which Person object<!-- raw HTML omitted --> it is being called from; additionally, if we ever want to change what that method does, then doing that when every object instance has it&rsquo;s own copy of the method will prove unnecessarily difficult.</p>
+<!-- raw HTML omitted -->
 <p>The best practice for defining methods used by constructed objects, involves defining those methods on the Prototype level. In JavaScript, objects are defined along a prototypal chain. What this means, is that all objects - objects we define as literals, through constructors, as well as primitive types like Object and even Array - reside somewhere on a prototype &ldquo;chain.&rdquo; At the top of this chain would be Object, the primitive JavaScript type; at the bottom, custom objects like Person which a programmer defines.</p>
-
 <p>Inheritance in JavaScript involves an object we create inheriting the methods and properties we define somewhere along the chain (through a previous custom object), as well as whatever methods and properties are defined by objects that reside earlier along that chain (such as primitive types). This means that even a Person instance, like any custom type, will inherit the methods defined in Object&rsquo;s prototype, because it is defined before any other object (it is, after all, the base from which any JavaScript object derives).</p>
-
-<p>This <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Mozilla Developer Network page</a> describes the Object primitive in greater detail. We see that, for example, the property <i>constructor</i> is defined through the Object prototype - thus, referred to as <i>Object.prototype.constructor</i>. If Person resides on the prototype chain, and comes well after the Object prototype, it follows that Person objects will also have inherited <i>constructor</i> from Object&rsquo;s prototype (which specifies the constructor used to create the object):</p>
-
-<pre>
-...
-jon.constructor
-// function Person()
-</pre>
-
+<p>This <!-- raw HTML omitted -->Mozilla Developer Network page<!-- raw HTML omitted --> describes the Object primitive in greater detail. We see that, for example, the property <!-- raw HTML omitted -->constructor<!-- raw HTML omitted --> is defined through the Object prototype - thus, referred to as <!-- raw HTML omitted -->Object.prototype.constructor<!-- raw HTML omitted -->. If Person resides on the prototype chain, and comes well after the Object prototype, it follows that Person objects will also have inherited <!-- raw HTML omitted -->constructor<!-- raw HTML omitted --> from Object&rsquo;s prototype (which specifies the constructor used to create the object):</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>JavaScript wouldn&rsquo;t be as useful if we weren&rsquo;t able to define our own, Prototype-level methods and properties that are automatically available to objects we create. Of course, we are able to do this for custom object types, and the form for doing so is:</p>
-
-<pre>
-MyObject.prototype.MyFunction = function() { ... };
-</pre>
-
-<p>Where <i>MyObject</i> and <i>MyFunction</i> can be identifiers of our choosing. Defining methods for objects this way ensures that any object we create of type MyObject (or that <i>extends</i> from MyObject) will have access to MyFunction. However, this also results in <i>one definition for the function, MyFunction()</i> being created; this definition is available to all objects we create of type MyObject. Instead of having their own copies, they just point to the Prototype definition of the method they inherited.</p>
-
-<h2>Person Constructor, Revisited</h2>
-
-<p>Turning back to our custom Person constructor, the decision to define <i>greeting()</i> on the prototype level should make more sense now. To further cement this knowledge, let&rsquo;s see what happens when we don&rsquo;t follow the aforementioned practice:</p>
-
-<pre>
-function Person(name) {
-    this.name = name;
-    this.greeting = function() {
-        console.log("Hi, I'm " + this.name);
-    };
-};
-
-var jon = new Person("Jonathan");
-var rob = new Person("Rob");
-
-jon.greeting(); // Hi, I'm Jonathan
-rob.greeting(); // Hi, I'm Rob
-</pre>
-
-<p>It&rsquo;s worth mentioning that, given how we&rsquo;ve defined our constructor, the properties and methods for Person objects are mutable; we can change their values. Being able to change the name property might not be so bad, because at most it will only impact that particular Person&rsquo;s name. For methods, though, the implication is that now our instances of a particular type (Person) will no longer provide reliable functionality; if it&rsquo;s possible to change what <i>greeting()</i> does for each instance, we can&rsquo;t reliably expect calling that method will do what we need it to:</p>
-
-<pre>
-jon.greeting = function() {
-    console.log("I am NOT " + this.name);
-};
-
-jon.greeting(); // I am NOT Jonathan
-rob.greeting(); // Hi, I'm Rob
-</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Where <!-- raw HTML omitted -->MyObject<!-- raw HTML omitted --> and <!-- raw HTML omitted -->MyFunction<!-- raw HTML omitted --> can be identifiers of our choosing. Defining methods for objects this way ensures that any object we create of type MyObject (or that <!-- raw HTML omitted -->extends<!-- raw HTML omitted --> from MyObject) will have access to MyFunction. However, this also results in <!-- raw HTML omitted -->one definition for the function, MyFunction()<!-- raw HTML omitted --> being created; this definition is available to all objects we create of type MyObject. Instead of having their own copies, they just point to the Prototype definition of the method they inherited.</p>
+<!-- raw HTML omitted -->
+<p>Turning back to our custom Person constructor, the decision to define <!-- raw HTML omitted -->greeting()<!-- raw HTML omitted --> on the prototype level should make more sense now. To further cement this knowledge, let&rsquo;s see what happens when we don&rsquo;t follow the aforementioned practice:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>It&rsquo;s worth mentioning that, given how we&rsquo;ve defined our constructor, the properties and methods for Person objects are mutable; we can change their values. Being able to change the name property might not be so bad, because at most it will only impact that particular Person&rsquo;s name. For methods, though, the implication is that now our instances of a particular type (Person) will no longer provide reliable functionality; if it&rsquo;s possible to change what <!-- raw HTML omitted -->greeting()<!-- raw HTML omitted --> does for each instance, we can&rsquo;t reliably expect calling that method will do what we need it to:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>In contrast, Prototypal method definition ensures against such a scenario. Any changes to the Prototype&rsquo;s methods will be reflected in all of the object&rsquo;s instances:</p>
-
-<pre>
-function Person(name) {
-    this.name = name;   
-};
-
-Person.prototype.greeting = function() {
-    console.log("Hi, I'm " + this.name);    
-};
-
-var jon = new Person("Jonathan");
-var rob = new Person("Rob");
-
-jon.greeting(); // Hi, I'm Jonathan
-rob.greeting(); // Hi, I'm Rob
-
-// Oh, we need to change greeting...
-Person.prototype.greeting = function() {
-    console.log("My name is " + this.name);
-};
-
-jon.greeting(); // My name is Jonathan
-rob.greeting(); // My name is Rob
-</pre>
-
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <p>Using the Prototypal approach to method definition, we ensure that changes made to common functionality will be reflected across all objects of a type, reducing the likelihood of errors as well as headaches.</p>
-
-<p><i>The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&rsquo;s in-depth book, <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/"><b>Learning JavaScript Design Patterns</b></a>. Check out the book for great explanations on this and other design patterns.</i></p></p>
+<p><!-- raw HTML omitted -->The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&rsquo;s in-depth book, <!-- raw HTML omitted --><!-- raw HTML omitted -->Learning JavaScript Design Patterns<!-- raw HTML omitted --><!-- raw HTML omitted -->. Check out the book for great explanations on this and other design patterns.<!-- raw HTML omitted --></p></p>
 			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
 		
@@ -241,7 +131,7 @@ rob.greeting(); // My name is Rob
 		
 	</div>
 	<div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -409,62 +299,62 @@ rob.greeting(); // My name is Rob
 				
 				
 					<li>
+						<a href="http://jpiedra.github.io/article/">
+							Articles - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/javascript/">
+							javascript - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/">
+							Jonathan Piedra - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/mysql/">
+							mysql - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
 							Node.js Connector to a MySQL Database - Posted Jul 26 2018
 						</a>
 					</li>
 				
 					<li>
+						<a href="http://jpiedra.github.io/tags/nodejs/">
+							nodejs - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/">
+							Tags - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/aws/">
+							aws - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/ec2/">
+							ec2 - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/never-update-security-group/">
 							Never Update an AWS Security Group Again - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/project/static-site-deploy-scripts/">
-							Website Deployment Scripts - Posted Feb 18 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/project/searchable-leaderboard/">
-							Searchable Leaderboard - Posted Feb 18 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/css-tip-overflow-x/">
-							CSS Tip: &#39;overflow-x&#39; for Narrow Contexts - Posted Feb 14 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/s3-site-deploy-2/">
-							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2 - Posted Feb 11 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/s3-site-deploy-1/">
-							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1 - Posted Jan 20 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/vagrant-mysql/">
-							Connecting to MySQL on a VirtualBox Linux VM - Posted Sep 11 2017
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/js-module/">
-							JavaScript Design Patterns: Module - Posted Sep 10 2017
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/js-constructor/">
-							JavaScript Design Patterns: Constructor - Posted Feb 2 2017
 						</a>
 					</li>
 				

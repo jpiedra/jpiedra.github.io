@@ -47,7 +47,7 @@
 			
   	
   		
-    <div class="projectpanel" id="project__searchable-leaderboard" style="background-color: #7E4E4E">
+    <div class="projectpanel" id="project__project\searchable-leaderboard.md" style="background-color: #7E4E4E">
 
     <div class="projectpanel_head">
         
@@ -55,7 +55,7 @@
             <h1><a href="http://stat.diabolis.net">Searchable Leaderboard</a></h1>
         </div>
         <div class="projectpanel_head-more">
-            <button onClick="toggleChevron(this, 'project__searchable-leaderboard')">
+            <button onClick="toggleChevron(this, 'project__project\\searchable-leaderboard.md')">
                 <i class="projectpanel_head-more_toggle fas fa-chevron-down fa-2x"></i>
             </button>
         </div>
@@ -105,18 +105,16 @@
             </div>
         </div>
     </div>
-    <div id="project__searchable-leaderboard_summary" class="projectpanel_body_content-hidden">
+    <div id="project__project\searchable-leaderboard.md_summary" class="projectpanel_body_content-hidden">
         <p><p>I made this for fun! When I crossed launching a gaming server off of my bucket list, I decided it would be interesting to keep a leaderboard of all the players who have played on it and their logged scores to date.</p>
-
-<p>The front-end is a <a class='projectpanel_body_content_link' href="https://vuejs.org/">Vue.js Single Page Application (SPA)</a> that uses a custom <a class='projectpanel_body_content_link' href="https://getbootstrap.com/">Bootstrap</a> theme for styling. The SPA consists of several Vue components that accept user input for searching and paging through logged scores, then issue the respective API calls to get the results requested by said user. A single component, DataTable, handles rendering the JSON returned by API calls into a responsive table. As this part of the application consists of client-side JavaScript, it pairs nicely with my preferred hosting solution at the moment, Amazon Web Services&rsquo; Simple Storage Service (S3).</p>
-
-<p>The back-end is the simple web API mentioned earlier, and it was written using <a class='projectpanel_body_content_link' href="https://nodejs.org/en/">Node.js and the <a class='projectpanel_body_content_link' href="https://github.com/mysqljs/mysql">MySQL library for Node.js</a>. Access to the database where the players&rsquo; scores are kept is exposed through several &lsquo;get&rsquo; routes. These routes correspond to requests for score resources that the front-end issues, where the request URI can consists of a &lsquo;player&rsquo; or &lsquo;map&rsquo; name, a &lsquo;limit&rsquo; amount to state how many records to return, and a &lsquo;page&rsquo; parameter for pagination. Middleware is used to process rows returned by a query to the MySQL database, and return JSON that the front-end can use to render a table.</p>
+<p>The front-end is a <!-- raw HTML omitted -->Vue.js Single Page Application (SPA)<!-- raw HTML omitted --> that uses a custom <!-- raw HTML omitted -->Bootstrap<!-- raw HTML omitted --> theme for styling. The SPA consists of several Vue components that accept user input for searching and paging through logged scores, then issue the respective API calls to get the results requested by said user. A single component, DataTable, handles rendering the JSON returned by API calls into a responsive table. As this part of the application consists of client-side JavaScript, it pairs nicely with my preferred hosting solution at the moment, Amazon Web Services' Simple Storage Service (S3).</p>
+<p>The back-end is the simple web API mentioned earlier, and it was written using <!-- raw HTML omitted -->Node.js and the <!-- raw HTML omitted -->MySQL library for Node.js<!-- raw HTML omitted -->. Access to the database where the players' scores are kept is exposed through several &lsquo;get&rsquo; routes. These routes correspond to requests for score resources that the front-end issues, where the request URI can consists of a &lsquo;player&rsquo; or &lsquo;map&rsquo; name, a &lsquo;limit&rsquo; amount to state how many records to return, and a &lsquo;page&rsquo; parameter for pagination. Middleware is used to process rows returned by a query to the MySQL database, and return JSON that the front-end can use to render a table.</p>
 </p>
     </div>
 </div>		
 	
   		
-    <div class="projectpanel" id="project__static-site-deploy-scripts" style="background-color: #4E4E7E">
+    <div class="projectpanel" id="project__project\static-site-deploy-scripts.md" style="background-color: #4E4E7E">
 
     <div class="projectpanel_head">
         
@@ -124,7 +122,7 @@
             <h1><a href="https://github.com/jpiedra/S3SiteDeploy">Website Deployment Scripts</a></h1>
         </div>
         <div class="projectpanel_head-more">
-            <button onClick="toggleChevron(this, 'project__static-site-deploy-scripts')">
+            <button onClick="toggleChevron(this, 'project__project\\static-site-deploy-scripts.md')">
                 <i class="projectpanel_head-more_toggle fas fa-chevron-down fa-2x"></i>
             </button>
         </div>
@@ -153,8 +151,8 @@
             </div>
         </div>
     </div>
-    <div id="project__static-site-deploy-scripts_summary" class="projectpanel_body_content-hidden">
-        <p><p>To ease the process of deploying static websites or front-end SPA&rsquo;s to <a class='projectpanel_body_content_link' href="https://aws.amazon.com/s3/">Amazon Web Services&rsquo; S3 buckets</a>, I wrote some <a class='projectpanel_body_content_link' href="https://docs.microsoft.com/en-us/powershell/">Powershell</a> scripts that handle configuring a new S3 bucket to use for website hosting, as well as uploading content of various standard types (HTML, CSS, JavaScript, etc.) to the bucket afterwards. The scripts use <a class='projectpanel_body_content_link' href="https://aws.amazon.com/cli/">Amazon&rsquo;s Command-Line Interface.</a></p>
+    <div id="project__project\static-site-deploy-scripts.md_summary" class="projectpanel_body_content-hidden">
+        <p><p>To ease the process of deploying static websites or front-end SPA&rsquo;s to <!-- raw HTML omitted -->Amazon Web Services' S3 buckets<!-- raw HTML omitted -->, I wrote some <!-- raw HTML omitted -->Powershell<!-- raw HTML omitted --> scripts that handle configuring a new S3 bucket to use for website hosting, as well as uploading content of various standard types (HTML, CSS, JavaScript, etc.) to the bucket afterwards. The scripts use <!-- raw HTML omitted -->Amazon&rsquo;s Command-Line Interface.<!-- raw HTML omitted --></p>
 </p>
     </div>
 </div>		

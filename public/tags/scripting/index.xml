@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Scripting on Jonathan Piedra</title>
+    <title>scripting on Jonathan Piedra</title>
     <link>http://jpiedra.github.io/tags/scripting/</link>
-    <description>Recent content in Scripting on Jonathan Piedra</description>
+    <description>Recent content in scripting on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jul 2018 13:58:48 -0400</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Jul 2018 13:58:48 -0400</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Never Update an AWS Security Group Again</title>
       <link>http://jpiedra.github.io/article/never-update-security-group/</link>
@@ -35,7 +31,7 @@
       <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/s3-site-deploy-1/</guid>
-      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo&lt;/a&gt; or &lt;a href=&#34;https://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;!-- raw HTML omitted --&gt;Hugo&lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt;Jekyll&lt;!-- raw HTML omitted --&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44,7 +40,7 @@
       <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/simple-build-script/</guid>
-      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo static site&lt;/a&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;!-- raw HTML omitted --&gt;Hugo static site&lt;!-- raw HTML omitted --&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;</description>
     </item>
     
     <item>

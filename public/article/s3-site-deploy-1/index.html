@@ -46,200 +46,46 @@
 			</div>
 		</div>
 		<div class="blogpanel_body">
-			<p><p>Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using <a href="https://gohugo.io/overview/quickstart/">Hugo</a> or <a href="https://jekyllrb.com/">Jekyll</a>), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.</p>
-
-<p>
-<h2>AWS CLI</h2>
-Before doing anything that entails making scripted requests to AWS resources, the AWS Command Line Interface will be required on your system. <a href="https://docs.aws.amazon.com/cli/latest/userguide/installing.html">Refer to Amazon&rsquo;s documentation for more details.</a></p>
-
-<p>Once you have the AWS CLI configured, with keys set up for an account that has permission to configure S3 resources and policies, we can begin writing a script to build a new S3 bucket host site hosting. The finished project can be found at <a href="https://github.com/jpiedra/S3SiteDeploy">this Github repository.</a></p>
-
-<h2>Stubbing the Commandlet</h2>
-For this example, we'll be building a Powershell script that accepts the <i>name</i> of a bucket you'd like to create. We also specify a parameter to indicate which <i>path</i> on our local system to copy files from. 
-
-<ol>
-<li>First, a check is performed to see if the bucket exists. If no bucket exists using the provided name, then the AWS CLI command will be run to create one using that name.</li>
-<li>We create the bucket, checking for success of that operation.</li>
-<li>Finally, we apply a default policy so those contents are publically available. While S3 does offer a highly programmable way to define bucket resource access and permissions, we can assume for our purposes that all parts of this website should be publically readable. Default contents for a website can be uploaded as well.</li>
-</ol>
-
-Using the text-editor of our choice, we create a new file, <i>New-S3Site.ps1</i> and add the following contents. While any editor will do, using <a href="https://docs.microsoft.com/en-us/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-?view=powershell-6">Powershell Integrated Scripting Environment (ISE)</a> gives us the added bonus of running our script while writing it.
-
-<pre>
-    [CmdletBinding()]
-    Param(
-        # Name of the bucket being configured  
-        [Parameter(Mandatory=$true,Position=1)]
-        [String]
-        $Name,
-        # Name of the path on the local computer to copy files from, assume current working directory by default
-        [String]
-        $Path = $pwd.Path
-    )
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist, checking for an ErrorRecord
-    # if your bucket was created successfully, proceed to configure/upload defaults
-        # configure default minimal viable policy, using Set-Content
-            # upload your site contents
-        }
-    }  
-</pre>
-
-<h2>Check for the S3 Bucket</h2>
-The name parameter's value is used immediately to create a legal S3 URL, prefixed with the value <i>s3://</i>. We can pass this new variable, <i>$bucketName</i> to our first AWS CLI command, <b>aws s3 ls</b>. Exactly as you'd expect on a Unix system, this will attempt to do a listing of the bucket. 
-
-<pre>
-...
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist
-    <b>aws s3 ls $bucketName</b>
-...
-</pre>
-
-While this gets us our check very quickly, to better shape the behavior of our script, we should capture the result of running this command to a variable that can then be used to determine the next step to take, rather than simply print it out on the screen. If you run this command after providing a non-existant bucket name, you'll see something similar to this:
-</br>
-<a href="https://imgur.com/ooOYquz"><img src="https://i.imgur.com/ooOYquz.png" title="source: imgur.com" /></a>
-</br>
-</br>
-Now let's capture the contents of this error message by doing two things:
-<ol>
-<li>Redirect the output of this command to standard out, from standard error</li>
-<li>Store the output in a new variable</li>
-</ol>
-
-<pre>
-...
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist
-    <b>$result = aws s3 ls $bucketName 2>&1</b>
-...
-</pre>
-
-The <i>$result</i> variable will now contain an ErrorRecord object if ls fails. (Actually, this turns out to be an <i>array</i> with one object inside of it, of type ErrorRecord) We know that, if the result of this ls command is an ErrorRecord, that the bucket does not exist. This is useful information that can be leveraged to perform the check we need before proceeding with the creation process, because if we <i>don't</i> get an error record, then <i>$result</i> will be null (as nothing came from standard error), and we can check if the bucket exists by checking whether or not <i>$result</i> is null. If null, the ls succeeded, and thus we should stop the script because there's a bucket there we don't want to tamper with!
-
-<ol>
-<li>Wrap the code that checks for the bucket in a <i>try</i> block</li>
-<li>In our <i>try</i> block, check the type of the variable <i>$result</i></li>
-<li>If the type is NOT an ErrorRecord, then throw an exception. Use the exception in a <i>catch</i> block immediately after <i>try</i>, wherein we exist from our script</li>
-</ol>
-
-<pre>
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist, checking for an ErrorRecord
-    try {
-        $result = aws s3 ls $bucketName 2>&1
-        <b>if ($result -eq $null -or $result[0].GetType().Name -ne "ErrorRecord") {
-            throw [System.Exception]::new("The specified bucket $bucketName already exists.");
-        }</b>
-    } catch {
-        <b># if the bucket already exists, don't do anything and exit noisily!
-        Write-Error $PSItem.Exception.Message
-        Exit</b>
-    } 
-</pre>
-
-<h2>Create the S3 Bucket</h2>
-
-<p>The next AWS CLI command creates our bucket. The constructed <i>bucketName</i> variable is used here. The command is <b>aws s3 mb</b> and here, mb is short form for &ldquo;make bucket.&rdquo;</p>
-
+			<p><p>Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using <!-- raw HTML omitted -->Hugo<!-- raw HTML omitted --> or <!-- raw HTML omitted -->Jekyll<!-- raw HTML omitted -->), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.</p>
+<!-- raw HTML omitted -->
+<p>Once you have the AWS CLI configured, with keys set up for an account that has permission to configure S3 resources and policies, we can begin writing a script to build a new S3 bucket host site hosting. The finished project can be found at <!-- raw HTML omitted -->this Github repository.<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Using the text-editor of our choice, we create a new file, <!-- raw HTML omitted -->New-S3Site.ps1<!-- raw HTML omitted --> and add the following contents. While any editor will do, using <!-- raw HTML omitted -->Powershell Integrated Scripting Environment (ISE)<!-- raw HTML omitted --> gives us the added bonus of running our script while writing it.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>While this gets us our check very quickly, to better shape the behavior of our script, we should capture the result of running this command to a variable that can then be used to determine the next step to take, rather than simply print it out on the screen. If you run this command after providing a non-existant bucket name, you&rsquo;ll see something similar to this:
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted --><!-- raw HTML omitted --><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+Now let&rsquo;s capture the contents of this error message by doing two things:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The <!-- raw HTML omitted -->$result<!-- raw HTML omitted --> variable will now contain an ErrorRecord object if ls fails. (Actually, this turns out to be an <!-- raw HTML omitted -->array<!-- raw HTML omitted --> with one object inside of it, of type ErrorRecord) We know that, if the result of this ls command is an ErrorRecord, that the bucket does not exist. This is useful information that can be leveraged to perform the check we need before proceeding with the creation process, because if we <!-- raw HTML omitted -->don&rsquo;t<!-- raw HTML omitted --> get an error record, then <!-- raw HTML omitted -->$result<!-- raw HTML omitted --> will be null (as nothing came from standard error), and we can check if the bucket exists by checking whether or not <!-- raw HTML omitted -->$result<!-- raw HTML omitted --> is null. If null, the ls succeeded, and thus we should stop the script because there&rsquo;s a bucket there we don&rsquo;t want to tamper with!</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The next AWS CLI command creates our bucket. The constructed <!-- raw HTML omitted -->bucketName<!-- raw HTML omitted --> variable is used here. The command is <!-- raw HTML omitted -->aws s3 mb<!-- raw HTML omitted --> and here, mb is short form for &ldquo;make bucket.&rdquo;</p>
 <p>The output of this command is also written to standard error, so we make use of redirection to standard out and place those contents in a variable, which we check later for a specific pattern. If the mb operation succeeds, the contents of the variable will contain &ldquo;make_bucket&rdquo; in it. Here&rsquo;s how we check for that:</p>
-
-<pre>
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist, checking for an ErrorRecord
-    try {
-        $result = aws s3 ls $bucketName 2>&1
-        if ($result -eq $null -or $result[0].GetType().Name -ne "ErrorRecord") {
-            throw [System.Exception]::new("The specified bucket $bucketName already exists.");
-        }
-    } catch {
-        # if the bucket already exists, don't do anything and exit noisily!
-        Write-Error $PSItem.Exception.Message
-        Exit
-    } 
-
-    <b>$bucket = aws s3 mb $bucketName 2>&1</b>
-
-    # if your bucket was created successfully, proceed to configure/upload defaults
-    if ($bucket | Select-String -Pattern "make_bucket") {
-        # configure default minimal viable policy, using Set-Content
-            # upload your site contents
-    }
-</pre>
-
-<h2>Configure a Public Policy for the Bucket</h2>
-
-<p>To configure a policy that makes all the files in our bucket publically readable, we apply the action <i>GetObject</i> for any principal <i>denoted by &ldquo;*&ldquo;</i> on all resources under our bucket, which would end up being the Amazon Resource Name (ARN) <i>arn:aws:s3:::acme.org/*</i> for a hypothetical bucket named acme.org. We use the <a href="https://awspolicygen.s3.amazonaws.com/policygen.html">Amazon Policy Generator</a> to generate such a policy for us.</p>
-
-<pre>
-{
-    "Version":"2012-10-17",
-    "Statement": [
-        {
-            "Sid": "PublicReadForGetBucketObjects",
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": [
-                "s3:GetObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::BUCKET_NAME/*"
-            ]
-        }
-    ]
-}
-</pre>
-
-<p>We paste the resulting policy into a file called <i>static-site-policy.json</i>, in the same directory as our script, that our script will use. The file <i>static-site-policy.json</i> will become our template, and all we need to do to have it work for our new bucket, is replace the constant BUCKET_NAME with the value of the bucket name we passed in as a parameter. At this point, we would have the following as our complete script:</p>
-
-<pre>
-    [CmdletBinding()]
-    Param(
-        [Parameter(Mandatory=$true,Position=1)]
-        [String]
-        $Name,
-        # Name of the path on the local computer to copy files from, assume current working directory by default
-        [String]
-        $Path = $pwd.Path
-    )
-    $bucketName = "s3://$($Name)"
-    # make sure the bucket doesn't already exist, checking for an ErrorRecord
-    try {
-        $result = aws s3 ls $bucketName 2>&1
-        if ($result -eq $null -or $result[0].GetType().Name -ne "ErrorRecord") {
-            throw [System.Exception]::new("The specified bucket $bucketName already exists.");
-        }
-    } catch {
-        # if the bucket already exists, don't do anything and exit noisily!
-        Write-Error $PSItem.Exception.Message
-        Exit
-    } 
-
-    $bucket = aws s3 mb $bucketName 2>&1
-
-    # if your bucket was created successfully, proceed to configure/upload defaults
-    if ($bucket | Select-String -Pattern "make_bucket") {
-        <b># configure default minimal viable policy, using Set-Content
-        (Get-Content .\static-site-policy.json).replace('BUCKET_NAME', $Name) | Set-Content .\policy.json
-        if (Test-Path -Path "policy.json") {
-            # upload your site contents
-            write-host (Get-Content "policy.json")
-            aws s3api put-bucket-policy --bucket $Name --policy file://policy.json
-            .\Upload-S3Site.ps1 -Name $Name -Path $Path
-        }</b>
-    }
-</pre>
-
-<p>At this point, our complete script can create a bucket if it doesn&rsquo;t exist, using a name we provide, and sets a policy for the bucket (which is really just generated by Powershell&rsquo;s Get-Content and Set-Content commandlets, to replace the BUCKET_NAME value) using the command <b>aws s3api put-bucket-policy</b> which applies the policy in the actual policy file, <i>policy.json.</i></p>
-
-<p>In the next post for this series, the final piece in our puzzle will be discussed - the <i>Upload-S3Site</i> script, which will upload all of our website&rsquo;s files to the bucket. The <i>Path</i> parameter we defined here will play an important role in this second script.</p>
-
-<p>Additional Resources
-<ul>
-<li><a href="https://docs.aws.amazon.com/cli/latest/reference/s3/index.html">AWS CLI s3 Commands</a></li>
-<li><a href="https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html">AWS CLI s3api Commands</a></li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-?view=powershell-6">Powershell Integrated Scripting Environment (ISE)</a></li>
-<li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content?view=powershell-6">Get-Content</a> and <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/set-content?view=powershell-6">Set-Content</a> Commandlets</li></p></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>To configure a policy that makes all the files in our bucket publically readable, we apply the action <!-- raw HTML omitted -->GetObject<!-- raw HTML omitted --> for any principal <!-- raw HTML omitted -->denoted by &ldquo;*&quot;<!-- raw HTML omitted --> on all resources under our bucket, which would end up being the Amazon Resource Name (ARN) <!-- raw HTML omitted -->arn:aws:s3:::acme.org/*<!-- raw HTML omitted --> for a hypothetical bucket named acme.org. We use the <!-- raw HTML omitted -->Amazon Policy Generator<!-- raw HTML omitted --> to generate such a policy for us.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>We paste the resulting policy into a file called <!-- raw HTML omitted -->static-site-policy.json<!-- raw HTML omitted -->, in the same directory as our script, that our script will use. The file <!-- raw HTML omitted -->static-site-policy.json<!-- raw HTML omitted --> will become our template, and all we need to do to have it work for our new bucket, is replace the constant BUCKET_NAME with the value of the bucket name we passed in as a parameter. At this point, we would have the following as our complete script:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>At this point, our complete script can create a bucket if it doesn&rsquo;t exist, using a name we provide, and sets a policy for the bucket (which is really just generated by Powershell&rsquo;s Get-Content and Set-Content commandlets, to replace the BUCKET_NAME value) using the command <!-- raw HTML omitted -->aws s3api put-bucket-policy<!-- raw HTML omitted --> which applies the policy in the actual policy file, <!-- raw HTML omitted -->policy.json.<!-- raw HTML omitted --></p>
+<p>In the next post for this series, the final piece in our puzzle will be discussed - the <!-- raw HTML omitted -->Upload-S3Site<!-- raw HTML omitted --> script, which will upload all of our website&rsquo;s files to the bucket. The <!-- raw HTML omitted -->Path<!-- raw HTML omitted --> parameter we defined here will play an important role in this second script.</p>
+<p>Additional Resources</p>
+<!-- raw HTML omitted --></p>
 			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
 		
@@ -278,7 +124,7 @@ The <i>$result</i> variable will now contain an ErrorRecord object if ls fails. 
 		
 	</div>
 	<div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -446,62 +292,62 @@ The <i>$result</i> variable will now contain an ErrorRecord object if ls fails. 
 				
 				
 					<li>
+						<a href="http://jpiedra.github.io/article/">
+							Articles - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/javascript/">
+							javascript - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/">
+							Jonathan Piedra - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/mysql/">
+							mysql - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
 							Node.js Connector to a MySQL Database - Posted Jul 26 2018
 						</a>
 					</li>
 				
 					<li>
+						<a href="http://jpiedra.github.io/tags/nodejs/">
+							nodejs - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/">
+							Tags - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/aws/">
+							aws - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/ec2/">
+							ec2 - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/never-update-security-group/">
 							Never Update an AWS Security Group Again - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/project/static-site-deploy-scripts/">
-							Website Deployment Scripts - Posted Feb 18 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/project/searchable-leaderboard/">
-							Searchable Leaderboard - Posted Feb 18 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/css-tip-overflow-x/">
-							CSS Tip: &#39;overflow-x&#39; for Narrow Contexts - Posted Feb 14 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/s3-site-deploy-2/">
-							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2 - Posted Feb 11 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/s3-site-deploy-1/">
-							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1 - Posted Jan 20 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/vagrant-mysql/">
-							Connecting to MySQL on a VirtualBox Linux VM - Posted Sep 11 2017
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/js-module/">
-							JavaScript Design Patterns: Module - Posted Sep 10 2017
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/js-constructor/">
-							JavaScript Design Patterns: Constructor - Posted Feb 2 2017
 						</a>
 					</li>
 				

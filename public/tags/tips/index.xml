@@ -1,25 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tips on Jonathan Piedra</title>
+    <title>tips on Jonathan Piedra</title>
     <link>http://jpiedra.github.io/tags/tips/</link>
-    <description>Recent content in Tips on Jonathan Piedra</description>
+    <description>Recent content in tips on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 14 Feb 2018 21:01:46 -0500</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 14 Feb 2018 21:01:46 -0500</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CSS Tip: &#39;overflow-x&#39; for Narrow Contexts</title>
       <link>http://jpiedra.github.io/article/css-tip-overflow-x/</link>
       <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/css-tip-overflow-x/</guid>
-      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;</description>
     </item>
     
   </channel>
