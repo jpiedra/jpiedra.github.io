@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Troubleshooting on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/troubleshooting/</link>
+    <description>Recent content in Troubleshooting on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 Jan 2017 18:11:31 -0500</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/troubleshooting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing squarespace-server on Ubuntu 14.04 LTS</title>
+      <link>http://jpiedra.github.io/article/squarespace-server-ubuntu/</link>
+      <pubDate>Mon, 30 Jan 2017 18:11:31 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/squarespace-server-ubuntu/</guid>
+      <description>&lt;p&gt;This article details how to install the &lt;a href=&#34;http://developers.squarespace.com/local-development/&#34;&gt;Squarespace local development server&lt;/a&gt; on Ubuntu 14.04 LTS.&lt;/p&gt;
+
+&lt;p&gt;I recently took on a small project, some work on customizing Squarespace templates. In the course of doing this, I required the Squarespace local development server in order to quickly modify and test changes to the template. I use a VirtualBox VM I built some time ago using Vagrant, based on Ubuntu 14.04 LTS.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

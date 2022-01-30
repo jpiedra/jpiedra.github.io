@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/bash/</link>
+    <description>Recent content in Bash on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Feb 2017 10:51:38 -0500</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A simple build script</title>
+      <link>http://jpiedra.github.io/article/simple-build-script/</link>
+      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/simple-build-script/</guid>
+      <description>&lt;p&gt;Today we go over the process of writing a very simple Bash script. We&amp;rsquo;ll be able to detect whether a build for a &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo static site&lt;/a&gt; is present, push the files to a Git repository for our website, and automate all the steps involved.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

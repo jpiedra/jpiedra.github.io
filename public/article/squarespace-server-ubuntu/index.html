@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    	
+  	Installing squarespace-server on Ubuntu 14.04 LTS &ndash; Jonathan Piedra
+
+    </title>
+	
+<link type="text/css" rel="stylesheet" href="/css/style.css">
+<link type="text/css" rel="stylesheet" href="/css/blogpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/projectpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/resp.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Montserrat">
+</head>
+<body>
+	<ul class="navbar">
+	<div class="navbar-left">
+		<li class="navbar_brand">
+			<a href="http://jpiedra.github.io">Jonathan Piedra</a>
+		</li>
+	</div>
+	<div class="navbar-right">
+		<li>
+			<a href="http://jpiedra.github.io/article">Articles</a>
+		</li>
+		<li>
+			<a href="http://jpiedra.github.io/project">Projects</a>
+		</li>
+		<li>
+			<a href="mailto:jpiedra1990@gmail.com">Contact</a>
+		</li>
+	</div>
+</ul>
+	<div class="col-main">
+		
+	<div class="blogpanel blogpanel_single">
+		<div class="blogpanel_head">
+			<div class="blogpanel_head-date">
+				<h1>January 30 2017</h1>
+			</div>
+			<div class="blogpanel_head-title">
+				<h1>Installing squarespace-server on Ubuntu 14.04 LTS</h1>
+			</div>
+		</div>
+		<div class="blogpanel_body">
+			<p><p>This article details how to install the <a href="http://developers.squarespace.com/local-development/">Squarespace local development server</a> on Ubuntu 14.04 LTS.</p>
+
+<p>I recently took on a small project, some work on customizing Squarespace templates. In the course of doing this, I required the Squarespace local development server in order to quickly modify and test changes to the template. I use a VirtualBox VM I built some time ago using Vagrant, based on Ubuntu 14.04 LTS.</p>
+
+<p>If you&rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!</p>
+
+<p>
+<h2>Potential Errors</h2></p>
+
+<p>After following the instructions on Squarespace&rsquo;s official website (link above) you might have come across the following error:</p>
+
+<pre>
+$ npm install -g @squarespace/server
+@squarespace/server@1.0.7 copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
+node scripts/copyfile.js build/distributions/local-developer/bin/run.bat darwin:build/distributions/local-developer/bin/osx-local-developer win32:build/distributions/local-developer/bin/win-local-developer.bat linux:build/distributions/local-developer/bin/linux-local-developer build/distributions/local-developer/bin/local-developer
+
+copying build/distributions/local-developer/bin/linux-local-developer to build/distributions/local-developer/bin/run.bat
+npm ERR! Linux 4.2.0-27-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "@squarespace/server"
+npm ERR! node v6.9.4
+npm ERR! npm  v3.10.10
+npm ERR! path ../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
+npm ERR! code EACCES
+npm ERR! errno -13
+npm ERR! syscall symlink
+
+npm ERR! Error: EACCES: permission denied, symlink '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat' -> '/usr/bin/squarespace-server'
+npm ERR!     at Error (native)
+npm ERR!  { Error: EACCES: permission denied, symlink '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat' -> '/usr/bin/squarespace-server'
+npm ERR!     at Error (native)
+npm ERR!   errno: -13,
+npm ERR!   code: 'EACCES',
+npm ERR!   syscall: 'symlink',
+npm ERR!   path: '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat',
+npm ERR!   dest: '/usr/bin/squarespace-server' }
+npm ERR! 
+</pre>
+
+<p>This may occur if you attempt to install the program as a <i>user with insufficient permissions.</i> Installing as root may resolve the problem, as well as <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">providing the user NPM is running under with the required permissions.</a></p>
+
+<p>However, even following that step might not end matters for you; the next error might come up:</p>
+
+<pre>
+$ sudo npm install -g @squarespace/server
+npm WARN lifecycle @squarespace/server@1.0.7~preinstall: cannot run in wd %s %s (wd=%s) @squarespace/server@1.0.7 npm run accept && node scripts/execif.js --exists=build npm run copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
+npm ERR! Linux 4.2.0-27-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "@squarespace/server"
+npm ERR! node v6.9.4
+npm ERR! npm  v3.10.10
+npm ERR! path /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
+npm ERR! code ENOENT
+npm ERR! errno -2
+npm ERR! syscall chmod
+
+npm ERR! enoent ENOENT: no such file or directory, chmod '/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat'
+npm ERR! enoent ENOENT: no such file or directory, chmod '/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat'
+npm ERR! enoent This is most likely not a problem with npm itself
+npm ERR! enoent and is related to npm not being able to find a file.
+npm ERR! enoent 
+</pre>
+
+<p>The error messages may seem a bit opaque, but it appears that a required folder either wasn&rsquo;t created or found during the installation process.</p>
+
+<p><h2>A workaround: install &ldquo;locally,&rdquo; then globally</h2>
+I ended up having to rely on a workaround. When I say &ldquo;locally&rdquo; I really mean, first installing the squarespace-server dependency for a specific node project, then <i>moving that installation</i> over to the location it must reside at in order to be used globally.</p>
+
+<p>Installing squarespace-server for a specific project is easy enough, just omit the global flag (-g) when you install it to your site template&rsquo;s project directory. The part that might be tricky for some is &ldquo;moving&rdquo; the files over, as it involves not only moving the files over to a new directory, but applying permissions and creating a symbolic link as well. The presence of the symbolic link is what will allow us to launch squarespace-server globally. The steps are as follows:
+<ol>
+    <li>Clone the files for your Squarespace site, as instructed here: <a href="http://developers.squarespace.com/local-development">http://developers.squarespace.com/local-development</a></li>
+    <li>Change into the &lsquo;template&rsquo; directory created after cloning</li>
+    <li>Install the squarespace-server package normally (not globally)
+    <pre>$ npm install @squarespace/server</pre>
+    </li>
+    <li>You should now have a directory:<b>template/node_modules/@squarespace</b>
+    </li>
+    <li>Copy the files for this module into your system-wide &lsquo;node_modules&rsquo; directory:
+    <pre>$ sudo cp -rp node_modules/@squarespace /usr/lib/node_modules/</pre>
+    </li>
+    <li>Change the permissions for this copied folder as needed. This location will vary depending on your operating system (for our purposes, we&rsquo;re using a Vagrant Box based on Ubuntu 14.04, thus the user shown below:
+    <pre>$ sudo chown -R vagrant:root @squarespace
+$ sudo chmod -R 755 @squarespace</pre>
+    </li>
+    <li>Finally, create a symbolic link, allowing us to run &lsquo;squarespace-server&rsquo; from anywhere:<pre>$ sudo ln -s /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat /usr/bin/squarespace-server</pre></li>
+</ol></p>
+
+<p>You should now be able to use the local development server, from inside your site&rsquo;s &lsquo;template&rsquo; directory:
+<pre>$ squarespace-server https://[sitename].squarespace.com &ndash;auth</pre></p>
+
+<p>Hopefully this solution works for you. Share in the comments if this helped you get squarespace-server running!</p></p>
+			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
+		</div>
+		
+		<div class="blogpanel_foot">
+			<div class="blogpanel_foot">
+				<div class="blogpanel_foot-tag-name">
+					<p>Tags:</p>
+				</div>
+				<div class="blogpanel_foot-tag-list">
+					<ul>
+						
+							<li>
+								<a href="/tags/linux">linux</a>
+							</li>
+						
+							<li>
+								<a href="/tags/squarespace">squarespace</a>
+							</li>
+						
+							<li>
+								<a href="/tags/design">design</a>
+							</li>
+						
+							<li>
+								<a href="/tags/troubleshooting">troubleshooting</a>
+							</li>
+						
+					</ul>
+				</div>
+			</div>	
+		</div>
+		
+	</div>
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jpiedra" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		<div class="col-main_pages" >
+			
+			
+		</div>
+	</div>
+	<div class="col-side">
+		
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Tags</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-tag-list">
+			<ul>
+				
+				
+				
+				
+					<li>
+						<a href="/tags/api">api</a>
+					</li>
+				
+					<li>
+						<a href="/tags/aws">aws</a>
+					</li>
+				
+					<li>
+						<a href="/tags/bash">bash</a>
+					</li>
+				
+					<li>
+						<a href="/tags/constructor">constructor</a>
+					</li>
+				
+					<li>
+						<a href="/tags/css">css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/design">design</a>
+					</li>
+				
+					<li>
+						<a href="/tags/development">development</a>
+					</li>
+				
+					<li>
+						<a href="/tags/ec2">ec2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/es5">es5</a>
+					</li>
+				
+					<li>
+						<a href="/tags/git">git</a>
+					</li>
+				
+					<li>
+						<a href="/tags/javascript">javascript</a>
+					</li>
+				
+					<li>
+						<a href="/tags/linux">linux</a>
+					</li>
+				
+					<li>
+						<a href="/tags/module">module</a>
+					</li>
+				
+					<li>
+						<a href="/tags/mysql">mysql</a>
+					</li>
+				
+					<li>
+						<a href="/tags/nodejs">nodejs</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-1">part-1</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-2">part-2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/php">php</a>
+					</li>
+				
+					<li>
+						<a href="/tags/powershell">powershell</a>
+					</li>
+				
+					<li>
+						<a href="/tags/python">python</a>
+					</li>
+				
+					<li>
+						<a href="/tags/s3">s3</a>
+					</li>
+				
+					<li>
+						<a href="/tags/scripting">scripting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/squarespace">squarespace</a>
+					</li>
+				
+					<li>
+						<a href="/tags/tips">tips</a>
+					</li>
+				
+					<li>
+						<a href="/tags/troubleshooting">troubleshooting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualbox">virtualbox</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualization">virtualization</a>
+					</li>
+				
+					<li>
+						<a href="/tags/webdev">webdev</a>
+					</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Recent Posts</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-post-list">
+			<ol>
+				
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
+							Node.js Connector to a MySQL Database - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/never-update-security-group/">
+							Never Update an AWS Security Group Again - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/static-site-deploy-scripts/">
+							Website Deployment Scripts - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/searchable-leaderboard/">
+							Searchable Leaderboard - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/css-tip-overflow-x/">
+							CSS Tip: &#39;overflow-x&#39; for Narrow Contexts - Posted Feb 14 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-2/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2 - Posted Feb 11 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-1/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1 - Posted Jan 20 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/vagrant-mysql/">
+							Connecting to MySQL on a VirtualBox Linux VM - Posted Sep 11 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-module/">
+							JavaScript Design Patterns: Module - Posted Sep 10 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-constructor/">
+							JavaScript Design Patterns: Constructor - Posted Feb 2 2017
+						</a>
+					</li>
+				
+			</ol>
+		</div>
+	</div>
+</div>
+		
+	</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/development/</link>
+    <description>Recent content in Development on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Feb 2018 21:01:46 -0500</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSS Tip: &#39;overflow-x&#39; for Narrow Contexts</title>
+      <link>http://jpiedra.github.io/article/css-tip-overflow-x/</link>
+      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/css-tip-overflow-x/</guid>
+      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Connecting to MySQL on a VirtualBox Linux VM</title>
+      <link>http://jpiedra.github.io/article/vagrant-mysql/</link>
+      <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/vagrant-mysql/</guid>
+      <description>&lt;p&gt;Here are a few considerations to keep in mind if you&amp;rsquo;re running a VirtualBox VM with MySQL on it, and need an application on your host operating system to be able to connect to it.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

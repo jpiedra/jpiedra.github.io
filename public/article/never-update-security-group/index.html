@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    	
+  	Never Update an AWS Security Group Again &ndash; Jonathan Piedra
+
+    </title>
+	
+<link type="text/css" rel="stylesheet" href="/css/style.css">
+<link type="text/css" rel="stylesheet" href="/css/blogpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/projectpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/resp.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Montserrat">
+</head>
+<body>
+	<ul class="navbar">
+	<div class="navbar-left">
+		<li class="navbar_brand">
+			<a href="http://jpiedra.github.io">Jonathan Piedra</a>
+		</li>
+	</div>
+	<div class="navbar-right">
+		<li>
+			<a href="http://jpiedra.github.io/article">Articles</a>
+		</li>
+		<li>
+			<a href="http://jpiedra.github.io/project">Projects</a>
+		</li>
+		<li>
+			<a href="mailto:jpiedra1990@gmail.com">Contact</a>
+		</li>
+	</div>
+</ul>
+	<div class="col-main">
+		
+	<div class="blogpanel blogpanel_single">
+		<div class="blogpanel_head">
+			<div class="blogpanel_head-date">
+				<h1>July 8 2018</h1>
+			</div>
+			<div class="blogpanel_head-title">
+				<h1>Never Update an AWS Security Group Again</h1>
+			</div>
+		</div>
+		<div class="blogpanel_body">
+			<p><p>Sweat the small stuff! Script that itch you can&rsquo;t scratch&hellip;</p>
+
+<p>
+<h2>A Moving Target</h2>
+If you&rsquo;re someone with a personal cloud platform account, using it to put together projects, demonstrations, or really anything on it from a home computer, odds are good that you&rsquo;re probably not accessing said platform from a static IP address.</p>
+
+<p>In the case of Amazon Web Services, access to Elastic Cloud Compute (EC2) instances is controlled through the configuration of <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html">security groups.</a> You configure a security group with one or more ingress and egress traffic rules, indicating what traffic is allowed over which ports, from which IP addresses or subnets. Those security groups are applied to EC2 instances, and that&rsquo;s how traffic to, from, or between you, those instances, and other AWS resources gets defined.</p>
+
+<p>You can set up a security group initially to allow access - say, over port 22 for SSH sessions - from your home device. At the moment, AWS will conveniently determine your device&rsquo;s external IP address, and set up the access you desire.</p>
+
+<p>This helps in the near-term, but needs to be updated as soon as your internet service provider (ISP) changes your IP address. While spending all of 5-10 minutes accessing your AWS console to manually update security groups may not sound so bad, it would be nice if an automated solution to that problem was possible.</p>
+
+<p><h2>Enter Boto3</h2>
+<a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html">Boto</a> is, in their words, &ldquo;the Amazon Web Services (AWS) SDK for Python.&rdquo; You can use Boto to write Python code to interact directly with the various components of the AWS platform: RDS, S3, EC2, among others. Scripted access to security groups is folded under the EC2 service, so you can use Boto to write Python code that <a href="https://boto3.readthedocs.io/en/latest/reference/services/ec2.html#securitygroup">instantiates a client</a> to interact with the <i>ec2</i> service and use that same client to configure your security groups as desired.</p>
+
+<p><h2>Assumptions</h2>
+To use Boto, you need to follow the installation instructions defined in the link above to install the Python library. You also need to make sure you have access to AWS <a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html#configuration">configured using your access key and secret token,</a> both of these generated for an account that has access to view and update security groups. For more information on configuring an account to modify EC2 resources and security groups, <a href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ec2-api-permissions.html">please see this article.</a></p>
+
+<p><h2>Instantiating an EC2 Client</h2>
+Let&rsquo;s get right to coding and set up the bare minimum we need to view existing security groups:
+<pre>
+import sys, json, requests
+try:
+    import boto3
+    from botocore.exceptions import ClientError
+except ImportError:
+    sys.exit(&ldquo;Could not import &lsquo;boto3&rsquo;, please install this package.&rdquo;)
+if(len(sys.argv) != 2):
+    <b>sys.exit(&ldquo;USAGE: python ipme.py [security-group-id]&ldquo;)</b>
+else:
+    group_id = str(sys.argv[1])
+<b>
+client = boto3.client(&lsquo;ec2&rsquo;)
+</b>
+try:<b>
+    response = client.describe_security_groups(
+        GroupIds=[
+            group_id,
+        ],
+        DryRun=False
+    )</b>
+except ClientError as e:
+    sys.exit(e)
+except Exception as ex:
+    sys.exit(ex)
+else:
+    if response[&lsquo;SecurityGroups&rsquo;]:
+        info = response[&lsquo;SecurityGroups&rsquo;][0]
+        old_access = response[&lsquo;SecurityGroups&rsquo;][0][&lsquo;IpPermissions&rsquo;][0]
+        print(&lsquo;Found security group (id={0[GroupId]}) named {0[GroupName]}&lsquo;.format(info))
+    else:
+        sys.exit(&lsquo;Nothing found matching that criteria (SSH rule).&rsquo;)
+</pre></p>
+
+<p>The former outlines the start of a script that accepts a single parameter, the <i>group id</i> for the security group you&rsquo;d like to update regularly. For our purposes, we would work with whatever security group was configured already, using the home IP address at the time it was configured, and pass the group ID of that security group into our script. Let&rsquo;s work with a security group with ID <b>sg-6d3c3c26</b> that configures SSH access from <b>1.2.3.4</b>.</p>
+
+<p><h2>Using Filtering</h2>
+One useful feature baked into Boto is the ability to <a href="https://boto3.readthedocs.io/en/latest/reference/services/ec2.html#EC2.Client.describe_security_groups">filter out the objects you want returned from your programmatic calls to AWS.</a> We can use this to make sure we&rsquo;re <i>only</i> ever getting back security groups that actually have an SSH ingress traffic rule configured. After all, the point of our script will be to update an existing SSH security group regularly, making sure the IP is current. We wouldn&rsquo;t want to add ingress SSH traffic to a security group that didn&rsquo;t have it already.</p>
+
+<pre>
+...
+# find security group by that id
+try:
+    response = client.describe_security_groups(
+        <b>Filters=[
+            # only concerned with ssh
+            {
+                'Name': 'ip-permission.from-port',
+                'Values': [ '22' ]
+            },
+            {
+                'Name': 'ip-permission.to-port',
+                'Values': [ '22' ]
+            },
+            {
+                'Name': 'ip-permission.protocol',
+                'Values': [ 'tcp' ]
+            },
+        ],</b>
+        GroupIds=[
+            group_id,
+        ],
+        DryRun=False
+    )
+# throw error or exception, whatever comes first
+except ClientError as e:
+    sys.exit(e)
+except Exception as ex:
+    sys.exit(ex)
+else:
+    if response['SecurityGroups']:
+        info = response['SecurityGroups'][0]
+        <b>old_access = response['SecurityGroups'][0]['IpPermissions'][0]</b>
+        print('Found security group (id={0[GroupId]}) named {0[GroupName]}'.format(info))
+    else:
+        sys.exit('Nothing found matching that criteria (SSH rule).')
+</pre>
+
+<p>This ensures that, even if a security group ID for a group that does not define traffic over port 22 is passed in, no action will be taken, as the call to AWS will fail to find a security group matching the criteria defined in the <i>Filters</i> argument.</p>
+
+<p><h2>Updating Our Security Group</h2>
+At this point in our script, we can retrieve an existing security group, by ID, that already has ingress traffic over port 22 defined.</p>
+
+<p><a href="https://imgur.com/W1cdQ5Q"><img src="https://i.imgur.com/W1cdQ5Q.gif" title="source: imgur.com" /></a></p>
+
+<p>At this point, we have two tasks left. Rather than update the existing ingress traffic rule in place, it&rsquo;s easier to just revoke that ingress traffic and then add a new rule later, with the same from- and to-port, protocol, and our updated IP address. We&rsquo;re thinking ahead here, and storing the object representing the current ingress rule from our response in a variable <i>old_access</i>. We&rsquo;ll use that object in a call soon to remove access over port 22 from our old IP address.</p>
+
+<p>Here&rsquo;s the code we&rsquo;ll use to determine our new external IP address, revoke access over port 22 from our old IP address, and authorize access over port 22 with the new one:
+<pre>
+&hellip;
+<b>ext_ip = requests.get(&lsquo;<a href="https://checkip.amazonaws.com/'">https://checkip.amazonaws.com/'</a>)</b>
+ext_ip = ext_ip.text.strip() + &lsquo;/32&rsquo;
+try:
+    data = <b>client.revoke_security_group_ingress</b>(
+        GroupId=group_id,
+        IpPermissions=[
+            old_access
+        ]
+    )
+    data = <b>client.authorize_security_group_ingress</b>(
+        GroupId=group_id,
+        IpPermissions=[
+            {
+                <b>&lsquo;IpProtocol&rsquo;: &lsquo;tcp&rsquo;,
+                &lsquo;FromPort&rsquo;: 22,
+                &lsquo;ToPort&rsquo;: 22,
+                &lsquo;IpRanges&rsquo;: [{&lsquo;CidrIp&rsquo;: ext_ip}]</b>
+            }<br />
+        ]
+    )
+except ClientError as e:
+    sys.exit(e)
+except Exception as ex:
+    sys.exit(ex)
+else:
+    <b>print(&lsquo;Ingress Successfully Set %s&rsquo; % data)</b>
+</pre></p>
+
+<p>All told, our script can find the security group we defined, and update it with our current external IP address. Note the first octet of the <i>Source IP</i> address updating:</p>
+
+<p><a href="https://imgur.com/rRWYH7q"><img src="https://i.imgur.com/rRWYH7q.gif" title="source: imgur.com" /></a></p>
+
+<p>The final version of this script can be found here:
+<script src="https://gist.github.com/jpiedra/7cd4de8617bb968029b85e0b0617f4b6.js"></script></p></p>
+			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
+		</div>
+		
+		<div class="blogpanel_foot">
+			<div class="blogpanel_foot">
+				<div class="blogpanel_foot-tag-name">
+					<p>Tags:</p>
+				</div>
+				<div class="blogpanel_foot-tag-list">
+					<ul>
+						
+							<li>
+								<a href="/tags/scripting">scripting</a>
+							</li>
+						
+							<li>
+								<a href="/tags/aws">aws</a>
+							</li>
+						
+							<li>
+								<a href="/tags/python">python</a>
+							</li>
+						
+							<li>
+								<a href="/tags/ec2">ec2</a>
+							</li>
+						
+					</ul>
+				</div>
+			</div>	
+		</div>
+		
+	</div>
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jpiedra" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		<div class="col-main_pages" >
+			
+			
+		</div>
+	</div>
+	<div class="col-side">
+		
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Tags</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-tag-list">
+			<ul>
+				
+				
+				
+				
+					<li>
+						<a href="/tags/api">api</a>
+					</li>
+				
+					<li>
+						<a href="/tags/aws">aws</a>
+					</li>
+				
+					<li>
+						<a href="/tags/bash">bash</a>
+					</li>
+				
+					<li>
+						<a href="/tags/constructor">constructor</a>
+					</li>
+				
+					<li>
+						<a href="/tags/css">css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/design">design</a>
+					</li>
+				
+					<li>
+						<a href="/tags/development">development</a>
+					</li>
+				
+					<li>
+						<a href="/tags/ec2">ec2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/es5">es5</a>
+					</li>
+				
+					<li>
+						<a href="/tags/git">git</a>
+					</li>
+				
+					<li>
+						<a href="/tags/javascript">javascript</a>
+					</li>
+				
+					<li>
+						<a href="/tags/linux">linux</a>
+					</li>
+				
+					<li>
+						<a href="/tags/module">module</a>
+					</li>
+				
+					<li>
+						<a href="/tags/mysql">mysql</a>
+					</li>
+				
+					<li>
+						<a href="/tags/nodejs">nodejs</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-1">part-1</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-2">part-2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/php">php</a>
+					</li>
+				
+					<li>
+						<a href="/tags/powershell">powershell</a>
+					</li>
+				
+					<li>
+						<a href="/tags/python">python</a>
+					</li>
+				
+					<li>
+						<a href="/tags/s3">s3</a>
+					</li>
+				
+					<li>
+						<a href="/tags/scripting">scripting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/squarespace">squarespace</a>
+					</li>
+				
+					<li>
+						<a href="/tags/tips">tips</a>
+					</li>
+				
+					<li>
+						<a href="/tags/troubleshooting">troubleshooting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualbox">virtualbox</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualization">virtualization</a>
+					</li>
+				
+					<li>
+						<a href="/tags/webdev">webdev</a>
+					</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Recent Posts</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-post-list">
+			<ol>
+				
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
+							Node.js Connector to a MySQL Database - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/never-update-security-group/">
+							Never Update an AWS Security Group Again - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/static-site-deploy-scripts/">
+							Website Deployment Scripts - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/searchable-leaderboard/">
+							Searchable Leaderboard - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/css-tip-overflow-x/">
+							CSS Tip: &#39;overflow-x&#39; for Narrow Contexts - Posted Feb 14 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-2/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2 - Posted Feb 11 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-1/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1 - Posted Jan 20 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/vagrant-mysql/">
+							Connecting to MySQL on a VirtualBox Linux VM - Posted Sep 11 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-module/">
+							JavaScript Design Patterns: Module - Posted Sep 10 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-constructor/">
+							JavaScript Design Patterns: Constructor - Posted Feb 2 2017
+						</a>
+					</li>
+				
+			</ol>
+		</div>
+	</div>
+</div>
+		
+	</div>
+</body>
+</html>

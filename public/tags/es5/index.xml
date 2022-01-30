@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Es5 on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/es5/</link>
+    <description>Recent content in Es5 on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Sep 2017 17:48:30 -0400</lastBuildDate>
+    
+	<atom:link href="http://jpiedra.github.io/tags/es5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JavaScript Design Patterns: Module</title>
+      <link>http://jpiedra.github.io/article/js-module/</link>
+      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/js-module/</guid>
+      <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Design Patterns: Constructor</title>
+      <link>http://jpiedra.github.io/article/js-constructor/</link>
+      <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/js-constructor/</guid>
+      <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

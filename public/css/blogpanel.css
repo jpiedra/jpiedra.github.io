@@ -1,0 +1,220 @@
+/*
+	blogpanel: 
+		base element for standard, grey node
+		max-width and min-width set
+		positioned in order to set 'foot'
+		margin 'auto' centers the elements
+		margin 'bottom' to add space between
+*/
+.blogpanel {
+	background-color: #F3F3F3;
+	box-shadow: 3px 3px 4px #888;
+	margin-bottom: 12px;
+	flex-basis: 45%;
+}
+/*
+	blogpanel_single: 
+		variant that takes up whole width
+		used for single-page view
+*/
+.blogpanel_single {
+	flex-basis: 90%;
+}
+.col-main > .blogpanel:hover
+{
+        -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        transform: scale(1.03);
+}
+.col-main > .blogpanel_single:hover
+{
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+}
+/*
+	blogpanel_head:
+		goes on the top of every 'blogpanel' element
+		is a flexbox parent element, 
+		display set accordingly; positioned
+		children are 'blogpanel_head-date' and 'head-title'
+		min-height required to allow growth ('head-title')
+*/
+.blogpanel_head {
+	background-color: tan; 
+	display: -webkit-flex;
+	display: flex;
+	min-height: 48px;
+	width: 100%;
+}
+/*
+	blogpanel_head-date:
+		first child to 'blogpanel_head' and is also 
+		a flexbox parent element, so that
+		'head-date' children are centered
+		both vertically and horizontally
+		takes up 1/5 flexbox units
+*/
+.blogpanel_head-date {
+	background-color: #FF5050;
+	color: white;
+	display: -webkit-flex;
+	display: flex;
+	height: auto;
+	
+	text-align: center;
+	/*flex*/
+	-webkit-flex: 1;
+	flex: 1;
+	-webkit-align-items: center;
+    align-items: center;
+	-webkit-justify-content: center;
+    justify-content: center;
+}
+/*
+	blogpanel_head-title:
+		second child to 'blogpanel_head' and is not
+		a flexbox parent; height set to auto
+		in order to grow with the content
+		(see above 'blogpanel_head')
+		takes up 4/5 flexbox units
+*/
+.blogpanel_head-title {
+	background-color: #D9D9D9;
+	display: flex;
+	height: auto;
+
+	padding-left: 12px;
+	/*flex*/
+	-webkit-flex: 4;
+	flex: 4;
+	-webkit-align-items: center;
+    align-items: center;
+}
+.blogpanel_head-title a {
+	color: black;
+	text-decoration: none;
+}
+.blogpanel_head-title a:hover {
+	text-decoration: underline;
+}
+.blogpanel_body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	/*flex*/
+	-webkit-flex: 2;
+	flex: 2;
+}
+/*
+	.blogpanel_body > .gist
+		a hack that I hate
+*/
+.blogpanel_body > .gist {
+	width: 75vw;
+}
+.blogpanel_body-more {
+	color: red;
+}
+/*
+	blogpanel_foot:
+		will contain the tags for the post
+		is set to ABSOLUTE in order to
+		cling to bottom of 'blogpanel' node,
+		with the appropriate padding set
+		in 'blogpanel_body' above
+*/
+.blogpanel_foot {
+	bottom: 0px;
+	display: -webkit-flex;
+	display: flex;
+	width: 100%;
+	min-height: 48px;
+	margin-bottom: 12px;
+}
+.blogpanel_foot-tag-name {
+	display: -webkit-flex;
+	display: flex;
+	height: auto;
+
+	padding-left: 12px;
+	/*flex*/
+	-webkit-flex: 1;
+	flex: 1;
+	-webkit-align-items: center;
+    align-items: center;
+}
+.blogpanel_foot-tag-name > * {
+	margin: 0;
+}
+/*
+	blogpanel_foot-tag-list:
+		is a div that contains a ul list
+		of all tags, NOT the ul itself!
+*/
+.blogpanel_foot-tag-list {
+	display: -webkit-flex;
+	display: flex;
+	height: auto;
+
+	text-align: center;
+	/*flex*/
+	-webkit-flex: 11;
+	flex: 11;
+	-webkit-align-items: center;
+    align-items: center;
+}
+.blogpanel_foot-tag-list ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0px;
+}
+.blogpanel_foot-tag-list ul > li {
+	display: inline-block;
+}
+.blogpanel_foot-tag-list ul > li > a {
+	color: white;
+	background-color: #999;
+	border-radius: 8px;
+	display: inline-block;
+	font-size: 16px;
+	margin: 3px;
+	padding: 10px 8px 8px 10px;
+	text-decoration: none;
+}
+.blogpanel_foot-tag-list ul > li > a:hover {
+	background-color: #777;
+}
+/*
+	blogpanel_foot-post-list:
+		a list of recent posts
+		on the sidebar, under tags
+*/
+.blogpanel_foot-post-list {
+	display: -webkit-flex;
+	display: flex;
+	height: auto;
+	/*flex*/
+	-webkit-flex: 11;
+	flex: 11;
+}
+.blogpanel_foot-post-list ol {
+	margin: 0;
+	padding-left: 0px;
+}
+.blogpanel_foot-post-list ol > li {
+	display: block;
+}
+.blogpanel_foot-post-list ol > li > a {
+	color: #000;
+	border-radius: 8px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 12px;
+}
+.blogpanel_foot-post-list ol > li > a:hover {
+	color: red;
+}

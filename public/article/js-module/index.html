@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+    	
+  	JavaScript Design Patterns: Module &ndash; Jonathan Piedra
+
+    </title>
+	
+<link type="text/css" rel="stylesheet" href="/css/style.css">
+<link type="text/css" rel="stylesheet" href="/css/blogpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/projectpanel.css">
+<link type="text/css" rel="stylesheet" href="/css/resp.css">
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Roboto|Montserrat">
+</head>
+<body>
+	<ul class="navbar">
+	<div class="navbar-left">
+		<li class="navbar_brand">
+			<a href="http://jpiedra.github.io">Jonathan Piedra</a>
+		</li>
+	</div>
+	<div class="navbar-right">
+		<li>
+			<a href="http://jpiedra.github.io/article">Articles</a>
+		</li>
+		<li>
+			<a href="http://jpiedra.github.io/project">Projects</a>
+		</li>
+		<li>
+			<a href="mailto:jpiedra1990@gmail.com">Contact</a>
+		</li>
+	</div>
+</ul>
+	<div class="col-main">
+		
+	<div class="blogpanel blogpanel_single">
+		<div class="blogpanel_head">
+			<div class="blogpanel_head-date">
+				<h1>September 10 2017</h1>
+			</div>
+			<div class="blogpanel_head-title">
+				<h1>JavaScript Design Patterns: Module</h1>
+			</div>
+		</div>
+		<div class="blogpanel_body">
+			<p><p>In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the <i>module pattern.</i> By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.</p>
+
+<p></p>
+
+<h2>The Object Literal, Revisited</h2>
+
+<p>In the previous article for this series, we introduced the object literal. This is a simple container that we use in JavaScript to create an object, with member variables and methods, which is then assigned to a variable and available like so:</p>
+
+<pre>
+var person = {
+    name: "Jonathan Piedra",
+    greeting: function() {
+        console.log("Hi, I'm " + this.name);
+    };
+};
+
+console.log(person.name);   // "Jonathan Piedra"
+person.greeting();          // "Hi, I'm Jonathan Piedra"
+</pre>
+
+<p>The object literal helps us organize our code. Member variables and functions are stored and accessed in the variable named <i>person</i>. We can think of <i>person</i> as a rudimentary type of module, as it keeps all pertinent member data available through a name we assign it (through the variable). This is preferable to having the same variables and functions scattered throughout our source code.</p>
+
+<h2>I Want My Space: Privacy in JavaScript</h2>
+
+<p>For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&rsquo;re also provided with access modifiers through keywords like <i>public</i> and <i>private</i> that specify whether or not we want such member data to be accessed from whatever the &ldquo;global&rdquo; context is (for example, in &ldquo;main&rdquo; if we&rsquo;re writing C++).</p>
+
+<p>We don&rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use. Before we explain that feature, we should understand an important property of functions in JavaScript.</p>
+
+<h2>Functions And Scope</h2>
+
+<p>While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&rsquo;s body from being accessible anywhere else, as long as variables are declared using the <i>var</i> keyword. Functions within another function&rsquo;s scope are also private:</p>
+
+<pre>
+function writeMessage() {
+    var secret = "I'm not available.";
+    console.log(secret);
+};
+
+writeMessage();         // "I'm not available"
+console.log(secret);    // undefined
+</pre>
+
+<p>We don&rsquo;t have a way of accessing the variable <i>secret</i> that was created in the function&rsquo;s body, because it&rsquo;s only accessible from within the scope that was created when we declared this function. However, anything <i>else that was created or included in the function declaration</i> will have access to the variables within.</p>
+
+<p>We can get a little closer to privacy in an object. Writing a function that returns an object seems possible. The object, because it was declared inside of a function, will continue to have access to whatever other variables were set inside the function.</p>
+
+<pre>
+function buildModule() {
+    var privateName = "James Bond";
+
+    function privateMethod() {
+        console.log(privateName);
+    };
+
+    return {
+        publicMethod: privateMethod
+    };
+};
+
+var obj = buildModule();    // buildModule returns an object stored in obj.
+obj.publicMethod();         // its only member is a reference to private, function-scoped 'privateMethod'.
+
+console.log(privateName);   // still can't access this (it only exists in the function's scope)
+
+</pre>
+
+<p>This gives us part of the solution. While we now know of a way to achieve data privacy, we need a way of combining this with object creation in order to make it really useful. Enter the IIFE.</p>
+
+<h2>Immediately Invoked Function Expression (IIFE)</h2>
+
+<p>Let&rsquo;s return for a second to the concept of a module. We need a way of declaring an object that provides access to member variables and data as desired, once we define the module. We would prefer to create, then store this object in a variable, like we did with <i>person</i>, for later use in our source code.</p>
+
+<p>The most common way to immediately create and store such an object, store it into a variable, is through <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">the IIFE.</a> An IIFE is a type of function that is written using a specific form to both declare, then immediately call it, after declaration. This is in contrast with the typical way of creating a function, which we saw above with <i>writeMessage</i>.</p>
+
+<pre>
+// declared, then immediately called
+var obj = (function(){
+    var privateName = "James Bond";
+
+    function privateMethod() {
+        console.log(privateName);
+    };
+
+    return {
+        publicMethod: privateMethod
+    };
+})();
+
+obj.publicMethod();
+</pre>
+
+<p>Instead of declaring our function, and then calling it - returning an object and storing it in <i>obj</i> - we write an IIFE. Everything wrapped inside the first pair of parentheses is called immediately. This results in everything declared inside the anonymous function happening right away, with the resulting object returned and stored in <i>obj</i>. Afterwards, we use the the object as our module, calling its methods as in the previous example.</p>
+
+<p>Other than the fact that we use an IIFE to immediately call the logic contained in the function, nothing else has changed with respect to the module object. It still has a single method, a reference to <i>privateMethod</i> which is otherwise not accessible from the global context, and that single method lets us print out the contents of <i>privateName</i>, another variable that is only available inside the function&rsquo;s (IIFE&rsquo;s) scope.</p>
+
+<h2>Tying It Together: A Trivial UI</h2>
+
+<p>So we now know an IIFE can be used in JavaScript to setup data privacy inside of a module. What generally happens, is that we set up an IIFE that returns an object, storing that object in a variable in the global context. The object returned is our module, and it can have tightly controlled access to &ldquo;private&rdquo; vars declared inside of the IIFE&rsquo;s function body, as well as functions. These vars and functions end up being the private members of the module: we make them public by adding a reference to them in the returned object. We did just that in the previous example, by creating a key called <i>publicMethod</i> which is a reference to the IIFE-scoped function <i>privateMethod</i>.</p>
+
+<p>Let&rsquo;s wrap this article up by providing an example somewhat closer to reality. We&rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method <i>setup</i> will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &ldquo;private,&rdquo; otherwise inaccessible beyond the IIFE&rsquo;s scope:</p>
+
+<script async src="//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/"></script>
+
+<p>In a future post, I&rsquo;ll demonstrate a more complete version of a UI module that I developed. It&rsquo;s very similar to what&rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.</p>
+
+<p>Combining object literals with the privacy introduced by functions, and IIFE&rsquo;s, is a valuable way to create modules with public and private member variables and methods. These same techniques will be useful in a later post, where the singleton pattern is explained as a way of ensuring only one instance of an object exists for use at a given time.</p>
+
+<p><i>The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&rsquo;s in-depth book, <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/"><b>Learning JavaScript Design Patterns</b></a>. Check out the book for great explanations on this and other design patterns.</i></p></p>
+			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
+		</div>
+		
+		<div class="blogpanel_foot">
+			<div class="blogpanel_foot">
+				<div class="blogpanel_foot-tag-name">
+					<p>Tags:</p>
+				</div>
+				<div class="blogpanel_foot-tag-list">
+					<ul>
+						
+							<li>
+								<a href="/tags/javascript">javascript</a>
+							</li>
+						
+							<li>
+								<a href="/tags/design">design</a>
+							</li>
+						
+							<li>
+								<a href="/tags/webdev">webdev</a>
+							</li>
+						
+							<li>
+								<a href="/tags/es5">es5</a>
+							</li>
+						
+							<li>
+								<a href="/tags/part-2">part 2</a>
+							</li>
+						
+							<li>
+								<a href="/tags/module">module</a>
+							</li>
+						
+					</ul>
+				</div>
+			</div>	
+		</div>
+		
+	</div>
+	<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "jpiedra" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+		<div class="col-main_pages" >
+			
+			
+		</div>
+	</div>
+	<div class="col-side">
+		
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Tags</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-tag-list">
+			<ul>
+				
+				
+				
+				
+					<li>
+						<a href="/tags/api">api</a>
+					</li>
+				
+					<li>
+						<a href="/tags/aws">aws</a>
+					</li>
+				
+					<li>
+						<a href="/tags/bash">bash</a>
+					</li>
+				
+					<li>
+						<a href="/tags/constructor">constructor</a>
+					</li>
+				
+					<li>
+						<a href="/tags/css">css</a>
+					</li>
+				
+					<li>
+						<a href="/tags/design">design</a>
+					</li>
+				
+					<li>
+						<a href="/tags/development">development</a>
+					</li>
+				
+					<li>
+						<a href="/tags/ec2">ec2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/es5">es5</a>
+					</li>
+				
+					<li>
+						<a href="/tags/git">git</a>
+					</li>
+				
+					<li>
+						<a href="/tags/javascript">javascript</a>
+					</li>
+				
+					<li>
+						<a href="/tags/linux">linux</a>
+					</li>
+				
+					<li>
+						<a href="/tags/module">module</a>
+					</li>
+				
+					<li>
+						<a href="/tags/mysql">mysql</a>
+					</li>
+				
+					<li>
+						<a href="/tags/nodejs">nodejs</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-1">part-1</a>
+					</li>
+				
+					<li>
+						<a href="/tags/part-2">part-2</a>
+					</li>
+				
+					<li>
+						<a href="/tags/php">php</a>
+					</li>
+				
+					<li>
+						<a href="/tags/powershell">powershell</a>
+					</li>
+				
+					<li>
+						<a href="/tags/python">python</a>
+					</li>
+				
+					<li>
+						<a href="/tags/s3">s3</a>
+					</li>
+				
+					<li>
+						<a href="/tags/scripting">scripting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/squarespace">squarespace</a>
+					</li>
+				
+					<li>
+						<a href="/tags/tips">tips</a>
+					</li>
+				
+					<li>
+						<a href="/tags/troubleshooting">troubleshooting</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualbox">virtualbox</a>
+					</li>
+				
+					<li>
+						<a href="/tags/virtualization">virtualization</a>
+					</li>
+				
+					<li>
+						<a href="/tags/webdev">webdev</a>
+					</li>
+				
+			</ul>
+		</div>
+	</div>
+</div>
+			<div class="blogpanel">
+	<div class="blogpanel_head">
+		<div class="blogpanel_head-title">
+			<h1>Recent Posts</h1>
+		</div>
+	</div>
+	<div class="blogpanel_body">
+		<div class="blogpanel_foot-post-list">
+			<ol>
+				
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
+							Node.js Connector to a MySQL Database - Posted Jul 26 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/never-update-security-group/">
+							Never Update an AWS Security Group Again - Posted Jul 8 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/static-site-deploy-scripts/">
+							Website Deployment Scripts - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/project/searchable-leaderboard/">
+							Searchable Leaderboard - Posted Feb 18 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/css-tip-overflow-x/">
+							CSS Tip: &#39;overflow-x&#39; for Narrow Contexts - Posted Feb 14 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-2/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2 - Posted Feb 11 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/s3-site-deploy-1/">
+							Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1 - Posted Jan 20 2018
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/vagrant-mysql/">
+							Connecting to MySQL on a VirtualBox Linux VM - Posted Sep 11 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-module/">
+							JavaScript Design Patterns: Module - Posted Sep 10 2017
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/article/js-constructor/">
+							JavaScript Design Patterns: Constructor - Posted Feb 2 2017
+						</a>
+					</li>
+				
+			</ol>
+		</div>
+	</div>
+</div>
+		
+	</div>
+</body>
+</html>
