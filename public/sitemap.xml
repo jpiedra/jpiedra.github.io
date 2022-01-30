@@ -136,5 +136,8 @@
   </url><url>
     <loc>http://jpiedra.github.io/article/php-sql-api-1/</loc>
     <lastmod>2017-01-15T13:20:54-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/pedal/</loc>
+    <priority>0</priority>
   </url>
 </urlset>

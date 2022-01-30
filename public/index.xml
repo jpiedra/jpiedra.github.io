@@ -127,5 +127,14 @@ The front-end is a Vue.js Single Page Application (SPA)that uses a custom Bootst
       <description>&lt;p&gt;In this first part of a series on implementing a PHP/MySQL-based API endpoint for our data, we go over some basic principles, as well as stated goals, that will guide the work we&amp;rsquo;ll be undertaking later.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>http://jpiedra.github.io/pedal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://jpiedra.github.io/pedal/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
