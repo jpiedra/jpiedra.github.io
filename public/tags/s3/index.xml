@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>s3 on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/s3/</link>
+    <description>Recent content in s3 on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Feb 2018 13:23:20 -0500</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/s3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scripted S3 Site Deployment with AWS CLI and Powershell, Part 2</title>
+      <link>http://jpiedra.github.io/article/s3-site-deploy-2/</link>
+      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/s3-site-deploy-2/</guid>
+      <description>&lt;p&gt;In this final post for a two-part series, we&amp;rsquo;ll go over an additional script that can be used to upload all local static site contents to a previously configured Amazon Web Services S3 bucket.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Scripted S3 Site Deployment with AWS CLI and Powershell, Part 1</title>
+      <link>http://jpiedra.github.io/article/s3-site-deploy-1/</link>
+      <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/s3-site-deploy-1/</guid>
+      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo&lt;/a&gt; or &lt;a href=&#34;https://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

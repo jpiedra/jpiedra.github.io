@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tips on Jonathan Piedra</title>
+    <link>http://jpiedra.github.io/tags/tips/</link>
+    <description>Recent content in tips on Jonathan Piedra</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jan 2022 21:01:46 -0500</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guitar Pedals - collection as of 1/30/2022</title>
+      <link>http://jpiedra.github.io/pedal/guitar-pedal/</link>
+      <pubDate>Sun, 30 Jan 2022 21:01:46 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/pedal/guitar-pedal/</guid>
+      <description>&lt;p&gt;Guitar Pedals - collection as of 1/30/2022&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSS Tip: &#39;overflow-x&#39; for Narrow Contexts</title>
+      <link>http://jpiedra.github.io/article/css-tip-overflow-x/</link>
+      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/css-tip-overflow-x/</guid>
+      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

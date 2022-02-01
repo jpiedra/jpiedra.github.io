@@ -1,0 +1,20 @@
+baseurl = "http://jpiedra.github.io"
+theme = "sparse"
+title = "Jonathan Piedra"
+languageCode = "en-us"
+paginate = 6
+
+disqusShortname = "jpiedra"
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  sp_recentamt = 10
+	
+staticDir = "static"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
