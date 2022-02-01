@@ -22,7 +22,7 @@
       <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/s3-site-deploy-1/</guid>
-      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;!-- raw HTML omitted --&gt;Hugo&lt;!-- raw HTML omitted --&gt; or &lt;!-- raw HTML omitted --&gt;Jekyll&lt;!-- raw HTML omitted --&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Amazon Web Services, through their Simple Storage Service (S3), provide an inexpensive and flexible solution for hosting static websites. These would normally be sites that are developed on a local environment (using &lt;a href=&#34;https://gohugo.io/overview/quickstart/&#34;&gt;Hugo&lt;/a&gt; or &lt;a href=&#34;https://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;), then pushed to either a web server or - in this case - a cloud-based storage platform configured to make the generated pages public. This post discusses a scripted approach to building a bucket you want to use to host an S3 website from scratch.&lt;/p&gt;</description>
     </item>
     
   </channel>

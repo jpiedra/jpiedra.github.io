@@ -46,38 +46,85 @@
 			</div>
 		</div>
 		<div class="blogpanel_body">
-			<p><p>In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the <!-- raw HTML omitted -->module pattern.<!-- raw HTML omitted --> By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.</p>
-<!-- raw HTML omitted -->
+			<p><p>In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the <i>module pattern.</i> By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.</p>
+<h2>The Object Literal, Revisited</h2>
 <p>In the previous article for this series, we introduced the object literal. This is a simple container that we use in JavaScript to create an object, with member variables and methods, which is then assigned to a variable and available like so:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>The object literal helps us organize our code. Member variables and functions are stored and accessed in the variable named <!-- raw HTML omitted -->person<!-- raw HTML omitted -->. We can think of <!-- raw HTML omitted -->person<!-- raw HTML omitted --> as a rudimentary type of module, as it keeps all pertinent member data available through a name we assign it (through the variable). This is preferable to having the same variables and functions scattered throughout our source code.</p>
-<!-- raw HTML omitted -->
-<p>For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&rsquo;re also provided with access modifiers through keywords like <!-- raw HTML omitted -->public<!-- raw HTML omitted --> and <!-- raw HTML omitted -->private<!-- raw HTML omitted --> that specify whether or not we want such member data to be accessed from whatever the &ldquo;global&rdquo; context is (for example, in &ldquo;main&rdquo; if we&rsquo;re writing C++).</p>
+<pre>
+var person = {
+	name: "Jonathan Piedra",
+	greeting: function() {
+		console.log("Hi, I'm " + this.name);
+	};
+};
+
+console.log(person.name); 	// "Jonathan Piedra"
+person.greeting();			// "Hi, I'm Jonathan Piedra"
+</pre>
+<p>The object literal helps us organize our code. Member variables and functions are stored and accessed in the variable named <i>person</i>. We can think of <i>person</i> as a rudimentary type of module, as it keeps all pertinent member data available through a name we assign it (through the variable). This is preferable to having the same variables and functions scattered throughout our source code.</p>
+<h2>I Want My Space: Privacy in JavaScript</h2>
+<p>For people with a background in other programming languages, such as C++ or Java, something may have jumped out by now in this example. When we talk about member data in most languages, we&rsquo;re also provided with access modifiers through keywords like <i>public</i> and <i>private</i> that specify whether or not we want such member data to be accessed from whatever the &ldquo;global&rdquo; context is (for example, in &ldquo;main&rdquo; if we&rsquo;re writing C++).</p>
 <p>We don&rsquo;t have such keywords available to us in ES5, the version available on most browsers at the moment. However, data privacy is possible in JavaScript and involves the use of a feature of the language that can take some getting used to at first, but becomes very easy after repeated use. Before we explain that feature, we should understand an important property of functions in JavaScript.</p>
-<!-- raw HTML omitted -->
-<p>While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&rsquo;s body from being accessible anywhere else, as long as variables are declared using the <!-- raw HTML omitted -->var<!-- raw HTML omitted --> keyword. Functions within another function&rsquo;s scope are also private:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>We don&rsquo;t have a way of accessing the variable <!-- raw HTML omitted -->secret<!-- raw HTML omitted --> that was created in the function&rsquo;s body, because it&rsquo;s only accessible from within the scope that was created when we declared this function. However, anything <!-- raw HTML omitted -->else that was created or included in the function declaration<!-- raw HTML omitted --> will have access to the variables within.</p>
+<h2>Functions And Scope</h2>
+<p>While the sort of block that gets created when we create object literals (everything between curly brackets) cannot render certain data private, functions in JavaScript do create a scope that - by default - prevents anything declared within the function&rsquo;s body from being accessible anywhere else, as long as variables are declared using the <i>var</i> keyword. Functions within another function&rsquo;s scope are also private:</p>
+<pre>
+function writeMessage() {
+	var secret = "I'm not available.";
+	console.log(secret);
+};
+
+writeMessage(); 		// "I'm not available"
+console.log(secret);	// undefined
+</pre>
+<p>We don&rsquo;t have a way of accessing the variable <i>secret</i> that was created in the function&rsquo;s body, because it&rsquo;s only accessible from within the scope that was created when we declared this function. However, anything <i>else that was created or included in the function declaration</i> will have access to the variables within.</p>
 <p>We can get a little closer to privacy in an object. Writing a function that returns an object seems possible. The object, because it was declared inside of a function, will continue to have access to whatever other variables were set inside the function.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre>
+function buildModule() {
+	var privateName = "James Bond";
+
+	function privateMethod() {
+		console.log(privateName);
+	};
+
+	return {
+		publicMethod: privateMethod
+	};
+};
+
+var obj = buildModule();	// buildModule returns an object stored in obj.
+obj.publicMethod();			// its only member is a reference to private, function-scoped 'privateMethod'.
+
+console.log(privateName);	// still can't access this (it only exists in the function's scope)
+
+</pre>
 <p>This gives us part of the solution. While we now know of a way to achieve data privacy, we need a way of combining this with object creation in order to make it really useful. Enter the IIFE.</p>
-<!-- raw HTML omitted -->
-<p>Let&rsquo;s return for a second to the concept of a module. We need a way of declaring an object that provides access to member variables and data as desired, once we define the module. We would prefer to create, then store this object in a variable, like we did with <!-- raw HTML omitted -->person<!-- raw HTML omitted -->, for later use in our source code.</p>
-<p>The most common way to immediately create and store such an object, store it into a variable, is through <!-- raw HTML omitted -->the IIFE.<!-- raw HTML omitted --> An IIFE is a type of function that is written using a specific form to both declare, then immediately call it, after declaration. This is in contrast with the typical way of creating a function, which we saw above with <!-- raw HTML omitted -->writeMessage<!-- raw HTML omitted -->.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Instead of declaring our function, and then calling it - returning an object and storing it in <!-- raw HTML omitted -->obj<!-- raw HTML omitted --> - we write an IIFE. Everything wrapped inside the first pair of parentheses is called immediately. This results in everything declared inside the anonymous function happening right away, with the resulting object returned and stored in <!-- raw HTML omitted -->obj<!-- raw HTML omitted -->. Afterwards, we use the the object as our module, calling its methods as in the previous example.</p>
-<p>Other than the fact that we use an IIFE to immediately call the logic contained in the function, nothing else has changed with respect to the module object. It still has a single method, a reference to <!-- raw HTML omitted -->privateMethod<!-- raw HTML omitted --> which is otherwise not accessible from the global context, and that single method lets us print out the contents of <!-- raw HTML omitted -->privateName<!-- raw HTML omitted -->, another variable that is only available inside the function&rsquo;s (IIFE&rsquo;s) scope.</p>
-<!-- raw HTML omitted -->
-<p>So we now know an IIFE can be used in JavaScript to setup data privacy inside of a module. What generally happens, is that we set up an IIFE that returns an object, storing that object in a variable in the global context. The object returned is our module, and it can have tightly controlled access to &ldquo;private&rdquo; vars declared inside of the IIFE&rsquo;s function body, as well as functions. These vars and functions end up being the private members of the module: we make them public by adding a reference to them in the returned object. We did just that in the previous example, by creating a key called <!-- raw HTML omitted -->publicMethod<!-- raw HTML omitted --> which is a reference to the IIFE-scoped function <!-- raw HTML omitted -->privateMethod<!-- raw HTML omitted -->.</p>
-<p>Let&rsquo;s wrap this article up by providing an example somewhat closer to reality. We&rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method <!-- raw HTML omitted -->setup<!-- raw HTML omitted --> will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &ldquo;private,&rdquo; otherwise inaccessible beyond the IIFE&rsquo;s scope:</p>
-<!-- raw HTML omitted -->
+<h2>Immediately Invoked Function Expression (IIFE)</h2>
+<p>Let&rsquo;s return for a second to the concept of a module. We need a way of declaring an object that provides access to member variables and data as desired, once we define the module. We would prefer to create, then store this object in a variable, like we did with <i>person</i>, for later use in our source code.</p>
+<p>The most common way to immediately create and store such an object, store it into a variable, is through <a href="http://benalman.com/news/2010/11/immediately-invoked-function-expression/">the IIFE.</a> An IIFE is a type of function that is written using a specific form to both declare, then immediately call it, after declaration. This is in contrast with the typical way of creating a function, which we saw above with <i>writeMessage</i>.</p>
+<pre>
+// declared, then immediately called
+var obj = (function(){
+	var privateName = "James Bond";
+
+	function privateMethod() {
+		console.log(privateName);
+	};
+
+	return {
+		publicMethod: privateMethod
+	};
+})();
+
+obj.publicMethod();
+</pre>
+<p>Instead of declaring our function, and then calling it - returning an object and storing it in <i>obj</i> - we write an IIFE. Everything wrapped inside the first pair of parentheses is called immediately. This results in everything declared inside the anonymous function happening right away, with the resulting object returned and stored in <i>obj</i>. Afterwards, we use the the object as our module, calling its methods as in the previous example.</p>
+<p>Other than the fact that we use an IIFE to immediately call the logic contained in the function, nothing else has changed with respect to the module object. It still has a single method, a reference to <i>privateMethod</i> which is otherwise not accessible from the global context, and that single method lets us print out the contents of <i>privateName</i>, another variable that is only available inside the function&rsquo;s (IIFE&rsquo;s) scope.</p>
+<h2>Tying It Together: A Trivial UI</h2>
+<p>So we now know an IIFE can be used in JavaScript to setup data privacy inside of a module. What generally happens, is that we set up an IIFE that returns an object, storing that object in a variable in the global context. The object returned is our module, and it can have tightly controlled access to &ldquo;private&rdquo; vars declared inside of the IIFE&rsquo;s function body, as well as functions. These vars and functions end up being the private members of the module: we make them public by adding a reference to them in the returned object. We did just that in the previous example, by creating a key called <i>publicMethod</i> which is a reference to the IIFE-scoped function <i>privateMethod</i>.</p>
+<p>Let&rsquo;s wrap this article up by providing an example somewhat closer to reality. We&rsquo;ll show a module that sets up a very simple UI based on whether the user of our module provides valid parameters. If so, then the method <i>setup</i> will successfully add an event listener to the element we provided the module. When clicked, the element we passed in will be set to execute a function that is &ldquo;private,&rdquo; otherwise inaccessible beyond the IIFE&rsquo;s scope:</p>
+<script async src="//jsfiddle.net/aqd3c8o7/3/embed/js,html,result/"></script>
 <p>In a future post, I&rsquo;ll demonstrate a more complete version of a UI module that I developed. It&rsquo;s very similar to what&rsquo;s demonstrated here, with the IIFE containing workhorse functions that are either exposed through the returned object, or called conditionally based on whether the user initialized the module with valid values.</p>
 <p>Combining object literals with the privacy introduced by functions, and IIFE&rsquo;s, is a valuable way to create modules with public and private member variables and methods. These same techniques will be useful in a later post, where the singleton pattern is explained as a way of ensuring only one instance of an object exists for use at a given time.</p>
-<p><!-- raw HTML omitted -->The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&rsquo;s in-depth book, <!-- raw HTML omitted --><!-- raw HTML omitted -->Learning JavaScript Design Patterns<!-- raw HTML omitted --><!-- raw HTML omitted -->. Check out the book for great explanations on this and other design patterns.<!-- raw HTML omitted --></p></p>
+<p><i>The subject matter here is loosely adapted from, and greatly informed by Addy Osmani&rsquo;s in-depth book, <a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/"><b>Learning JavaScript Design Patterns</b></a>. Check out the book for great explanations on this and other design patterns.</i></p></p>
 			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
 		
@@ -288,6 +335,54 @@
 				
 				
 					<li>
+						<a href="http://jpiedra.github.io/tags/css/">
+							css - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/development/">
+							development - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/guitar-pedal/">
+							Guitar Pedals - collection as of 1/30/2022 - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/">
+							Jonathan Piedra - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/">
+							Pedals - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/">
+							Tags - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/tips/">
+							tips - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/webdev/">
+							webdev - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/">
 							Articles - Posted Jul 26 2018
 						</a>
@@ -296,54 +391,6 @@
 					<li>
 						<a href="http://jpiedra.github.io/tags/javascript/">
 							javascript - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/">
-							Jonathan Piedra - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/mysql/">
-							mysql - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
-							Node.js Connector to a MySQL Database - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/nodejs/">
-							nodejs - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/">
-							Tags - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/aws/">
-							aws - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/ec2/">
-							ec2 - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/never-update-security-group/">
-							Never Update an AWS Security Group Again - Posted Jul 8 2018
 						</a>
 					</li>
 				

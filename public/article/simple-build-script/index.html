@@ -46,27 +46,49 @@
 			</div>
 		</div>
 		<div class="blogpanel_body">
-			<p><p>Today we go over the process of writing a very simple Bash script. We&rsquo;ll be able to detect whether a build for a <!-- raw HTML omitted -->Hugo static site<!-- raw HTML omitted --> is present, push the files to a Git repository for our website, and automate all the steps involved.</p>
-<!-- raw HTML omitted -->
+			<p><p>Today we go over the process of writing a very simple Bash script. We&rsquo;ll be able to detect whether a build for a <a href="https://gohugo.io/overview/quickstart/">Hugo static site</a> is present, push the files to a Git repository for our website, and automate all the steps involved.</p>
+<h2>Version 1</h2>
 <p>I&rsquo;ll begin by showing the code, then explain my process:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>We begin by setting two variables, <!-- raw HTML omitted -->build_dir<!-- raw HTML omitted --> and <!-- raw HTML omitted -->deploy_dir.<!-- raw HTML omitted --> These store string values indicating the locations of where our built Hugo site&rsquo;s files reside, and the directory where those files should be copied to, respectively. In this case, <!-- raw HTML omitted -->deploy_dir<!-- raw HTML omitted --> is a GitHub Pages repository, the files used therein are the same ones responsible for powering this website!</p>
-<!-- raw HTML omitted -->
-<p>The bulk of this script begins where the <!-- raw HTML omitted -->if.. ..fi<!-- raw HTML omitted --> structure is shown. This conditional structure begins with a <!-- raw HTML omitted -->test.<!-- raw HTML omitted --> Now, because we&rsquo;re writing a Bash script, rather than using the command line, we have a built-in operator available to us, the square brackets [ ]. These are used to perform any test in a Bash script, thus instead of writing <!-- raw HTML omitted -->test -d /some/directory<!-- raw HTML omitted --> we can instead write <!-- raw HTML omitted -->[ -d /some/directory ]<!-- raw HTML omitted -->.</p>
-<p>The -d switch allows us to test whether the provided argument is a directory. The test returns 0 or 1, true and false respectively, depending on whether the provided argument is detected as a valid directory. In this script, we test the value stored in <!-- raw HTML omitted -->$build_dir<!-- raw HTML omitted --> (thus, the dollar sign) to check whether a build folder exists in our Hugo site directory - which, by default, would be called <!-- raw HTML omitted -->public<!-- raw HTML omitted --> and reside in the Hugo site base directory.</p>
-<p><!-- raw HTML omitted -->Tip: you can run the command <!-- raw HTML omitted -->compgen -b<!-- raw HTML omitted --> with the provided -b switch to get a list of all Bash built-ins available to you. Running the command in your terminal, displays the [ ] built-in near the top of the list.<!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p>In the event our test for a directory fails (directory doesn&rsquo;t exist), we simply echo out a diagnostic message (which would best be output to standard error, more on that later). After <!-- raw HTML omitted -->else<!-- raw HTML omitted --> our script prints the messages to stdout, so whatever is echo&rsquo;ed is visible in the terminal.</p>
-<p>If the build directory does exist, we can begin performing the required steps to push our files to the GitHub pages directory, indicated by <!-- raw HTML omitted -->$deploy_dir.<!-- raw HTML omitted --> We&rsquo;ll be making repeated use of a central Bash feature here.</p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted -->Command substitution<!-- raw HTML omitted --> &ldquo;literally plugs&hellip; command output into another context,&rdquo; as the aforementioned page phrases it. Indeed, by using certain operators built into the Bash language, we can get the output of a command and do with it whatever we want - this usually means assinging said output to a variable, parsing it using some other commands, or even saving it to another file.</p>
-<p>We&rsquo;ll use command substitution twice here, as indicated by <!-- raw HTML omitted -->$(&hellip;)<!-- raw HTML omitted --> where the elipses would be replaced by Bash built-ins or Linux commands. Another form that&rsquo;s available to us uses backticks, but we&rsquo;ll stick with the former operator instead.</p>
-<!-- raw HTML omitted -->
+<pre>
+#!/bin/bash
+
+build_dir=/var/www/html/blog-dev/public
+deploy_dir=/var/www/html/blog-live/jpiedra.github.io
+
+if [ -d $build_dir ]
+then
+  echo "BUILD FOUND, DETAILS:"
+  echo $(stat $build_dir)
+  cd $deploy_dir && rm -rf *
+  cp -rp $build_dir/* $deploy_dir
+  cd $deploy_dir && git status; git add -A; git commit -m "[Scripted Deploy $(date)]"; git push
+else
+  echo "NO BUILD FOUND"
+  echo "  Run 'hugo' to "
+  echo "  create latest build"
+fi
+</pre>
+<p>We begin by setting two variables, <b>build_dir</b> and <b>deploy_dir.</b> These store string values indicating the locations of where our built Hugo site&rsquo;s files reside, and the directory where those files should be copied to, respectively. In this case, <b>deploy_dir</b> is a GitHub Pages repository, the files used therein are the same ones responsible for powering this website!</p>
+<h2>Testing for Build Directory</h2>
+<p>The bulk of this script begins where the <i>if.. ..fi</i> structure is shown. This conditional structure begins with a <a href="http://linuxcommand.org/lc3_man_pages/testh.html">test.</a> Now, because we&rsquo;re writing a Bash script, rather than using the command line, we have a built-in operator available to us, the square brackets [ ]. These are used to perform any test in a Bash script, thus instead of writing <i>test -d /some/directory</i> we can instead write <i>[ -d /some/directory ]</i>.</p>
+<p>The -d switch allows us to test whether the provided argument is a directory. The test returns 0 or 1, true and false respectively, depending on whether the provided argument is detected as a valid directory. In this script, we test the value stored in <b>$build_dir</b> (thus, the dollar sign) to check whether a build folder exists in our Hugo site directory - which, by default, would be called <i>public</i> and reside in the Hugo site base directory.</p>
+<p><i>Tip: you can run the command <b>compgen -b</b> with the provided -b switch to get a list of all Bash built-ins available to you. Running the command in your terminal, displays the [ ] built-in near the top of the list.</i></p>
+<h2>Conditional Execution</h2>
+<p>In the event our test for a directory fails (directory doesn&rsquo;t exist), we simply echo out a diagnostic message (which would best be output to standard error, more on that later). After <i>else</i> our script prints the messages to stdout, so whatever is echo&rsquo;ed is visible in the terminal.</p>
+<p>If the build directory does exist, we can begin performing the required steps to push our files to the GitHub pages directory, indicated by <b>$deploy_dir.</b> We&rsquo;ll be making repeated use of a central Bash feature here.</p>
+<h2>Command Substitution</h2>
+<p><a href="http://tldp.org/LDP/abs/html/commandsub.html">Command substitution</a> &ldquo;literally plugs&hellip; command output into another context,&rdquo; as the aforementioned page phrases it. Indeed, by using certain operators built into the Bash language, we can get the output of a command and do with it whatever we want - this usually means assinging said output to a variable, parsing it using some other commands, or even saving it to another file.</p>
+<p>We&rsquo;ll use command substitution twice here, as indicated by <i>$(&hellip;)</i> where the elipses would be replaced by Bash built-ins or Linux commands. Another form that&rsquo;s available to us uses backticks, but we&rsquo;ll stick with the former operator instead.</p>
+<h2>Deployment Process</h2>
 <p>After echo&rsquo;ing that we&rsquo;ve found the build folder, we run a few commands when the build directory is detected.</p>
-<!-- raw HTML omitted -->
-<p>A few notes on step 4. The <!-- raw HTML omitted -->&amp;&amp;<!-- raw HTML omitted --> operator ensures that the second command, <!-- raw HTML omitted -->git status<!-- raw HTML omitted --> is only executed if <!-- raw HTML omitted -->cd<!-- raw HTML omitted --> is successful. This is seen elsewhere, in step 2, ensuring we remove the files only if we successfully changed to the desired folder. Also in step 4, we see the final example of command substitution used when we indicate a message for <!-- raw HTML omitted -->git commit<!-- raw HTML omitted --> to use. We capture the output of running the Bash built-in <!-- raw HTML omitted -->time<!-- raw HTML omitted --> and use that as part of the content for our commit message.</p>
-<p>When you run this script, the last part of this deployment process would involve running <!-- raw HTML omitted -->git push,<!-- raw HTML omitted --> so you would be expected to provide your credentials in the terminal to push the latest Hugo site files. In summation, having a script such as this can save precious time, by performing various checks for us along the way as well as eliminating the tedium of typing and executing several commands.</p></p>
+<ol>
+	<li>Command substitution is used to capture the output of running <i>stat $build_dir</i>, thus printing the result of that command to stdout using echo</li>
+	<li>We change into the deployment directory, and remove the files present there, making way for the files from our latest Hugo site build <i>(cd $deploy_dir && rm -rf *)</i></li>
+	<li>The contents of the Hugo site build directory are copied into the deployment directory <i>(cp -rp $build_dir/* $deploy_dir)</i></li>
+	<li>Finally, we change into the deployment directory and execute a few standard Git commands, that add/commit/push the new files to the current branch</li>
+</ol>
+<p>A few notes on step 4. The <i>&amp;&amp;</i> operator ensures that the second command, <i>git status</i> is only executed if <i>cd</i> is successful. This is seen elsewhere, in step 2, ensuring we remove the files only if we successfully changed to the desired folder. Also in step 4, we see the final example of command substitution used when we indicate a message for <i>git commit</i> to use. We capture the output of running the Bash built-in <i>time</i> and use that as part of the content for our commit message.</p>
+<p>When you run this script, the last part of this deployment process would involve running <i>git push,</i> so you would be expected to provide your credentials in the terminal to push the latest Hugo site files. In summation, having a script such as this can save precious time, by performing various checks for us along the way as well as eliminating the tedium of typing and executing several commands.</p></p>
 			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
 		
@@ -273,6 +295,54 @@
 				
 				
 					<li>
+						<a href="http://jpiedra.github.io/tags/css/">
+							css - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/development/">
+							development - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/guitar-pedal/">
+							Guitar Pedals - collection as of 1/30/2022 - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/">
+							Jonathan Piedra - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/">
+							Pedals - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/">
+							Tags - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/tips/">
+							tips - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/webdev/">
+							webdev - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/">
 							Articles - Posted Jul 26 2018
 						</a>
@@ -281,54 +351,6 @@
 					<li>
 						<a href="http://jpiedra.github.io/tags/javascript/">
 							javascript - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/">
-							Jonathan Piedra - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/mysql/">
-							mysql - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
-							Node.js Connector to a MySQL Database - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/nodejs/">
-							nodejs - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/">
-							Tags - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/aws/">
-							aws - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/ec2/">
-							ec2 - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/never-update-security-group/">
-							Never Update an AWS Security Group Again - Posted Jul 8 2018
 						</a>
 					</li>
 				

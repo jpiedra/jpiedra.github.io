@@ -46,23 +46,80 @@
 			</div>
 		</div>
 		<div class="blogpanel_body">
-			<p><p>This article details how to install the <!-- raw HTML omitted -->Squarespace local development server<!-- raw HTML omitted --> on Ubuntu 14.04 LTS.</p>
+			<p><p>This article details how to install the <a href="http://developers.squarespace.com/local-development/">Squarespace local development server</a> on Ubuntu 14.04 LTS.</p>
 <p>I recently took on a small project, some work on customizing Squarespace templates. In the course of doing this, I required the Squarespace local development server in order to quickly modify and test changes to the template. I use a VirtualBox VM I built some time ago using Vagrant, based on Ubuntu 14.04 LTS.</p>
 <p>If you&rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!</p>
-<!-- raw HTML omitted -->
+<h2>Potential Errors</h2>
 <p>After following the instructions on Squarespace&rsquo;s official website (link above) you might have come across the following error:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>This may occur if you attempt to install the program as a <!-- raw HTML omitted -->user with insufficient permissions.<!-- raw HTML omitted --> Installing as root may resolve the problem, as well as <!-- raw HTML omitted -->providing the user NPM is running under with the required permissions.<!-- raw HTML omitted --></p>
+<pre>
+$ npm install -g @squarespace/server
+@squarespace/server@1.0.7 copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
+node scripts/copyfile.js build/distributions/local-developer/bin/run.bat darwin:build/distributions/local-developer/bin/osx-local-developer win32:build/distributions/local-developer/bin/win-local-developer.bat linux:build/distributions/local-developer/bin/linux-local-developer build/distributions/local-developer/bin/local-developer
+
+copying build/distributions/local-developer/bin/linux-local-developer to build/distributions/local-developer/bin/run.bat
+npm ERR! Linux 4.2.0-27-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "@squarespace/server"
+npm ERR! node v6.9.4
+npm ERR! npm  v3.10.10
+npm ERR! path ../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
+npm ERR! code EACCES
+npm ERR! errno -13
+npm ERR! syscall symlink
+
+npm ERR! Error: EACCES: permission denied, symlink '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat' -> '/usr/bin/squarespace-server'
+npm ERR!     at Error (native)
+npm ERR!  { Error: EACCES: permission denied, symlink '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat' -> '/usr/bin/squarespace-server'
+npm ERR!     at Error (native)
+npm ERR!   errno: -13,
+npm ERR!   code: 'EACCES',
+npm ERR!   syscall: 'symlink',
+npm ERR!   path: '../lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat',
+npm ERR!   dest: '/usr/bin/squarespace-server' }
+npm ERR! 
+</pre>
+<p>This may occur if you attempt to install the program as a <i>user with insufficient permissions.</i> Installing as root may resolve the problem, as well as <a href="https://docs.npmjs.com/getting-started/fixing-npm-permissions">providing the user NPM is running under with the required permissions.</a></p>
 <p>However, even following that step might not end matters for you; the next error might come up:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<pre>
+$ sudo npm install -g @squarespace/server
+npm WARN lifecycle @squarespace/server@1.0.7~preinstall: cannot run in wd %s %s (wd=%s) @squarespace/server@1.0.7 npm run accept && node scripts/execif.js --exists=build npm run copyrunscript /usr/lib/node_modules/.staging/@squarespace/server-b43b0a9f
+npm ERR! Linux 4.2.0-27-generic
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "@squarespace/server"
+npm ERR! node v6.9.4
+npm ERR! npm  v3.10.10
+npm ERR! path /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat
+npm ERR! code ENOENT
+npm ERR! errno -2
+npm ERR! syscall chmod
+
+npm ERR! enoent ENOENT: no such file or directory, chmod '/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat'
+npm ERR! enoent ENOENT: no such file or directory, chmod '/usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat'
+npm ERR! enoent This is most likely not a problem with npm itself
+npm ERR! enoent and is related to npm not being able to find a file.
+npm ERR! enoent 
+</pre>
 <p>The error messages may seem a bit opaque, but it appears that a required folder either wasn&rsquo;t created or found during the installation process.</p>
-<!-- raw HTML omitted -->
+<h2>A workaround: install "locally," then globally</h2>
+I ended up having to rely on a workaround. When I say "locally" I really mean, first installing the squarespace-server dependency for a specific node project, then <i>moving that installation</i> over to the location it must reside at in order to be used globally.
 <p>Installing squarespace-server for a specific project is easy enough, just omit the global flag (-g) when you install it to your site template&rsquo;s project directory. The part that might be tricky for some is &ldquo;moving&rdquo; the files over, as it involves not only moving the files over to a new directory, but applying permissions and creating a symbolic link as well. The presence of the symbolic link is what will allow us to launch squarespace-server globally. The steps are as follows:</p>
-<!-- raw HTML omitted -->
+<ol>
+	<li>Clone the files for your Squarespace site, as instructed here: http://developers.squarespace.com/local-development</li>
+	<li>Change into the 'template' directory created after cloning</li>
+	<li>Install the squarespace-server package normally (not globally)
+	<pre>$ npm install @squarespace/server</pre>
+  	</li>
+	<li>You should now have a directory:<b>template/node_modules/@squarespace</b>
+	</li>
+	<li>Copy the files for this module into your system-wide 'node_modules' directory:
+	<pre>$ sudo cp -rp node_modules/@squarespace /usr/lib/node_modules/</pre>
+	</li>
+	<li>Change the permissions for this copied folder as needed. This location will vary depending on your operating system (for our purposes, we're using a Vagrant Box based on Ubuntu 14.04, thus the user shown below:
+  	<pre>$ sudo chown -R vagrant:root @squarespace
+$ sudo chmod -R 755 @squarespace</pre>
+	</li>
+	<li>Finally, create a symbolic link, allowing us to run 'squarespace-server' from anywhere:<pre>$ sudo ln -s /usr/lib/node_modules/@squarespace/server/build/distributions/local-developer/bin/run.bat /usr/bin/squarespace-server</pre></li>
+</ol>
 <p>You should now be able to use the local development server, from inside your site&rsquo;s &lsquo;template&rsquo; directory:</p>
-<!-- raw HTML omitted -->
+<pre>$ squarespace-server https://[sitename].squarespace.com --auth</pre>
 <p>Hopefully this solution works for you. Share in the comments if this helped you get squarespace-server running!</p></p>
 			<a class="blogpanel_body-more" href="http://jpiedra.github.io">Return home</a>
 		</div>
@@ -266,6 +323,54 @@
 				
 				
 					<li>
+						<a href="http://jpiedra.github.io/tags/css/">
+							css - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/development/">
+							development - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/guitar-pedal/">
+							Guitar Pedals - collection as of 1/30/2022 - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/">
+							Jonathan Piedra - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/pedal/">
+							Pedals - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/">
+							Tags - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/tips/">
+							tips - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
+						<a href="http://jpiedra.github.io/tags/webdev/">
+							webdev - Posted Jan 30 2022
+						</a>
+					</li>
+				
+					<li>
 						<a href="http://jpiedra.github.io/article/">
 							Articles - Posted Jul 26 2018
 						</a>
@@ -274,54 +379,6 @@
 					<li>
 						<a href="http://jpiedra.github.io/tags/javascript/">
 							javascript - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/">
-							Jonathan Piedra - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/mysql/">
-							mysql - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/mysql-connector-node/">
-							Node.js Connector to a MySQL Database - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/nodejs/">
-							nodejs - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/">
-							Tags - Posted Jul 26 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/aws/">
-							aws - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/tags/ec2/">
-							ec2 - Posted Jul 8 2018
-						</a>
-					</li>
-				
-					<li>
-						<a href="http://jpiedra.github.io/article/never-update-security-group/">
-							Never Update an AWS Security Group Again - Posted Jul 8 2018
 						</a>
 					</li>
 				

@@ -13,3 +13,8 @@ disqusShortname = "jpiedra"
   sp_recentamt = 10
 	
 staticDir = "static"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

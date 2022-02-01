@@ -13,7 +13,7 @@
       <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/article/js-module/</guid>
-      <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;!-- raw HTML omitted --&gt;module pattern.&lt;!-- raw HTML omitted --&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;</description>
     </item>
     
   </channel>
