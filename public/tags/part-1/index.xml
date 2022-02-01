@@ -26,6 +26,15 @@
     </item>
     
     <item>
+      <title>JavaScript Design Patterns: Constructor 2</title>
+      <link>http://jpiedra.github.io/article/js-constructor-2/</link>
+      <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/js-constructor-2/</guid>
+      <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>A simple build script</title>
       <link>http://jpiedra.github.io/article/simple-build-script/</link>
       <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
