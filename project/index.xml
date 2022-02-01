@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on Jonathan Piedra</title>
@@ -6,18 +6,14 @@
     <description>Recent content in Projects on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Feb 2018 13:58:41 -0500</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/project/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 18 Feb 2018 13:58:41 -0500</lastBuildDate><atom:link href="http://jpiedra.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Website Deployment Scripts</title>
       <link>http://jpiedra.github.io/project/static-site-deploy-scripts/</link>
       <pubDate>Sun, 18 Feb 2018 13:58:41 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/project/static-site-deploy-scripts/</guid>
-      <description>To ease the process of deploying static websites or front-end SPA&amp;rsquo;s to Amazon Web Services&amp;rsquo; S3 buckets, I wrote some Powershell scripts that handle configuring a new S3 bucket to use for website hosting, as well as uploading content of various standard types (HTML, CSS, JavaScript, etc.) to the bucket afterwards. The scripts use Amazon&amp;rsquo;s Command-Line Interface.</description>
+      <description>To ease the process of deploying static websites or front-end SPA&amp;rsquo;s to Amazon Web Services&#39; S3 buckets, I wrote some Powershell scripts that handle configuring a new S3 bucket to use for website hosting, as well as uploading content of various standard types (HTML, CSS, JavaScript, etc.) to the bucket afterwards. The scripts use Amazon&amp;rsquo;s Command-Line Interface.</description>
     </item>
     
     <item>

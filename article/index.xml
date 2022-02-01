@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Articles on Jonathan Piedra</title>
@@ -6,11 +6,7 @@
     <description>Recent content in Articles on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jul 2018 18:33:19 -0400</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/article/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 26 Jul 2018 18:33:19 -0400</lastBuildDate><atom:link href="http://jpiedra.github.io/article/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Node.js Connector to a MySQL Database</title>
       <link>http://jpiedra.github.io/article/mysql-connector-node/</link>
@@ -35,9 +31,7 @@
       <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/css-tip-overflow-x/</guid>
-      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;A quick tip that can help handle design cases that include child elements larger than their immediate parent.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -73,9 +67,7 @@
       <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
       
       <guid>http://jpiedra.github.io/article/js-module/</guid>
-      <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;In the second installation of this series on JavaScript design patterns and their implementation, we take a look at the &lt;i&gt;module pattern.&lt;/i&gt; By combining two commonly used features in the language, we can create robust interfaces that hide member variables and methods as we see fit.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -84,9 +76,16 @@
       <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/article/js-constructor/</guid>
-      <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JavaScript Design Patterns: Constructor 2</title>
+      <link>http://jpiedra.github.io/article/js-constructor-2/</link>
+      <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/article/js-constructor-2/</guid>
+      <description>&lt;p&gt;This first installment in a series discussing various JavaScript design patterns covers one of the most basic patterns available, the &lt;i&gt;constructor pattern.&lt;/i&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -105,9 +104,7 @@
       
       <guid>http://jpiedra.github.io/article/squarespace-server-ubuntu/</guid>
       <description>&lt;p&gt;This article details how to install the &lt;a href=&#34;http://developers.squarespace.com/local-development/&#34;&gt;Squarespace local development server&lt;/a&gt; on Ubuntu 14.04 LTS.&lt;/p&gt;
-
 &lt;p&gt;I recently took on a small project, some work on customizing Squarespace templates. In the course of doing this, I required the Squarespace local development server in order to quickly modify and test changes to the template. I use a VirtualBox VM I built some time ago using Vagrant, based on Ubuntu 14.04 LTS.&lt;/p&gt;
-
 &lt;p&gt;If you&amp;rsquo;ve encountered problems installing this program on the aforemention Linux distro, read on and follow these steps, as they ended up working for me very well!&lt;/p&gt;</description>
     </item>
     

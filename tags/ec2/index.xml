@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ec2 on Jonathan Piedra</title>
+    <title>ec2 on Jonathan Piedra</title>
     <link>http://jpiedra.github.io/tags/ec2/</link>
-    <description>Recent content in Ec2 on Jonathan Piedra</description>
+    <description>Recent content in ec2 on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Jul 2018 13:58:48 -0400</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/tags/ec2/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Jul 2018 13:58:48 -0400</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/ec2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Never Update an AWS Security Group Again</title>
       <link>http://jpiedra.github.io/article/never-update-security-group/</link>

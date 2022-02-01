@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Jonathan Piedra</title>
@@ -6,103 +6,45 @@
     <description>Recent content in Tags on Jonathan Piedra</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Jan 2017 13:20:54 -0500</lastBuildDate>
-    
-	<atom:link href="http://jpiedra.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 30 Jan 2022 21:01:46 -0500</lastBuildDate><atom:link href="http://jpiedra.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Api</title>
-      <link>http://jpiedra.github.io/tags/api/</link>
-      <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/api/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Aws</title>
-      <link>http://jpiedra.github.io/tags/aws/</link>
-      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bash</title>
-      <link>http://jpiedra.github.io/tags/bash/</link>
-      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/bash/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Constructor</title>
-      <link>http://jpiedra.github.io/tags/constructor/</link>
-      <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/constructor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Css</title>
+      <title>css</title>
       <link>http://jpiedra.github.io/tags/css/</link>
-      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      <pubDate>Sun, 30 Jan 2022 21:01:46 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Design</title>
-      <link>http://jpiedra.github.io/tags/design/</link>
-      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/design/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
+      <title>development</title>
       <link>http://jpiedra.github.io/tags/development/</link>
-      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      <pubDate>Sun, 30 Jan 2022 21:01:46 -0500</pubDate>
       
       <guid>http://jpiedra.github.io/tags/development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Ec2</title>
-      <link>http://jpiedra.github.io/tags/ec2/</link>
-      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
+      <title>tips</title>
+      <link>http://jpiedra.github.io/tags/tips/</link>
+      <pubDate>Sun, 30 Jan 2022 21:01:46 -0500</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/ec2/</guid>
+      <guid>http://jpiedra.github.io/tags/tips/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Es5</title>
-      <link>http://jpiedra.github.io/tags/es5/</link>
-      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
+      <title>webdev</title>
+      <link>http://jpiedra.github.io/tags/webdev/</link>
+      <pubDate>Sun, 30 Jan 2022 21:01:46 -0500</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/es5/</guid>
+      <guid>http://jpiedra.github.io/tags/webdev/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Git</title>
-      <link>http://jpiedra.github.io/tags/git/</link>
-      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Javascript</title>
+      <title>javascript</title>
       <link>http://jpiedra.github.io/tags/javascript/</link>
       <pubDate>Thu, 26 Jul 2018 18:33:19 -0400</pubDate>
       
@@ -111,25 +53,7 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>http://jpiedra.github.io/tags/linux/</link>
-      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Module</title>
-      <link>http://jpiedra.github.io/tags/module/</link>
-      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/module/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mysql</title>
+      <title>mysql</title>
       <link>http://jpiedra.github.io/tags/mysql/</link>
       <pubDate>Thu, 26 Jul 2018 18:33:19 -0400</pubDate>
       
@@ -138,7 +62,7 @@
     </item>
     
     <item>
-      <title>Nodejs</title>
+      <title>nodejs</title>
       <link>http://jpiedra.github.io/tags/nodejs/</link>
       <pubDate>Thu, 26 Jul 2018 18:33:19 -0400</pubDate>
       
@@ -147,43 +71,25 @@
     </item>
     
     <item>
-      <title>Part 1</title>
-      <link>http://jpiedra.github.io/tags/part-1/</link>
-      <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
+      <title>aws</title>
+      <link>http://jpiedra.github.io/tags/aws/</link>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/part-1/</guid>
+      <guid>http://jpiedra.github.io/tags/aws/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Part 2</title>
-      <link>http://jpiedra.github.io/tags/part-2/</link>
-      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
+      <title>ec2</title>
+      <link>http://jpiedra.github.io/tags/ec2/</link>
+      <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/part-2/</guid>
+      <guid>http://jpiedra.github.io/tags/ec2/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Php</title>
-      <link>http://jpiedra.github.io/tags/php/</link>
-      <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/php/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Powershell</title>
-      <link>http://jpiedra.github.io/tags/powershell/</link>
-      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/powershell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
+      <title>python</title>
       <link>http://jpiedra.github.io/tags/python/</link>
       <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
@@ -192,16 +98,7 @@
     </item>
     
     <item>
-      <title>S3</title>
-      <link>http://jpiedra.github.io/tags/s3/</link>
-      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
-      
-      <guid>http://jpiedra.github.io/tags/s3/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scripting</title>
+      <title>scripting</title>
       <link>http://jpiedra.github.io/tags/scripting/</link>
       <pubDate>Sun, 08 Jul 2018 13:58:48 -0400</pubDate>
       
@@ -210,34 +107,43 @@
     </item>
     
     <item>
-      <title>Squarespace</title>
-      <link>http://jpiedra.github.io/tags/squarespace/</link>
-      <pubDate>Mon, 30 Jan 2017 18:11:31 -0500</pubDate>
+      <title>part 2</title>
+      <link>http://jpiedra.github.io/tags/part-2/</link>
+      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/squarespace/</guid>
+      <guid>http://jpiedra.github.io/tags/part-2/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Tips</title>
-      <link>http://jpiedra.github.io/tags/tips/</link>
-      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      <title>powershell</title>
+      <link>http://jpiedra.github.io/tags/powershell/</link>
+      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/tips/</guid>
+      <guid>http://jpiedra.github.io/tags/powershell/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Troubleshooting</title>
-      <link>http://jpiedra.github.io/tags/troubleshooting/</link>
-      <pubDate>Mon, 30 Jan 2017 18:11:31 -0500</pubDate>
+      <title>s3</title>
+      <link>http://jpiedra.github.io/tags/s3/</link>
+      <pubDate>Sun, 11 Feb 2018 13:23:20 -0500</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/troubleshooting/</guid>
+      <guid>http://jpiedra.github.io/tags/s3/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Virtualbox</title>
+      <title>part 1</title>
+      <link>http://jpiedra.github.io/tags/part-1/</link>
+      <pubDate>Sat, 20 Jan 2018 16:29:20 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/part-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>virtualbox</title>
       <link>http://jpiedra.github.io/tags/virtualbox/</link>
       <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
       
@@ -246,7 +152,7 @@
     </item>
     
     <item>
-      <title>Virtualization</title>
+      <title>virtualization</title>
       <link>http://jpiedra.github.io/tags/virtualization/</link>
       <pubDate>Mon, 11 Sep 2017 21:55:02 -0400</pubDate>
       
@@ -255,11 +161,101 @@
     </item>
     
     <item>
-      <title>Webdev</title>
-      <link>http://jpiedra.github.io/tags/webdev/</link>
-      <pubDate>Wed, 14 Feb 2018 21:01:46 -0500</pubDate>
+      <title>design</title>
+      <link>http://jpiedra.github.io/tags/design/</link>
+      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
       
-      <guid>http://jpiedra.github.io/tags/webdev/</guid>
+      <guid>http://jpiedra.github.io/tags/design/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>es5</title>
+      <link>http://jpiedra.github.io/tags/es5/</link>
+      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/es5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>module</title>
+      <link>http://jpiedra.github.io/tags/module/</link>
+      <pubDate>Sun, 10 Sep 2017 17:48:30 -0400</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/module/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>constructor</title>
+      <link>http://jpiedra.github.io/tags/constructor/</link>
+      <pubDate>Thu, 02 Feb 2017 11:39:57 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/constructor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash</title>
+      <link>http://jpiedra.github.io/tags/bash/</link>
+      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://jpiedra.github.io/tags/git/</link>
+      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://jpiedra.github.io/tags/linux/</link>
+      <pubDate>Wed, 01 Feb 2017 10:51:38 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>squarespace</title>
+      <link>http://jpiedra.github.io/tags/squarespace/</link>
+      <pubDate>Mon, 30 Jan 2017 18:11:31 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/squarespace/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>troubleshooting</title>
+      <link>http://jpiedra.github.io/tags/troubleshooting/</link>
+      <pubDate>Mon, 30 Jan 2017 18:11:31 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/troubleshooting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>api</title>
+      <link>http://jpiedra.github.io/tags/api/</link>
+      <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/api/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>http://jpiedra.github.io/tags/php/</link>
+      <pubDate>Sun, 15 Jan 2017 13:20:54 -0500</pubDate>
+      
+      <guid>http://jpiedra.github.io/tags/php/</guid>
       <description></description>
     </item>
     

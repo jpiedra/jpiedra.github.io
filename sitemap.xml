@@ -1,262 +1,149 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>http://jpiedra.github.io/tags/css/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/development/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/pedal/guitar-pedal/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/pedal/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/tips/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/webdev/</loc>
+    <lastmod>2022-01-30T21:01:46-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/article/</loc>
+    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/javascript/</loc>
+    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/mysql/</loc>
+    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/mysql-connector-node/</loc>
     <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/nodejs/</loc>
+    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/aws/</loc>
+    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/ec2/</loc>
+    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/never-update-security-group/</loc>
     <lastmod>2018-07-08T13:58:48-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/python/</loc>
+    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/scripting/</loc>
+    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/project/</loc>
+    <lastmod>2018-02-18T13:58:41-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/project/static-site-deploy-scripts/</loc>
     <lastmod>2018-02-18T13:58:41-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://jpiedra.github.io/project/searchable-leaderboard/</loc>
     <lastmod>2018-02-18T13:14:22-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://jpiedra.github.io/article/css-tip-overflow-x/</loc>
     <lastmod>2018-02-14T21:01:46-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/part-2/</loc>
+    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/powershell/</loc>
+    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/s3/</loc>
+    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/s3-site-deploy-2/</loc>
     <lastmod>2018-02-11T13:23:20-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/part-1/</loc>
+    <lastmod>2018-01-20T16:29:20-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/s3-site-deploy-1/</loc>
     <lastmod>2018-01-20T16:29:20-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>http://jpiedra.github.io/article/vagrant-mysql/</loc>
     <lastmod>2017-09-11T21:55:02-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/virtualbox/</loc>
+    <lastmod>2017-09-11T21:55:02-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/virtualization/</loc>
+    <lastmod>2017-09-11T21:55:02-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/design/</loc>
+    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/es5/</loc>
+    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/js-module/</loc>
     <lastmod>2017-09-10T17:48:30-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/module/</loc>
+    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/constructor/</loc>
+    <lastmod>2017-02-02T11:39:57-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/js-constructor/</loc>
     <lastmod>2017-02-02T11:39:57-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/article/js-constructor-2/</loc>
+    <lastmod>2017-02-02T11:39:57-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/simple-build-script/</loc>
     <lastmod>2017-02-01T10:51:38-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/bash/</loc>
+    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/git/</loc>
+    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/linux/</loc>
+    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/squarespace-server-ubuntu/</loc>
     <lastmod>2017-01-30T18:11:31-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/squarespace/</loc>
+    <lastmod>2017-01-30T18:11:31-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/troubleshooting/</loc>
+    <lastmod>2017-01-30T18:11:31-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/api/</loc>
+    <lastmod>2017-01-15T13:20:54-05:00</lastmod>
+  </url><url>
+    <loc>http://jpiedra.github.io/tags/php/</loc>
+    <lastmod>2017-01-15T13:20:54-05:00</lastmod>
+  </url><url>
     <loc>http://jpiedra.github.io/article/php-sql-api-1/</loc>
     <lastmod>2017-01-15T13:20:54-05:00</lastmod>
   </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/api/</loc>
-    <lastmod>2017-01-15T13:20:54-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/article/</loc>
-    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/aws/</loc>
-    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/bash/</loc>
-    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/constructor/</loc>
-    <lastmod>2017-02-02T11:39:57-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/css/</loc>
-    <lastmod>2018-02-14T21:01:46-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/design/</loc>
-    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/development/</loc>
-    <lastmod>2018-02-14T21:01:46-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/ec2/</loc>
-    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/es5/</loc>
-    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/git/</loc>
-    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/javascript/</loc>
-    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/</loc>
-    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/linux/</loc>
-    <lastmod>2017-02-01T10:51:38-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/module/</loc>
-    <lastmod>2017-09-10T17:48:30-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/mysql/</loc>
-    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/nodejs/</loc>
-    <lastmod>2018-07-26T18:33:19-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/part-1/</loc>
-    <lastmod>2018-01-20T16:29:20-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/part-2/</loc>
-    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/php/</loc>
-    <lastmod>2017-01-15T13:20:54-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/powershell/</loc>
-    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/project/</loc>
-    <lastmod>2018-02-18T13:58:41-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/python/</loc>
-    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/s3/</loc>
-    <lastmod>2018-02-11T13:23:20-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/scripting/</loc>
-    <lastmod>2018-07-08T13:58:48-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/squarespace/</loc>
-    <lastmod>2017-01-30T18:11:31-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/</loc>
-    <lastmod>2017-01-15T13:20:54-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/tips/</loc>
-    <lastmod>2018-02-14T21:01:46-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/troubleshooting/</loc>
-    <lastmod>2017-01-30T18:11:31-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/virtualbox/</loc>
-    <lastmod>2017-09-11T21:55:02-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/virtualization/</loc>
-    <lastmod>2017-09-11T21:55:02-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://jpiedra.github.io/tags/webdev/</loc>
-    <lastmod>2018-02-14T21:01:46-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
 </urlset>
